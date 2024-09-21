@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 13:44:04 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 19:20:07 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/21 19:21:10 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void ft_putnbr(int nb)
     if (nb == -2147483648)
     {
         write(1, "-2147483648", 11);
-		ft_putchar('-');
+        ft_putchar('-');
         return;
     }
     if (nb < 0)
@@ -36,7 +36,7 @@ void ft_putnbr(int nb)
         ft_putnbr(nb % 10);
     }
     else
-	    ft_putchar(nb % 10 + '0');
+        ft_putchar(nb % 10 + '0');
 } 
 
 /*
