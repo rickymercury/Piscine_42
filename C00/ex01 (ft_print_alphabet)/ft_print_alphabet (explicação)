@@ -1,0 +1,184 @@
+#include <unistd.h>
+
+void	ft_print_alphabet(void);
+
+void	ft_print_alphabet(void)
+{
+	char	letter;
+
+	letter = 'a';
+	while (letter <= 'z')
+	{
+		write (1, &letter, 1);
+		letter++;
+	}
+}
+//
+#include<stdio.h>
+
+int main(void)
+{
+    ft_print_alphabet();
+    return (0);
+}
+
+/*
+O objetivo deste código é imprimir todas as letras minúsculas do alfabeto, de 'a' a 'z', na saída padrão (normalmente o terminal), utilizando a função write da biblioteca unistd.h
+
+1- Biblioteca - #include <unistd.h> : A linha #include <unistd.h> inclui a biblioteca unistd.h, que contém a definição da função write. A função write é usada para realizar operações de entrada e saída (I/O) de baixo nível, como escrever dados em um arquivo ou na saída padrão (terminal).
+
+2 - Declaração da função - void ft_print_alphabet(void) : esta linha declara a função ft_print_alphabet que não recebe argumentos e não devolve valores.
+
+3 - Declaração da variável - char   letter : Declara uma variável do tipo char chamada letter, que será usada para armazenar e iterar sobre as letras do alfabeto.
+    
+    A variável letter é inicializada com o caractere 'a', que corresponde à primeira letra do alfabeto minúsculo.
+
+4- Laço while - while (letter <= 'z') : COntinua a executar enquanto o valor da variável letter for menor ou igual ao caractere 'z'.
+                    
+                        letter <= 'z' : Esta expressão compara o valor atual da variável letter com o caractere 'z' (última letra do alfabeto minúsculo).
+                                        ENqaunto letter for menor ou igual a 'z', o bloco de código dentro do laço while será executado.
+                                        QUando letter se tornar maior que 'z', o laço terminará.
+
+  Instrução       write(1, &letra, 1) : A função write é utilizada para escrever dados para um destino específico, sendo que, no contexto deste código, escreve os dados para a saída padrão (terminal).
+
+                                       - 1: Este é o file descriptor para a saída padrão (stdout). No Unix e Linux, o file descriptor 1 é reservado para a saída padrão.
+                                       - &letter: O operador & é usado para obter o endereço da variável letter. A função write precisa de um ponteiro para o dado a ser escrito. 
+                                         letter é um char, e &letter fornece o endereço onde esse caractere está armazenado.
+                                       - 1: O número de bytes a serem escritos. Como letter é um caractere (char), ele ocupa 1 byte.
+
+                  Resumindo, write (1, &letter, 1); escreve o valor do caractere armazenado em letter na saída padrão.
+        
+    Instrução                letter++ : O operador de incremento, aumenta o valor da variável letter em 1.
+                                    
+                                       - Se letter for 'a' (código ASCII 97), depois de letter++, a variável se tornará 'b' (ASCII 98).
+
+                                       O incremento continua assim até que letter se torne 'z' (ASCII 122).
+
+Repetição do Processo :
+
+    - O loop volta para a verificação da condição while (i <= 'z').
+    - Agora letter é 98, que ainda é menor ou igual a 122 ('z'), então o laço continua.
+    - A função write vai escrever na saída padrão o caractere correspondente ao código ASCII 98 ('b').
+    - letter é incrementada novamente, passando de 98 para 99.
+    - O processo se repete para cada valor de letter, de 'a' até 'z'.
+
+5 - Chamada da função pela main : A função main é o ponto de entrada de qualquer programa C. Quando o programa é executado, a execução começa na função main.
+
+    Chamada da Função ft_print_alphabet - ft_print_alphabet() : Esta linha dentro da função main chama a função ft_print_alphabet. Quando uma função é chamada, o controle do programa passa para essa função. 
+                                                                Neste caso, o controle passa para ft_print_alphabet.
+
+                         Execução da Função ft_print_alphabet : Quando ft_print_alphabet é chamada, o controle do programa entra no corpo dessa função, executando completamente a função ft_print_alphabet.
+
+                                              Retorno ao main : Após a execução completa da função ft_print_alphabet, o controle do programa retorna para a função main de onde ft_print_alphabet foi chamada.
+
+                            Retorno da Função main - return 0 : A função main devolve 0, indicando que o programa terminou com sucesso. Este valor é passado ao sistema operacional.
+
+6 - Saída do Código : O loop while imprime cada letra do alfabeto de 'a' a 'z' na saída padrão, resultando em: abcdefghijklmnopqrstuvwxyz
+
+*/
+
+
+#include <unistd.h>
+
+void	ft_putchar(char c);
+void	ft_print_alphabet(void);
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_print_alphabet(void)
+{
+	int		i;
+	char	c;
+
+	i = 'a';
+	while (i <= 'z')
+	{
+		c = i;
+		ft_putchar (c);
+		i++;
+	}
+}
+//
+#include<stdio.h>
+
+int main(void)
+{
+    ft_print_alphabet();
+    return (0);
+}
+
+/*
+O objetivo deste código é imprimir todas as letras minúsculas do alfabeto, de 'a' a 'z', na saída padrão (normalmente o terminal), utilizando a função write da biblioteca unistd.h
+
+1- Biblioteca - #include <unistd.h> : A linha #include <unistd.h> inclui a biblioteca unistd.h, que contém a definição da função write. A função write é usada para realizar operações de entrada e saída (I/O) de baixo nível, como escrever dados em um arquivo ou na saída padrão (terminal).
+
+2 - Declaração das funções : - void ft_print_alphabet(void) : esta linha declara a função ft_print_alphabet que não recebe argumentos e não devolve valores.
+                            
+                             - void ft_putchar(char c) : esta linha declara a função ft_putchar que recebe um caractere ('c') do tipo char e não devolve nenhum valor.
+
+3 - Declaração das variáveis : - int i : É utilizada para iterar sobre os valores ASCII das letras do alfabeto minúsculo.
+                               
+                               - char c : É utilizada para armazenar temporariamente o valor da variável i como caractere.
+
+      A variável i é inicializada com o caractere 'a' (ASCII 97).
+
+4 - Laço while (i <= 'z') : O laço cotninua enquanto i for menor ou igual ao valor ASCII de 'z' (122).
+                            O laço começa com o valor ASCII de 'a' (97) e termina quando i atingir o valor ASCII de 'z' (122).
+
+        Instrução   c = i : A variável c é atribuída ao valor atual de i, convertendo o valor ASCII num caractere.
+                            COmo a variável i começa com 97, a variável c também será 97 na primeira iteração, que corresponde ao caractere 'a'.
+
+Instrução  ft_putchar (C) : A função ft_putchar é chamada com o caractere c.
+                            Esta usa a função write para escrever o caractere atual na saída padrão.
+                            Na primeira iteração, o caractere 'c' é 'a', sendo que, 'a' será escrito na saída padrão.
+
+        Instrução     i++ : A variável i é incrmentada em 1.
+                            Na primeira iteração, a variável i passa de 97 ('a') para 98 ('b').
+
+Repetição do Processo
+
+    - O loop volta para a verificação da condição while (i <= 'z').
+    - Agora i é 98, que ainda é menor ou igual a 122 ('z'), então o loop continua.
+    - c é atribuído ao valor de i (98), que corresponde ao caractere 'b'.
+    - ft_putchar(c) é chamado, imprimindo 'b'.
+    - i é incrementado novamente, passando de 98 para 99.
+    - O processo se repete para cada valor de i, de 'a' até 'z'.
+
+
+Vamos ver algumas iterações do loop para entender melhor:
+
+    Primeira Iteração
+        i = 97 ('a')
+        c = i => c = 97 ('a')
+        ft_putchar(c) imprime 'a'
+        i++ => i = 98 ('b')
+
+    Segunda Iteração
+        i = 98 ('b')
+        c = i => c = 98 ('b')
+        ft_putchar(c) imprime 'b'
+        i++ => i = 99 ('c')
+
+    Terceira Iteração
+        i = 99 ('c')
+        c = i => c = 99 ('c')
+        ft_putchar(c) imprime 'c'
+        i++ => i = 100 ('d')
+
+...
+
+    Última Iteração
+        i = 122 ('z')
+        c = i => c = 122 ('z')
+        ft_putchar(c) imprime 'z'
+        i++ => i = 123
+
+Após a última iteração, i será 123, o que não satisfaz mais a condição i <= 'z', então o loop termina.
+
+
+6 - Saída do Código : O loop while imprime cada letra do alfabeto de 'a' a 'z' na saída padrão, resultando em: abcdefghijklmnopqrstuvwxyz
+*/
+
