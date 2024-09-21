@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 22:56:10 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 23:01:16 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/22 00:44:46 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_str_is_alpha(char *str)
 	while (str[i] != '\0')
 	{
 		if (!((str[i] >= 'A' && str[i] <= 'Z') 
-                || (str[i] >= 'a' && str[i] <= 'z')))
+				|| (str[i] >= 'a' && str[i] <= 'z')))
 			return (0);
 		i++;
 	}
@@ -34,9 +34,9 @@ int main()
     char str2[] = "Hello123";
     char str3[] = "";
 
-    printf("str1 é alfabética? %d\n", ft_str_is_alpha(str1)); // Esperado: 1
-    printf("str2 é alfabética? %d\n", ft_str_is_alpha(str2)); // Esperado: 0
-    printf("str3 é alfabética? %d\n", ft_str_is_alpha(str3)); // Esperado: 1
+    printf("str1 é alfabética? %d\n", ft_str_is_alpha(str1));
+    printf("str2 é alfabética? %d\n", ft_str_is_alpha(str2));
+    printf("str3 é alfabética? %d\n", ft_str_is_alpha(str3));
 
     return (0);
 }
