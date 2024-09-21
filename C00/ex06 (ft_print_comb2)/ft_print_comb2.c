@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 13:27:47 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 13:39:41 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/21 20:05:41 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_print_comb2(void)
 			ft_putchar (' ');
 			ft_putchar (right_n / 10 + '0');
 			ft_putchar (right_n % 10 + '0');
-			if (left_n!= 98 || right_n != 99)
-                write (1, ", ", 2);
+			if (left_n!= 98 || right_n != 99)		
+				write (1, ", ", 2);
 			right_n++;
 		}
 		left_n++;
