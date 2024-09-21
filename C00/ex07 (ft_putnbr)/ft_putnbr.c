@@ -6,37 +6,30 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 13:44:04 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 19:21:10 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/21 19:53:45 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c) 
-{
-    write(1, &c, 1);
-}
-
 void ft_putnbr(int nb) 
 {
+    char    c;
+
     if (nb == -2147483648)
     {
         write(1, "-2147483648", 11);
-        ft_putchar('-');
         return;
     }
     if (nb < 0)
     {
-        ft_putchar('-');
+        write(1, "-", 1);
         nb = -nb;
     }
     if (nb >= 10) 
-    {
         ft_putnbr(nb / 10);
-        ft_putnbr(nb % 10);
-    }
-    else
-        ft_putchar(nb % 10 + '0');
+    c = (nb % 10) + '0';
+    write(1, &c, 1);
 } 
 
 /*
@@ -44,11 +37,13 @@ void ft_putnbr(int nb)
 
 int main(void)
 {  
-    int numero = 42;
-
-    ft_putnbr(numero);
-    printf("\n");
-
+    ft_putnbr(42);
+    write(1, "\n", 1);
+    ft_putnbr(-42);
+    write(1, "\n", 1);
+    ft_putnbr(-2147483648);
+    write(1, "\n", 1);
+    ft_putnbr(2147483647);
     return 0;
 }
 */

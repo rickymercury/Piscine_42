@@ -1,33 +1,27 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void ft_putchar(char c) 
-{
-    write(1, &c, 1);
-}
+#include <unistd.h>
 
 void ft_putnbr(int nb) 
 {
-    if (nb == -2147483648) 
+    char    c;
+
+    if (nb == -2147483648)
     {
         write(1, "-2147483648", 11);
         return;
     }
     if (nb < 0)
     {
-        ft_putchar('-');
+        write(1, "-", 1);
         nb = -nb;
     }
     if (nb >= 10) 
-    {
         ft_putnbr(nb / 10);
-        ft_putnbr(nb % 10);
-    }
-    else
-    {
-        ft_putchar(nb % 10 + '0');
-    }
-}
+    c = (nb % 10) + '0';
+    write(1, &c, 1);
+} 
 
 int main(int argc, char **argv)
 {
@@ -35,7 +29,7 @@ int main(int argc, char **argv)
     {
         int numero = atoi(argv[1]);
         ft_putnbr(numero);
-        ft_putchar('\n');
+        write(1, "\n", 1);
     }
     return 0;
 }
