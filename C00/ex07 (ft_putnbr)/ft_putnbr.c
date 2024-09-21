@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 13:44:04 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 19:15:38 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/21 19:17:48 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void ft_putchar(char c)
 
 void ft_putnbr(int nb) 
 {
-    if (nb == -2147483648) 
-	{
+    if (nb == -2147483648)
+    {
         write(1, "-2147483648", 11);
 		 ft_putchar('-');
         return;
