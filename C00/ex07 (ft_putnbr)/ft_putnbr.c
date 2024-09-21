@@ -6,13 +6,14 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 13:44:04 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 18:18:34 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/21 19:15:38 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c) {
+void ft_putchar(char c) 
+{
     write(1, &c, 1);
 }
 
