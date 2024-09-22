@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:15:46 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/22 23:20:00 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/22 23:52:01 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 	i = 0;
 	j = 0;
 	while (dest[i] != '\0')
-	{
 		i++;
-	}
 	while (src[j] != '\0' && j < nb)
 	{
 		dest[i] = src[j];
