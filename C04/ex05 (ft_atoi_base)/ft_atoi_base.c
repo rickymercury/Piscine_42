@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:44:37 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/23 22:45:13 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/23 22:45:46 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	is_base(char c, char *base)
 
 int	ft_atoi_base(char *str, char *base)
 {   
-    int base_len;
+        int base_len;
 	int	i;
 	int	sign;
 	long int number;
@@ -75,7 +75,7 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	if (!is_valid_base(base))
 		return (0);
-    base_len = ft_strlen(base);
+        base_len = ft_strlen(base);
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	while (str[i] == '-' || str[i] == '+')
