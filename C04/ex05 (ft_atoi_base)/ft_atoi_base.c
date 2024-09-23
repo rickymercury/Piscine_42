@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:44:37 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/23 22:43:40 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/23 22:45:13 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ int	is_base(char c, char *base)
 }
 
 int	ft_atoi_base(char *str, char *base)
-{
-    int         base_len;
-	int			i;
-	int			sign;
-	long int	number;
+{   
+    int base_len;
+	int	i;
+	int	sign;
+	long int number;
 
 
 	i = 0;
