@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:44:37 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/23 22:37:08 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/23 22:43:40 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_atoi_base(char *str, char *base)
 	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign = -sign;
+            sign = -sign;
 		i++;
 	}
 	while (is_base(str[i], base) != -1)
