@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 00:02:59 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/24 15:46:12 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/24 21:19:13 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_sqrt(int nb)
 	int	i;
 
 	i = 0;
-    if (nb <= 0)
+	if (nb <= 0)
         return (0);
 	while (i * i <= nb && i <= 46340)
 	{
