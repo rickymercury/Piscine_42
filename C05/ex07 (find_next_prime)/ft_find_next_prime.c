@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 16:07:02 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/24 21:25:04 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/24 21:25:40 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_find_next_prime(int nb)
 	if (nb <= 1)
 	    return (2);
 	while (!ft_is_prime(nb))
-	     nb++;
+	    nb++;
 	return (nb);
 }
 
