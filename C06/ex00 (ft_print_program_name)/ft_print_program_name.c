@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:31:54 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/24 21:45:13 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/24 22:09:12 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_putstr(char *str)
 int	main(int argc, char **argv)
 {
 	if (argc > 0)
-		ft_putstr(argv[0]);
-    ft_putstr("\n");
+	    ft_putstr(argv[0]);
+	ft_putstr("\n");
 	return (0);
 }
 
