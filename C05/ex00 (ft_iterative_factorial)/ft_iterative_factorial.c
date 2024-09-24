@@ -6,17 +6,17 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 23:14:22 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/24 21:14:18 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/24 21:15:02 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 int	ft_iterative_factorial(int nb)
-{
-    int factorial;
-
-    factorial = 1;
+{	
+	int factorial;
+	
+	factorial = 1;
 	if (nb < 0 || nb > 12)
 		return (0);
 	else if (nb == 0 || nb == 1)
