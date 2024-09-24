@@ -6,17 +6,17 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 23:52:02 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/24 00:00:36 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/24 21:18:02 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 int	ft_fibonacci(int index)
-{
-    int result;
-
-    result = 0;
+{	
+	int result;
+	
+	result = 0;
 	if (index < 0)
 		return (-1);
 	if (index == 0)
