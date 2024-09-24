@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 16:35:44 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/24 16:43:27 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/24 21:29:00 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ int    is_safe_position(int board[10], int col, int row)
 
 void    place_queen(int board[10], int *total_solutions, int col)
 {
-    int row = 0;
+    int row;
 
+    row = 0;
     if (col == 10)
     {
         print_solution(board);
@@ -78,8 +79,9 @@ void    place_queen(int board[10], int *total_solutions, int col)
 int    ft_ten_queens_puzzle(void)
 {
     int board[10];
-    int total_solutions = 0;
+    int total_solutions;
 
+    total_solutions = 0;
     place_queen(board, &total_solutions, 0);
     return (total_solutions);
 }
