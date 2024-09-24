@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 23:14:22 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/24 21:15:02 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/24 21:15:33 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_iterative_factorial(int nb)
 	while (nb > 0)
 	{
 		factorial = factorial * nb;  // factorial *= nb;
-        nb--;
+		nb--;
 	}
 	return (factorial);
 }
