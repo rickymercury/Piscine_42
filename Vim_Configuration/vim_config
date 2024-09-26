@@ -1,0 +1,65 @@
+" Ativar numeração de linhas
+set number
+
+" Ativar destaque de sintaxe
+syntax on
+
+" Mostrar linha e coluna atuais
+set ruler
+
+" Habilitar indentação automática
+set autoindent
+set smartindent
+
+" Ativar identação com 4 espaços
+set tabstop=4
+
+" Mostrar correspondência de chaves
+set showmatch
+
+" Linha de status sempre ativa
+set laststatus=2
+
+" Histórico de comandos (200 linhas)
+set history=200
+
+" Barra de navegação para ver longas linhas
+set nowrap
+
+" Pesquisar incrementalmente enquanto você digita
+set incsearch
+
+" Ignorar maiúsculas/minúsculas ao buscar
+set ignorecase
+set smartcase
+" Configurar o mouse (útil para copiar/colar)
+set mouse=a
+
+" Desabilitar som de erroi
+set noerrorbells
+
+" Dividir janelas sempre à direita e embaixo
+set splitbelow
+set splitright
+
+" Set block cursor in normal mode
+let &t_SI .= "\e[5 q"   " Use a beam cursor in insert mode
+let &t_SR .= "\e[5 q"   " Use a beam cursor when replacing text
+let &t_EI .= "\e[1 q"   " Use a block cursor in normal mode
+
+" Mapeia Ctrl+C para copiar para o clipboard
+vnoremap <C-c> "+y
+
+" Mapeia Ctrl+V para colar do clipboard
+nnoremap <C-v> "+p
+inoremap <C-v> <C-r>+
+
+" Mover a linha atual para cima com Alt+Up
+nnoremap <A-Up> :m .-2<CR>==
+inoremap <A-Up> <Esc>:m .-2<CR>==gi
+vnoremap <A-Up> :m '<-2<CR>gv=gv
+
+" Mover a linha atual para baixo com Alt+Down
+nnoremap <A-Down> :m .+1<CR>==
+inoremap <A-Down> <Esc>:m .+1<CR>==gi
+vnoremap <A-Down> :m '>+1<CR>gv=gv
