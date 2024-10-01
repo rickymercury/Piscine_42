@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 21:48:34 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/30 19:04:47 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/01 16:57:35 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,32 @@ int	ft_count_valid_digits(char *str)
 	if (num_digits % 4 != 0)
 		return (1);
 	return (num_digits);
+}
+
+void ft_define_next_position(int row, int col, int *next_row, int *next_col, int n) 
+{
+    if (col == n - 1) 
+    {
+        *next_row = row + 1;
+        *next_col = 0;
+    } 
+    else 
+    {
+        *next_row = row;
+        *next_col = col + 1;
+    }
+}
+
+void	ft_free(int **grid, int *clue, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
+	free(clue);
 }
