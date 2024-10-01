@@ -6,11 +6,25 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:08:34 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/28 22:36:58 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/01 16:26:07 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_header.h"
+
+void	ft_free(int **grid, int *clue, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
+	free(clue);
+}
 
 int	*ft_define_next_position(int *pos, int *next_pos, int n)
 {	
@@ -35,7 +49,8 @@ int	ft_find_solution(int **grid, int pos[2], int n, int *clue)
 	i = 0;
 	if (pos[0] == n)
 		return (1);
-	while (++i <= n)
+	i = 1;
+	while (i <= n)
 	{
 		grid[pos[0]][pos[1]] = i;
 		if (ft_is_valid(grid, pos, n, clue))
@@ -45,22 +60,9 @@ int	ft_find_solution(int **grid, int pos[2], int n, int *clue)
 				return (1);
 		}
 		grid[pos[0]][pos[1]] = 0;
-	}
-	return (0);
-}
-
-void	ft_free(int **grid, int *clue, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		free(grid[i]);
 		i++;
 	}
-	free(grid);
-	free(clue);
+	return (0);
 }
 
 int	ft_start(int **grid, int n, int *clue)

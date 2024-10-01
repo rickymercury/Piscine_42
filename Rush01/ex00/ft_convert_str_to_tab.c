@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arg_to_tab.c                                    :+:      :+:    :+:   */
+/*   ft_convert_str_to_tab.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:04:17 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/28 21:49:17 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/09/30 19:04:53 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,6 @@ int	ft_check_tab(int *tab, int size)
 		i++;
 	}
 	return (0);
-}
-
-int	ft_count_valid_digits(char *str)
-{
-	int	num_digits;
-	int	i;
-
-	i = 0;
-	num_digits = 0;
-	while (str[i])
-	{
-		if (str[i] <= '9' && str[i] >= '0')
-			num_digits++;
-		i++;
-	}
-	if (num_digits % 4 != 0)
-		return (1);
-	return (num_digits);
 }
 
 int	*ft_convert_str_to_tab(char *str, int argc)
