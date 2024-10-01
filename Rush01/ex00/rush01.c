@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:08:34 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/01 17:45:24 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/02 00:31:37 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	rush01(int n, int *clue)
 			grid[y][x] = 0;
 			x++;
 		}
-		x = -1;
+		x = 0;
 		y++;
 	}
 	if (ft_start(grid, n, clue))
