@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:04:17 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/02 08:05:21 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/02 14:03:36 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,17 @@ int	ft_check_digit_space(char *str)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			// Se o próximo caractere é um espaço, avançamos dois caracteres (dígito + espaço)
 			if (str[i + 1] == ' ')
 				i += 2;
-			// Se o próximo caractere é nulo, chegamos ao fim, tudo certo
 			else if (str[i + 1] == '\0')
 				return (0);
-			// Se o próximo caractere não for espaço nem nulo, erro
 			else
 				return (1);
 		}
 		else
-			return (1); // Se o caractere atual não for dígito, erro
+			return (1);
 	}
-	return (0); // Tudo foi validado corretamente
+	return (0);
 }
 
 
