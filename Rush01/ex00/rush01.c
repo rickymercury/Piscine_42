@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:08:34 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/02 00:31:37 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/02 08:11:16 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,29 @@ int	rush01(int n, int *clue)
 	int	y;
 	int	x;
 
-	grid = malloc(sizeof(long *) * n);
+	grid = malloc(sizeof(int *) * n);
 	if (!grid)
 		return (0);
 	y = 0;
-	x = 0;
 	while (y < n)
 	{
-		grid[y] = malloc(sizeof(long) * n);
+		grid[y] = malloc(sizeof(int) * n);
 		if (!grid[y])
+        {
+            while (y > 0)
+            {
+                y--;
+                free(grid[y]);
+            }
+            free(grid);
 			return (0);
+        }
+        x = 0;
 		while (x < n)
 		{
 			grid[y][x] = 0;
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 	if (ft_start(grid, n, clue))

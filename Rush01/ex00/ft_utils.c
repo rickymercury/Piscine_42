@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 21:48:34 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/01 16:57:35 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/02 08:12:58 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int	ft_count_valid_digits(char *str)
 
 	i = 0;
 	num_digits = 0;
-	while (str[i])
+	while (str[i] != '\0')
 	{
-		if (str[i] <= '9' && str[i] >= '0')
+		if (str[i] >= '0' && str[i] <= '9')
 			num_digits++;
 		i++;
 	}
 	if (num_digits % 4 != 0)
-		return (1);
+		return (0);
 	return (num_digits);
 }
 
