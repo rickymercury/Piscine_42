@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 16:06:40 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/02 23:10:01 by rickymercur      ###   ########.fr       */
+/*   Created: 2024/10/02 22:58:22 by rickymercur       #+#    #+#             */
+/*   Updated: 2024/10/02 23:40:27 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_stock_str.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
@@ -40,12 +40,12 @@ char	*ft_strcpy(char *dest, char *src)
 char	*ft_strdup(char *src)
 {
 	char	*dest;
-	int 	len;
-    
-    if (src == NULL)
-    {
-        return (NULL);
-    }
+	int		len;
+
+	if (src == NULL)
+	{
+		return (NULL);
+	}
 	len = ft_strlen(src);
 	dest = (char *)malloc((len + 1) * sizeof(char));
 	if (dest == NULL)
@@ -54,33 +54,33 @@ char	*ft_strdup(char *src)
 	return (dest);
 }
 
-/*
-int main() 
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	char *str = "Benfica";
-	char *duplicated_str;
+	struct s_stock_str	*array;
+	int					i;
 
-	duplicated_str = ft_strdup(str);
-	printf("%s\n", duplicated_str);
-
-	free(duplicated_str);
-	return 0;
+	array = (struct s_stock_str *)malloc((ac + 1) * sizeof(struct s_stock_str));
+	if (array == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac)
+	{
+		array[i].size = ft_strlen(av[i]);
+		array[i].str = av[i];
+		array[i].copy = ft_strdup(av[i]);
+		if (!array[i].copy)
+		{
+			while (i > 0)
+			{
+				free(array[--i].copy);
+			}
+			free(array);
+			return (NULL);
+		}
+		i++;
+	}
+	array[i].str = 0;
+	array[i].size = 0;
+	array[i].copy = 0;
+	return (array);
 }
-*/
-
-
-
-/*
-==7399== Command: ./a.out
-==7399== 
-Benfica
-==7399== 
-==7399== HEAP SUMMARY:
-==7399==     in use at exit: 0 bytes in 0 blocks
-==7399==   total heap usage: 2 allocs, 2 frees, 1,032 bytes allocated
-==7399== 
-==7399== All heap blocks were freed -- no leaks are possible
-==7399== 
-==7399== For lists of detected and suppressed errors, rerun with: -s
-==7399== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-*/
