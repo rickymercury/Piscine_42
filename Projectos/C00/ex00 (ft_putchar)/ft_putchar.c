@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:55:50 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 10:57:42 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/04 00:41:52 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ void	ft_putchar(char c)
 	write (1, &c, 1);
 }
 
-int main(void)
-{
-    ft_putchar('a');
-    return (0);
-}
 /*
 int main(void)
 {
