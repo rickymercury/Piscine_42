@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:45:15 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/03 00:04:58 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/03 00:00:59 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,3 @@ void ft_show_tab(struct s_stock_str *par)
         i++;
     }
 }
-
