@@ -2,7 +2,15 @@
 
 | Número | Nível | Função               | Descrição                                                        |
 |--------|-------|----------------------|------------------------------------------------------------------|
-| 1      | 1     | [`ft_strlen`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_strlen)            | Retorna o comprimento de uma string                              |
+| 1      | 0     | [hello`]()            | Retorna o comprimento de uma string
+| 2      | 0     | [only_a]()            | Retorna o comprimento de uma string
+| 1      | 0     | [aff_a](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/aff_a)            | Retorna o comprimento de uma string
+| 3      | 0     | [maff_alpha]()            | Retorna o comprimento de uma string
+| 4      | 0     | [maff_revalpha]()            | Retorna o comprimento de uma string
+| 1      | 0     | [aff_first_param](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/aff_first_param)            | Retorna o comprimento de uma string
+| 1      | 0     | [aff_last_param](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/aff_last_param)            | Retorna o comprimento de uma string
+| 1      | 0     | [ft_swap]()            | Retorna o comprimento de uma string
+| 5      | 1     | [`ft_strlen`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_strlen)            | Retorna o comprimento de uma string                              |
 | 2      | 1     | [`ft_putstr`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_putstr)             | Imprime uma string na saída padrão                               |
 | 3      | 1     | [`ft_strcpy`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_strcpy)            | Copia uma string                                                 |
 | 4      | 1     | [`ulstr`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ulstr)                | Converte uma string para maiúsculas                              |
@@ -44,6 +52,8 @@
 
 | Número | Nível | Função              | Descrição                                                       |
 |--------|-------|---------------------|----------------------------------------------------------------|
+| 1      | 0     | [ft_countdown]()            | Retorna o comprimento de uma string
+| 1      | 0     | [print_numbers]()            | Retorna o comprimento de uma string
 | 1      | 1     | [`ft_swap`](URL-DA-FUNCAO)           | Troca os valores de dois inteiros                              |
 | 3      | 1     | [`fizzbuzz`](URL-DA-FUNCAO)          | Imprime números com "Fizz", "Buzz" ou "FizzBuzz" para múltiplos de 3, 5 ou ambos |
 | 4      | 2     | [`ft_atoi`](URL-DA-FUNCAO)           | Converte uma string em um inteiro                             |
