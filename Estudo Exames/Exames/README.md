@@ -1,30 +1,30 @@
 ## Caracteres (Ordem Original)
 
 | Número | Nível | Função               | Descrição                                                        |
-|--------|-------|----------------------|-----------------------------------------------------------------|
-| 1      | 1     | [`ft_strlen`](URL-DA-FUNCAO)           | Retorna o comprimento de uma string                              |
-| 2      | 1     | [`ft_putstr`](URL-DA-FUNCAO)              | Imprime uma string na saída padrão                              |
-| 4      | 1     | [`ft_strcpy`](URL-DA-FUNCAO)           | Copia uma string                                                |
-| 6      | 1     | [`ulstr`](URL-DA-FUNCAO)               | Converte uma string para maiúsculas                             |
-| 3      | 2     | [`ft_strcmp`](URL-DA-FUNCAO)           | Compara duas strings                                           |
-| 5      | 2     | [`ft_strdup`](URL-DA-FUNCAO)           | Duplicata uma string                                           |
-| 9      | 2     | [`last_word`](URL-DA-FUNCAO)           | Extrai a última palavra de uma string                          |
-| 10     | 2     | [`camel_to_snake`](URL-DA-FUNCAO)      | Converte CamelCase para snake_case                              |
-| 11     | 2     | [`snake_to_camel`](URL-DA-FUNCAO)      | Converte snake_case para CamelCase                              |
-| 12     | 3     | [`str_capitalizer`](URL-DA-FUNCAO)     | Capitaliza a primeira letra de cada palavra em uma string      |
-| 13     | 3     | [`epur_str`](URL-DA-FUNCAO)            | Remove espaços extras de uma string                             |
-| 14     | 3     | [`expand_str`](URL-DA-FUNCAO)          | Expande espaços em uma string                                   |
-| 8      | 1     | [`first_word`](URL-DA-FUNCAO)          | Extrai a primeira palavra de uma string                        |
-| 15     | 2     | [`alpha_mirror`](URL-DA-FUNCAO)        | Espelha o alfabeto em uma string                                |
-| 16     | 1     | [`search_and_replace`](URL-DA-FUNCAO)  | Substitui caracteres em uma string                             |
-| 17     | 1     | [`rot_one`](URL-DA-FUNCAO)              | Aplica a cifra ROT1 a uma string                               |
-| 18     | 1     | [`rot_13`](URL-DA-FUNCAO)               | Aplica a cifra ROT13 a uma string                              |
-| 22     | 1     | [`repeat_alpha`](URL-DA-FUNCAO)        | Repete cada caractere alfabético em uma string                 |
-| 23     | 3     | [`hiden_p`](URL-DA-FUNCAO)              | Verifica se uma string está oculta em outra string             |
-| 24     | 2     | [`inter`](URL-DA-FUNCAO)                | Encontra a interseção de duas strings                          |
-| 25     | 2     | [`wd_match`](URL-DA-FUNCAO)             | Combina palavras em uma string                                  |
-| 26     | 2     | [`union`](URL-DA-FUNCAO)                | Cria uma união de duas strings                                  |
-| 28     | 4     | [`ft_split`](URL-DA-FUNCAO)            | Divide uma string em um array de palavras                      |
+|--------|-------|----------------------|------------------------------------------------------------------|
+| 1      | 1     | [`ft_strlen`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_strlen)            | Retorna o comprimento de uma string                              |
+| 2      | 1     | [`ft_putstr`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_putstr)             | Imprime uma string na saída padrão                               |
+| 3      | 1     | [`ft_strcpy`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_strcpy)            | Copia uma string                                                 |
+| 4      | 1     | [`ulstr`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ulstr)                | Converte uma string para maiúsculas                              |
+| 5      | 1     | [`first_word`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/first_word)           | Extrai a primeira palavra de uma string                          |
+| 6      | 1     | [`search_and_replace`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/search_and_replace) | Substitui caracteres em uma string                               |
+| 7      | 1     | [`rot_one`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/rot_one)               | Aplica a cifra ROT1 a uma string                                 |
+| 8      | 1     | [`rot_13`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/rot_13)                | Aplica a cifra ROT13 a uma string                                |
+| 9      | 1     | [`repeat_alpha`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/repeat_alpha)         | Repete cada caractere alfabético em uma string                   |
+| 10     | 2     | [`ft_strcmp`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_strcmp)            | Compara duas strings                                             |
+| 11     | 2     | [`ft_strdup`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_strdup)            | Duplica uma string                                               |
+| 12     | 2     | [`last_word`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/last_word)            | Extrai a última palavra de uma string                            |
+| 13     | 2     | [`camel_to_snake`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/camel_to_snake)       | Converte CamelCase para snake_case                               |
+| 14     | 2     | [`snake_to_camel`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/snake_to_camel)       | Converte snake_case para CamelCase                               |
+| 15     | 2     | [`alpha_mirror`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/alpha_mirror)         | Espelha o alfabeto em uma string                                 |
+| 16     | 2     | [`inter`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/inter)                 | Encontra a interseção de duas strings                            |
+| 17     | 2     | [`wd_match`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/wd_match)              | Combina palavras em uma string                                   |
+| 18     | 2     | [`union`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/union)                 | Cria uma união de duas strings                                   |
+| 19     | 3     | [`str_capitalizer`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/str_capitalizer)    | Capitaliza a primeira letra de cada palavra em uma string        |
+| 20     | 3     | [`epur_str`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/epur_str)             | Remove espaços extras de uma string                              |
+| 21     | 3     | [`expand_str`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/expand_str)           | Expande espaços em uma string                                    |
+| 22     | 3     | [`hiden_p`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/hiden_p)               | Verifica se uma string está oculta em outra string               |
+| 23     | 4     | [`ft_split`](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Separadores%20de%20Temas/ft_split)             | Divide uma string em um array de palavras                        |
 
 
 
