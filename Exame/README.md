@@ -32,7 +32,7 @@
 | 1     | [occ_z](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-occ_z) | Conta a ocorrência da letra 'z' em uma string. |
 | 1     | [odd](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-odd) | Exibe os números ímpares de 0 a 9. |
 | 1     | [repeat_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-repeat_alpha) | Repete cada letra de uma string um número de vezes igual à sua posição. |
-| 1     | [rev_print](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-rev_print) | Exibe uma string na ordem reversa. |
+| 1     | [rev_print](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-%20rev_print) | Exibe uma string na ordem reversa. |
 | 1     | [rot_13](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-rot_13) | Codifica uma string usando a cifra ROT13. |
 | 1     | [rot_one](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-rot_one) | Desloca cada letra de uma string uma posição para frente. |
 | 1     | [search_and_replace](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-search_and_replace) | Substitui uma letra em uma string por outra. |
