@@ -1,8 +1,6 @@
                            42 Projects
 
-#C00 - Introdução ao C
-
-uma introdução prática aos conceitos fundamentais da linguagem de programação C. Durante este projeto, os alunos implementam uma série de funções que abordam a manipulação básica de caracteres, números e combinações. Abaixo estão os exercícios realizados:
+# C00 - Introdução ao C
 
 O projeto C00 serve como uma introdução à aprendizagem da linguagem C, permitindo-nos implementar uma série de funções que abordam a manipulação básica de caracteres e números. Os exercícios abrangem a impressão de caracteres e sequências, bem como a formação de combinações de números, ajudando a entender conceitos como loops, condicionais e funções.
 
@@ -23,11 +21,9 @@ O projeto C00 serve como uma introdução à aprendizagem da linguagem C, permit
 | ex08         | [ft_print_combn](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C00/ex08)                        | Imprime todas as combinações de n números em ordem crescente.              
 
 
-#C01 - Ponteiros e if statements
+# C01 - Ponteiros e if statements
 
 Explora o uso de ponteiros e condicionais na linguagem C, essenciais para o manuseamento eficaz da memória e para a construção da lógica em programação, permitindo o desenvolvimento de um entendimento sólido sobre como manipular a memória e implementar a lógica no controlo dos programas.
-
-Os exercícios focam em manipulações básicas de variáveis através de ponteiros, bem como em operações fundamentais como a divisão e o modulo ou resto. Além disso, são estudadas funções de manipulação de strings e arrays.
 
 > **Note:**  
 > ex00 - ex06 é o mínimo necessário para passar o projeto C01.
@@ -46,11 +42,9 @@ Os exercícios focam em manipulações básicas de variáveis através de pontei
 
 
 
-C02 - Introduction To Strings and Arrays
+# C02 - Introdução às Strings e Arrays
 
-Introduz conceitos fundamentais sobre strings e arrays na linguagem C, abordando operações comuns como cópia de strings, verificação de propriedades e manipulação segura de buffers, que podem ser realizadas com esses tipos de dados.
-
-O entendimento dessas funções permite-nos construir programas mais robustos e eficientes, melhorando a habilidade de trabalhar com dados textuais e estruturas de dados.
+Introduz conceitos fundamentais sobre strings e arrays na linguagem C, abordando operações comuns como a cópia de strings, a verificação de propriedades e manipulação segura de buffers, que podem ser realizadas com esses tipos de dados.
 
 > **Note:**  
 > ex00 - ex08 é o mínimo necessário para passar o projeto C02.
@@ -71,7 +65,7 @@ O entendimento dessas funções permite-nos construir programas mais robustos e 
 | ex11         | [ft_putstr_non_printable](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C02/ex11)                        | Escreve uma string, substituindo caracteres não imprimíveis por suas representações hexadecimais.                                   |
 
 
-C03 - String Functions, Manipulation and Concatanation
+# C03 - Funções com Strings, Manipulação e Concatenação
 
 São exploradas funções essenciais para a manipulação de strings em C, com foco na comparação, concatenação e procura de substrings. Os exercícios fornecem uma prática na implementação de funções fundamentais que ajudam a construir um entendimento sólido sobre como as strings são manipuladas na linguagem C. 
 
@@ -88,9 +82,9 @@ São exploradas funções essenciais para a manipulação de strings em C, com f
 | ex05         | [ft_strlcat](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C03/ex05)                        | Concatena duas strings, garantindo que o buffer de destino não seja excedido.  
 
 
-C04 - Analysing String Qualities and Manipulating Ints
+# C04 - Análise das Qualidades da String e Manipulação de Inteiros
 
-Foca na análise das qualidades das strings e na manipulação de números inteiros. Inclui funções para medir e imprimir strings, além de converter strings em inteiros e vice-versa em diferentes bases numéricas. Estes exercícios proporcionam uma base sólida para manipulação de dados e compreensão dos tipos de dados na linguagem C.
+Foca na análise das qualidades das strings e na manipulação de números inteiros. Inclui funções para imprimir e efetuar o cálculo do comprimento de strings, além de converter strings em inteiros e vice-versa em diferentes bases numéricas.
 
 > **Note:**  
 > ex00 - ex02 é o mínimo para passar o projeto C04.
@@ -105,9 +99,7 @@ Foca na análise das qualidades das strings e na manipulação de números intei
 | ex05         | [ft_atoi_base](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C04/ex05)                        | Converte uma string em um número inteiro em uma base específica.     
 
 
-C05 - Mathematical Concepts in C
-
-Foca na implementação de conceitos matemáticos fundamentais utilizando a linguagem C. Ele inclui funções para cálculos básicos como fatoriais e potências, além de problemas mais complexos como a sequência de Fibonacci e a verificação de números primos. A resolução do puzzle das dez rainhas também está incluído, exigindo habilidades de programação mais avançadas, como a recursão e manipulação de arrays.
+# C05 - Conceitos Matemáticos em C
 
 Este projeto é essencial para desenvolver habilidades de raciocínio lógico e algoritmos, preparando-nos para os desafios de programação mais avançados e para a compreensão de como aplicar a matemática na computação.
 
@@ -127,11 +119,10 @@ Este projeto é essencial para desenvolver habilidades de raciocínio lógico e 
 | ex08         | [ft_ten_queens_puzzle](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C05/ex08)                        | Resolve o quebra-cabeça das dez rainhas.                                   |
 
 
-C06 - Understanding Argc and Argv
+# C06 - Argc e Argv
 
 Concentra-se na compreensão e manipulação dos parâmetros da linha de comando em programas C, utilizando os conceitos de argc (o número de argumentos) e argv(um array de strings que contém os argumentos). Oferece uma abordagem prática para entender como os programas recebem entradas e como processá-las de forma eficaz.
 
-Os exercícios incluem a impressão do nome do programa, a manipulação e exibição dos parâmetros recebidos, e até mesmo a ordenação desses parâmetros. Este entendimento é crucial para a criação de programas mais interativos e flexíveis, permitindo que os desenvolvedores aceitem entradas dinâmicas e ajustem o comportamento do programa de acordo com essas entradas.
 
 > **Note:**  
 > ex00 - ex02 é o mínimo para passar o projeto C06.
@@ -144,11 +135,9 @@ Os exercícios incluem a impressão do nome do programa, a manipulação e exibi
 | ex03         | [ft_sort_params](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C06/ex03)                        | Classifica os parâmetros de um programa.                                   |
 
 
-C07 - Memory Allocation
+# C07 - Alocação de Memória
 
 É uma introdução à alocação dinâmica de memória em C, crucial para o desenvolvimento de programas que requerem flexibilidade em termos do uso de memória. Aprendemos a criar novas strings e arrays dinamicamente, além de entender como manipular e gerenciar a memória de forma eficaz.
-
-Os exercícios do projeto ensinam como trabalhar com a memória dinâmica, manipulação de strings e criação de intervalos de números.
 
 > **Note:**  
 > ex00 - ex03 é o mínimo para passar o projeto C07 is the minimum needed to pass C00.
@@ -161,7 +150,7 @@ Os exercícios do projeto ensinam como trabalhar com a memória dinâmica, manip
 | ex03         | [ft_strjoin](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C07/ex03)                        | Une duas strings.                                   |
 
 
-C08
+# C08 - Headers
 
 Foca na criação e no uso de cabeçalhos em C, um conceito fundamental para a organização e reutilização do código. Através deste projeto, aprendemos a definir cabeçalhos que encapsulam funcionalidades específicas, facilitando a manipulação de dados e a interação entre diferentes partes do código.
 
@@ -176,11 +165,9 @@ Foca na criação e no uso de cabeçalhos em C, um conceito fundamental para a o
 | ex05         | [ft_show_tab](https://github.com/rickymercury/Piscine_42/tree/master/Projetos/C08/ex05)                        | Exibe uma tabela de strings.                                   |
 
 
-C09
+# C09 - Biblioteca e Makefile
 
 É dedicado à criação de uma biblioteca personalizada em C, conhecida como libft, que enfatiza a construção de funções úteis e a organização do código, permitindo-nos desenvolver habilidades práticas na manipulação de strings e na criação de arquivos de configuração.
-
-A função ft_split, que é essencial para a manipulação de strings, permite a divisão de strings em substrings baseadas nos delimitadores.
 
 O Makefile facilita o processo de compilação e organização do projeto. Aprendemos a criar e a gerenciar arquivos de configuração que simplificam o desenvolvimento e a manutenção do código.
 
