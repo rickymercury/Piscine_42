@@ -1,16 +1,17 @@
 /*
-Assignment name  : first_word
-Expected files   : first_word.c
+Assignment name  : ft_putnbr
+Expected files   : ft_putnbr.c
+version 1        :
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Escreva uma função que mostre um número, passado como parâmetro. 
+Reproduce the behavior of the function ft_putnbr (man ft_putnbr).
 
-A função deverá ser capaz de representar todos os valores possíveis de uma variável do tipo int.
+Your function must be declared as follows:
 
-Deve ser prototipada da seguinte maneira: void ft_putnbr(int nb);
+Example:
 
-Por exemplo: ft_putnbr(42) mostra "42".
+void	ft_putnbr(int n);
 
 */
 
