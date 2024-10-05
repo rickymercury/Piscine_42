@@ -8,14 +8,22 @@
 | 0     | [hello](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-hello) | Exibe a mensagem 'Hello World!'. |
 | 0     | [maff_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_alpha) | Exibe o alfabeto em ordem crescente. |
 | 0     | [maff_revalpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_revalpha) | Exibe o alfabeto em ordem decrescente. |
+| 0     | [print_odd]() | Imprime os caracteres cujo indice  não é multiplo de 2 (ímpar) |
+| 0     | [print_even]() | Imprime os caracteres cujo indice é multiplo de 2 (par) |
+| 0     | [ft_dec]() | Ponteiro que decrementa o seu valor. |
 | 0     | [only_a](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-only_a) | Exibe apenas a letra 'a'. |
-| 1     | [ft_add](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-ft_add) | Adição de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
+| 0     | [ft_add](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-ft_add) | Adição de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
+| 0     | [ft_sub]() | Subtração de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
+| 1     | [ft_ft]() | Recebe um ponteiro para inteiro como parâmetro e define o valor '42' para esse inteiro |
+| 1     | [interval_spaces]() | Escreve três espaços em branco entre cada caractere num argumento           |
 | 1     | [count_alen](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-count_alen) | Conta o número de letras em uma string. |
 | 1     | [count_words](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-count_words) | Conta o número de palavras em uma string. |
 | 1     | [even](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-even) | Exibe os números pares de 0 a 9. |
 | 1     | [first_word](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-first_word) | Exibe a primeira palavra de uma string. |
 | 1     | [fizzbuzz](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-fizzbuzz) | Executa o jogo FizzBuzz para números de 1 a 100. |
-| 1     | [ft_djamal](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_djamal) | Exibe uma mensagem personalizada. |
+| 1     | [buzzfizz]() | Executa o jogo BuzzFizz para números de 1 a 100.|
+| 1     | [write_string]() | Exibe uma string na saída padrão. |
+| 1     | [ft_djamal](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_djamal) | Retorna o valor mediano. |
 | 1     | [ft_putstr](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_putstr) | Exibe uma string. |
 | 1     | [ft_strcpy](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_strcpy) | Copia uma string para outra. |
 | 1     | [ft_strlen](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_strlen) | Retorna o comprimento de uma string. |
@@ -29,6 +37,7 @@
 | 1     | [rot_one](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-rot_one) | Desloca cada letra de uma string uma posição para frente. |
 | 1     | [search_and_replace](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-search_and_replace) | Substitui uma letra em uma string por outra. |
 | 1     | [ulstr](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ulstr) | Converte uma string para letras minúsculas. |
+| 2     | [title]() |  |
 | 2     | [alpha_mirror](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-alpha_mirror) | Converte uma string em seu espelho alfabético. |
 | 2     | [camel_to_snake](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-camel_to_snake) | Converte uma string de formato CamelCase para snake_case. |
 | 2     | [do_op](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-do_op) | Executa operações matemáticas básicas. |

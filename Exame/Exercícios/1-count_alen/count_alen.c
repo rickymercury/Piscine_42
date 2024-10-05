@@ -27,6 +27,7 @@ int	count_alen(char *str)
 	return (length);
 }
 
+
 /*
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,3 +41,19 @@ int	main(void)
 	return (EXIT_SUCCESS);
 }
 */
+
+// ou
+
+int count_alen(char *str)
+{
+    int length = 0;
+
+    while (str[length]) 
+    {
+        if (str[length] == 'a') 
+            return length; 
+        length++; 
+    }
+
+    return length;
+}

@@ -1,17 +1,19 @@
 /*
 Assignment name  : ft_putnbr
 Expected files   : ft_putnbr.c
-version 1        :
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Reproduce the behavior of the function ft_putnbr (man ft_putnbr).
+Create a function that displays the number entered as a parameter. 
+The function has to be able to display all possible values within an int type variable.
 
-Your function must be declared as follows:
+Here's how it should be prototyped :
 
-Example:
+void ft_putnbr(int nb);
 
-void	ft_putnbr(int n);
+For example:
+
+ft_putbr (42) displays "42".
 
 */
 
@@ -63,3 +65,29 @@ int	main(void)
 	return (0);
 }
 */
+
+// ou
+
+#include <unistd.h>
+
+void    ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+void ft_putnbr(int nb)
+{
+    long a = nb;
+    if (a < 0)
+	{
+        write(1, "-", 1);
+		a = -a;
+	}
+	if (a >= 10)
+	{
+		ft_putnbr(a / 10);
+		ft_putnbr(a % 10);
+	}
+	else
+		ft_putchar(a + '0');
+}

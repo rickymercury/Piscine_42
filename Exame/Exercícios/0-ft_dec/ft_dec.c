@@ -1,0 +1,18 @@
+/*
+Assignment name  : ft_dec
+Expected files   : ft_dec.c
+Allowed functions: None
+--------------------------------------------------------------------------------
+
+Write a function that takes an int pointer and decrement it's value
+
+The function must be declared as follows
+
+void	*ft_dec(int *a);
+
+*/
+
+void	*ft_dec(int *a)
+{
+    (*a)--;
+}

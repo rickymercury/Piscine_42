@@ -19,31 +19,28 @@ $
 */
 
 #include <unistd.h>
-
-void	ft_putchar(char c)
+int ft_strlen(char *str)
 {
-	write(1, &c, 1);
+    int i = 0;
+    while(str[i])
+    {
+        i++;
+    }
+    return i;
 }
 
-int		ft_strlen(char *str)
+int main(int ac, char **av)
 {
-	int i;
+    if(ac == 2)
+    {
+        int i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-int		main(int argc, char **argv)
-{
-	int len;
-
-	if (argc == 2)
-	{
-		len = ft_strlen(argv[1]);
-		while (len--)
-			write(1, &argv[1][len], 1);
-	}
-	ft_putchar('\n');
+        i = ft_strlen(av[1]) - 1;
+        while (i >= 0)
+        {
+            write(1, &av[1][i], 1);
+            i--;
+        }
+    }
+    write(1, "\n", 1);
 }

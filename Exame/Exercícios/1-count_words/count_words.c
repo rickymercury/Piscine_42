@@ -42,33 +42,36 @@ int count_words(char *str)
 // OU
 
 
-static int	ft_isspace(int c);
+#include <stdio.h>
 
-int	count_words(char *str)
+int count_words(char *str)
 {
-	int	count;
-	int	in_word;
-
-	count = 0;
-	in_word = 0;
-	while (*str)
-	{
-		if (ft_isspace(*str))
-			in_word = 0;
-		else if (!in_word)
-		{
-			in_word = 1;
-			count++;
-		}
-		str++;
-	}
-	return (count);
+    int i = 0;
+    int isword = 0;
+    int count = 0;
+    while (str[i])
+    {
+        if(str[i] == ' ')
+        {
+            isword = 0;
+        }
+        else if(isword == 0)
+        {
+            count++;
+            isword = 1;
+        }
+        i++;
+    }
+    return count;
 }
 
-static int	ft_isspace(int c)
+/*
+int main()
 {
-	return ((c == ' ') || ((c >= '\t') && (c <= '\r')));
+    char str[] = "wa drari golo meay a";
+    printf("%d", count_words(str));
 }
+*/
 
 /*
 #include <stdio.h>

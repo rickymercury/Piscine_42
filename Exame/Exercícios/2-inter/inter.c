@@ -58,3 +58,53 @@ int main(int argc, char **argv)
 	write(1,"\n",1);
 	return (0);
 }
+
+// ou 
+
+#include <unistd.h>
+
+int    check(char *str, int i)
+{
+    int c = 0;
+    while(c < i)
+    {
+        if(str[i] == str[c])
+        {
+            return 0;
+        }
+        c++;
+    }
+    return 1;
+}
+
+void    inter(char *str, char *dest)
+{
+    int i = 0;
+    int j;
+    while(str[i] != '\0')
+    {
+        j = 0;
+        while(dest[j] != '\0')
+        {
+            if(str[i] == dest[j])
+            {
+                if(check(str,i) == 1)
+                {
+                    write(1, &str[i], 1);
+                    break;
+                }
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
+int main(int argc, char **argv)
+{
+    if(argc == 3)
+    {
+        inter(argv[1],argv[2]);
+    }
+    write(1, "\n", 1);
+}
