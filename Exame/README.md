@@ -1,67 +1,68 @@
-| Nível | Nome                  | Ação                                                |
-|-------|-----------------------|-----------------------------------------------------|
-| 0     | [aff_a](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20aff_a)                 | Exibe o caractere 'a'.                             |
-| 0     | [aff_first_param](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20aff_first_param)       | Exibe o primeiro argumento.                        |
-| 0     | [aff_last_param](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20aff_last_param)        | Exibe o último argumento.                          |
-| 0     | [ft_countdown](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20ft_countdown)          | Exibe os números de 9 a 0.                        |
-| 0     | [ft_print_numbers](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20ft_print_numbers)      | Exibe os números de 0 a 9.                         |
-| 0     | [hello](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20hello)                 | Exibe uma mensagem de saudação.                    |
-| 0     | [maff_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20maff_alpha)            | Exibe as letras do alfabeto em uma ordem específica. |
-| 0     | [maff_revalpha](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20maff_revalpha)         | Exibe as letras do alfabeto em ordem inversa.     |
-| 0     | [only_a](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/0%20-%20only_a)                | Exibe apenas o caractere 'a'.                     |
-| 1     | [count_alen](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20count_alen)            | Conta o número de caracteres em uma string.       |
-| 1     | [count_words](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20count_words)           | Conta o número de palavras em uma string.         |
-| 1     | [even](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20even)                  | Exibe todos os dígitos pares.                     |
-| 1     | [first_word](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20first_word)            | Exibe a primeira palavra de uma string.            |
-| 1     | [fizzbuzz](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20first_word)              | Exibe Fizz, Buzz ou os números de 1 a 100.       |
-| 1     | [ft_djamal](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20ft_djamal)            | Retorna o valor mediano entre três inteiros.      |
-| 1     | [ft_putstr](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20ft_putstr)             | Exibe uma string.                                  |
-| 1     | [ft_strcpy](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20ft_strcpy)             | Copia uma string para outra.                       |
-| 1     | [ft_strlen](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20ft_strlen)             | Retorna o comprimento de uma string.              |
-| 1     | [ft_swap](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20ft_swap)               | Troca os valores de dois inteiros.                |
-| 1     | [halft_str](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20halft_str)             | Exibe cada segundo caractere de uma string.       |
-| 1     | [occ_z](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20occ_z)                 | Conta as ocorrências do caractere 'z'.            |
-| 1     | [odd](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20odd)                   | Exibe todos os dígitos ímpares.                   |
-| 1     | [repeat_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20repeat_alpha)          | Repete cada letra de uma string.                   |
-| 1     | [rev_print](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20rev_print)             | Exibe os argumentos em ordem inversa.              |
-| 1     | [rot_13](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20rot_13)                | Codifica uma string usando a cifra ROT13.          |
-| 1     | [rot_one](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20rot_one)               | Desloca cada letra de uma string por um caractere. |
-| 1     | [search_and_replace](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20search_and_replace)     | Substitui uma substring por outra.                 |
-| 1     | [ulstr](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/1%20-%20ulstr)                 | Transforma as letras em maiúsculas.               |
-| 2     | [alpha_mirror](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20alpha_mirror)          | Retorna o espelho das letras do alfabeto.         |
-| 2     | [camel_to_snake](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20camel_to_snake)        | Converte uma string de estilo CamelCase para snake_case. |
-| 2     | [do_op](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20do_op)                 | Realiza uma operação matemática básica.            |
-| 2     | [ft_atoi](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20ft_atoi)               | Converte uma string em inteiro.                    |
-| 2     | [ft_putnbr](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20ft_putnbr)             | Exibe um número inteiro.                           |
-| 2     | [ft_strcmp](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20ft_strcmp)             | Compara duas strings.                              |
-| 2     | [ft_strrev](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20ft_strrev)             | Inverte uma string.                                |
-| 2     | [inter](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20inter)                 | Retorna a interseção de duas strings.             |
-| 2     | [last_word](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20last_word)             | Retorna a última palavra de uma string.            |
-| 2     | [max](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20max)                   | Retorna o máximo entre dois inteiros.              |
-| 2     | [print_params](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20print_params)          | Exibe todos os argumentos passados ao programa.    |
-| 2     | [print_prog_name](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20print_prog_name)       | Exibe o nome do programa.                          |
-| 2     | [snake_to_camel](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20snake_to_camel)        | Converte uma string de estilo snake_case para CamelCase. |
-| 2     | [union](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20union)                 | Retorna a união de duas strings.                   |
-| 2     | [wd_match](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-%20wd_match)              | Verifica se uma string corresponde a um padrão.   |
-| 2     | [ft_strdup](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/2%20-ft_strdup)             | Duplica uma string.                                |
-| 3     | [add_prime_sum](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20add_prime_sum)         | Calcula a soma dos números primos até um inteiro. |
-| 3     | [epur_str](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20epur_str)              | Purifica uma string removendo espaços.             |
-| 3     | [expand_str](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20expand_str)            | Expande uma string com repetições.                 |
-| 3     | [ft_atoi_base](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20ft_atoi_base)          | Converte uma string em inteiro de acordo com uma base. |
-| 3     | [ft_print_hex](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20ft_print_hex)          | Exibe um número em formato hexadecimal.            |
-| 3     | [ft_range](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20ft_range)              | Cria um array de inteiros em uma faixa dada.      |
-| 3     | [ft_rrange](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20ft_rrange)             | Cria um array de inteiros em ordem inversa.       |
-| 3     | [hiden_p](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20hiden_p)               | Mascarar caracteres em uma string.                 |
-| 3     | [is_palindrome](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20is_palindrome)         | Verifica se uma string é um palíndromo.           |
-| 3     | [lcm](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20lcm)                   | Calcula o mínimo múltiplo comum de dois inteiros. |
-| 3     | [parasum](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20parasum)               | Calcula a soma de todos os elementos de um array. |
-| 3     | [pgdc](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20pgdc)                  | Calcula o máximo divisor comum de dois inteiros.  |
-| 3     | [sort_params](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20sort_params)           | Ordena os argumentos em ordem ASCII.               |
-| 3     | [str_capitalizer](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20str_capitalizer)       | Coloca em maiúscula o primeiro caractere de cada palavra. |
-| 3     | [tab_mult](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/3%20-%20tab_mult)              | Multiplica os elementos de um array.               |
-| 4     | [ft_itoa](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/4%20-%20ft_itoa)               | Converte um inteiro em string.                     |
-| 4     | [ft_split](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/4%20-%20ft_split)              | Divide uma string com base em um delimitador.     |
-| 4     | [rev_wstr](https://github.com/rickymercury/Piscine_42/tree/master/Estudo%20Exames/Exames/Exerc%C3%ADcios/4%20-%20rev_wstr)              | Inverte a ordem das palavras em uma string.       |
+| Nível | Nome                  | Ação                                                          |
+|-------|-----------------------|---------------------------------------------------------------|
+| 0     | [aff_a](#aff_a)      | Exibe a letra 'a'.                                          |
+| 0     | [aff_first_param](#aff_first_param) | Exibe o primeiro parâmetro da linha de comando.         |
+| 0     | [aff_last_param](#aff_last_param) | Exibe o último parâmetro da linha de comando.           |
+| 0     | [ft_countdown](#ft_countdown) | Exibe uma contagem regressiva a partir de 9.           |
+| 0     | [ft_print_numbers](#ft_print_numbers) | Exibe os números de 0 a 9.                        |
+| 0     | [hello](#hello)      | Exibe a mensagem 'Hello, World!'.                          |
+| 0     | [maff_alpha](#maff_alpha) | Exibe o alfabeto em ordem alternada (maiúsculas e minúsculas). |
+| 0     | [maff_revalpha](#maff_revalpha) | Exibe o alfabeto reverso em ordem alternada.            |
+| 0     | [only_a](#only_a)    | Exibe apenas a letra 'a'.                                  |
+| 1     | [count_alen](#count_alen) | Conta o número de caracteres em uma string.              |
+| 1     | [count_words](#count_words) | Conta o número de palavras em uma string.                |
+| 1     | [even](#even)        | Verifica se um número é par.                               |
+| 1     | [first_word](#first_word) | Extrai e exibe a primeira palavra de uma string.       |
+| 1     | [fizzbuzz](#fizzbuzz) | Implementa o jogo FizzBuzz para números de 1 a 100.      |
+| 1     | [ft_djamal](#ft_djamal) | Exibe uma mensagem específica relacionada ao Djamal.    |
+| 1     | [ft_putstr](#ft_putstr) | Imprime uma string na saída padrão.                     |
+| 1     | [ft_strcpy](#ft_strcpy) | Copia uma string de origem para uma string de destino.   |
+| 1     | [ft_strlen](#ft_strlen) | Retorna o comprimento de uma string.                      |
+| 1     | [ft_swap](#ft_swap)  | Troca o valor de duas variáveis.                           |
+| 1     | [halft_str](#halft_str) | Exibe a metade de uma string.                             |
+| 1     | [occ_z](#occ_z)      | Conta o número de ocorrências da letra 'z' em uma string. |
+| 1     | [odd](#odd)          | Verifica se um número é ímpar.                            |
+| 1     | [repeat_alpha](#repeat_alpha) | Repete cada letra de uma string um número de vezes. |
+| 1     | [rev_print](#rev_print) | Exibe uma string na ordem reversa.                      |
+| 1     | [rot_13](#rot_13)    | Aplica a cifra ROT13 a uma string.                         |
+| 1     | [rot_one](#rot_one)  | Rotaciona cada letra de uma string por uma posição.        |
+| 1     | [search_and_replace](#search_and_replace) | Substitui uma substring por outra em uma string.   |
+| 1     | [ulstr](#ulstr)      | Converte uma string para letras minúsculas.               |
+| 2     | [alpha_mirror](#alpha_mirror) | Substitui cada letra por sua correspondente no alfabeto reverso. |
+| 2     | [camel_to_snake](#camel_to_snake) | Converte uma string de formato camelCase para snake_case. |
+| 2     | [do_op](#do_op)      | Realiza operações matemáticas básicas a partir de uma string. |
+| 2     | [ft_atoi](#ft_atoi)  | Converte uma string em um número inteiro.                  |
+| 2     | [ft_putnbr](#ft_putnbr) | Imprime um número inteiro na saída padrão.              |
+| 2     | [ft_strcmp](#ft_strcmp) | Compara duas strings e retorna a diferença.             |
+| 2     | [ft_strrev](#ft_strrev) | Inverte uma string.                                       |
+| 2     | [inter](#inter)      | Retorna a interseção entre duas strings.                   |
+| 2     | [last_word](#last_word) | Retorna a última palavra de uma string.                 |
+| 2     | [max](#max)          | Retorna o maior de dois números.                          |
+| 2     | [print_params](#print_params) | Imprime todos os parâmetros da linha de comando.    |
+| 2     | [print_prog_name](#print_prog_name) | Exibe o nome do programa em execução.               |
+| 2     | [snake_to_camel](#snake_to_camel) | Converte uma string de snake_case para camelCase.   |
+| 2     | [union](#union)      | Retorna a união de dois conjuntos.                         |
+| 2     | [wd_match](#wd_match) | Verifica se uma palavra corresponde a um padrão.         |
+| 2     | [ft_strdup](#ft_strdup) | Duplica uma string alocando nova memória.              |
+| 3     | [add_prime_sum](#add_prime_sum) | Soma todos os números primos até um dado número.   |
+| 3     | [epur_str](#epur_str) | Remove espaços extras de uma string.                     |
+| 3     | [expand_str](#expand_str) | Expande uma string com caracteres repetidos.           |
+| 3     | [ft_atoi_base](#ft_atoi_base) | Converte uma string em um número inteiro em uma base específica. |
+| 3     | [ft_print_hex](#ft_print_hex) | Imprime um número em formato hexadecimal.              |
+| 3     | [ft_range](#ft_range) | Retorna um array de inteiros de 'start' a 'end'.       |
+| 3     | [ft_rrange](#ft_rrange) | Retorna um array de inteiros de 'end' a 'start'.       |
+| 3     | [hiden_p](#hiden_p)  | Exibe caracteres ocultos em uma string.                 |
+| 3     | [is_palindrome](#is_palindrome) | Verifica se uma string é um palíndromo.              |
+| 3     | [lcm](#lcm)          | Calcula o menor múltiplo comum de dois números.         |
+| 3     | [parasum](#parasum)  | Retorna a soma de um array de inteiros.                 |
+| 3     | [pgdc](#pgdc)        | Calcula o máximo divisor comum de dois números.         |
+| 3     | [sort_params](#sort_params) | Ordena os parâmetros da linha de comando.            |
+| 3     | [str_capitalizer](#str_capitalizer) | Capitaliza cada palavra em uma string.             |
+| 3     | [tab_mult](#tab_mult) | Gera uma tabela de multiplicação.                       |
+| 4     | [ft_itoa](#ft_itoa)  | Converte um número inteiro em uma string.               |
+| 4     | [ft_split](#ft_split) | Divide uma string em substrings com base em um delimitador. |
+| 4     | [rev_wstr](#rev_wstr) | Inverte a ordem das palavras em uma string.             |
+
 
 
 
