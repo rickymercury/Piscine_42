@@ -9,6 +9,7 @@
 | 0     | [maff_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_alpha) | Exibe o alfabeto em ordem crescente. |
 | 0     | [maff_revalpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_revalpha) | Exibe o alfabeto em ordem decrescente. |
 | 0     | [only_a](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-only_a) | Exibe apenas a letra 'a'. |
+| 1     | [ft_add](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-ft_add) | Adição de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
 | 1     | [count_alen](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-count_alen) | Conta o número de letras em uma string. |
 | 1     | [count_words](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-count_words) | Conta o número de palavras em uma string. |
 | 1     | [even](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-even) | Exibe os números pares de 0 a 9. |
