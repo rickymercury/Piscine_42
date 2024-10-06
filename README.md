@@ -9,14 +9,11 @@ ___
 <!-- mtoc-start -->
 
 
-* [Exame](https://github.com/rickymercury/Piscine_42/tree/master/Exame)
-* [Exercícios](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios)
-* [Levels](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Levels)
-* [Projetos](https://github.com/rickymercury/Piscine_42/tree/master/Projetos)
-* [Rushes](https://github.com/rickymercury/Piscine_42/tree/master/Rushes)
-* [Recursos](https://github.com/rickymercury/Piscine_42/tree/master/Recursos)
-* [Subjects](https://github.com/rickymercury/Piscine_42/tree/master/Subjects)
-
+ [Projetos](https://github.com/rickymercury/Piscine_42/tree/master/Projetos)
+ [Rushes](https://github.com/rickymercury/Piscine_42/tree/master/Rushes)
+ [Exame](https://github.com/rickymercury/Piscine_42/tree/master/Exame)
+ [Levels](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Levels)
+ [Recursos](https://github.com/rickymercury/Piscine_42/tree/master/Recursos)
 
 
 <!-- mtoc-end -->
