@@ -1,0 +1,50 @@
+" Definir a largura de uma tabulação para 4 espaços
+set tabstop=4
+
+" Definir a largura de uma indentação automática para 4 espaços
+set shiftwidth=4
+
+" Fazer com que a tecla de tabulação insira 4 espaços
+set softtabstop=4
+
+" Exibir os números das linhas
+set number
+
+" Indentação automática
+" set autoindent
+
+" Ativar a coloração de sintaxe
+syntax on
+
+" Exibir a barra de status na parte inferior
+set laststatus=2
+
+" Exibir os parênteses correspondentes
+set showmatch
+
+" Utilizar 256 cores no terminal
+set t_Co=256
+
+" Ativar a seleção visual por linha
+vnoremap <S-Up> v<Up>
+vnoremap <S-Down> v<Down>
+vnoremap <S-Left> v<Left>
+vnoremap <S-Right> v<Right>
+
+" Mover uma linha para cima com Alt + Seta para Cima
+nnoremap <A-Up> :m .-2<CR>==
+
+" Mover uma linha para baixo com Alt + Seta para Baixo
+nnoremap <A-Down> :m .+1<CR>==
+
+" No modo Visual, mover a seleção para cima com Alt + Seta para Cima
+vnoremap <A-Up> :m '<-2<CR>gv=gv
+
+" No modo Visual, mover a seleção para baixo com Alt + Seta para Baixo
+vnoremap <A-Down> :m '>+1<CR>gv=gv
+
+" Comentar as linhas selecionadas
+xnoremap <Leader>c :s/^/\/\/ /<CR>gv
+
+" Descomentar as linhas selecionadas
+xnoremap <Leader>u :s/^\/\/ //g<CR>gv
