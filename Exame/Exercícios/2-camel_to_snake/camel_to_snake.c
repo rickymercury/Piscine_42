@@ -23,42 +23,40 @@ separadas por um sublinhado "_".
  * $
 */
 
+
 #include <unistd.h>
 
-void    putchar(char c)
+int	main(int argc, char **argv)
 {
-    write(1, &c, 1);
+	if (argc == 2)
+	{
+		int i;
+
+        i = 0;
+		while (argv[1][i] != '\0')
+		{
+			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+			{
+				if (i != 0)
+					write(1, "_", 1);
+				argv[1][i] += 32;
+			}
+			write(1, &argv[1][i], 1); 
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }
 
-int     isUpper(int c)
-{
-    return (c >= 'A' && c <= 'Z');
-}
 
-int     toLower(int c)
-{
-    if (isUpper(c))
-        return (c + 32);
-    return (c);
-}
+/*
+OUTPUT:
 
-int     main(int ac, char **av)
-{
-    if (ac < 2)
-    {
-        putchar('\n');
-        return (0);
-    }
-    int     i;
-
-    i = 0;
-    while (av[1][i])
-    {
-        if (isUpper(av[1][i]) && i != 0)
-            putchar('_');
-        putchar(toLower(av[1][i]));
-        i++;
-    }
-    putchar('\n');
-    return (0);
-}
+sh-5.2$ cc -Wall -Werror -Wextra camel_to_snake.c -o camel_to_snake
+sh-5.2$ ./camel_to_snake "hereIsACamelCaseWord"
+here_is_a_camel_case_word
+sh-5.2$ ./camel_to_snake "helloWorld"
+hello_world
+sh-5.2$ 
+*/

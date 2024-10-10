@@ -50,3 +50,17 @@ int main(int argc, char **argv)
 	write(1, "\n", 1);
 	return (0);
 }
+
+
+/*
+sh-5.2$ cc -Wall -Werror -Wextra hiden_p.c 
+sh-5.2$ ./a.out "fgex.;" "tyf34gdgf;'ektufjhgdgex.;.;rtjynur6"
+1
+sh-5.2$ ./a.out "abc" "2altrb53c.sse"
+1
+sh-5.2$ ./a.out "abc" "btarc"
+0
+sh-5.2$ ./a.out 
+
+sh-5.2$
+*/

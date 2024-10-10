@@ -15,7 +15,7 @@ Examples:
 
 $>./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
 padinto$
-$>./inter ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e
+$>./inter "ddf6vewg64f" "gtwthgdwthdwfteewhrtag6h4ffdhsd" | cat -e
 df6ewg4$
 $>./inter "rien" "cette phrase ne cache rien" | cat -e
 rien$
@@ -29,21 +29,18 @@ int main(int argc, char **argv)
 {
 	int i;
 	int j;
-	int tab[256];
+	int tab[256] = {};
 
     i = 0;
-    j = 0;
-    tab[256] = 0;
 	if(argc == 3)
 	{
-		while(argv[1][i])
+		while(argv[1][i] != '\0')
 		{	
 			j = 0;
-			while(argv[2][j])
+			while(argv[2][j] != '\0')
 			{
 				if(argv[2][j] == argv[1][i])
 				{
-	
 					if(tab[(int)argv[1][i]] == 0)
 					{
 						tab[(int)argv[1][i]] = 1;
@@ -59,52 +56,15 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-// ou 
 
-#include <unistd.h>
+/*
+OUTPUT:
 
-int    check(char *str, int i)
-{
-    int c = 0;
-    while(c < i)
-    {
-        if(str[i] == str[c])
-        {
-            return 0;
-        }
-        c++;
-    }
-    return 1;
-}
-
-void    inter(char *str, char *dest)
-{
-    int i = 0;
-    int j;
-    while(str[i] != '\0')
-    {
-        j = 0;
-        while(dest[j] != '\0')
-        {
-            if(str[i] == dest[j])
-            {
-                if(check(str,i) == 1)
-                {
-                    write(1, &str[i], 1);
-                    break;
-                }
-            }
-            j++;
-        }
-        i++;
-    }
-}
-
-int main(int argc, char **argv)
-{
-    if(argc == 3)
-    {
-        inter(argv[1],argv[2]);
-    }
-    write(1, "\n", 1);
-}
+sh-5.2$ cc -Wall -Werror -Wextra inter.c 
+sh-5.2$ ./a.out "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj"
+padinto
+sh-5.2$ ./a.out "ddf6vewg64f" "gtwthgdwthdwfteewhrtag6h4ffdhsd"
+df6ewg4
+sh-5.2$ ./a.out "rien" "cette phrase ne cache rien" 
+rien
+*/

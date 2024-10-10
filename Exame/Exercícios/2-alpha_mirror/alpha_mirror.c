@@ -30,57 +30,35 @@ $>
 
 #include <unistd.h>
 
-void	ft_alpha_miror(char *str)					
-{
-	int		i;										
-	char	mirror_char;									
-
-	i = 0;											
-	while (str[i])									
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')			
-			mirror_char = (('Z' - str[i]) + 'A');				
-		else if (str[i] >= 'a' && str[i] <= 'z')		
-			mirror_char = (('z' - str[i]) + 'a');				
-		else
-			mirror_char = str[i];							
-		write(1, &mirror_char, 1);							
-		str++;										
-	}
-}
-
-int		main(int argc, char *argv[])				
-{
-	if (argc == 2)									
-		ft_alpha_miror(argv[1]);					
-	write(1, "\n", 1);								
-	return (0);								
-}
-
-// ou 
-
-#include <unistd.h>
-
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
     int i;
 
     i = 0;
-    if(ac == 2)
+    if(argc == 2)
     {
-        while (av[1][i])
+        while (argv[1][i] != '\0')
         {
-            if(av[1][i] >= 'a' && av[1][i] <= 'z')
-            {
-                av[1][i] = 'z' - (av[1][i] - 'a');
-            }
-            else if(av[1][i] >= 'A' && av[1][i] <= 'Z')
-            {
-                av[1][i] = 'Z' - (av[1][i] - 'A');
-            }
-            write(1, &av[1][i], 1);
+            if(argv[1][i] >= 'a' && argv[1][i] <= 'z')
+                argv[1][i] = ('a' + 'z') - argv[1][i];
+            else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+                argv[1][i] = 'Z' - (argv[1][i] - 'A');
+            write(1, &argv[1][i], 1);
             i++;
         }
     }
     write(1, "\n", 1);
 }
+
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Werror -Wextra alpha_mirror.c -o alpha_mirror
+sh-5.2$ ./alpha_mirror "abc"
+zyx
+sh-5.2$ ./alpha_mirror "My horse is Amazing." 
+Nb slihv rh Znzarmt.
+sh-5.2$ ./alpha_mirror 
+
+*/

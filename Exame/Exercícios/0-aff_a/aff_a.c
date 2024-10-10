@@ -1,14 +1,16 @@
 /*
-Assignment name  : first_word
-Expected files   : first_word.c
+Assignment name  : aff_a
+Expected files   : aff_a.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Escreva um programa que receba uma string e exiba o primeiro caractere 'a' que encontrar nela, seguido de uma nova linha. 
+Escreva um programa que receba uma string e exiba o primeiro caractere 'a' que
+encontrar nela, seguido de uma nova linha. 
 
 Se não houver caracteres 'a' na string, o programa apenas escreve uma nova linha. 
 
-Se o número de parâmetros não for 1, o programa exibe 'a' seguido de uma nova linha.
+Se o número de parâmetros não for 1, o programa exibe 'a' seguido de uma nova
+linha.
 
 Example:
 $> ./aff_a "abc" | cat -e
@@ -46,15 +48,3 @@ int	main(int argc, char **argv)
     write(1, "\n", 1);
 	return (0);
 }
-
-
-/*
-#include <unistd.h>
-
-int main()
-{
-    write (1, "a\n", 2);
-
-    return (0);
-}
-*/

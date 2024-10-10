@@ -4,27 +4,27 @@ Expected files   : lcm.c
 Allowed functions:
 --------------------------------------------------------------------------------
 
-Escreva uma função que recebe dois inteiros não assinados como parâmetros e retorna
-o MMC (Mínimo Múltiplo Comum) calculado desses parâmetros.
+Escreva uma função que recebe dois unsigned int como parâmetros e retorna
+o LCM (Mínimo Múltiplo Comum) calculado desses parâmetros.
 
-O MMC (Mínimo Múltiplo Comum) de dois inteiros não nulos é o menor inteiro positivo
+O LCM (Mínimo Múltiplo Comum) de dois inteiros não nulos é o menor inteiro positivo
 que é divisível por ambos os inteiros.
 
-Um MMC pode ser calculado de duas maneiras:
+Um LCM pode ser calculado de duas maneiras:
 
-    Você pode calcular todos os múltiplos de cada inteiro até ter um múltiplo comum
+    Podemos calcular todos os múltiplos de cada inteiro até termos um múltiplo comum
     diferente de 0.
 
-    Você pode usar o MDC (Máximo Divisor Comum) desses dois inteiros e calcular da
+    Podemos usar o HCF (Máximo Divisor Comum) desses dois inteiros e calcular da
     seguinte forma:
 
 	LCM(x, y) = | x * y | / HCF(x, y)
 
   | x * y | significa "Valor absoluto do produto de x por y".
 
- Se pelo menos um dos inteiros for nulo, o MMC é igual a 0.
+ Se pelo menos um dos inteiros for nulo, o LCM é igual a 0.
 
- Sua função deve ser prototipada da seguinte forma:
+ A tua função deve ser prototipada da seguinte forma:
 
   unsigned int    lcm(unsigned int a, unsigned int b);
 
@@ -47,3 +47,12 @@ unsigned int lcm(unsigned int a, unsigned int b)
 		++n;
 	}
 }
+
+/*
+ #include <stdio.h>
+
+ int	main(void)
+ {
+  	printf("%u\n", lcm(4, 15));
+ }
+ */

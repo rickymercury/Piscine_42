@@ -30,74 +30,47 @@ $
 $>
 */
 
+#include <stdio.h>
 #include <unistd.h>
 
-void	ft_repeat_alpha(char *str)	
-{
-	int		i;							
-    int		letter;					
-									
-	i = 0;					
-	while (str[i])				
-	{
-		letter = 0;									
-		if (str[i] >= 'A' && str[i] <='Z')		
-			letter = str[i] - 64;					
-		else if (str[i] >= 'a' && str[i] <= 'z')	
-			letter = str[i] - 96;					
-		else										
-			letter = 1;							
-		while (letter--)						
-			write(1, &str[i], 1);					
-		i++;										
-	}
-}
-
-int		main(int argc, char *argv[])
-{
-	if (argc == 2)					
-		ft_repeat_alpha(argv[1]);
-	write(1, "\n", 1);				
-	return (0);						
-}
-
-
-
-////////////////////////////////////////////////////////77
-
-
-
-#include <unistd.h>
-
-void	repeat_alpha(char c)
-{
-	int repeat;
-	
-	if (c >= 'a' && c <= 'z')
-		repeat = c - 'a' + 1;
-	else if (c >= 'A' && c <= 'Z')
-		repeat = c - 'A' + 1;
-	else
-		repeat = 1;
-	while (repeat > 0)
-	{
-		write(1, &c, 1);
-		repeat--;
-	}
-}
-
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
 	int	i;
-	
+	int	repeat;
+
+	i = 0;
 	if (argc == 2)
 	{
-		i = 0;
 		while (argv[1][i] != '\0')
 		{
-			repeat_alpha(argv[1][i]);
+			repeat = 1;
+			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+				repeat = argv[1][i] - 64;
+			if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
+				repeat = argv[1][i] - 96;
+			while (repeat >= 1)
+			{
+				write(1, &argv[1][i], 1);
+				repeat--;
+			}
 			i++;
 		}
 	}
 	write(1, "\n", 1);
+	return (0);
 }
+
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Werror -Wextra repeat_alpha.c 
+sh-5.2$ ./a.out "abc"
+abbccc
+sh-5.2$ ./a.out "Alex"
+Alllllllllllleeeeexxxxxxxxxxxxxxxxxxxxxxxx
+sh-5.2$ ./a.out "abacadaba 42!"
+abbacccaddddabba 42!
+sh-5.2$ ./a.out 
+
+*/

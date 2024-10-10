@@ -17,19 +17,19 @@ char    *ft_strrev(char *str);
 char *ft_strrev(char *str)
 {
 	int i;
-	int length;
-	char temp;
+	int len;
+	char swap;
 
     i = 0;
-    length = 0;
-    temp = 0;
-	while (str[length])
-		length++;
-	while (i < length / 2)
+    len = 0;
+    swap = 0;
+	while (str[len])
+		len++;
+	while (i < len / 2)
 	{
-		temp = str[i];
-		str[i] = str[length - 1 - i];
-		str[length - 1 - i] = temp;
+		swap = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = swap;
         i++;
 	}
 	return (str);
@@ -56,34 +56,3 @@ int main(void)
     return 0;
 }
 */
-
-// ou
-
-int		ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strrev(char *str)
-{
-	int i;
-	int len;
-	char tmp;
-
-	i = 0;
-	len = ft_strlen(str) - 1;
-	while (len > i)
-	{
-		tmp = str[i];
-		str[i] = str[len];
-		str[len] = tmp;
-		i++;
-		len--;
-	}
-	return (str);
-}

@@ -3,14 +3,14 @@ Expected files   : rev_print.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Write a function that takes a string, and displays the string in reverse
-followed by a newline.
+Escreva uma função que recebe uma string e exibe a string em ordem reversa,
+seguida de uma nova linha.
 
-The original string must not be modified.
+A string original não deve ser modificada.
 
-You must return the string passed as a parameter.
+Você deve retornar a string passada como parâmetro.
 
-Your function must be declared as follows:
+Sua função deve ser declarada da seguinte forma:
 
 char *rev_print(char *str);
 
@@ -39,25 +39,13 @@ $
 
 char *rev_print(char *str)
 {
-	int	i = 0;
-
-	while (str[i] != '\0')
-		i++;
-	while (--i > 0)
+    int i;
+    
+    i = 0;
+    while(str[i] != '\0')
+        i++;
+	while (--i >= 0)
 		write(1, &str[i], 1);
-	if (str[0] != '\0')
-		write(1, &str[0], 1);
-	return (str);
+	write(1, "\n", 1);
+  return (str);
 }
-
-/*
-int main(void)
-{
-  rev_print("Hello world");
-  write (1, "\n", 1);
-  rev_print("tnirp esreveR");
-  write (1, "\n", 1);
-  rev_print("");
-  write (1, "\n", 1);
-}
-*/

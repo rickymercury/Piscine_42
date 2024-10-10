@@ -23,86 +23,85 @@ Exemplos:
 
 #include <stdlib.h>
 
-int *ft_range(int start, int end)
+int     *ft_range(int start, int end)
 {
-	int i = 0;
-	int len = abs((end - start)) + 1;
-	int *res = (int *)malloc(sizeof(int) * len);
-	
-	while (i < len)
-	{
-		if (start < end)
-		{
-			res[i] = start;
-			start++;
-			i++;
-		}
-		else
-		{
-			res[i] = start;
-			start--;
-			i++;
-		}
-	}
-        return (res);
+    int i;
+    int len;
+    int *res;
+
+    i = 0;
+    len = abs(end - start) + 1;
+    res = (int *)malloc(sizeof(int) * len);
+    if (!res)
+        return (NULL);
+    while (i < len)
+    {
+        if (start <= end)
+            res[i] = start++;
+        else
+            res[i] = start--;
+        i++;
+    }
+    return (res);
 }
 
 /*
-#include <stdio.h>
-
-int main()
+int main(void)
 {
-    int start = 4;
-    int end = 7;
-    int *arr = ft_range(start, end);
-    int i = 0;
-    int size;
-    if(start >= end)
-        size = start - end + 1;
-    else
-        size = end - start + 1;
-    while (i < size)
-    {
-        printf("%d", arr[i]);
-        i++;
-    }
-    
+    int *range;
+    int i, len;
+
+    // Exemplo 1: start < end
+    printf("Exemplo 1: start = 3, end = 8\n");
+    range = ft_range(3, 8);
+    len = abs(8 - 3) + 1;
+    for (i = 0; i < len; i++)
+        printf("%d ", range[i]);
+    printf("\n");
+    free(range);
+
+    // Exemplo 2: start > end
+    printf("Exemplo 2: start = 8, end = 3\n");
+    range = ft_range(8, 3);
+    len = abs(3 - 8) + 1;
+    for (i = 0; i < len; i++)
+        printf("%d ", range[i]);
+    printf("\n");
+    free(range);
+
+    // Exemplo 3: start == end
+    printf("Exemplo 3: start = 5, end = 5\n");
+    range = ft_range(5, 5);
+    len = abs(5 - 5) + 1;  // Quando start == end, len = 1
+    for (i = 0; i < len; i++)
+        printf("%d ", range[i]);
+    printf("\n");
+    free(range);
+
+    return 0;
 }
 */
 
-// ou
-
-#include <stdlib.h>
-
-int *ft_range(int start, int end)
-{
-    int size;
-    int *range;
-    int i;
-
-    if(start >= end)
-        size = start - end + 1;
-    else
-        size = end - start + 1;
-    
-    range = malloc(sizeof(int) * (size));
-    if(!range)
-        return NULL;
-    
-    i = 0;
-    if (start >= end)
-    {
-        while(start >= end)
-        {
-            range[i++] = start--;
-        }
-    }
-    else
-    {
-        while (start <= end)
-        {
-            range[i++] = start++;
-        }
-    }
-    return range;
-}
+/*
+sh-5.2$ valgrind ./a.out 
+==22740== Memcheck, a memory error detector
+==22740== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==22740== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==22740== Command: ./a.out
+==22740== 
+Exemplo 1: start = 3, end = 8
+3 4 5 6 7 8 
+Exemplo 2: start = 8, end = 3
+8 7 6 5 4 3 
+Exemplo 3: start = 5, end = 5
+5 
+==22740== 
+==22740== HEAP SUMMARY:
+==22740==     in use at exit: 0 bytes in 0 blocks
+==22740==   total heap usage: 4 allocs, 4 frees, 1,076 bytes allocated
+==22740== 
+==22740== All heap blocks were freed -- no leaks are possible
+==22740== 
+==22740== For lists of detected and suppressed errors, rerun with: -s
+==22740== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+*/

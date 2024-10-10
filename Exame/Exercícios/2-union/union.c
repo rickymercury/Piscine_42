@@ -30,103 +30,46 @@ $>
 
 #include <unistd.h>
 
-void 	ft_putchar(char c)
+int	main(int argc, char **argv)
 {
-	write(1, &c, 1);
-}
+	int	i;
+	int	tab[256] = {};
 
-int		ft_verif_char(char *str, char *symbol)
-{
-	while (str < symbol)
-	{
-		if (*str == *symbol)
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-void	ft_union(char **argv)
-{
-	int string;
-	int	symbol;
-
-	string = 0;
-	while (string < 2)
-	{
-		symbol = 0;
-		while (argv[string][symbol])
-		{
-			if (ft_verif_char(argv[0], &argv[string][symbol]))
-				ft_putchar(argv[string][symbol]);
-			symbol++;
-		}
-		string++;
-	}
-}
-
-int		main(int argc, char **argv)
-{
+	i = 0;
 	if (argc == 3)
-		ft_union(&argv[1]);
-	ft_putchar('\n');
+	{
+		while (argv[1][i])
+		{
+			tab[(int)argv[1][i]] = 1;
+			i++;
+		}
+		i = 0;
+		while (argv[2][i])
+		{
+			tab[(int)argv[2][i]] = 1;
+			i++;
+		}
+		i = 0;
+		while (argv[1][i])
+		{
+			if (tab[(int)argv[1][i]] == 1)
+			{
+				write(1, &argv[1][i], 1);
+				tab[(int)argv[1][i]] = 0;
+			}
+			i++;
+		}
+		i = 0;
+		while (argv[2][i])
+		{
+			if (tab[(int)argv[2][i]] == 1)
+			{
+				write(1, &argv[2][i], 1);
+				tab[(int)argv[2][i]] = 0;
+			}
+			i++;
+		}
+	}
+	write(1, "\n", 1);
 	return (0);
-}
-
-// ou
-
-#include <unistd.h>
-
-int check2(char *dest, char *str, int j)
-{
-    int d = 0;
-    while(str[d] != '\0')
-    {
-        if(dest[j] == str[d])
-            return 0;
-        d++;
-    }
-    return 1;
-}
-
-int check(char *sat, int i)
-{
-    int c = 0;
-    while(c < i)
-    {
-        if(sat[i] == sat[c])
-            return 0;
-        c++;
-    }
-    return 1;
-}
-
-void    ft_union(char *str, char *dest)
-{
-    int i = 0;
-    int j;
-    while(str[i] != '\0')
-    {
-       if(check(str,i) == 1)
-        {
-            write(1, &str[i], 1);
-        }
-        i++;
-    }
-    j = 0;
-    while(dest[j] != '\0')
-    {
-        if(check2(dest,str,j) == 1 && check(dest,j) == 1)
-            write(1, &dest[j], 1);
-        j++;
-    }
-}
-
-int main(int argc, char **argv)
-{
-    if(argc == 3)
-    {
-        ft_union(argv[1],argv[2]);
-    }
-    write(1, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:44:37 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/23 22:49:46 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/09 23:30:17 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int is_valid_base(char *base)
         return (0);
      while (i < base_len)
     {
-        if (base[i] == '-' || base[i] == '+' || (base[i] < 32 || base[i] > 126))
+        if (base[i] == '-' || base[i] == '+' || (base[i] < 33 || base[i] > 126))
             return (0);
         j = i + 1;
         while (j < base_len)
@@ -64,18 +64,15 @@ int	is_base(char c, char *base)
 
 int	ft_atoi_base(char *str, char *base)
 {   
-    int base_len;
 	int	i;
 	int	sign;
-	long int number;
-
+	int number;
 
 	i = 0;
 	number = 0;
 	sign = 1;
 	if (!is_valid_base(base))
 		return (0);
-    base_len = ft_strlen(base);
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	while (str[i] == '-' || str[i] == '+')
@@ -84,9 +81,9 @@ int	ft_atoi_base(char *str, char *base)
             sign = -sign;
 		i++;
 	}
-	while (is_base(str[i], base) != -1)
+	while (str[i] != '\0')
 	{
-		number = (number * base_len) + (is_base(str[i], base));
+		number = ((number * ft_strlen(base)) + is_base(str[i], base));
 		i++;
 	}
 	return (number * sign);

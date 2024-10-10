@@ -20,113 +20,104 @@ Exemplos:
     Com (0, -3), você retornará um array contendo -3, -2, -1 e 0.
 */
 
-
 #include <stdlib.h>
 
-int *ft_rrange(int start, int end)
+int     *ft_rrange(int start, int end)
 {
-	int *range;
-	int i;
-	int n;
-
-	i = 0;
-	if (start > end)
-		return (ft_rrange(end, start));
-	n = end - start + 1;
-	range = (int *)malloc(sizeof(int) * n);
-	if (range)
-	{
-		while (i < n)
-		{
-			range[i] = start;
-			start++;
-			i++;
-		}
-	}
-	return (range);
-}
-
-int *ft_rrange(int start, int end)
-{
-    int size;
     int i;
-    int *rrange;
-
-    if(start >= end)
-        size = start - end + 1;
-    else
-        size = end - start + 1;
-    
-    rrange = malloc(sizeof(int) * (size));
+    int len;
+    int *res;
 
     i = 0;
-    if (start >= end)
+    len = abs(end - start) + 1;
+    res = (int *)malloc(sizeof(int) * len);
+    if (res == NULL) 
+        return NULL;
+    while(i < len)
     {
-        while (start >= end)
-        {
-            rrange[i++] = end++;
-        }
+        if (start < end)
+            res[i] = end--;
+        else
+            res[i] = end++;
+        i++;
     }
-    else
-    {
-        while (start <= end)
-        {
-            rrange[i++] = end--;
-        }
-    }
-    return rrange;
+    return (res);
 }
 
 /*
 #include <stdio.h>
-int main()
+
+int     *ft_rrange(int start, int end);
+
+int main(void)
 {
-    int start = 3;
-    int end = -4;
-    int *arr = ft_rrange(start, end);
-    int i = 0;
-    int size;
-    if(start >= end)
-        size = start - end + 1;
-    else
-        size = end - start + 1;
-    while(i < size)
+    int *range;
+    int i;
+
+    // Exemplo 1: start = 3, end = 8
+    range = ft_rrange(3, 8);
+    i = 0;
+    printf("Exemplo 1: start = 3, end = 8\n");
+    while (i < 6)
     {
-        printf("%d", arr[i]);
+        printf("%d ", range[i]);
         i++;
     }
+    printf("\n");
+    free(range);
+
+    // Exemplo 2: start = 8, end = 3
+    range = ft_rrange(8, 3);
+    i = 0;
+    printf("Exemplo 2: start = 8, end = 3\n");
+    while (i < 6)
+    {
+        printf("%d ", range[i]);
+        i++;
+    }
+    printf("\n");
+    free(range);
+
+    // Exemplo 3: start = 5, end = 5
+    range = ft_rrange(5, 5);
+    i = 0;
+    printf("Exemplo 3: start = 5, end = 5\n");
+    while (i < 1)
+    {
+        printf("%d ", range[i]);
+        i++;
+    }
+    printf("\n");
+    free(range);
+
+    return 0;
 }
 */
 
-// ou
 
-int *ft_rrange(int start, int end)
-{
-    int size;
-    int i;
-    int *rrange;
-
-    if(start >= end)
-        size = start - end + 1;
-    else
-        size = end - start + 1;
-    
-    rrange = malloc(sizeof(int) * (size));
-
-    i = 0;
-    if (start >= end)
-    {
-        while (start >= end)
-        {
-            rrange[i++] = end++;
-        }
-    }
-    else
-    {
-        while (start <= end)
-        {
-            rrange[i++] = end--;
-        }
-    }
-    return rrange;
-}
+/*
+ft_rrange  ft_rrange.c
+sh-5.2$ cc -Wall -Werror -Wextra ft_rrange.c
+sh-5.2$ valgrind ./a.out 
+==23362== Memcheck, a memory error detector
+==23362== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==23362== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==23362== Command: ./a.out
+==23362== 
+Exemplo 1: start = 3, end = 8
+8 7 6 5 4 3 
+Exemplo 2: start = 8, end = 3
+3 4 5 6 7 8 
+Exemplo 3: start = 5, end = 5
+5 
+==23362== 
+==23362== HEAP SUMMARY:
+==23362==     in use at exit: 0 bytes in 0 blocks
+==23362==   total heap usage: 4 allocs, 4 frees, 1,076 bytes allocated
+==23362== 
+==23362== All heap blocks were freed -- no leaks are possible
+==23362== 
+==23362== For lists of detected and suppressed errors, rerun with: -s
+==23362== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+sh-5.2$ 
+*/

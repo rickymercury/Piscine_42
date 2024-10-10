@@ -4,102 +4,72 @@ Expected files   : ft_atoi_base.c
 Allowed functions: None
 --------------------------------------------------------------------------------
 
-Write a function that converts the string argument str (base N <= 16)
-to an integer (base 10) and returns it.
+Escreva uma função que converta o argumento de string str (base N <= 16) em um
+inteiro (base 10) e o retorne.
 
-The characters recognized in the input are: 0123456789abcdef
-Those are, of course, to be trimmed according to the requested base. For
-example, base 4 recognizes "0123" and base 16 recognizes "0123456789abcdef".
+Os caracteres reconhecidos na entrada são: 0123456789abcdef. Esses devem, é claro,
+ser ajustados de acordo com a base solicitada. Por exemplo, a base 4 reconhece "0123"
+e a base 16 reconhece "0123456789abcdef".
 
-Uppercase letters must also be recognized: "12fdb3" is the same as "12FDB3".
+Letras maiúsculas também devem ser reconhecidas: "12fdb3" é o mesmo que "12FDB3".
 
-Minus signs ('-') are interpreted only if they are the first character of the
-string.
+Os sinais de menos ('-') são interpretados apenas se forem o primeiro caractere
+da string.
 
-Your function must be declared as follows:
+Sua função deve ser declarada da seguinte forma:
 
 int	ft_atoi_base(const char *str, int str_base);
 */
 
-
-static int	ft_isdigit(int c)
-{
-	return (('0' <= c) && (c <= '9'));
-}
-
-static int	ft_isupper(int c)
-{
-	return ((c >= 'A') && (c <= 'Z'));
-}
-
-static int	ft_islower(char c)
-{
-	return ((c >= 'a') && (c <= 'z'));
-}
-
-int	ft_atoi_base(const char *str, int str_base)
-{
-	int	sign;
-	int	result;
-
-	sign = 0x1;
-	result = 0x0;
-	if (*str == '-')
-	{
-		sign = -1;
-		str++;
-	}
-	while (*str)
-	{
-		result *= str_base;
-		if (ft_isdigit(*str))
-			result += (*str - '0');
-		else if (ft_isupper(*str))
-			result += (*str - '7');
-		else if (ft_islower(*str))
-			result += (*str - 'W');
-		str++;
-	}
-	return (result * sign);
-}
-/*
-#include <stdio.h>
 #include <stdlib.h>
 
-int	main(void)
-{
-	printf("%d\n", ft_atoi_base("A", 16));
-	printf("%d\n", ft_atoi_base("B", 16));
-	printf("%d\n", ft_atoi_base("C", 16));
-	printf("%d\n", ft_atoi_base("D", 16));
-	printf("%d\n", ft_atoi_base("e", 16));
-	printf("%d\n", ft_atoi_base("E", 16));
-	return (EXIT_SUCCESS);
+ int	ft_atoi_base(const char *str, int str_base)
+ {
+	int	i;
+	int	sign;
+	int	result;
+	int	digit;
+
+ 	i = 0;
+ 	sign = 1;
+ 	result = 0;
+	if (str_base < 2 || str_base > 16) 
+        return (0);
+ 	if (str[i] == '-')
+ 	{
+ 		sign = -1;
+ 		i++;
+ 	}
+ 	while (str[i] != '\0')
+ 	{
+		digit = 0;
+ 		if (str[i] >= '0' && str[i] <= '9')
+ 			digit = str[i] - '0';
+ 		else if (str[i] >= 'A' && str[i] <= 'F')
+			digit = str[i] - 'A' + 10;
+ 		else if (str[i] >= 'a' && str[i] <= 'f')
+ 			digit = str[i] - 'a' + 10;
+ 		else
+			return (0);
+		if (digit >= str_base)
+			return (0);
+		result = result * str_base + digit;
+		i++;
+	}
+ 	return (result * sign);
+ }
+
+/*
+#include <stdio.h>
+
+int main() {
+    printf("%d\n", ft_atoi_base("1A", 16));  // 26 -> 2 x 13 (D)
+    printf("%d\n", ft_atoi_base("101", 2));   // 5 -> Binário 101 é igual ao decimal 5
+    printf("%d\n", ft_atoi_base("-42", 10));  // -42
+    printf("%d\n", ft_atoi_base("10", 8));    // 8
+    printf("%d\n", ft_atoi_base("abc", 16));  // 2748
+	printf("%d\n", ft_atoi_base("1A3", 16));  // 419
+
+    return 0;
 }
 */
-// int	ft_atoi_base(const char *str, int str_base)
-// {
-// 	int	idx;
-// 	int	sign;
-// 	int	result;
-
-// 	idx = 0;
-// 	sign = 1;
-// 	result = 0;
-// 	if (str[idx] == '-')
-// 	{
-// 		sign = -1;
-// 		idx++;
-// 	}
-// 	while (str[idx] != '\0')
-// 	{
-// 		result *= str_base;
-// 		if (str[idx] >= '0' && str[idx] <= '9')
-// 			result += str[idx] - '0';
-// 		else if (str[idx] >= 'A' && str[idx] <= 'Z')
-// 			result += str[idx] - '7';
-// 		else if (str[idx] >= 'a' && str[idx] <= 'z')
-// 			result += str[idx] - 'W';
-// 		idx++;
-// 	}
-// 	return (result * sign);

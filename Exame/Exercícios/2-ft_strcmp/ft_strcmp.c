@@ -11,22 +11,17 @@ Sua função deve ser declarada da seguinte forma:
 int    ft_strcmp(char *s1, char *s2);
 */
 
-#include <unistd.h>
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	int i = 0;
+	while(s1[i] && s2[i] && s2[i] == s1[i])
 		i++;
 	return (s1[i] - s2[i]);
 }
 
 /*
 #include <stdio.h>
-
-int	ft_strcmp(char *s1, char *s2);
 
 int	main(void)
 {
@@ -58,14 +53,15 @@ int	main(void)
 }
 */
 
-// ou
+/*
+OUTPUT:
 
-int ft_strcmp(char *s1, char *s2)
-{
-    while(*s1 && *s2 && (*s1 == *s2))
-    {
-        *s1++;
-        *s2++;
-    }
-    return(*s1 - *s2);
-}
+benfica' e 'benfica': 0
+'benfica' e 'benfas': 8
+'benfica' e 'BenficaCampeão': 32
+'benfica' e string vazia: 2070769499
+'benfica' e 'BENFICA': 32
+'benfica' e 'BeNfIcA': 32
+'benfica' e '123': 49
+'benfica' e 'hello123': -6
+*/

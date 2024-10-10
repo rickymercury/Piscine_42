@@ -25,44 +25,38 @@ exceto a primeira.
 
 #include <unistd.h>
 
-void    putchar(char c)
+int	main(int argc, char **argv)
 {
-    write(1, &c, 1);
+	int	i;
+
+	i = 0;
+	if (argc == 2)
+	{
+		while (argv[1][i] != '\0')
+		{
+			if (argv[1][i] == '_')
+			{
+				i++;
+				argv[1][i] = argv[1][i] - 32;
+			}
+			write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }
 
-int     isLower(int c)
-{
-    return (c >= 'a' && c <= 'z');
-}
 
-int     toUpper(int c)
-{
-    if (isLower(c))
-        return (c - 32);
-    return (c);
-}
+/*
+OUTPUT:
 
-int     main(int ac, char **av)
-{
-    if (ac < 2)
-    {
-        putchar('\n');
-        return (0);
-    }
-    int     i;
+sh-5.2$ cc -Wall -Werror -Wextra snake_to_camel.c 
+sh-5.2$ ./a.out "here_is_a_snake_case_word"
+hereIsASnakeCaseWord
+sh-5.2$ ./a.out "hello_world"
+helloWorld
+sh-5.2$ ./a.out 
 
-    i = 0;
-    while (av[1][i])
-    {
-        if (av[1][i] == '_')
-        {
-            i++;
-            putchar(toUpper(av[1][i]));
-        }
-        else 
-            putchar(av[1][i]);
-        i++;
-    }
-    putchar('\n');
-    return (0);
-}
+sh-5.2$ 
+*/

@@ -44,7 +44,6 @@ int	ft_atoi(const char *str)
 
 int main(void)
 {
-    // Teste com diferentes entradas
     char *test1 = "42";
     char *test2 = "   -42";
     char *test3 = "4193 with words";
@@ -54,16 +53,29 @@ int main(void)
     char *test7 = "-2147483648"; // Min int
     char *test8 = "+123";
 
-    // Resultados esperados
-    printf("String: '%s', ft_atoi: %d\n", test1, ft_atoi(test1));
-    printf("String: '%s', ft_atoi: %d\n", test2, ft_atoi(test2));
-    printf("String: '%s', ft_atoi: %d\n", test3, ft_atoi(test3));
-    printf("String: '%s', ft_atoi: %d\n", test4, ft_atoi(test4));
-    printf("String: '%s', ft_atoi: %d\n", test5, ft_atoi(test5));
-    printf("String: '%s', ft_atoi: %d\n", test6, ft_atoi(test6));
-    printf("String: '%s', ft_atoi: %d\n", test7, ft_atoi(test7));
-    printf("String: '%s', ft_atoi: %d\n", test8, ft_atoi(test8));
+    printf("String: '%s', ft_atoi:%d\n", test1, ft_atoi(test1));
+    printf("String: '%s', ft_atoi:%d\n", test2, ft_atoi(test2));
+    printf("String: '%s', ft_atoi:%d\n", test3, ft_atoi(test3));
+    printf("String: '%s', ft_atoi:%d\n", test4, ft_atoi(test4));
+    printf("String: '%s', ft_atoi:%d\n", test5, ft_atoi(test5));
+    printf("String: '%s', ft_atoi:%d\n", test6, ft_atoi(test6));
+    printf("String: '%s', ft_atoi:%d\n", test7, ft_atoi(test7));
+    printf("String: '%s', ft_atoi:%d\n", test8, ft_atoi(test8));
 
     return 0;
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ ./ft_atoi 
+String: '42', ft_atoi:42
+String: '   -42', ft_atoi:-42
+String: '4193 with words', ft_atoi:4193
+String: 'words and 987', ft_atoi:0
+String: '-91283472332', ft_atoi:-1089159116
+String: '2147483647', ft_atoi:2147483647
+String: '-2147483648', ft_atoi:-2147483648
+String: '+123', ft_atoi:123
 */

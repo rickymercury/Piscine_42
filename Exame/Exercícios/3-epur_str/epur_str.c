@@ -4,14 +4,15 @@ Expected files   : epur_str.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-  Escreva um programa que receba uma string e exiba essa string com exatamente um espaço
-entre as palavras, sem espaços ou abas no início ou no final, seguido de um \n.
+  Escreva um programa que receba uma string e exiba essa string com exatamente
+um espaço entre as palavras, sem espaços ou abas no início ou no final, seguido
+de um \n.
 
-  Uma "palavra" é definida como uma parte de uma string delimitada por espaços/abas ou pelo 
-início/fim da string.
+  Uma "palavra" é definida como uma parte de uma string delimitada por espaços/abas
+ou pelo início/fim da string.
 
-  Se o número de argumentos não for 1, ou se não houver palavras para exibir, o programa deve 
-exibir \n.
+  Se o número de argumentos não for 1, ou se não houver palavras para exibir, o
+programa deve exibir \n.
 
 Example:
 
@@ -28,30 +29,53 @@ $>
 
 #include <unistd.h>
 
-int	 main(int argc, char const *argv[])
+void	ft_putchar(char c)
 {
-	int i;
-	int flg;
+	write(1, &c, 1);
+}
 
-	if (argc == 2)
-	{
-		i = 0;
-		while (argv[1][i] == ' ' || argv[1][i] == '\t')
-			i += 1;
-		while (argv[1][i])
-		{
-			if (argv[1][i] == ' ' || argv[1][i] == '\t')
-				flg = 1;
-			if (!(argv[1][i] == ' ' || argv[1][i] == '\t'))
-			{
-				if (flg)
-					write(1, " ", 1);
-				flg = 0;
-				write(1, &argv[1][i], 1);
-			}
-			i += 1;
-		}
-	}
-	write(1, "\n", 1);
+int	ft_isspace(char c)
+{
+	if (c <= 32)
+		return (1);
 	return (0);
 }
+
+int	main(int argc, char **argv)
+{
+	int	i;
+	int	space;
+
+	i = 0;
+	space = 0;
+	if (argc == 2)
+	{
+		while (ft_isspace(argv[1][i]))
+			i++;
+		while (argv[1][i])
+		{
+			if (ft_isspace(argv[1][i]))
+				space = 1;
+			if (!ft_isspace(argv[1][i]))
+			{
+				if (space == 1)
+					ft_putchar(' ');
+				space = 0;
+				ft_putchar(argv[1][i]);
+			}
+			i++;
+		}
+	}
+	ft_putchar('\n');
+}
+
+
+/*
+sh-5.2$ cc -Wall -Werror -Wextra epur_str.c 
+sh-5.2$ ./a.out "vous voyez c'est facile d'afficher la meme chose" | cat -e
+vous voyez c'est facile d'afficher la meme chose$
+sh-5.2$ ./a.out " seulement          la c'est      plus dur " | cat -e
+seulement la c'est plus dur$
+sh-5.2$ ./a.out "comme c'est cocasse" "vous avez entendu, Mathilde ?"
+
+*/

@@ -3,10 +3,10 @@ Expected files   : paramsum.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Escreva um programa que exiba o número de argumentos passados para ele, seguido de
-uma nova linha.
+Escreva um programa que exiba o número de argumentos passados, seguido de uma 
+nova linha.
 
-Se não houver argumentos, exiba apenas um 0 seguido de uma nova linha.
+Se não houver argumentos, exibe apenas um 0 seguido de uma nova linha.
 
 Example:
 
@@ -21,14 +21,20 @@ $>
 
 #include <unistd.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 void	ft_putnbr(int n)
 {
-	char digit;
-
 	if (n >= 10)
+	{
 		ft_putnbr(n / 10);
-	digit = (n % 10) + '0';
-	write(1, &digit, 1);
+		ft_putnbr(n % 10);
+	}
+	else
+		ft_putchar(n + '0');
 }
 
 int	main(int argc, char **argv)
@@ -36,6 +42,17 @@ int	main(int argc, char **argv)
 	(void)argv;
 
 	ft_putnbr(argc - 1);
-	write(1, "\n", 1);
+	ft_putchar('\n');
 	return (0);
 }
+
+/*
+sh-5.2$ cc -Wall -Werror -Wextra parasum.c -o parasum
+sh-5.2$ ./parasum 1 2 3 5 7 24
+6
+sh-5.2$ ./parasum 6 12 24
+3
+sh-5.2$ ./parasum 
+0
+sh-5.2$ 
+*/

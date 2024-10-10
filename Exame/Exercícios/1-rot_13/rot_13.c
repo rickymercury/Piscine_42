@@ -28,37 +28,40 @@ $
 $>
 */
 
-
 #include <unistd.h>
 
-void	ft_putchar(char c)
+int	main(int argc, char **argv)
 {
-	write(1, &c, 1);
-}
+	int i = 0;
 
-void	ft_rot_13(char *str)	
-{
-	int	i;						
-
-	i = 0;						
-	while (str[i])				
-	{
-		if ((str[i] >= 'A' && str[i] <= 'M') || (str[i] >= 'a' && str[i] <= 'm'))	
-			ft_putchar(str[i] + 13);				
-
-		else if ((str[i] >= 'N' && str[i] <= 'Z') || (str[i] >= 'n' && str[i] <= 'z'))	
-			ft_putchar(str[i] - 13);				
-
-		else										
-			ft_putchar(str[i]);						
-		i++;										
-	}
-}
-
-int		main(int argc, char **argv)
-{	
 	if (argc == 2)
-	 ft_rot_13(argv[1]);				
-	ft_putchar('\n');					
-	return (0);							
+	{
+		while(argv[1][i] != '\0')
+		{
+			if ((argv[1][i] >= 'A' && argv[1][i] <= 'M') 
+			   || (argv[1][i] >= 'a' && argv[1][i] <= 'm'))
+				argv[1][i] += 13;
+			else if ((argv[1][i] >= 'N' && argv[1][i] <= 'Z') 
+			   || (argv[1][i] >= 'n' && argv[1][i] <= 'z'))
+				argv[1][i] -= 13;
+			write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
 }
+
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Werror -Wextra rot_13.c
+sh-5.2$ ./a.out "abc"
+nop
+sh-5.2$ ./a.out "My horse is Amazing."
+Zl ubefr vf Nznmvat.
+sh-5.2$ ./a.out "AkjhZ zLKIJz , 23y "
+NxwuM mYXVWm , 23l 
+sh-5.2$ 
+
+*/

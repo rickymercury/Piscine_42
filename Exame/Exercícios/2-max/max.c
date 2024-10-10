@@ -8,12 +8,14 @@ Escreva a seguinte função:
 
 int max(int* tab, unsigned int len);
 
-O primeiro parâmetro é um array de int, e o segundo é o número de elementos no array.
+O primeiro parâmetro é um array de int, e o segundo é o número de elementos no
+array.
 
 A função retorna o maior número encontrado no array.
 
 Se o array estiver vazio, a função retorna 0.
 */
+
 
 int max(int *tab, unsigned int len)
 {
@@ -31,3 +33,14 @@ int max(int *tab, unsigned int len)
 	}
 	return result;
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	int	tab[] = {3, 6, 10, 7, 8};
+
+	printf("%d\n", max(tab, 5));
+}
+*/

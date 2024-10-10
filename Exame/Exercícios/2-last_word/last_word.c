@@ -4,11 +4,14 @@ Expected files   : last_word.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Escreva um programa que receba uma string e exiba sua última palavra seguida de um '\n'.
+Escreva um programa que receba uma string e exiba sua última palavra seguida de
+um '\n'.
 
-Uma palavra é uma seção da string delimitada por espaços/abas ou pelo início/fim da string.
+Uma palavra é uma seção da string delimitada por espaços/abas ou pelo início/fim
+da string.
 
-Se o número de parâmetros não for 1, ou se não houver palavras, exiba uma nova linha.
+Se o número de parâmetros não for 1, ou se não houver palavras, exiba uma nova
+linha.
 
 Example:
 
@@ -29,50 +32,40 @@ $>
 
 int main(int argc, char **argv)
 {
-    int i;
-    if(argc == 2)
-    {
-        i = 0;
-        while(argv[1][i] != '\0')
-            i++;
-        i--;
-        while(argv[1][i] == ' ' || argv[1][i] == '\t')
-            i--;
-        while(argv[1][i] != ' ' && argv[1][i] != '\t')
-            i--;
-        i++;
-        while(argv[1][i] != ' ' && argv[1][i] != '\t' && argv[1][i] != '\0')
-        {
-            write(1, &argv[1][i], 1);
-            i++;
-        }
-    }
-    write(1, "\n", 1);
+	if (argc == 2)
+	{
+		int i = 0;
+		int j = 0;
+
+		while(argv[1][i])
+		{
+			if (argv[1][i] == 32 && argv[1][i + 1] >= 33)
+				j = i + 1;
+			i++;
+		}
+		while(argv[1][j])
+		{
+			write(1, &argv[1][j], 1);
+			j++;
+		}
+	}
+	write(1, "\n", 1);
+	return(0);
 }
 
 
 /*
-#include <unistd.h>
+OUTPUT:
 
-int		main(int argc, char *argv[])
-{
-	int		i;
+sh-5.2$ cc -Wall -Werror -Wextra last_word.c 
+sh-5.2$ ./a.out "FOR PONY"
+PONY
+sh-5.2$ ./a.out "this        ...       is sparta, then again, maybe    not"
+not
+sh-5.2$ ./a.out "  "
+  
+sh-5.2$ ./a.out "a" "b"
 
-	if (argc == 2)
-	{
-		i = 0;
-		while (argv[1][i])
-			i++;
-		i--;
-		while (argv[1][i] <= 32)
-			i--;
-		while (argv[1][i] > 32)
-			i--;
-		i++;
-		while (argv[1][i] > 32)
-			write(1, &argv[1][i++], 1);
-	}
-	write(1, "\n", 1);
-	return (0);
-}
+sh-5.2$ ./a.out "  lorem,ipsum  "
+lorem,ipsum
 */
