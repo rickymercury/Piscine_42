@@ -4,46 +4,31 @@ Expected files   : interval_spaces.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-create a program that writes three whitespaces between each character in an argument,
+Crie um programa que escreve três espaços em branco entre cada caractere de um argumento.
 
-if the number of arguments is different than 2 the program will return a newline
+Se o número de argumentos for diferente de 2, o programa deve retornar uma nova linha.
 
 $> ./interval_spaces "abc" | cat -e
 a   b   c$
-$> ./interval_spaces "dubO a POIL" "ok" | cat -e
-$
+$> ./interval_spaces "coconut" | cat -e
+c   o   c   o   n   u   t$
 */
 
 #include <unistd.h>
-/*
-void intervalspace(char *str)
-{
-    int i;
-    i = 0;
-    while(str[i])
-    {
-        write(1, &str[i], 1);
-        if(str[i + 1] == '\0')
-            break;
-        write(1, "   ",3);
-        i++;
-    }
-}
-*/
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
     int i = 0;
-    if(ac == 2)
+    if(argc == 2)
     {
-        while (av[1][i])
+        while (argv[1][i] != '\0')
         {
-            write(1, &av[1][i], 1);
-            if(av[1][i + 1] == '\0')
-                break;
-            write(1, "   ", 3);
+            write(1, &argv[1][i], 1);
+            if(argv[1][i + 1] != '\0')
+                write(1, "   ", 3);
             i++;
         }
     }
     write(1, "\n", 1);
+    return (0);
 }

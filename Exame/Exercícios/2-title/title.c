@@ -4,45 +4,56 @@ Expected files   : title.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Write a program that takes one or more strings and, for each argument, puts 
-the first character of each word (if it's a letter) in uppercase followed by a \n.
+Escreva um programa que receba uma ou mais strings e, para cada argumento, coloque
+o primeiro caractere de cada palavra (se for uma letra) em maiúscula, seguido de
+uma nova linha (\n).
 
-A word is a section of string delimited by spaces/tabs or the start/end of the
-string. If a word has a single letter, it must be capitalized.
+Uma palavra é uma seção da string delimitada por espaços/tabs ou pelo início/fim
+da string. 
+Se uma palavra tiver apenas uma letra, ela deve ser capitalizada.
 
-If there are no parameters, display \n.
+Se não houver parâmetros, exibe apenas uma nova linha (\n).
 
 Examples:
 
 $> ./title | cat -e
 $
-$> ./rstr_capitalizer "no NO no no no!" | cat -e
+$> ./title "no NO no no no!" | cat -e
 No NO No No No!$
-$> ./title pjldfjslogjlsj | cat -e
-$> Pjldfjslogjlsj
+$> ./title "pjldfjslogjlsj" | cat -e
+Pjldfjslogjlsj$
+$> ./title "hEllO World! 42 Is aWesoMe!" | cat -e
+HEllO World! 42 Is AWesoMe!$
 */
 
 #include <unistd.h>
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
     int i;
-    i = 0;
-    if(ac == 2)
+    int j;
+
+    if (argc >= 2)
     {
-        if(av[1][0] >= 'a' && av[1][0] <= 'z')
+        i = 1;
+        while (i < argc)
         {
-            av[1][0] -= 32;
-        }
-        while (av[1][i])
-        {
-            if((av[1][i - 1] == ' ' || av[1][i - 1] == '\t') && av[1][i] >= 'a' && av[1][i] <= 'z')
+            j = 0;
+            if (argv[i][j] >= 'a' && argv[i][j] <= 'z')
+                argv[i][j] -= 32;
+            write(1, &argv[i][j], 1);
+            j++;
+            while (argv[i][j])
             {
-                av[1][i] -= 32;
+                if ((argv[i][j - 1] == ' ' || argv[i][j - 1] == '\t') 
+                   && argv[i][j] >= 'a' && argv[i][j] <= 'z')
+                    argv[i][j] -= 32; 
+                write(1, &argv[i][j], 1);
+                j++;
             }
-            write(1, &av[1][i], 1);
+            write(1, "\n", 1);
             i++;
         }
     }
-    write(1, "\n", 1);
+    return (0);
 }

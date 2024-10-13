@@ -4,107 +4,115 @@ Expected files   : ft_itoa.c
 Allowed functions: malloc
 --------------------------------------------------------------------------------
 
-Escreva uma função que recebe um inteiro e o converte em uma string terminada em
+Escreva uma função que recebe um inteiro e o converte numa string terminada em
 nulo. 
 
-A função retorna o resultado em um array de caracteres que você deve alocar.
+A função retorna o resultado num array de caracteres que deve ser alocada.
 
-Sua função deve ser declarada da seguinte forma:
+A função deve ser declarada da seguinte forma:
 
 char	*ft_itoa(int nbr);
 
 */
 
-# include <stdio.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int get_number_length (int number)
+int	get_num_len(int nbr)
 {
-	int number_length;
+	int	len;
 
-	number_length = 0;
-
-	if (number < 0)
-		number_length++;
-
-	while (number != 0)
+	len = 0;
+	if (nbr == 0)
+		return (1);
+	if (nbr < 0)
+		len++;
+	while (nbr != 0)
 	{
-		number = number / 10;
-		number_length++;
+		nbr /= 10;
+		len++;
 	}
-	return (number_length);
+	return (len);
 }
 
-char *ft_itoa(int number)
+char *ft_itoa(int nbr)
 {
-	int number_converted_to_string_length;
-	int index;
-	unsigned int num;
+    int len;
+    char *result;
+    long num;                                          
 
-	char *store_converted_string;
-
-	number_converted_to_string_length = get_number_length(number);
-
-	store_converted_string = malloc(sizeof(char) * (number_converted_to_string_length + 1));
-
-	if (!store_converted_string)
-		return (NULL);
-
-	store_converted_string[number_converted_to_string_length] = '\0';
-
-	index = number_converted_to_string_length - 1;
-
-	if (number == 0)
-	{
-		store_converted_string[0] = '0';
-		return (store_converted_string);
-	}
-
-	if (number < 0)
-	{
-		store_converted_string[0] = '-';
-		num = -number;
-	}
-	else
-		num = number;
-
-	while (num != 0)
-	{
-		store_converted_string[index] = (num % 10) + '0';
-
-		num = num / 10;
-
-		index--;
-	}
-
-	return (store_converted_string);
+    num = nbr;                                         
+    len = get_num_len(nbr);
+    result = (char *)malloc(sizeof(char) * (len + 1));
+    if (!result)
+        return (NULL);
+    result[len] = '\0';
+    if (num == 0)
+    {
+        result[0] = '0';
+        return (result);
+    }
+    if (num < 0)
+    {
+        result[0] = '-';
+        num = -num;
+    }
+    while (num != 0)
+    {
+        result[--len] = (num % 10) + '0';
+        num /= 10;
+    }
+    return (result);
 }
 
 /*
+#include <stdio.h>
+
 int main(void)
 {
-    char *str;
+    int num1 = 42;
+    int num2 = -12345;
+    int num3 = 0;
+    int num4 = -2147483648;
 
-    str = ft_itoa(2147483647);
-    printf("%s\n", str);
-    free(str);
+    char *str1 = ft_itoa(num1);
+    char *str2 = ft_itoa(num2);
+    char *str3 = ft_itoa(num3);
+    char *str4 = ft_itoa(num4);
 
-    str = ft_itoa(-2147483648);
-    printf("%s\n", str);
-    free(str);
+    printf("num1: %d -> %s\n", num1, str1);
+    printf("num2: %d -> %s\n", num2, str2);
+    printf("num3: %d -> %s\n", num3, str3);
+    printf("num4: %d -> %s\n", num4, str4);
 
-    str = ft_itoa(0);
-    printf("%s\n", str);
-    free(str);
-
-    str = ft_itoa(12345);
-    printf("%s\n", str);
-    free(str);
-
-    str = ft_itoa(-12345);
-    printf("%s\n", str);
-    free(str);
+    free(str1);
+    free(str2);
+    free(str3);
+    free(str4);
 
     return 0;
 }
+*/
+
+
+/*
+sh-5.2$ valgrind ./a.out 
+==43830== Memcheck, a memory error detector
+==43830== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==43830== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==43830== Command: ./a.out
+==43830== 
+num1: 42 -> 42
+num2: -12345 -> -12345
+num3: 0 -> 0
+num4: -2147483648 -> -2147483648
+==43830== 
+==43830== HEAP SUMMARY:
+==43830==     in use at exit: 0 bytes in 0 blocks
+==43830==   total heap usage: 5 allocs, 5 frees, 1,048 bytes allocated
+==43830== 
+==43830== All heap blocks were freed -- no leaks are possible
+==43830== 
+==43830== For lists of detected and suppressed errors, rerun with: -s
+==43830== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 */

@@ -6,11 +6,11 @@ Allowed functions: write
 Escreva um programa que imprima os números de 1 a 100, cada um separado por uma
 nova linha.
 
-Se o número for um múltiplo de 3, imprime 'fizz' em vez disso.
+Se o número for um múltiplo de 3, em vez disso, imprime 'fizz'.
 
-Se o número for um múltiplo de 5, imprime 'buzz' em vez disso.
+Se o número for um múltiplo de 5, em vez disso, imprime 'buzz'.
 
-Se o número for um múltiplo de 3 e um múltiplo de 5, imprime 'fizzbuzz' em vez disso.
+Se o número for um múltiplo de 3 e um múltiplo de 5, em vez disso, imprime 'fizzbuzz'.
 
 
 Example:

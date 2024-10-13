@@ -1,44 +1,47 @@
 | Nível | Nome                  | Ação                                                |
 |-------|-----------------------|-----------------------------------------------------|
+| 0     | [only_a](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-only_a) | Exibe apenas a letra 'a'. |
 | 0     | [aff_a](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-aff_a) | Exibe a letra 'a'. |
+| 0     | [even](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-even) | Exibe os números pares de 0 a 9. |
+| 0     | [odd](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-odd) | Exibe os números ímpares de 0 a 9. |
+| 0     | [maff_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_alpha) | Exibe o alfabeto em ordem crescente. |
+| 0     | [maff_revalpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_revalpha) | Exibe o alfabeto em ordem decrescente. |
 | 0     | [ft_countdown](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-ft_countdown) | Exibe uma contagem regressiva a partir de 9. |
 | 0     | [ft_print_numbers](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-ft_print_numbers) | Exibe os números de 0 a 9. |
 | 0     | [hello](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-hello) | Exibe a mensagem 'Hello World!'. |
-| 0     | [maff_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_alpha) | Exibe o alfabeto em ordem crescente. |
-| 0     | [maff_revalpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-maff_revalpha) | Exibe o alfabeto em ordem decrescente. |
-| 0     | [print_odd](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-print_odd) | Imprime os caracteres cujo indice  não é multiplo de 2 (ímpar) |
-| 0     | [print_even](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-print_even) | Imprime os caracteres cujo indice é multiplo de 2 (par) |
-| 0     | [ft_dec](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-ft_dec) | Ponteiro que decrementa o seu valor. |
-| 0     | [only_a](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-only_a) | Exibe apenas a letra 'a'. |
-| 0     | [ft_add](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-ft_add) | Adição de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
-| 0     | [ft_sub](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-ft_sub) | Subtração de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
 | 0     | [aff_first_param](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-aff_first_param) | Exibe o primeiro parâmetro da linha de comando. |
 | 0     | [aff_last_param](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/0-aff_last_param) | Exibe o último parâmetro da linha de comando. |
+| 1     | [print_odd](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-print_odd) | Imprime os caracteres cujo indice  não é multiplo de 2 (ímpar) |
+| 1     | [print_even](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-print_even) | Imprime os caracteres cujo indice é multiplo de 2 (par) |
+| 1     | [swap_cases]() |        |
+| 1     | [ft_dec](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-ft_dec) | Ponteiro que decrementa o seu valor. |
+| 1     | [ft_inc]() |  |
+| 1     | [ft_div]() |  |
+| 1     | [ft_mul]() |  |
+| 1     | [ft_add](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-ft_add) | Adição de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
+| 1     | [ft_sub](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/0-ft_sub) | Subtração de um inteiro a outro inteiro apontado pelo primeiro parâmetro (o ponteiro) |
+| 1     | [occ_a](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-occ_z) | Conta a ocorrência da letra 'z' em uma string. |
 | 1     | [ft_ft](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-ft_ft) | Recebe um ponteiro para inteiro como parâmetro e define o valor '42' para esse inteiro |
 | 1     | [interval_spaces](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-interval_spaces) | Escreve três espaços em branco entre cada caractere num argumento           |
 | 1     | [count_alen](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-count_alen) | Conta o número de letras em uma string. |
 | 1     | [count_words](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-count_words) | Conta o número de palavras em uma string. |
-| 1     | [even](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-even) | Exibe os números pares de 0 a 9. |
-| 1     | [odd](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-odd) | Exibe os números ímpares de 0 a 9. |
 | 1     | [first_word](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-first_word) | Exibe a primeira palavra de uma string. |
 | 1     | [fizzbuzz](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-fizzbuzz) | Executa o jogo FizzBuzz para números de 1 a 100. |
 | 1     | [buzzfizz](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-buzzfizz) | Executa o jogo BuzzFizz para números de 1 a 100.|
+| 1     | [print_interval]() |        |
 | 1     | [write_string](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-write_string) | Exibe uma string na saída padrão. |
-| 1     | [ft_djamal](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_djamal) | Retorna o valor mediano. |
 | 1     | [ft_putstr](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_putstr) | Exibe uma string. |
 | 1     | [ft_strcpy](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_strcpy) | Copia uma string para outra. |
 | 1     | [ft_strlen](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_strlen) | Retorna o comprimento de uma string. |
 | 1     | [ft_swap](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_swap) | Troca o valor de duas variáveis. |
 | 1     | [halft_str](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-halft_str) | Exibe a metade de uma string. |
-| 1     | [occ_z](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-occ_z) | Conta a ocorrência da letra 'z' em uma string. |
 | 1     | [rev_print](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/1-%20rev_print) | Exibe uma string na ordem reversa. |
 | 1     | [rot_13](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-rot_13) | Codifica uma string usando a cifra ROT13. |
 | 1     | [rot_one](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-rot_one) | Desloca cada letra de uma string uma posição para frente. |
 | 1     | [search_and_replace](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-search_and_replace) | Substitui uma letra em uma string por outra. |
 | 1     | [ulstr](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ulstr) | Converte uma string para letras minúsculas. |
 | 1     | [repeat_alpha](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-repeat_alpha) | Repete cada letra de uma string um número de vezes igual à sua posição. |
-| 2     | [print_params](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-print_params) | Exibe os parâmetros da linha de comando. |
-| 2     | [print_prog_name](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-print_prog_name) | Exibe o nome do programa. |
+| 1     | [ft_djamal](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/1-ft_djamal) | Retorna o valor mediano. |
 | 2     | [title](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exerc%C3%ADcios/2-title) |  |
 | 2     | [alpha_mirror](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-alpha_mirror) | Converte uma string em seu espelho alfabético. |
 | 2     | [camel_to_snake](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-camel_to_snake) | Converte uma string de formato CamelCase para snake_case. |
@@ -49,6 +52,7 @@
 | 2     | [ft_strdup](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-ft_strdup) | Duplica uma string. |
 | 2     | [ft_putnbr](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-ft_putnbr) | Exibe um número inteiro. |
 | 2     | [ft_strrev](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-ft_strrev) | Inverte uma string. |
+| 3     | [is_palindrome](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/3-is_palindrome) | Verifica se uma string é um palíndromo. |
 | 2     | [inter](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-inter) | Encontra a interseção entre duas strings. |
 | 2     | [last_word](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-last_word) | Exibe a última palavra de uma string. |
 | 2     | [max](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/2-max) | Retorna o maior valor de uma lista. |
@@ -65,7 +69,6 @@
 | 3     | [pgdc](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/3-pgdc) | Calcula o máximo divisor comum de dois números. |
 | 3     | [parasum](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/3-parasum) | Calcula a soma dos parâmetros. |
 | 3     | [ft_print_hex](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/3-ft_print_hex) | Exibe um número em formato hexadecimal. |
-| 3     | [is_palindrome](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/3-is_palindrome) | Verifica se uma string é um palíndromo. |
 | 3     | [str_capitalizer](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/3-str_capitalizer) | Converte a primeira letra de cada palavra em maiúscula. |
 | 3     | [tab_mult](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/3-tab_mult) | Exibe uma tabela de multiplicação. |
 | 4     | [ft_itoa](https://github.com/rickymercury/Piscine_42/tree/master/Exame/Exercícios/4-ft_itoa) | Converte um inteiro em uma string. |

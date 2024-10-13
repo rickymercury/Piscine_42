@@ -45,22 +45,22 @@ int	ft_atoi(char *str)
 
 void	ft_puthex(int n)
 {
-	char	*symbols;
+	char	*hex_digits;
 
-	symbols = "0123456789abcdef";
+	hex_digits = "0123456789abcdef";
 	if (n >= 16)
 	{
 		ft_puthex(n / 16);
 		ft_puthex(n % 16);
 	}
 	else
-		ft_putchar(symbols[n % 16]);
+		ft_putchar(hex_digits[n % 16]);
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	if (ac == 2)
-		ft_puthex(ft_atoi(av[1]));
+	if (argc == 2)
+		ft_puthex(ft_atoi(argv[1]));
 	ft_putchar('\n');
 	return (0);
 }

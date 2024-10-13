@@ -1,59 +1,41 @@
 /*
 Assignment name  : count_alen
 Expected files   : count_alen.c
-version 1        :
 Allowed functions:
 --------------------------------------------------------------------------------
 
 Escreva uma função que retorne o comprimento de uma string até a primeira ocorrência
 do caractere 'a'.
 
-Se não houver 'a' presente na string, ela retorna o comprimento total da string.
+Se 'a' não estiver presente na string, ela retorna o comprimento total da string.
 
-Sua função deve ser declarada da seguinte forma:
+A função deve ser declarada da seguinte forma:
 
 int	 count_alen(char *str);
 */
 
-#include <stdio.h>
+#include <stdlib.h>
 
 int	count_alen(char *str)
 {
-	int	length;
+	int	i;
 
-	length = 0;
-	while (str[length] && str[length] != 'a')
-		length++;
-	return (length);
+	i = 0;
+	while (str[i] != '\0' && str[i] != 'a')
+		i++;
+	return (i);
 }
-
 
 /*
 #include <stdio.h>
-#include <stdlib.h>
 
-int	main(void)
-{
-	printf("%d-", count_alen("a"));
-	printf("%d-", count_alen("wwwwa"));
-	printf("%d-", count_alen("www  0 qq a qqwo"));
-	printf("%d-", count_alen("Nothing here"));
-	return (EXIT_SUCCESS);
+int main() {
+    char str1[] = "Hello, World!";
+    char str2[] = "Banana";
+
+    printf("Length until 'a' in '%s': %d\n", str1, count_alen(str1));  // Saída: 13
+    printf("Length until 'a' in '%s': %d\n", str2, count_alen(str2));  // Saída: 1
+
+    return 0;
 }
 */
-
-// ou
-
-int count_alen(char *str)
-{
-    int length = 0;
-
-    while (str[length]) 
-    {
-        if (str[length] == 'a') 
-            return length; 
-        length++; 
-    }
-
-    return length;
-}

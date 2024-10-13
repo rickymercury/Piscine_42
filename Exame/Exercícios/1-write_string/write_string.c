@@ -4,12 +4,11 @@ Expected files   : write_string.c
 Allowed functions: write
 --------------------------------------------------------------------------------
 
-Write a function that displays a string on the standard output.
+Escreva uma função que exiba uma string na saída padrão.
 
-The pointer passed to the function contains the address of the string's first
-character.
+O ponteiro passado para a função contém o endereço do primeiro caractere da string.
 
-Your function must be declared as follows:
+Sua função deve ser declarada da seguinte forma:
 
 void	write_string(char *str);
 

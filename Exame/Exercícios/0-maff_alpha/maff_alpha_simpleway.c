@@ -16,20 +16,8 @@ aBcDeFgHiJkLmNoPqRsTuVwXyZ$
 
 #include <unistd.h>
 
-int   main(void)
+int		main(void)
 {
-  char lowercase;
-  char uppercase;
-  
-  lowercase = 'a';
-  uppercase = 'B';
-  while (lowercase <= 'z' && uppercase <= 'Z')
-  { 
-    write (1, &lowercase, 1);
-    write (1, &uppercase, 1);
-    lowercase += 2;
-    uppercase += 2;
-  }
-  write (1, "\n", 1);
-  return (0);
-}  
+	write(1, "aBcDeFgHiJkLmNoPqRsTuVwXyZ\n", 27);
+	return (0);
+}

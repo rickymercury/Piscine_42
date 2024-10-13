@@ -25,6 +25,7 @@ int count_words(char *str)
     i = 0;
     in_word = 1;
     count = 0;
+
     while (str[i])
     {
         if (str[i] == ' ' && in_word == 0)
@@ -39,48 +40,12 @@ int count_words(char *str)
     return (count);
 }
 
-// OU
-
-
+/*
 #include <stdio.h>
 
-int count_words(char *str)
-{
-    int i = 0;
-    int isword = 0;
-    int count = 0;
-    while (str[i])
-    {
-        if(str[i] == ' ')
-        {
-            isword = 0;
-        }
-        else if(isword == 0)
-        {
-            count++;
-            isword = 1;
-        }
-        i++;
-    }
-    return count;
-}
-
-/*
 int main()
 {
-    char str[] = "wa drari golo meay a";
+    char str[] = "Benfica Campẽao da Primeira Liga";
     printf("%d", count_words(str));
-}
-*/
-
-/*
-#include <stdio.h>
-#include <stdlib.h>
-
-int	main(int argc, char **argv)
-{
-	if (argc == 2)
-		printf("%d", count_words(argv[1]));
-	return (EXIT_SUCCESS);
 }
 */

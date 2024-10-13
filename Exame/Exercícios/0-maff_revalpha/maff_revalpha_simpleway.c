@@ -15,21 +15,8 @@ zYxWvUtSrQpOnMlKjIhGfEdCbA$
 
 #include <unistd.h>
 
-int   main(void)
-{ 
-    char  lowercase;
-    char  uppercase; 
-    
-    lowercase = 'z';
-    uppercase   = 'Y';
-    
-    while (lowercase >= 'a' && uppercase >= 'A')
-    {
-        write (1, &lowercase, 1);
-        write (1, &uppercase, 1);
-        lowercase -= 2;
-        uppercase -= 2;
-    }
-    write (1, "\n", 1);
+int main(void)
+{
+    write(1, "zYxWvUtSrQpOnMlKjIhGfEdCbA\n", 27);
     return (0);
- }
+}

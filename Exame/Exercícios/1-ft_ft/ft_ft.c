@@ -16,3 +16,19 @@ void ft_ft(int *nbr)
 {
     *nbr = 42;
 }
+
+/*
+#include <stdio.h>
+
+void ft_ft(int *nbr);
+
+int main(void)
+{
+    int num;
+
+    printf("Antes de ft_ft: %d\n", num);
+    ft_ft(&num);
+    printf("Depois de ft_ft: %d\n", num);
+    return 0;
+}
+*/
