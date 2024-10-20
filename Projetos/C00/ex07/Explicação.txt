@@ -1,0 +1,113 @@
+A função ft_putnbr utiliza a recursão para dividir os digitos de um determinado número inteiro nb e vai imprimi-los na saída padrão, caractere por caractere.
+
+
+1 - Função ft_putnbr:  void ft_putnbr(int nb)
+
+    1.1 - TIpo de Retorno:  void
+
+          void indica que a função não retorna nenhum valor. 
+          COmo a função ft_putnbr é projetada para realizar uma tarefa específica: a de imprimir um número, ela não precisa de devolver nenhuma informação ao programa que a chamou após completar a tarefa, já que o único objetivo é o de exibir o número.
+          Como ft_putnbr usa a função write para enviar os caracteres (dígitos do número) diretamente para a saída padrão, o valor final já foi "consumido" pela saída do sistema. 
+          Não há necessidade de retornar o número ou qualquer outro dado para a função que a chamou.
+
+    1.2 - Parâmetro da Função:  int nb
+
+          int nb especifica que a função recebe um único argumento do tipo int (um número inteiro).
+          nb é o nome da variável local que a função vai utilizar para se referir ao número que lhe foi passado.
+          Quando chamamos a função ft_putnbr(123), por exemplo, o valor 123 é passado para a função e armazenado na variável nb. 
+          A função então usará a variável nb para realizar as operações (como imprimir os dígitos desse número).
+
+2 - Declaração das Variáveis:
+
+    int nb: representa o número inteiro que será impresso.
+            QUando a função é chamada, o valor passado para nb é o número que a função deve exibir.
+
+    char c: é utilizada para armazenar temporariamente o caractere correspondente ao digito do número.
+            A função converte o valor inteiro num caractere para que possa ser impresso.
+            A conversão é feita ao utilizarmos a expressão c = (nb % 10) + '0' que seleciona o último digito do número (calculado por nb % 10) e converte para o seu caractere correspondente.
+
+3 - Tratamento do Menor Inteiro Possível:
+    
+                    if (nb == -2147483648)
+                    {
+                        write(1, "-2147483648", 11);
+                        return;
+                    }
+    
+    O valor máximo que um inteiro pode assumir é 2147483647 e o valor minimo é -2147483648.
+    Então, para o nosso caso, o menor valor possível para um inteiro em C é -2147483648 (equivalente a -(2^31) para inteiros de 32 bits).
+    Esse valor não pode simplesmente ser convertido num número positivo ao multiplicá-lo por -1, porque, se fizermos isso, ele torna-se  2147483648, pelo o que está fora do intervalo que um int pode armazenar.
+    Não existe, assim, um valor positivo correspondente para esse valor.
+    Por isso, esta verificação especial trata desse caso imprimindo diretamente a string "-2147483648". 
+    Por fim, encerra a execução da função ft_putnbr nesse ponto, evitando que o código que se segue seja executado, utilizando o return.
+
+4 - Tratamento de Números Negativos:
+
+                    if (nb < 0)
+                    {
+                        write(1, "-", 1);
+                        nb = -nb;
+                    }
+
+    A função ft_putnbr foi projetada para lidar com números inteiros, pelo o que o código funciona apenas com números não negativos.
+    Portanto, para facilitar a impressão, o número é convertido para positivo após a impressão do sinal '-'.
+    Assim, se o número for negativo, a precisamos de imprimir o sinal '-' para que a saída mostre que o número é negativo e, de seguida, convertemos nb para o seu valor positivo multiplicando-o por -1.
+    Isso permite que a função trabalhe com a versão positiva do número nas etapas seguintes.
+    
+    Assim, a função utiliza o mesmo algoritmo tanto para os números negativos como para os positivos, simplificando a lógica.
+
+5 - Recursão para Dividir o Número em Digitos:
+
+                    if (nb >= 10)
+                        ft_putnbr(nb / 10);
+
+    Como já referimos, o objetivo da função ft_putnbr é imprimir um número inteiro nb na saída padrão. 
+    A ideia fundamental para realizar esse objetivo é a de desmembrar um número em dígitos individuais e imprimi-los um a um.
+
+    Uma técnica comum na matemática e na programação, ao dividir um número por 10, extraímos os digitos (os mais e os menos significativos) desse número.
+
+    Os números na base decimal são compostos por dígitos que representam potências de 10. 
+    Por exemplo, o número 234 pode ser decomposto da seguinte maneira:
+
+    2 × 10² (ou seja, 200)
+    3 × 10¹ (ou seja, 30)
+    4 × 10⁰ (ou seja, 4)
+
+    Assim, cada dígito de um número representa uma posição específica com base nas potências de 10.
+
+    Ao dividir um número por 10, estamos efetivamente a "remover" o último dígito (o menos significativo) do número. 
+    Isso ocorre porque a divisão inteira por 10 descarta a parte fracionária, reduzindo o número para o próximo dígito mais alto. 
+    Por exemplo:
+
+    234 / 10 resulta em 23 (o dígito 4 foi removido).
+    23 / 10 resulta em 2 (o dígito 3 foi removido).
+    2 / 10 resulta em 0 (o dígito 2 foi removido).
+
+    Assim, antes de utilizarmos a recursão, temos de, em primeiro lugar, verificar se o número nb é maior ou igual a 10. 
+    Se for, significa que ele possui mais do que um digito.
+    Agora, utilizamos a recursão ao chamarmos ft_putnbr(nb / 10): dividimos o número por 10 e chamamos novamente a função com o número reduzido.
+    Esta chamada recursiva continua até que o número seja menor do que 10, ou seja, quando tivermos apenas um único digito.
+
+6 - Conversão do Dígito para Caractere e a Respetiva Impressão:
+
+                    c = (nb % 10) + '0';
+                    write(1, &c, 1);
+
+    nb % 10 obtém o último dígito do número.
+    + '0' converte o valor numérico em seu correspondente caractere ASCII. 
+    Por exemplo, o valor 1 é transformado em '1'.
+
+    Assim, que alcançarmos um número com apenas um digito (nb < 10), imprimimos esse digito (c = (nb % 10) + '0'), onde nb % 10 dá o digito menos significativo.
+    A impressão dos digitos ocorre à medida que as chamadas recursivas retornam, começando pelo digito mais significativo até ao menos significativo.
+
+
+ Exemplo: Consideremos o número 345:
+
+    Primeira chamada: ft_putnbr(345) → chama ft_putnbr(34) (345 / 10).
+    Segunda chamada: ft_putnbr(34) → chama ft_putnbr(3) (34 / 10).
+    Terceira chamada: ft_putnbr(3) → 3 é menor que 10, então calcula e imprime:
+        c = (3 % 10) + '0'; → imprime 3.
+    Retorna à segunda chamada e imprime:
+        c = (4 % 10) + '0'; → imprime 4.
+    Retorna à primeira chamada e imprime:
+        c = (5 % 10) + '0'; → imprime 5.

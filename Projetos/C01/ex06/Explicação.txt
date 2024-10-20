@@ -1,0 +1,186 @@
+1 - Função ft_strlen:
+
+    Tem o objetivo de contar quantos caracteres existem na string, acessando-os um por um até encontrar o caractere nulo '\0', que marca o final da string.
+    Vai, assim, calcular o comprimento da string (ou seja, quantos caracteres há antes do caractere nulo '\0').
+
+    A função ft_strlen recebe uma string e retorna o número de caracteres nessa string, exclusive o caractere nulo \0.
+
+    1.1 - Tipo de Retorno:  A função vai retornar um número inteiro, que representa o comprimento total da string.
+                            A função está literalmente a contar quantos caracteres existem na string e o comprimento de uma string é sempre representado como um número inteiro.
+                            A contagem é feita ao iterar sobre cada caractere da string até encontrar o caractere nulo, que indica o fim da string.
+
+                            O tipo int é mais do que suficiente para armazenar e representar o comprimento da maioria das strings, pois, em muitos sistemas, um int tem a capacidade de armazenar valores entre -2 bilhões e +2 bilhões (32 bits)
+                            
+                            Por outro lado, outros tipos de retorno, como char ou float, não seriam adequados:
+
+                              char: Seria muito limitado, pois só pode armazenar números de -128 a 127 (em sistemas de 8 bits), o que é insuficiente para strings grandes.
+                              float: Não faz sentido usar um tipo de ponto flutuante, já que estamos a lidar com contagens de números inteiros, não números fracionários.
+                            
+                            Assim, o tipo inteiro é apropriado para este tipo de tarefa porque o comprimento de uma string é sempre um número inteiro não negativo. 
+                            
+                            Por exemplo:
+
+                            A string "Hello" tem 5 caracteres, portanto o retorno será 5.
+                            A string vazia "" (apenas o caractere nulo '\0') tem comprimento 0.
+
+    1.2 - Variáveis:
+
+          char *str: corresponde ao parâmetro da função ft_strlen, que é um ponteiro para um caractere, o que significa que str é um ponteiro que aponta para o primeiro caractere de uma string.
+                     Assim, a função espera receber um ponteiro para o primeiro caractere da string.
+
+                     Quando a função é chamada, passamos o endereço do primeiro caractere da string para o parâmetro str.
+                     POr exemplo, se chamarmos:
+
+                     int len = ft_strlen("Hello");
+
+                     A string "Hello" será passada para a função, e o ponteiro str apontará para o endereço de memória onde o primeiro caractere 'H' está armazenado.
+                     Dentro da função, acessamos os caracteres da string através de str[i],o que significa "o caractere localizado no indice i da string".
+
+                     Exemplo de como a variável str funciona:
+
+                     Suponhamos que a string "Hello" está armazenada na memória a partir do endereço 1000. 
+                     A variável str será o endereço de memória do primeiro caractere dessa string, ou seja, str = 1000. 
+                     A partir daí, o código pode acessar os caracteres da seguinte forma:
+
+                     str[0] = 'H' (endereço 1000)
+                     str[1] = 'e' (endereço 1001)
+                     str[2] = 'l' (endereço 1002)
+                     str[3] = 'l' (endereço 1003)
+                     str[4] = 'o' (endereço 1004)
+                     str[5] = '\0' (caractere nulo, que termina a string)
+
+          int i: É uma variável inteira que servirá como contador para percorrer a string e para contrar quantos caracteres existem nela. 
+                 É utilizada para acessar os caracteres da string.
+                 Inicializamos i = 0, no ínicio da função, já que o índice da string começa em 0 (ou seja, o primeiro caractere da string é acessado com str[0]), pelo o que vamos começar a contagem a partir do primeiro caractere (índice 0).
+                 
+                 Conforme o valor de i aumenta, str[i] vai acessar o caractere seguinte da string.
+                 Quando o loop encontra o caractere nulo ('\0'), o loop termina, e o valor de i representa o número total de caracteres na string (ou seja, o comprimento da string).
+
+        Como as variáveis se relacionam:
+
+        str[i]: A variável str (um ponteiro para a string) e a variável i (o contador) trabalham juntas. 
+        str[i] acessa o caractere na posição i da string. 
+        O valor de i é aumentado a cada iteração do loop, permitindo que a função percorra cada caractere da string.
+        O loop while continua enquanto str[i] não encontrar o caractere nulo '\0'. 
+        Esse caractere indica o fim da string, e o valor de i no momento em que o loop para representa o número de caracteres da string.
+        No final, a função retorna o valor de i, que contém o comprimento da string.
+
+    1.3 - Loop para Percorrer cada Caractere da String:
+
+                            while (str[i] != '\0')
+                                i++;
+
+          O loop continua enquanto o caractere atual não for o caractere nulo '\0', que marca o final de uma string em C.
+    
+          Se str[i] não é o caractere nulo, incrementamos i (ou seja, passamos para o próximo caractere) e continuamos o loop.
+
+          1.3.1 - Incremento de i: A cada iteração do loop, i é incrementado em 1. Isso significa que o ponteiro str vai sendo acessado em posições sequenciais: str[0], str[1], str[2] etc., até encontrar o caractere nulo.
+
+          1.3.2 - Fim do Loop: O loop termina quando str[i] == '\0':
+
+    Quando o caractere nulo '\0' é encontrado, o loop termina. Nesse momento, i contém o número de caracteres percorridos na string, que é o comprimento da string.
+
+    1.4 - Retorno do Comprimento da String:  return (i)
+
+          Quando o loop termina, a variável i contém o número total de caracteres da string.
+          A função retorna esse valor como o resultado de ft_strlen.
+
+
+
+1) Antes de entrar na função
+
+  > Função main:
+
+    É o ponto inicial do programa.
+    Vamos observar o que acontece antes da chamada da função ft_strlen.
+
+    char str1 = "Benfica";
+
+    Aqui, a string "Benfica" é declarada como um array de caracteres (ou seja, como uma string) denominada str1.
+    QUando declaramos um array de caracteres, o compilador automaticamente coloca o caractere nulo '\0' no fim da string para o indicar o fim dela.
+
+    A string "Benfica" é armazenada na memória, consecutivamente, caractere por caractere, começando, por exemplo, no endereço 2000.
+
+                                  Endereço	Conteúdo (caractere)
+                                    2000	       'B'
+                                    2001	       'e'
+                                    2002	       'n'
+                                    2003	       'f'
+                                    2004	       'i'
+                                    2005           'c'
+                                    2006           'a'
+                                    2007	      '\0' (nulo)
+
+    A string str1 contém o endereço de memória do primeiro caractere, ou seja, str1 = 2000.
+    Isto é importante, pois o que será passado para a função ft_strlen é o endereço de str1, ou seja, o endereço onde está o primeiro caractere 'B'.
+
+  > Chamada da Função:
+
+    int len = ft_strlen(str1);
+
+    Aqui, a função ft_strlen é chamada, e o ponteiro para o primeiro caractere da string str1 (ou seja, o endereço de memória 2000) é passado como argumento para a função.
+
+    Na memória, o valor 2000 (endereço da string str1) é colocado na "pilha" (stack) e é enviado para a função ft_strlen.
+
+2) Dentro da Função
+
+   > Passagem de argumentos:
+
+     O parâmetro char *str recebe o valor que foi passado pela main().
+     Como str1 é um ponteiro para a string, ou seja, como ele aponta para o endereço do primeiro caractere da string (2000), ao entrar na função, str é um ponteiro que aponta para o endereço de memória 2000, onde está o primeiro caractere 'B' da string "Benfica".
+
+  > A execução do loop:
+
+    Dentro da função ft_strlen, acontece o seguinte:
+
+    Inicialização de i: i = 0 - Inicializa a variável i com 0. Este será o índice usado para percorrer a string.
+
+    Primeira iteração do loop:
+
+        while (str[i] != '\0'): A função acessa o caractere str[0], que significa: o caractere armazenado no endereço 2000 (que é 'B').
+                                Como str[0] não é o caractere nulo ('\0'), o loop continua, e i é incrementado.
+
+    Segunda iteração:
+
+        Agora, str[1] acessa o segundo caractere da string, que está armazenado no endereço 2001 (que é 'e').
+        O valor de i incrementa, e o loop continua.
+
+    Terceira à sétima iterações:
+
+        O loop continua da mesma maneira, acessando os caracteres 'n' no endereço 2002, 'f' no endereço 2003, e 'i' no endereço 2004, 'c' no endereço 2005 e 'a' no endereço 2006.
+        A cada iteração, i é incrementado.
+
+    Quando encontra o caractere nulo:
+
+        Na oitava iteração, str[7] acessa o caractere no endereço 2007, que é o caractere '\0'.
+        Como str[7] é igual a '\0', a condição str[i] != '\0' é falsa, e o loop para.
+
+    Retorno do valor:
+
+        O valor de i neste momento é 7, o que significa que o comprimento da string (número de caracteres antes do caractere nulo) é 7.
+        A função retorna o valor 7 para a main().
+
+
+        Tabela ilustrativa a resumir o que se passou:
+
+                  Iteração	 Valor de i	 Caractere	 str[i]	 Endereço de str[i]	  Conteúdo da Memória Até o Momento	  Incremento de i	 Valor Retornado
+                     1ª	     0	       'B'	      'B'	       2000	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 1	               -
+                     2ª	     1	       'e'	      'e'	       2001	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 2	               -
+                     3ª	     2	       'n'	      'n'	       2002	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 3	               -
+                     4ª	     3	       'f'	      'f'	       2003	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 4	               -
+                     5ª	     4	       'i'	      'i'	       2004	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 5	               -
+                     6ª	     5	       'c'	      'c'	       2005	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 6	               -
+                     7ª	     6	       'a'	      'a'	       2006	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 7	               -
+                     8ª	     7	       '\0'	      '\0'	       2007	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	         -	                   7
+
+3) De Volta À Main
+
+   Após a execução da função ft_strlen, voltamos para a função main():  len = ft_strlen(str1);
+
+    A variável lenh agora contém o valor 7, que foi o valor retornado por ft_strlen.
+
+    A partir daqui, a função main() continua sua execução:
+
+    printf("Comprimento da string: %d\n", len);
+
+    O valor de len (que é 7) é passado para o printf, que exibe a mensagem no terminal:  Comprimento da string: 5

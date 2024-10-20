@@ -1,0 +1,306 @@
+Definição: Uma string é um conjunto/sequência de caracteres (adjacentes na memória) armazenados num array.
+           Esta sequência de caracteres, que pode ser uma palavra ou frase, é armazenada na memória na forma de array, do tipo char.
+
+Nota: 'A' é o caractere A (1 byte). 
+       A string "A" é um array de caracteres que internamente ocupa não um, mas dois bytes, e cujo primeiro elemento é o caractere 'A'.
+
+       Assim, os caracteres são representados entre aspas simples: ('A', 'x'), enquanto que as strings são representadas entre aspas ("A", "x", 'AXYK2*").
+
+       A única relação existente entre caracteres e strings reside no fato de que a string é formada por um conjunto de caracteres agrupados num único array.
+
+A declaração das strings obedece à sintaxe de declaração de array de caracteres em C. 
+
+No entanto, temos um problema. Por exemplo, se declararmos um vetor denominado v com 100 posições para o nome e lá colocarmos a string ZÉ, como poderemos saber quais e quantos dos 100 caracteres estamos efetivamente a utilizar?
+
+A solução adotada foi colocar um marcador (um caractere) que indica quando é que a string acaba.
+
+Ora, a tabela ASCII apresenta um grande conjunto de caracteres, alguns dos quais são utilizados como caracteres de controlo. Destes foi escolhido o caractere cujo código ASCII é iguala ZERO, isto é, o caractere número 0 e que se representa por '\0'. 
+
+É esse caractere que é universalmente utilizado para terminar as strings em C.
+
+Exemplo: Sendo a string um array de caracteres, a sua declaração segue as mesmas regras da declaração de um array convencional:  char str[6]
+         É criada na memória uma string (array de caracteres) denominada str com tamanho igual a 6.
+         No entanto, apesar de ser um array, devemos ficar atentos para o facto de que as strings têm no elemento seguinte à última letra da palavra/frase armazenada um caractere '\0'.
+         Isto ocorre porque podemos definir uma string com um tamanho maior do que a palavra armazenada. 
+
+Imaginemos uma string definida com um tamanho de 50 caracteres, mas é utilizada apenas para armazenar a palavra "Ola". 
+Nesse caso, temos 47 posições não utilizadas e que estão preenchidas com lixo de memória (um valor qualquer). 
+Obviamente, não queremos que todo este lixo seja considerado quando a string for exibida na tela. 
+
+Assim, o caractere \0' indica o fim da sequência de caracteres e o início das posições restantes da nossa string que não serão utilizadas a partir desse momento.
+
+Como o caractere '\0' indica o final de nossa string, isso significa que numa string definida com um tamanho 50 caracteres, apenas 49 estarão disponíveis para armazenar o texto.
+
+Nota: Devemos estar sempre atentos de que na declaração de uma string teremos que contar, obrigatoriamente, com o espaço para o caractere nulo. 
+      Deverá assim incluir, sempre, mais uma posição para o referido caractere.
+
+      Por exemplo, ao declaramos um array que contém uma string com 20 caracteres úteis escrevemos:  char s[21], pelo o que usamos 20 caracteres + 1 para o caractere nulo.
+
+Será que existe alguma relação entre array de caracteres e strings?
+
+Nota: Uma string é apenas um array de caracteres. O inverso é falso, isto é, um array de caracteres pode não ser uma string.
+
+NOTA: Uma string corresponde, sempre, a um array de caracteres com um caractere nulo ('\0') que funciona como delimitador.
+
+NOTA: Um array de caracteres pode não conter uma string.
+
+POr exmeplo:
+
+char s[] = "aeiou" - O vetor s é iniciado com a string "aeiou", logo podemos considera-la como uma string, pois o compilador coloca automaticamnete o caractere nulo. O vetor s fica com seis caracteres de comprimento.
+
+char vogais[] = {'a','e','i','o','u'} - o array de caracteres, neste caso não é uma string, pois não há a necessidade de colocar o caractere nulo. Trata-se de um array com cinco caracteres (e não seis) que vão ser utilizados individualmente, e não como um todo.
+
+
+************************************************************************************************************************************************************************************************************************************************************************************
+
+
+1 - Função ft_putstr:  void	ft_putstr(char *str) 
+
+    1.1 - TIpo de Retorno:  void
+    
+          Indica que, no final da execução do programa, nada será devolvido à função que a chamou. 
+          A função simplesmente executa a sua ação (neste caso, imprimir uma string), mas não "produz" uma saída que o programa possa armazenar ou usar diretamente.
+
+    1.2 - Variáveis:
+
+          char *str: é o parâmetro que a função recebe, ou seja, é o parâmetro de entrada que ela vai utilizar para realizar a tarefa de imprimir a string.
+                     Assim, é um ponteiro para um caractere que é utilizado para receber a string que será impressa pela função.
+
+                     Vejamos a seguinte situação:
+
+                     QUando definimos uma string e passamos para a função ft_putstr, o ponteiro char *str não guarda a string em si (ele não guarda o conteúdo da string, como, por exemplo, 'H', 'e', etc.), mas sim o endereço de memória onde o primeiro caractere da string está localizado.
+                     
+                     POr exemplo: Quando definimos uma string: char *str = "Hello", o compilador vai armazenar a string "Hello" num local da memória (como um array de caracteres).
+                                  A string "Hello" é armazenada da seguinte forma na memória:
+
+                                                                +---+---+---+---+---+----+
+                                                                | H | e | l | l | o | \0 |
+                                                                +---+---+---+---+---+----+
+
+                     Cada caractere ocupa um byte de memória, e o último caractere da string é sempre o caractere nulo '\0', que marca o fim da string.
+                     Como um ponteiro é uma variável que aramazena um endereço de memória, no caso de str, ele vai armazenar o endereço de memória do primeiro caractere da string.
+                     Assim, str guarda o endereço de memória onde o caractere 'H' está armazenado, ou seja, o endereço do primeiro caractere da string.
+
+                     Exemplo de como funciona o ponteiro:
+
+                     Se a string "Hello" estiver armazenada a partir do endereço de memória 1000, então:
+
+                                O endereço de memória do caractere 'H' é 1000.
+                                O endereço de memória do caractere 'e' é 1001.
+                                O endereço de memória do caractere 'l' é 1002, e assim por diante.
+
+                     Se str aponta para o primeiro caractere da string "Hello", então o valor de str será o endereço de memória 1000, e o conteúdo de str (*str) será o caractere 'H'.
+
+                     Mas porquê que str acessa o primeiro caractere da string?
+
+                     Quando passamos uma string para uma função, como ft_putstr("Hello"), o valor passado É O ENDEREÇO DE MEMÓRIA DO PRIMEIRO CARACTERE DA STRING.
+                     Dentro da função ft_putstr, o parâmetro char *str agora aponta para o primeiro caractere da string "Hello", porque str contém o endereço de memória desse caractere.
+
+                     Assim, estamos prontos para dizer que: str é um ponteiro para uma string (é um ponteiro para um caractere), ou seja, é um ponteiro que aponta para um endereço de memória, neste caso, aponta para para o primeiro caractere da sequência de caracteres (string).
+                     
+              int i: é utilizada como um índice no loop while para percorrer a string.
+                     Ela começa com 0 e vai sendo incrementada em cada iteração do loop, o que permite que a função acesse cada caractere da string por meio de str[i].
+                     
+                     Assim, esta variável serve para controlar qual caractere da string está a ser processado, a cada momento.
+                     Inicialmente, i = 0 significa que estamos a olhar para o primeiro caractere da string (str[0]).
+                     A cada iteração, i incrementa, movendo-se para o próximo caractere.
+
+          Como funcionam juntas:
+
+          A variável str contém a string que será impressa. ELa é um ponteiro que aponta para o ínicio da sequência de caracteres (string).
+          A variável i é o indice que percorre a string, caractere por caractere. A função começa com i = 0 e acessa o caractere str[0].
+          Em cada ciclo do loop, i é incrementado (ou seja, passa de 0 para 1, de 1 para 2, e assim por diante), até que alcancemos o fim da string (str[i] == '\0').
+
+            Como a função acessa os caracteres da string?
+
+            A função utiliza o ponteiro str para acessar o primeiro caractere e, em seguida, vai percorrendo os caracteres da string com o auxílio do índice i. 
+                     
+                Aqui está como isso funciona:
+
+                O primeiro caractere da string é acessado diretamente através de str[0]. 
+                O que isso significa é: str[0] é equivalente a *(str + 0), que é o conteúdo (caractere) do endereço apontado por str mais o deslocamento de zero, ou seja, o primeiro caractere, 'H'.
+                O segundo caractere é acessado através de str[1], que é equivalente a *(str + 1), ou seja, o conteúdo do endereço de str mais o deslocamento de um, que seria 'e'.
+
+                O processo continua até que a função encontre o caractere nulo '\0'.
+                
+                Imaginemos que str tem o valor 1000 (o endereço onde está o primeiro caractere 'H'):
+
+                str[0] ou *(str + 0) = 'H' (conteúdo no endereço 1000).
+                str[1] ou *(str + 1) = 'e' (conteúdo no endereço 1001).
+                str[2] ou *(str + 2) = 'l' (conteúdo no endereço 1002).
+                E assim por diante, até str[5] ou *(str + 5) ser o caractere '\0', que indica o fim da string.
+                     
+                Isto acontece porque no que diz respeito a strings, utilizamos um ponteiro para o primeiro caractere da string, e podemos acessar os outros caracteres "deslocando-nos" ao longo dessa sequência da memória.
+
+    1.3 - Loop para Percorrer cada Caractere da String:  
+    
+                                    int i = 0;
+                                    while (str[i] != '\0')
+                                    {
+                                        write(1, &str[i], 1);
+                                        i++;
+                                    }
+
+
+          Inicialização do índice i:
+
+          Antes do loop começar, a variável i é inicializada com o valor 0. 
+          O índice i será usado para acessar cada caractere da string.
+          No começo, i = 0, o que significa que estamos a olhar para o primeiro caractere da string, que está em str[0].   
+
+          O loop while continua a ser executado enquanto a condição str[i] != '\0' for verdadeira.
+          Aqui, str[i] corresponde ao caractere atual e acessa o caractere da string na posição i (por exemplo, str[0] acessa o primeiro caractere, str[1] acessa o segundo, e assim por diante).
+          O caractere nulo '\0' indica o fim da string em C. 
+          Assim que o loop encontra o caractere nulo, a condição torna-se falsa e o loop termina.
+
+          1.3.1 - Impressão do Caractere da String:   write(1, &str[i], 1)
+
+                  A função write é chamada para imprimir, na saída padrão, um caractere, de cada vez, da string.
+                  &str[i] é o endereço do caractere na posição i (posição atual).
+                  Como str é um array de caracteres, str[i] acessa o caractere na posição i e &str[i] seleciona o endereço desse caractere.
+
+          1.3.2 - Incremento de i:
+                  
+                  Após imprimir o caractere, o valor de i é incrementado (i++). 
+                  Isso faz com que o indice se desloque para o próximo caractere da string.
+                  Na próxima iteração do loop, a função vai acessar o próximo caractere da string, e assim por diante, até encontrar o caractere nulo '\0'.
+
+          1.3.3 - Finalização do loop:
+
+                  O loop continua a executar estas etapas: verifica a condição, escreve um caractere, incrementa i, até que ele encontre o caractere nulo '\0'.
+                  Quando str[i] for igual a '\0', o loop termina, pois str[i] != '\0' será falso.
+
+
+Vamos criar um fluxo completo que envolve a função ft_putstr, desde a chamada da função main até ao uso de ponteiros para acessar os endereços de memória dos caracteres da string. 
+
+1) Na main:
+
+   Declaramos uma string e passamos essa string para a função ft_putstr:
+
+   char *str1 = "Benfica";
+   ft_putstr(str1);
+
+   Aqui, estamos a criar um array de caracteres denominado str1 que contém a string "Benfica".
+
+   Quando declaramos um array de caracteres desta forma, o nome str1 é automaticamente interpretado como o endereço do primeiro caractere da string.
+
+   O compilador automaticamente adiciona o caractere nulo '\0' no final, então a string na memória fica assim:
+
+                                  +---+---+---+---+---+---+---+---+
+                                  | B | e | n | f | i | c | a | \0|
+                                  +---+---+---+---+---+---+---+---+
+    
+    Esta string ocupa 8 bytes na memória (7 caracteres + o caractere nulo \0).
+
+    Vamos supor que a string "Benfica" esteja armazenada na memória a partir do endereço 1000. 
+    Isso significa que:
+
+      O caractere 'B' está no endereço de memória 1000.
+      O caractere 'e' está no endereço 1001.
+      O caractere 'n' está no endereço 1002, e assim por diante.
+
+     Então, temos:
+
+     Endereço:    1000    1001    1002    1003    1004    1005    1006
+     Conteúdo:    'B'     'e'     'n'     'f'     'i'     'c'      'a'
+
+     Portanto, str1 é o endereço de memória do primeiro caractere da string, que, é o endereço 1000.
+
+     Em ft_putstr(str1):
+
+     COmo um ponteiro é uma variável que guarda o endereço de memória de outra variável, quando falamos de strings, elas são implementadas como arrays de caracteres.
+     O nome do array em si é na verdade um ponteiro para o primeiro caractere desse array.
+
+     QUando chamamos a função ft_putstr(str1), estamos a passar o endereço do primeiro caractere da string, ou seja, estamos a passar o endereço 1000 para a função.
+
+     Aqui a string não é copiada para dentro da função. 
+     Em vez disso, a função recebe um ponteiro que aponta para o primeiro caractere da string já existente na memória.
+     O valor passado para a função é o endereço de str1, ou seja, 1000.
+     Isto significa que o argumento str1 é o endereço do primeiro caractere da string, ou seja, str1 = 1000. 
+
+2) Dentro da Função ft_putstr:
+   
+   char *str: O parâmetro da função é um ponteiro para caractere. Isto significa que a função ft_putstr espera receber um endereço de memória que aponta para um caractere (neste caso, para o primeiro caractere da string).
+
+   Quando chamamos ft_putstr(str1) na main, o valor de str1 (o endereço 1000) é passado para str. 
+   Portanto, dentro de ft_putstr, o ponteiro str agora aponta para o endereço 1000.
+
+   Por outras palavras: str = 1000: str agora contém o endereço de memória 1000, que é onde o primeiro caractere da string ('B') está armazenado.
+
+   Como o ponteiro str é usado dentro da função:
+
+   Acesso ao conteúdo da string:
+
+   Inicialização do índice i:  i = 0: Aqui, a variável i é inicializada com 0. Isso significa que o primeiro caractere da string será acessado com str[0].
+
+   O loop while (str[i] != '\0') é utilizado para percorrer a string, e o índice i começa em 0.
+        
+        str[i]: A expressão str[i] significa "acessar o caractere que está a i posições à frente do endereço apontado por str".
+        
+        Como str = 1000, então:
+
+            str[0] acessa o endereço 1000, onde está o caractere 'B'.
+            str[1] acessa o endereço 1001, onde está o caractere 'e'.
+            E assim por diante, até encontrar o caractere nulo '\0', que marca o fim da string.
+
+    Escrita dos caracteres:
+
+    O código write(1, &str[i], 1) é responsável por enviar cada caractere para a saída padrão (o terminal).
+        
+        &str[i]: Isso significa "o endereço do caractere na posição i". Como str = 1000:
+            
+            Na primeira iteração, &str[0] é o endereço 1000, que contém 'B'.
+            Na segunda iteração, &str[1] é o endereço 1001, que contém 'e'.
+            E assim por diante.
+
+        O write usa esse endereço para enviar o conteúdo (o caractere) ao terminal.
+
+    Incremento de i: Após cada caractere ser impresso, i++ incrementa o índice para acessar o próximo caractere da string, até que o caractere nulo '\0' seja encontrado, momento em que o loop termina.
+
+    Vamos observar, ao pormenor:
+   
+        Primeira iteração (i = 0):
+
+        str[0]: Acessamos o primeiro caractere da string ao utilizar str[0]. 
+                Como str aponta para o endereço 1000, str[0] acessa o conteúdo de 1000, que é 'B'.
+                A condição do while é 'B' != '\0', o que é verdadeiro, então entramos no corpo do loop.
+
+        write(1, &str[0], 1): Aqui, estamos a escrever o caractere 'B' na saída padrão (terminal). 
+                              O parâmetro &str[0] significa "endereço de str[0]", ou seja, o endereço 1000.
+                              write envia 1 byte a partir do endereço 1000, que contém o caractere 'B', para o terminal.
+
+        Depois disso, incrementamos i:  i++;
+
+        i = 1: Agora, o índice i é 1, e na próxima iteração vamos acessar o segundo caractere da string.
+
+        Segunda iteração (i = 1):
+
+        str[1]: Acessamos o segundo caractere da string ao utilizar str[1]. 
+                Como str ainda aponta para o endereço 1000, str[1] acessa o conteúdo do endereço 1001, que é 'e'.
+                A condição do while é 'e' != '\0', então entramos no loop novamente.
+
+        write(1, &str[1], 1): Agora vamos escrever o caractere 'e' no terminal. O endereço de str[1] é 1001.
+                              write envia 1 byte a partir do endereço 1001, que contém 'e', para o terminal.
+
+        Incrementamos i novamente:
+
+        i = 2: Agora, o índice i vale 2, e o próximo caractere será acessado na próxima iteração.
+
+        Terceira iteração (i = 2):
+
+        str[2]: Acessamos o terceiro caractere, 'n', no endereço 1002.
+        A condição 'l' != '\0' é verdadeira, então escrevemos 'l' no terminal ao utilizar o write.
+
+        E assim por diante:
+
+        Quarta iteração (i = 3): Acessamos o caractere 'f' no endereço 1003 e escrevemos.
+        Quinta iteração (i = 4): Acessamos o caractere 'i' no endereço 1004 e escrevemos.
+        Sexta iteração (i = 5): Acessamos o caractere 'c' no endereço 1005 e escrevemos.
+        Sétima iteração (i = 6): Acessamos o caractere 'a' no endereço 1006 e escrevemos.
+        
+        Oitava iteração (i = 7): str[7] - Finalmente, acessamos o caractere '\0' no endereço 1007.
+                                 A condição do while agora é '\0' != '\0', o que é falso, então o loop termina.
+
+     Fim da função: Quando o loop termina, a função ft_putstr retorna e a execução volta para a função main.
+   
+

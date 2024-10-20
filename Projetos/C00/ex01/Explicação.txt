@@ -1,0 +1,126 @@
+O objetivo deste código é imprimir todas as letras minúsculas do alfabeto, de 'a' a 'z', na saída padrão, utilizando a função write da biblioteca unistd.h
+
+1- Biblioteca - #include <unistd.h> : A diretriz #include <unistd.h> inclui a biblioteca unistd.h, que contém a definição da função write. A função write é usada para realizar operações de entrada e saída (I/O) de baixo nível, como escrever dados num arquivo ou na saída padrão (terminal).
+
+2 - FUnção ft_print_alphabet:  void ft_print_alphabet(void)
+
+    2.1 - Tipo de Retorno:  void
+          
+          O tipo de retorno da função é void, e significa que a função não retorna nenhum valor à função que a chamou.
+          Quando a função ft_print_alphabet é chamada, ela não retorna nenhum valor após terminar sua execução. 
+          O objetivo da função é simplesmente realizar uma ação - imprimir o alfabeto de 'a' a 'z' na tela.
+          O seu único propósito é o de realizar a ação de impressão.
+          Uma vez que a impressão esteja completa, não há nenhuma informação relevante que precise de ser devolvida ao código que chamou a função.
+
+    2.2 - Nome da Função:  ft_print_alphabet
+
+    2.3 - Parâmetros da Função:
+
+          Dentro dos parênteses, temos void, o que indica que a função não recebe nenhum argumento. 
+          
+          NOTA: Em C, uma função pode receber zero ou mais parâmetros, e os parâmetros são usados para fornecer informações (ou dados) que a função precisa para executar o código.
+                Assim, quando uma função não precisa de nenhum dado externo para realizar a sua operação, o padrão é declarar void entre parênteses. 
+                Isto indica que o função que está a chamar a função ft_print_alphabet não precisa de passar nenhum valor.
+
+Exemplo: Quando chamamos ft_print_alphabet(), a função não requer nenhuma informação ou dado adicional. 
+         Ela simplesmente executa sua tarefa de imprimir o alfabeto.
+
+
+3 - Declaração e Inicialização da variável:  char letter = 'a'
+
+    A variável letter é do tipo char. 
+    O tipo char é frequentemente usado para representar caracteres individuais (como letras ou símbolos). 
+    Cada caractere tem um valor numérico associado na tabela ASCII (ex.: 'a' é representado pelo número 97, 'b' é 98, e assim por diante até 'z', que é 122).
+    A variável letter é um contador de caracteres dentro do loop while, pelo o que, o while vai utilizar a variável para percorrer cada letra do afabeto, imprimindo-a uma de cada vez.
+    
+    A variável letter é inicializada com o caractere 'a', onde 'a' representa o primeiro caractere do alfabeto em letras minúsculas.
+    A ideia é começar a imprimir a partir desse ponto e, em seguida, passar para as próximas letras ao incrementar o valor de letter.
+
+    Exemplo:
+
+    Na primeira iteração, letter = 'a' (valor ASCII 97).
+
+    Após imprimir 'a', a variável é incrementada através da instrução letter++, pelo o que letter passa a ser 'b' (valor ASCII 98).
+
+    O loop continua, imprimindo o caractere 'b', e de seguida letter é incrementado novamente, tornando-se 'c' (valor ASCII 99), e assim por diante até 'z'.
+
+Esta progressão continua até que letter ultrapasse 'z' (ou seja, quando o seu valor for maior que 122 no código ASCII), o que faz o loop terminar.
+
+
+
+4- Loop While:  while (letter <= 'z') 
+
+    A condição (letter <= 'z') determina que o loop continua a ser executado enquanto o valor de letter for menor ou igual ao caractere 'z'.
+
+    Bloco de código dentro do loop:
+
+       - write(1, &letter, 1): A função write() é utilizada para enviar/escrever dados (neste caso, caracteres) para a saída padrão (normalmente o terminal).
+                               Assim, a função write() imprime o caractere armazenado na variável letterm no terminal. 
+                               Se letter for 'a', a função vai escrever o caractere 'a'.
+
+      - letter++: incrementamos (aumentamos) o valor da variável letter. No caso de caracteres, significa que o valor ASCII de letter é incrementado.
+                  
+                  POr exemplo:
+
+                  Se letter for 'a' (ASCII 97), após letter++, letter torna se 'b' (ASCII 98).
+                  O processo continua para os valores ASCII seguintes, ou seja, letter vai passar de 'a' para 'b', depois para 'c', e assim por diante, até chegar a 'z'.
+
+    Assim, e tal como, inicialmente, a variável letter foi definida como 'a' (97), que corresponde à primeira letra do alfabeto minúsculo, e 'z' (122), que corresponde à última letra do alfabeto minúsculo, e é o caractere onde queremos chegar, o loop continua a repetir o bloco de código até que letter ultrapasse 'z'.
+    Quando letter for maior do que 'z' (maior do que 122), o loop termina.
+
+
+
+ Exemplo:                       
+
+1 - FUnção main: O ponto de entrada de qualquer programa em C, é a função main(). 
+                 Quando o programa começa, o sistema operacional chama a função main, e a execução do programa começa a partir dali.
+
+2 - Chamada da função ft_print_alphabet() dentro do main:  ft_print_alphabet()
+
+    Quando uma função é chamada, o fluxo de execução muda temporariamente da função main para a função chamada, neste caso, ft_print_alphabet().
+    Neste ponto, o programa "suspende" o que está fa fazer na main() e começa a executar o código de ft_print_alphabet().
+
+3 - Execução de ft_print_alphabet: 
+
+    3.1 - Inicialização: A variável letter é declarada e inicializada com o valor 'a' (ASCII 97).
+
+    3.2. Primeira Iteração do while:
+
+         Condição: O valor de letter é 'a', que é menor ou igual a 'z'. Portanto, a condição letter <= 'z' é verdadeira.
+         Ação: A função write(1, &letter, 1) imprime o caractere 'a' na saída padrão (tela).
+         Incremento: letter++ aumenta o valor de letter de 'a' para 'b' (ASCII 98).
+
+    3.3. Segunda Iteração do while:
+
+         Condição: O valor de letter é 'b', que ainda é menor ou igual a 'z'. A condição letter <= 'z' continua verdadeira.
+         Ação: A função write() imprime o caractere 'b'.
+         Incremento: letter++ aumenta o valor de letter de 'b' para 'c' (ASCII 99).
+
+    3.4. Iterações seguintes:
+
+         Esse ciclo continua. O laço while verifica a condição letter <= 'z' em cada iteração.
+         A função write() imprime o caractere correspondente a letter em cada iteração.
+         letter++ incrementa letter para o próximo caractere (seguindo a ordem ASCII).
+
+    3.5. Última Iteração (quando letter = 'z'):
+
+         Condição: O valor de letter é 'z' (ASCII 122). A condição letter <= 'z' é verdadeira.
+         Ação: A função write() imprime o caractere 'z'.
+         Incremento: letter++ aumenta o valor de letter de 'z' para '{' (ASCII 123).
+
+    3.6. Fim do Laço:
+
+         Condição: O valor de letter agora é '{' (ASCII 123), que é maior que 'z'. A condição letter <= 'z' é falsa.
+         O laço while termina e a função ft_print_alphabet() finaliza a execução.
+
+4 - De volta à main: 
+
+    Quando a função ft_print_alphabet() termina, o fluxo de execução retorna automaticamente para o ponto onde a função foi chamada, ou seja, de volta à função main().
+    A execução da main() continua a partir da linha imediatamente após a chamada da função.
+
+5 - Finalização: 
+
+    Após a chamada de ft_print_alphabet(), a main() retorna 0, o que indica que o programa terminou com sucesso e o sistema operacional pode finalizar a execução do programa. 
+    Isso marca o fim da execução da main(), encerrando o programa.
+
+

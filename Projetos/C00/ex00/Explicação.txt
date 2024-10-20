@@ -1,0 +1,259 @@
+O objetivo da função ft_putchar() é imprimir um caractere na tela. Ela recebe um caractere c como argumento e imprime esse caractere na saída padrão (stdout) usando a função write().
+
+1 - #include <unistd.h> : 
+
+    1.1 - #include: É uma diretriz do pré-processador em C, que dá a instrução ao compilador de incluir o conteúdo de um arquivo de cabeçalho (header file) antes de compilar o código. 
+                    Isto permite que o programa tenha acesso às funções definidas no arquivo de cabeçalho.
+                    No código ft_putchar, esta diretriz é utilizada para incluir o header file <unistd.h> que faz parte das bibliotecas padrão do sistema operacional Unix (como Linux e macOS).
+
+        <unistd.h>: Este é o arquivo de cabeçalho a ser incluído.
+                    Ele contém as declarações de várias funções do sistema operacional, necessárias para realizar operações do sistema de baixo nível, como a manipulação de arquivos, a gestão de memória e o controlo de entrada/saída.
+                    O nome unistd significa "Unix Standard", que indica que ele segue o padrão POSIX, que corresponde a um conjunto de normas/padrões que regulam como os sistemas operacionais UNix devem funcionar.
+                    Isto permite que os programas que utilizam estas funções possam funcionar em múltiplas plataformas Unix-like sem grandes modificações.
+                    Incluímos o header <unistd.h> sempre que precisarmos de interagir com o sistema operacional num nível mais profundo do que as funções da biblioteca padrão de C oferecem.    
+        
+                    A biblioteca padrão de C (como stdio.h, stdlib.h, string.h, etc.) foi projetada para ser portável para uma ampla variedade de sistemas operacionais, enquanto as funções de unistd.h são dependentes do sistema e estão mais próximas do kernel do sistema operacional.
+
+                    A biblioteca padrão de C foi projetada para ser usada em qualquer ambiente, independentemente do sistema operacional. 
+                    Ou seja, podemos compilar e executar programas C com a biblioteca padrão em sistemas muito diferentes (como Windows, Unix, e até sistemas embarcados).
+                    No caso da biblioteca unistd.h, as funções são específicas a sistemas Unix-like (como Linux e macOS) porque seguem o padrão POSIX. 
+                    Isto significa que elas dependem de características específicas desses sistemas operacionais, como a maneira como o sistema realiza a gestão dos processos, dos arquivos, e da comunicação entre processos.
+                    
+                    Alguns exemplos de funções em <unistd.h> : write, read, etc.
+
+                    Como vimos, estas funções não fazem parte da biblioteca padrão da linguagem C porque são funções específicas para sistemas operacionais Unix-like e outras plataformas que seguem o padrão POSIX. 
+
+                    No caso da função ft_putchar, precisamos de incluir este header file para podermos utilizar a função write, que é utilizada para escrever dados (bytes) diretamente no arquivo, ou na saída padrão (terminal).
+
+
+2 - void ft_putchar(char c) : 
+
+    A função void ft_putchar(char c) é uma função em C que recebe um único caractere como argumento e o imprime na saída padrão.
+
+    2.1 - Tipo de Retorno:  void
+     
+          Em C, todas as funções têm um tipo de retorno, que indica o tipo de dado que a função irá devolver à função que a chama após ser executada.
+
+          O tipo de retorno da função ft_putchar é void, o que indica que a função não devolve nenhum valor ao ser chamada.
+          
+          Nota: Em C, uma função pode devolver um valor (como int, char, ou um ponteiro), ou pode não devolver nada, o que é indicado pelo tipo void. 
+                
+          A função ft_putchar tem o tipo de retorno void porque ela não precisa de devolver nenhum valor para a função que a chamou. 
+          O propósito da função é apenas executar uma ação: imprimir um caractere na tela. 
+          Assim, uma vez que o caractere é impresso, não há mais nada que a função precise de fazer, e por isso ela não precisa retornar um valor.
+
+          Como a função cumpriu o seu propósito, o programa pode continuar a sua execução normalmente sem precisar de lidar com um valor retornado.
+
+          Por exemplo, não há a necessidade de saber quantos caracteres foram impressos (pois sempre será exatamente um).
+          
+    2.2 - Nome da Função:  ft_putchar
+         
+    2.3 - Parâmetro da Função:  char c
+
+          Parâmetro: Quando declaramos uma função, o parâmetro é a variável que aparece na função. 
+                     No caso de ft_putchar, o parâmetro é: char c. 
+                     O parâmetro funciona como um espaço reservado para o valor que será passado à função quando ela for chamada.
+          
+          Argumento: O argumento é o valor real que é passado para a função quando a chamamos. Se chamarmos ft_putchar('A'), o argumento 'A' é passado para o parâmetro char c.
+
+          Tipo char: é um tipo de dado em C que representa um caractere individual. 
+                     Ele armazena o valor como um número inteiro correspondente ao código ASCII do caractere (ou outro conjunto de caracteres, dependendo do sistema). 
+                     O tipo char ocupa 1 byte (8 bits) na memória e pode armazenar valores de -128 a 127 ou 0 a 255 (dependendo se ele é tratado como signed ou unsigned).
+                     Então, quando passamos 'A' como argumento para a função, na verdade estamos a passar o valor 65 para o parâmetro char c.
+
+          O parâmetro char c, que é uma variável local, define que a função vai aceitar um caractere como entrada para trabalhar com ele, e, no caso específico de ft_putchar, esse caractere será impresso na saída padrão.
+          
+          Nota: char é um tipo de dado que representa um caractere na tabela ASCII (ou qualquer outro conjunto de caracteres). 
+                Ele ocupa 1 byte de memória (8 bits) e pode armazenar valores que correspondem a caracteres.
+
+          Assim, na função ft_putchar:
+
+             - char: indica o tipo de dado que o parâmetro aceitará. Neste caso, ele espera um valor do tipo caractere.
+             - c: é o nome do parâmetro. É uma variável local da função ft_putchar, o que significa que a variável c só existe enquanto a função está a ser executada.
+
+          Quando a função é chamada, o valor passado como argumento (por exemplo, 'A') será copiado para o parâmetro c. 
+          Dentro da função ft_putchar, podemos usar c para nos referirmos a esse valor.
+
+3 - Função write:
+
+    A função write é uma função definida na biblioteca unistd.h, qque permite ao programa interagir diretamente com o sistema operacional para realizar operações de E/S (Entrada/Saída).
+    Esta função é utilizada para escrever no descritor de arquivo (escreve o caractere c no arquivo padrão de saída).
+    Ela envia o byte contido no &c para o descritor de arquivo (neste caso 1 (stdout)).
+
+    O protótipo de write é:   ssize_t write(int fd, const void *buf, size_t count);
+
+        - fd (file descriptor): Um número inteiro que identifica o destino da escrita, como a saída padrão, um arquivo ou outro dispositivo.
+        - buf (buffer): Um ponteiro para o local na memória onde os dados serão lidos.
+        - count: O número de bytes a serem escritos.
+
+    A função write(1, &c, 1) recebe três parâmetros:
+   
+    - '1' (file descriptor - fd): 
+    
+       O primeiro argumento passado para a função write é o descritor de arquivo que identifica o local onde os dados devem ser escritos. 
+       O descritor de arquivo é um número inteiro que identifica o destino da escrita, como o arquivo ou dispositivo para o qual os dados serão escritos. 
+       No caso da saída padrão, o descritor de arquivo é 1.
+       
+       Nos sistemas UNix, cada processo tem três tipos de descritor de arquivo:
+
+           - 0 : corresponde ao descritor de arquivo de entrada padrão (stdin). 
+                 É usado para ler dados do teclado ou outro dispositivo de entrada.
+           - 1 : corresponde ao descritor de arquivo de saída padrão (stdout). 
+                 É usado para escrever dados na tela ou outro dispositivo de saída.
+           - 2 : corresponde ao descritor de arquivo de erro padrão (stderr). 
+                 É usado para enviar mensagens de erro à tela ou outro destino.
+    
+       No caso de write (1, ...), o número 1 significa que os dados serão enviados para a saída padrão, que geralmente é o terminal onde o programa está a ser executado.
+
+    - '&c' (buffer de dados):
+    
+       O segundo argumento passado para a função write é o buffer de dados, ou seja, a memória onde a função write vai ler os dados para enviar para a saída.
+       
+       No caso de write [1, &c, 1] passamos &c, que é o endereço de memória do parâmetro c.
+
+         - c é uma variável do tipo char que armazena um caractere.
+         - &c é o endereço de memória onde o valor de c está armazenado.
+
+       O operador & é usado para obter o endereço de uma variável.
+       A função write precisa do endereço porque ele opera diretamente na memória para recolher os dados e transferi-los para o destino (saída padrão, neste caso).
+
+       Portanto, &c indica a posição na memória onde está armazenado o caractere que queremos imprimir.
+
+       Assim, o segundo argumento corresponde ao endereço do caractere 'c' a ser escrito (isso signifca que queremos escrever o valor da variável 'c').
+
+       Exemplo:
+
+       char c = 'A';  // 'A' é o valor armazenado em 'c'
+       write(1, &c, 1);  // Passa o endereço de 'c' para que o valor seja impresso
+
+       Aqui, a função write não trabalha diretamente com 'A', mas sim com o endereço onde 'A' está armazenado, e então ela lê 1 byte (o valor de 'A' neste caso) a partir desse endereço.
+
+            
+            NOTA: Em C, um ponteiro é uma variável que armazena o endereço de outra variável. 
+
+                  char c = 'a';  c é uma variável do tipo char que armazena o caractere 'a'.
+                  char *p = &c;  p é um ponteiro para o tipo char, que armazena o endereço de c. O endereço da variável c é armazenado na variável *p (ponteiro p).
+
+                  O operador & é usado para obter o endereço de uma variável ( &c é o endereço da variável c).
+                  O operador * é usado para acessar o valor armazenado no endereço ao qual o ponteiro aponta. No exemplo acima, *p seria 'a', pois p aponta para c.
+
+                  Os ponteiros são muito úteis pois permitem que trabalhemos diretamente com a memória e que manipulemos os dados em diferentes locais da memória.
+
+                  Dentro da função ft_putchar() usamos &c para obter o endereço de c. Isso transforma c num ponteiro para o tipo char que aponta para a posição da memória onde c está armazenado.
+                  A função write() requer um ponteiro para um buffer de dados como segundo argumento. Passamos &c, que é um ponteiro para o endereço de c.
+                  Suponhamos que, quando for feita a chamada da função ft_putchar(), na main, o caractere c seja 'a'. O endereço de c (&c) é passado para a função write();
+                  O segundo argumento da função write() é o endereço na memória que aponta para um caractere ou string (se escrevermos a string diretamente, o compilador vai encontrar uma lugar na memória para ela e vai colocar o endereço no segundo parâmetro da função write).
+
+
+    - '1' (tamanho em bytes):
+    
+       O terceiro argumento é o número de bytes que a função deve escrever a partir do buffer. 
+       No caso da função ft_putchar, o argumento 1 especifica que queremos escrever 1 byte a partir do endereço fornecido (neste caso, o byte correspondente ao caractere 'a'). 
+       COmo cada caractere em C ocupa 1 byte, passamos o número 1 no terceiro argumento, que indica que queremos escrever apenas 1 byte (o valor de c).   
+       Esse byte corresponde ao caractere armazenado na variável c ('a').
+
+    
+       Como a função write funciona na prática:
+
+       Quando a função write(1, &c, 1) é chamada, o sistema operacional realiza as seguintes operações:
+
+        - Recebe os parâmetros: O sistema operacional recebe o descritor de arquivo (1), o endereço do buffer (&c), e o número de bytes para escrever (1).
+        - Lê os dados: A função write lê 1 byte da memória, começando no endereço apontado por &c. 
+                       Esse byte é o valor armazenado em c (por exemplo, o caractere 'A', que corresponde ao código ASCII 65).
+        - Envia os dados para a saída padrão: O sistema escreve o byte lido (neste caso, o valor 65 que representa 'A') na saída padrão. 
+                                            Isso resulta na exibição do caractere 'A' na tela.
+
+
+4 - Como o argumento é passado para o parâmetro?
+
+    Em C, a passagem de parâmetros para funções normalmente acontece por valor. 
+    Isso significa que o argumento passado para a função (por exemplo, 'A') é copiado para o parâmetro c da função.
+
+    Passagem por valor: Quando chamamos a função, o valor real do argumento é copiado para o parâmetro. 
+                        Isso significa que, dentro da função, c é uma cópia do valor passado, não o valor original. 
+                        Qualquer alteração feita a c dentro da função não afeta o valor original que foi passado.
+
+    
+    Exemplo de chamada de função: ft_putchar('A');
+
+    O caractere 'A' é o argumento passado.
+    'A' é convertido no valor numérico correspondente, no código ASCII (65).
+    Esse valor é copiado para o parâmetro c da função ft_putchar.
+    Dentro da função, o parâmetro c irá conter o valor 65 (o código ASCII de 'A').
+
+    Dentro da função:
+
+                            void ft_putchar(char c) 
+                            {
+                                write(1, &c, 1);  // Usa o valor de 'c' para imprimir o caractere
+                            }
+
+    write(1, &c, 1); vai escrever o valor armazenado em c (nesse caso, o caractere 'A') na saída padrão.  
+
+
+5 - Como o parâmetro c é usado dentro da função ?
+
+    Dentro da função ft_putchar, o parâmetro c armazena o valor do caractere que foi passado como argumento. 
+    Ele é então utilizado na chamada para a função write, para enviar esse caractere à saída padrão (ou seja, imprimir na tela).
+
+    Aqui está o passo a passo do que acontece:
+
+      - O valor do argumento (por exemplo, 'A') é copiado para o parâmetro c.
+      - A função write é chamada para imprimir o caractere. Para isso, a função write precisa de um ponteiro para o valor do caractere. 
+        O parâmetro c contém esse valor, e o operador & (endereço) é usado para obter o endereço de memória onde o valor está armazenado.
+      - write(1, &c, 1); instrui o sistema a:
+       
+          - Usar o descritor de arquivo 1 (que representa a saída padrão, ou seja, o terminal).
+          - Ler o caractere armazenado no endereço de c (com &c).
+          - Escrever 1 byte (que corresponde ao valor de c) na saída padrão.
+
+
+6. Como o parâmetro é passado ?
+
+   Chamada da função: Quando chamamos a função ft_putchar('A'), o compilador traduz o caractere 'A' para o seu valor ASCII (65) e passa esse valor como argumento.
+   Cópia do valor: O valor 65 é copiado para a variável local c dentro da função ft_putchar. Essa cópia é feita automaticamente.
+   Uso dentro da função: A função usa c (agora contém o valor 65) para realizar a tarefa de imprimir o caractere correspondente.
+
+   Um exemplo ilustrativo:
+
+                            void ft_putchar(char c) 
+                            {
+                                write(1, &c, 1);  // Imprime o caractere que 'c' representa
+                            }
+
+                            int main() 
+                            {
+                                ft_putchar('A');  // Chama a função com o argumento 'A'
+                                return 0;
+                            }
+
+    Quando ft_putchar('A') é chamado:
+
+        O valor 'A' (que é 65 em ASCII) é passado para a função.
+        Esse valor é copiado para o parâmetro c.
+        O valor de c (65) é então usado na chamada para write, que imprime o caractere 'A' no terminal.
+
+
+7 - Passagem por valor e implicações:
+
+    Como os parâmetros em C são passados por valor, qualquer alteração feita à variável c dentro da função não afeta o argumento original. 
+    Isso significa que se tentassemos modificar c dentro de ft_putchar, essa modificação não seria refletida fora da função.
+
+    Exemplo:
+
+                                void ft_putchar(char c) 
+                                {
+                                    c = 'B';  // Alteramos o valor de c, mas isso não afeta o argumento original
+                                    write(1, &c, 1);  // Agora imprime 'B'
+                                }
+
+                                int main() 
+                                {
+                                    char letter = 'A';
+                                    ft_putchar(letter);  // Mesmo passando 'A', será impresso 'B'
+                                    return 0;
+                                }
+
+    Aqui, passamos o caractere 'A' para ft_putchar, mas dentro da função, alteramos o valor de c para 'B'. 
+    Esta mudança afeta apenas o parâmetro c local, e não o valor original (letter em main). 
+    Assim, a função imprime 'B', mas o valor de letter na main permanece 'A'.

@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:55:50 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/04 00:41:52 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/14 22:32:55 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,20 @@ void	ft_putchar(char c)
 }
 
 /*
-int main(void)
+int main() 
 {
-    ft_putchar('H');
-    ft_putchar('e');
-    ft_putchar('l');
-    ft_putchar('l');
-    ft_putchar('o');
-    ft_putchar(' ');
-    ft_putchar('W');
-    ft_putchar('o');
-    ft_putchar('r');
-    ft_putchar('l');
-    ft_putchar('d');
-    ft_putchar('!');
+    ft_putchar('A');
+    ft_putchar('\n');
 
-    return (0);
+    return 0;                      
 }
+*/
+
+
+/*
+OUTPUT:
+
+cc -Wall -Wextra -Werror ft_putchar.c -o ft_putchar
+sh-5.2$ ./ft_putchar 
+A
 */

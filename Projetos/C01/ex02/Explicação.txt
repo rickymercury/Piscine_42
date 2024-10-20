@@ -1,0 +1,133 @@
+1 - Função ft_swap:  void	ft_swap(int *a, int *b)
+
+    1.1 - TIpo de Retorno:  void
+
+          A função tem o tipo de retorno void, o que significa que ela não retorna nenhum valor. 
+          O objetivo da função é simplesmente realizar uma operação (trocar os valores das variáveis) e não devolver um resultado para o programa que a chamou.
+
+    1.2 - Declaração das Variáveis:
+
+          A função recebe dois parâmetros, ambos do tipo int *, ou seja, dois ponteiros para inteiros.
+          Os parâmetros da função são dois ponteiros que permitem à função acessar e modificar diretamente os valores das variáveis inteiras passadas para ela.
+
+          int *a: é um ponteiro que aponta para uma variável do tipo int. 
+                  Isso significa que o parâmetro a é o endereço de uma variável inteira, e dentro da função podemos acessar o valor armazenado nessa variável utilizando a desreferenciação (*a).
+                  QUando desreferenciamos a (com *a), estamos a acessar o valor que está armazenado no endereço de memória para o qual a aponta.
+                  
+                  Função na troca: O valor de *a é o valor da variável inteira original que foi passada para a função.
+                                   Na primeira linha de troca: swap = *a, o valor atual de *a +e salvo temporariamente na variável swap antes de ser alterado.
+                                   Na segunda etapa: *a = *b, o valor de *a é substituído pelo valor de *b, efetivamente trocando o valor de a para o valor de b.
+
+           int *b: De forma semelhante, b é um ponteiro para uma variável do tipo int.
+                  A desreferenciação de b (com *b) acessa o valor da variável inteira para a qual b aponta.
+
+                  FUnção na troca: Na linha *a = *b, o valor de *b (o valor da variável b) é copiado para *a, fazendo com que a agora tenha o valor original de b.
+                                   Finalmente, em *b = swap, o valor de *b (ou seja, a variável b) é atualizado com o valor armazenado em swap, que é o valor original de a.
+                                   Isso completa a troca.
+
+           int swap: é uma variável local do tipo inteiro, dentro da função ft_swap.
+                     Ela serve como uma variável temporária para armazenar o valor de a enquanto a troca ocorre.
+                     Função na troca: Na linha swap = *a, swap salva o valor atual de *a (a variável a original), para que possamos trocá-lo sem perder o seu valor.
+                     Depois, quando fazemos *b = swap, o valor original de *a, que foi salvo em swap, é atribuído a *b, completando a troca dos valores entre a e b.
+
+
+2 - Visualização do Fluxo
+
+                    int main(void) 
+                    {
+                        int x = 10; // Suponha que o endereço de x é 0x1000
+                        int y = 20; // Suponha que o endereço de y é 0x1004
+
+                        printf("Antes: x = %d, y = %d\n", x, y); // Saída: 10, 20
+
+                        ft_swap(&x, &y); // Chama a função passando os endereços de x e y
+
+                        printf("Depois: x = %d, y = %d\n", x, y); // Saída: 20, 10
+                        return 0;
+                    }
+  
+a) Estrutura da Memória Inicial
+
+    Antes de chamarmos ft_swap, a memória está assim:
+
+     Endereço   Variável  Valor
+     0x1000        x       10
+     0x1004        y       20
+
+     Pelo o que:
+
+     x está armazenado no endereço 0x1000 com o valor 10.
+     y está armazenado no endereço 0x1004 com o valor 20.
+
+b) Chamar a Função ft_swap
+
+     Quando chamamos ft_swap(&x, &y), os endereços de x e y são passados para a função:
+
+                    void ft_swap(int *a, int *b) 
+                    {
+                        int swap;
+                        swap = *a;
+                        *a = *b;
+                        *b = swap;
+                    }
+
+      a agora aponta para o endereço de x (&x), ou seja, aponta para 0x100, recebendo o valor 0x1000.
+      b agora aponta para o endereço de y (&y), ou seja, aponta para 0x1004, recebendo o valor 0x1004.
+
+
+     > Primeira Linha
+    
+       Aqui, *a desreferencia o ponteiro a, ou seja, acessa o valor que está armazenado no endereço de memória para o qual o a aponta, neste caso é o &x.
+       Dá-nos, assim, o valor armazenado em x, que é 10.
+       
+       Portanto, swap = *a torna se:  swap = 10; // O valor de x
+
+       Agora, a variável swap armazena o valor 10. 
+      
+       Estado da Memória:
+
+       Endereço   Variável  Valor
+       0x1000        x        10
+       0x1004        y         0
+       swap          10
+
+
+     > Segunda Linha
+
+       Aqui, *b desreferencia o ponteiro b, ou seja, acessa o valor que está armazenado no endereço de memória para o qual b aponta, neste caso é o &y, 
+       Dá-nos, assim, o valor armazenado em y, que é 20.
+     
+       Portanto, *a = *b torna-se:   *a = 20; // Agora x tem o valor de y
+
+       O valor de y é então atribuído a x.
+
+       Após esta linha, o valor de x foi atualizado para 20. 
+     
+       Estado da Memória:
+
+       Endereço   Variável  Valor
+       0x1000        x       20
+       0x1004        y       20
+       swap          10
+
+     > Terceira Linha
+
+       Agora, atribuímos o valor armazenado em swap (que é 10, o valor original de x) a y, ao executarmos *b = swap.
+    
+       O que fizemos foi atualizar *b (ou seja, o valor de y):  *b = 10; // Agora y tem o valor de x original
+       Assim, o valor de y foi atualizado para 10.
+
+       Estado da Memória Final:
+
+       Endereço   Variável  Valor
+       0x1000        x       20
+       0x1004        y       10
+       swap          10
+
+
+     Resultado Final:
+
+     Após a execução da função ft_swap, os valores das variáveis foram trocados:
+
+     x (armazenado em 0x1000) agora é 20
+     y (armazenado em 0x1004) agora é 10

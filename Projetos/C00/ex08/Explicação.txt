@@ -1,0 +1,274 @@
+1 - Função ft_recursive:   void	ft_recursive(int last_digit, int n, int length, char *array)
+
+    1.1 - Tipo de Retorno:  void
+            
+            A função não retorna nenhum valor, pois seu objetivo é simplesmente gerar e imprimir as combinações.
+
+    1.2 - Declaração das Variáveis:
+
+            last_digit: Armazena o último digito processado na sequência.
+                        Este parâmetro mantém o valor do último dígito que foi adicionado à combinação até ao momento. 
+                        Isto garante que os próximos dígitos a serem inseridos na sequência sejam sempre maiores, respeitando a ordem crescente.
+            
+                     n: Representa o índice atual da sequência em construção.
+                        É o nível atual da recursão, que representa a posição em que estamos a adicionar o próximo dígito no array.
+                        POr exemplo, se estivermos a formar uma combinação de 3 dígitos, n pode assumir valores de 0 a 2 (para as posições do array).
+
+                length: Representa o comprimento total desejado para a combinação, ou seja, o número de dígitos a serem formados.
+                        Define, assim, quantos dígitos a combinação deve ter. 
+                        Ele é fixo durante a execução da recursão e indica a nível máxima que queremos alcançar. 
+                        Quando n atingir o valor de length, significa que a combinação está completa e pode ser impressa.
+
+                 array: Representa um array de caracteres (string) que guarda a combinação dos dígitos, até o momento. 
+                        Por exemplo, se estivermos a formar combinações de 2 dígitos e o array contiver ['3', '5'], significa que já formamos a combinação "35".
+
+                    i:  É utilizada para percorrer os próximos dígitos possíveis.
+
+ 
+    1.3 - Verificação Base da Recursão: 
+
+                    if (n == length)
+                    {
+	                    write(1, array, length);
+	                    if (array[0] < '0' + (10 - length))
+		                    write(1, ", ", 2);
+	                    return;
+                    }
+
+          if (n == length): Se o valor de n (nível atual) for igual ao comprimento desejado length, significa que a combinação está completa.
+                            Ou seja, quando n (nível atual) for igual a length, significa que já formamos uma combinação completa de length dígitos.
+                            Neste ponto:
+
+                              - write(1, array, length): A combinação (sequência) formada, que é armazenada no array, é impressa na saída padrão.
+                              - if (array[0] < '0' + (10 - length)): Verifica se o primeiro dígito da combinação é menor do que o último possível.
+                                                                     Ou seja, verifica se o primeiro diigto ainda não atingiu o máximo permitido, portanto, se ainda há mais combinações a serem formadas. 
+                                                                     Caso seja, imprime uma vírgula e um espaço para separar as combinações (write(1, ", ", 2))
+                              - return: Interrompe a função, voltando ao nível anterior da recursão.
+
+    
+    1.4 - Loop para Formar o Próximo Dígito: 
+ 
+                    i = last_digit + 1;
+                    while (i <= 9)
+                    {
+	                    array[n] = '0' + i;
+	                    ft_recursive(i, n + 1, length, array);
+	                    i++;
+                    }
+    
+           i = last_digit + 1: A variável i é inicializado com o próximo número a ser considerado na combinação.
+                               O loop só vai considerar os números maiores que o último digito já utilizado (adicionado) na combinação.
+                               Isso garante que os dígitos estão em ordem crescente e evita duplicações (repetições).
+                               Assim, o próximo dígito deve ser maior que o último utilizado.
+    
+               while (i <= 9): O loop garante que o valor de i varie de last_digit + 1 até 9. 
+                               O objetivo é testar todos os números possíveis, começando com o próximo valor maior do que o último digito inserido.
+                               Ou seja, vamos garantir que os próximos dígitos da combinação sejam formados a partir do próximo valor válido até ao dígito 9.
+
+                    - array[n] = '0' + i: O número i é convertido para o seu caractere correspondente e é armazenado no array na posição n.
+                                          POrtanto, isto vai armazenar o próximo digito da combinação, no array.
+                                          
+                                          Por exemplo, como i é um número (por exemplo, 4), ao somarmos o caractere '0' converte 4 no caractere '4'. 
+                                          Isso funciona porque na tabela ASCII, o caractere '0' tem o valor decimal 48, e somar 4 a este valor resulta em 52, que é o código ASCII do caractere '4'.
+
+                    - ft_recursive(i, n + 1, length, array): A função é chamada recursivamente, para continuar a construção da combinação.
+
+                                - i: é o valor do digito atual que foi atribuído à combinação na linha anterior.
+                                     Na chamada recursiva, ele torna-se o novo last_digit.
+
+                                - n + 1: como vimos, a variável n representa a posição (nível) atual da combinação que estamos a preencher no array. Ou seja, é o índice atual no array.
+                                         A cada chamada recursiva, como acabamos de preencher a posição n no array, aumentamos n em 1 para preencher a próxima posição no array.
+                                         Quando n atingir o valor de length, significa que o array está completo e a combinação deve ser impressa (na verificação base da recursão).
+
+                                - lenght: representa o comprimento total da combinação desejada.
+                                          Serve como referência para o caso da verificação base da recursão, que verifica se a combinação antigiu o tamanho necessário.
+                                          O valor de length é fixo.
+
+                                - array: representa o array de caracteres que está a ser preenchido com os digitos da combinação.
+                                         Passamos o array em todas as chamadas recursivas, permitindo que as combinações sejam construídas e mantidas através dos vários níveis da recursão.
+                                 
+                                Quando a chamada recursiva ocorre, a função ft_recursive começa uma nova "cópia" de si mesma, com i como o novo last_digit, e n+1 como o novo índice para preencher o array, onde este último continua o mesmo, e os valores já preenchidos nas iterações anteriores são preservados.
+                                As variáveis length e array permanecem os mesmos para manter o tamanho da combinação e o estado atual do array.
+                                
+                                A recursão aqui é utilizada de modo a explorar todas as possibilidades de combinações de digitos de comprimento length, a partir de um determinado ponto (que é i que torna-se o last_digit).
+                                A cada nível da recursão, um novo digito é adicionado ao array, até que o tamanho desejada da combinação (length) seja atingido.
+                                  
+
+                                Exemplo:
+
+                                Suponhamos que estamos a formar combinações de 3 dígitos (ou seja, length = 3). 
+
+                                A função começa a preencher o array com o primeiro dígito, e então faz uma chamada recursiva para preencher o segundo, e depois uma chamada recursiva para o terceiro:
+
+                                       Primeira chamada: ft_recursive(0, 1, 3, array) (preenche o primeiro dígito com '0').
+
+                                          Chamada recursiva: ft_recursive(1, 2, 3, array) (preenche o segundo dígito com '1').
+
+                                              Chamada recursiva: ft_recursive(2, 3, 3, array) (preenche o terceiro dígito com '2' e imprime 012).
+
+                                                   Após imprimir, volta ao ínicio e tenta a recursão como terceiro dígito o caractere'3', e imprime 013, e assim por diante.
+
+
+                    -  i++: Após a chamada recursiva, i é incrementado, fazendo com que o loop tente formar combinações com o próximo número i, de modo a testar todos os números de i até 9 como possíveis dígitos seguintes, na combinação.
+
+2 - Função ft_print_combn:  void	ft_print_combn(int n)
+
+    2.1 - Declaração da Variável:
+
+          int n: representa a quantidade de digitos que a função deve imprimir, nas combinações.
+                 Assim, a função tem o objetivo de formar todas as combinações de n digitos distintos entre 0 e 9.
+
+    2.2 - Verificação:
+                    
+                    if (n <= 0 || n >= 10)
+	                    return;
+
+               Verificamos se n é menor ou igual a zero ou se n é maior ou igual a 10.
+               Se n for 0 ou um número negativo, não faz sentido tentar formar combinações, uma vez que não podemos ter combinações de 0 ou um número negativo de dígitos. Não podemos imprimir "0 combinações".
+               Como estamos a lidar com dígitos que vão de 0 a 9, não podemos formar combinações de 10 ou mais dígitos, porque não temos dígitos suficientes (apenas 10 dígitos disponíveis).
+               Portanto, se n for 10 ou maior, isso também é inválido, pois teriamos de repetir dígitos.
+
+               Assim, esta verificação assegura que o valor de n esteja dentro de um intervalo válido (1 a 9) antes de prosseguir com a lógica de formação das combinações.
+
+               Se n não estiver dentro desse intervalo, ou seja, se a condição for verdadeira, a função executa a instrução return, que encerra imediamente a função ft_print_combn e volta ao ponto onde foi chamada.
+               Isso previne que o código seja executado, evitando erros e comportamentos indesejados no programa.
+
+    2.3 - Loop:
+
+                    i = 0;
+                    while (i <= 10 - n)
+                    {
+	                    array[0] = '0' + i;
+	                    ft_recursive(i, 1, n, array);
+	                    i++;
+                    }
+
+          Este loop tem a finalidade de iniciar o processo de formação das combinações de n digitos distintos.
+
+          A variável i será utilizada para representar o primeiro digito da combinação que será formada e é inicializada com 0.
+          
+          O loop continua enquanto o primeiro digito da combinação for menor ou igual a 10 - n.
+
+          10 - n: é usado para garantir que ainda há espaço suficiente para adicionar os outros digitos à combinação. 
+                  Isso é importante porque, se n for, por exemplo, 3, então 10 - n será 7.
+                  O que significa que o primeiro digito i pode ir de 0 a 7, permitindo que haja dois digitos adicionais que podem ser adicionados à combinação (8 e 9).
+                  Ou seja, para o primeiro digito i pode ir de 0 a 7, no segundo digito pode ir de 1 a 8 e no terceiro digito pode ir de 2 a 9.
+                  
+                  O valor máximo para i assegura que os digitos se mantenham dentro do intervalo de 0 a 9 e que as combinações formadas sejam válidas.
+          
+          Dentro do loop:
+
+             2.3.1 - Atribuição do Primeiro Digito da COmbinaçã ao array[0]:
+             
+                     COnvertermos o valor númerico de i (que varia de 0 a 9) num caractere e, de seguida, armazenamos esse caractere na primeira posição do array.
+
+             2.3.2 - Chamada da FUnção Recursiva:  ft_recursive(i, 1, n, array)
+
+                     Após definir o primeiro dígito, a função ft_recursive é chamada com o primeiro digito como last_digit e com o nivel inicial 1, para continuar a construção da combinação.
+                     Os parâmetros passados para ft_recursive são:
+
+                        - i: Representa o último digito que foi adicionado.
+                             Isso é importante porque na próxima chamada recursiva, só deveremos considerar os digitos que são maiores que i para garantir que os digitos na combinação sejam distintos e ordenados.
+                             POr exemplo, se i é 3, só devemos considerar os digitos de 4 a 9 nas próximas chamadas.
+
+                        - 1: Representa o nível atual da combinação.
+                             COmo array[0] já foi preenchido, começamos a preencher a próxima posição (ou seja, array[1]), então passamos 1 como o próximo nível.
+
+                        - n: Indica quantos digitos desejamos que a combinação tenha, ou seja, indica o número total de dígitos que a combinação deve ter.
+                             Isto é necessário para saber quando a combinação está completa.
+                             Quando n combinações forem preenchidas, a função pode imprimir o resultado.
+
+                        - array: É o array que armazena a combinação de dígitos.
+                                 À medida que a recursão avança, a função vai preenchendo as posições seguintes do array com os digitos adicionais.
+             
+             2.3.3 - INcremento de i:
+
+                     Após a chamada recursiva, i é incrementado.
+                     Isto faz com que o loop se mova para a próxima iteração, onde o próximo dígito será definido no índice 0 do array e uma nova combinação será gerada.
+
+
+
+
+Exemplo de Fluxo com n = 2
+
+    1)Chamada Inicial:
+
+        A função ft_print_combn(2) é chamada.
+        i é inicializado com 0 
+        
+    2)Loop Principal:
+      
+        Começa o primeiro loop: array[0] = '0' + 0; → array[0] = '0' (array agora contém ['0', ...]).
+        
+        Chamada: ft_recursive(0, 1, 2, array);
+
+    3)Chamada da Função Recursiva: ft_recursive(0, 1, 2, array); é chamada.
+
+    Execução da Função ft_recursive:
+    
+        1ª Chamada: ft_recursive(0, 1, 2, array)
+
+            n (1) não é igual a length (2), então não imprime.
+
+            i = 0 + 1 → i = 1.
+
+            Entra no loop, onde i será incrementado até 9.
+
+             1ª Iteração (i = 1) do Loop:
+           
+                 array[1] = '0' + 1; → array[1] = '1' (array agora contém ['0', '1', ...])
+            
+                 Chamada recursiva: ft_recursive(1, 2, 2, array);
+
+        2ª Chamada: ft_recursive(1, 2, 2, array)
+
+            Agora, n (2) é igual a length (2), então imprime:
+
+            write(1, array, 2); → imprime 01.
+
+            Como array[0] < '0' + (10 - 2), imprime ", ".
+
+            Retorno à 1ª Chamada:
+           
+                O loop na 1ª chamada continua.
+                i agora é incrementado para 2.
+
+             2ª Iteração (i = 2) do Loop:
+
+                array[1] = '0' + 2; → array[1] = '2' (array agora contém ['0', '2', '\0', ...])
+                
+                Chamada recursiva: ft_recursive(2, 2, 2, array);
+
+        3ª Chamada: ft_recursive(2, 2, 2, array)
+        
+            n (2) é igual a length (2).
+
+            Imprime 02 e, como array[0] < '0' + (10 - 2), imprime ", ".
+
+            Retorno à 1ª Chamada:
+
+                 O loop continua após a terceira chamada.
+                 i incrementa para 3.
+            
+             3ª Iteração (i = 3) do Loop:
+
+                array[1] = '0' + 3; → array[1] = '3'  (array agora contém ['0', '3', '\0', ...]).
+                
+                Chamada recursiva: ft_recursive(3, 2, 2, array);
+
+        4ª Chamada: ft_recursive(3, 2, 2, array)
+
+            n (2) é igual a length (2).
+
+            Imprime 03 e, como array[0] < '0' + (10 - 2), imprime ", ".
+
+            Retorno à 1ª Chamada:
+
+            Continua o loop até i ser igual a 9:
+            
+            Cada chamada recursiva para i = 4, i = 5, i = 6, i = 7, i = 8, e i = 9 imprime: 04, 05, 06, 07, 08, 09, respectivamente.
+            Todos seguidos por ", ".
+
+
+
+

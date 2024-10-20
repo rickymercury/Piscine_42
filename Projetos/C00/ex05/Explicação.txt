@@ -1,0 +1,307 @@
+A função ft_print_comb() imprime todas as combinações diferentes de três dígitos distintos, em ordem crescente, separados por uma vírgula e um espaço. 
+Ela usa a função write() para exibir os caracteres na saída padrão.
+
+1 - Função ft_print_comb:   void ft_print_comb(void)
+
+    1.1 - Tipo de Retorno:  void
+
+          O tipo de retorno void indica que a função não retorna nenhum valor.
+          O propósito da função ft_print_comb() é simplesmente imprimir todas as combinações de três dígitos distintos, de '0' a '9'. 
+          Não precisa de devolver um resultado à função que a chamou, pois a sua única ação relevante é a de exibir algo na saída padrão.
+          
+          A função não efetua cálculos que necessitam de ser devolvidos. Apenas cria uma saída na tela. 
+          
+          Assim, a função retorna void porque o seu único propósito é, simplesmente, imprimir as combinações diretamente e não devolver um valor ao programa que a chamou.
+          O que reflete o fato de que a função está a executar uma tarefa (impressão) sem criar um valor de saída que possa ser utilizado posteriormente no programa.
+
+    1.2 - Nome da Função:  ft_print_comb
+
+    1.3 - Parâmetros da Função:  void
+
+          Os parênteses (void) indicam que a função não recebe nenhum parâmetro.
+          A lógica para formar as combinações de três dígitos não depende de nenhuma entrada externa. 
+          Os números que ela imprime (de '0' a '9') são fixos e conhecidos, então a função pode lidar com isso internamente, sem a necessidade de parâmetros fornecidos pelo utilizador.
+
+          Portanto, quando chamamos ft_print_comb(), na main, não é necessário passar nenhum argumento. 
+          Toda a lógica da função é executada com base nas variáveis locais internas. 
+
+          A função ft_print_comb() não depende das entradas externas (como argumentos passados pelo utilizador), pois trabalha diretamente com as combinações de três dígitos ('0' a '9').
+
+2 - Declaração das Variáveis:  
+
+    Na função ft_print_comb(), as variáveis first, second e third são usadas para armazenar os três dígitos que formam cada combinação.
+
+    2.1 - first: Representa o primeiro dígito da combinação de três números. 
+                 
+                 Começa com o valor '0' porque estamos interessados em criar combinações de três digitos a partir dos números 0 a 9.
+                 Para isso, o primeiro digito da combinação precisa de variar de '0' a '7', pois, através do exemplo do enunciado, a primeira combinação é 012 e a última combinação é 789.
+                 O limite máximo da variável first é '7' porque a combinação com o caractere '7' como primeiro digito deve ser '789', e se first fosse maior que '7', não haveria três números disponíveis para formar uma nova combinação válida.
+                 Assim, garantimos que o segundo e terceiro digitos tenham sempre um valor maior que o primeiro, formando combinações de três números distintos.
+
+    2.2 - second: Representa o segundo dígito da combinação.
+                  
+                 A variável second é sempre inicializada com um número maior que o valor de first, o que evita repetições como '00', '11', etc.
+                 Observamos isso no exemplo do enunciado, em que a variável second é sempre mais um do que a variável first (por exemplo, 012).
+
+                 Garante, também, que second seja maior que first, mantendo a ordem crescente.
+                 O limite máximo da variável second é '8' pois se second fosse maior do que '8', não seria possível encontrar um terceiro digito distinto maior, para formar uma nova combinação válida.
+
+    2.3 - third: Representa o terceiro dígito da combinação. 
+    
+                 A variável third é sempre inicializada com um número maior que o valor de second, o que assegura que third seja sempre maior tanto de first quanto de second, garantindo que a combinação formada seja sempre crescente e não tenha digitos repetidos.
+
+                 Ou seja, se first for '0' e second for '1', third vai iterar de '2' até '9'.
+
+    Se estivermos a trabalhar com arrays, a declaração dos três elementos que correspondem aos três digitos distintos de cada combinação, seria: char digits[3];
+
+        digits[3]: Declara um array de três posições (índices) chamado digits, onde cada posição pode conter um caractere.
+
+    O array digits tem três posições, numeradas de 0 a 2, e o tipo de dado em cada uma delas será um caractere.
+        
+        digits[0]: Primeira posição que corresponde ao primeiro digito da combinação. É inicializado com '0'.
+        digits[1]: Segunda posição que corresponde ao segundo digito da combinação. É inicializado com '1'.
+        digits[2]: Terceira posição que corresponde ao terceiro digito da combinação. É inicializado com '2'.
+
+        A inicialização é então:
+
+        digits[0] = '0';
+        digits[1] = digits[0] + 1;
+        digits[2] = digits[1] + 1;
+
+        De resto, é igual ao que falamos anteriormente.
+
+3 - Primeiro Loop - While do first:
+
+                         first = '0';
+                         while (first <= '7')
+                         {
+                            second = first + 1;
+	                        // corpo do loop
+	                        first++;
+                         }
+
+
+    A variável first é iniciada com o caractere '0'. Como estamos a lidar com caracteres que representam dígitos numéricos, '0' corresponde ao valor ASCII do dígito zero.
+
+    A condição do loop estabelece que first continuará a ser incrementada enquanto ela for menor ou igual a '7', o que significa que o loop vai percorrer os valores de '0' a '7'.
+    
+    Como o objetivo do programa é formar todas as combinações de três dígitos distintos em ordem crescente, se o primeiro dígito fosse maior que '7', não haveria dois outros dígitos distintos maiores que ele para formar uma combinação válida, já que o segundo dígito deve ser maior que o primeiro, e o terceiro deve ser maior que o segundo.
+    Portanto, se first fosse '8' ou '9', não seria possível encontrar dois dígitos maiores para formar uma combinação válida (não há mais números depois de '9').
+    
+    Assim, o valor máximo que first pode assumir é '7'.
+
+    3.1 - Corpo do Loop de first:
+
+          Dentro do corpo do loop, para cada valor de first, o programa:
+
+          3.1.1 - Atribui o valor de second e third:
+
+                - O segundo dígito começa como first + 1 e o terceiro dígito como second + 1.
+
+          3.1.2 - Executa os loops aninhados (second e third):
+        
+                - O código passa para os loops internos que formam os valores de second e third, formando combinações de três dígitos.
+                - Cada combinação é impressa com a função write.
+    
+         3.1.3 - Incrementa o valor de first:
+                 
+                - Após o loop interno (dos outros dois dígitos) terminar, o valor de first é incrementado: first++ .
+
+
+4 - Segundo Loop - Loop do second:
+
+                         second = first + 1;
+                         while (second <= '8')
+                         {
+                            third = second + 1;
+	                        // corpo do loop
+	                        second++;
+                         }
+
+    A variável second é iniciada com o valor first + 1, ou seja, o segundo digito começa sempre como o seguinte ao valor do digito de first.
+    Isto garante que o segundo dígito seja sempre maior que o primeiro, preservando a condição de que as combinações de dígitos são formadas em ordem crescente.
+
+    O loop continua enquanto second for menor ou igual a '8'. 
+    O valor máximo de second é '8' porque o terceiro dígito (third) precisa de ser maior que o segundo. 
+    Se second fosse maior que '8', não haveria um valor válido para o terceiro dígito (que deverá ser maior que o segundo, mas que, ao mesmo tempo, não pode ser maior que '9').
+    Assim, da mesma forma que no primeiro loop, precisamos de garantir que exista um terceiro número maior que second para formar uma combinação válida.
+
+    4.1 - Corpo do Loop de second:
+
+          Dentro do loop, para cada valor de second:
+          
+          4.1.1 - Inicializa third:
+          
+                  O terceiro digito é inicializado como second + 1.
+                  Isso assegura que o terceiro digito seja maior que o segundo, mantendo a ordem crescente.
+        
+          4.1.2 - Executa o Loop de third:
+
+                  O loop interno (de third) itera sobre os valores válidos para o terceiro dígito.
+                  Para cada combinação válida, o código imprime os três digitos, ou seja, todas as combinações de três dígitos com os valores atuais de first e second.
+
+          4.1.3 - Incrementa o valor de third: 
+                  
+                  Após todas as combinações com o valor atual de second serem formadas, ele é incrementado:  second++;
+
+                    
+5 - Terceiro Loop - Loop do third:
+
+                         third = second + 1;
+                         while (third <= '9')
+                         {
+	                        write(1, &first, 1);
+	                        write(1, &second, 1);
+	                        write(1, &third, 1);
+	                        if (first != '7' || second != '8' || third != '9')
+		                        write(1, ", ", 2);
+	                        third++;
+                         }
+
+
+    A variável third é iniciada com o valor second + 1, o que significa que o terceiro digito começa imediatamente após o valor atual de second.
+    Isto garante que o terceiro número (third) seja sempre maior que os dois anteriores, preservando a ordem crescente da combinação.
+    
+    O loop continua enquanto third for menor ou igual a '9'. 
+    O valor máximo para third é '9' porque o terceiro digito tem de ser o maior digito da combinação, e '9' é o maior digito numérico possível, já que não há dígitos maiores que '9'.
+
+    5.1 - Corpo do loop de third:
+
+          Dentro do loop, o código realiza as seguintes operações:
+
+          5.1.1 - Impressão dos Três Dígitos:
+
+                  Cada vez que o loop de third é executado, o código imprime os valores de first, second, e third em sequência:
+
+                           write (1, &first, 1);
+                           write (1, &second, 1);
+                           write (1, &third, 1);
+
+                  O write imprime os três caracteres, representando uma combinação válida.
+
+          5.1.2 - Impressão dos Separadores:
+
+                  Se a combinação atual não for a última possível, o código imprime uma vírgula seguida de um espaço:
+
+                           if (first != '7' || second != '8' || third != '9')
+                               write (1, ", ", 2);
+
+                  O código só imprime a vírgula e o espaço ", " entre cada combinação caso a última combinação ainda não tenha sido impressa. 
+                  A verificação first != '7' || second != '8' || third != '9' verifica se a combinação atual não é '789'.
+                  Esta verificação garante que a combinação não seja seguida por ", ", pois é a última combinação válida.
+
+                  Se não for a última, a vírgula e o espaço são impressos. 
+                  Caso seja a última, o separador não é impresso porque é a última combinação possível.
+
+         5.1.3 - Incremento do valor de third:
+
+                 Isto faz com que o próximo valor de third seja testado na próxima iteração do loop.
+
+
+
+ Explicação:
+
+1. Início do Loop de first:
+
+    O loop começa com first = '0'.
+    O loop de first só termina quando first > '7'. Isso significa que o primeiro dígito vai de '0' a '7'.
+
+2. Início do Loop de second:
+
+    Para cada valor de first, o loop de second começa com second = first + 1.
+    O loop de second continua até que second > '8'. Isso garante que second seja sempre maior que first.
+
+3. Início do Loop de third:
+
+    Para cada valor de second, o loop de third começa com third = second + 1.
+    O loop de third continua até que third > '9', garantindo que third seja sempre maior que second.
+
+4. Ordem de Impressão:
+
+Agora, vamos ver um exemplo detalhado do fluxo de impressão, combinando os loops em diferentes níveis.
+
+Exemplo de Execução do Fluxo:
+
+Passo 1: first = '0'
+
+    Quando first = '0', o código entra no loop de second.
+    
+    Passo 1.1: second = '1'
+
+        Quando second = '1', o código entra no loop de third.
+
+        Passo 1.1.1: third = '2'
+
+            O código imprime: 012
+
+    O valor de third é incrementado.
+
+Passo 1.1.2: third = '3'
+
+    O código imprime: 013,
+
+    O valor de third é incrementado.
+
+...
+
+    O código continua a imprimir todas as combinações possíveis de third enquanto third <= '9':  014, 015, 016, 017, 018, 019,
+
+Passo 1.2: second = '2'
+
+    Após o loop de third terminar, o valor de second é incrementado para '2', e o código entra novamente no loop de third.
+
+    Passo 1.2.1: third = '3'
+
+        O código imprime: 023,
+
+    O valor de third é incrementado.
+
+Passo 1.2.2: third = '4'
+
+    O código imprime: 024,
+
+    O valor de third é incrementado.
+
+...
+
+    O código continua até imprimir: 029,
+
+...
+
+    O loop de second continua para second = '3', second = '4', e assim por diante, até `second = '8'.
+    O código imprime todas as combinações possíveis de third, formando as combinações como:
+
+        034, 035, ..., 079,
+        045, 046, ..., 089,
+
+Passo 2: first = '1'
+
+    Quando o loop de first incrementa para '1', o código volta a executar o loop de second e third, formando novas combinações.
+
+    Passo 2.1: second = '2'
+
+        O loop de second começa em '2' e o loop de third começa em '3'.
+
+            O código imprime: 123, 124, ..., 129,
+
+Passo 2.2: second = '3'
+
+    O loop de second continua, e o código imprime as combinações: 134, 135, ..., 139,
+
+...
+
+    O loop continua até first = '1' formar todas as combinações válidas: 145, 146, ..., 179,
+
+...
+
+    O fluxo continua desta maneira, avançando para first = '2', first = '3', e assim por diante.
+
+Último Passo: first = '7', second = '8', third = '9'
+
+    No último passo, quando first = '7', second = '8' e third = '9', o código imprime: 789
+
+Como esta é a última combinação, o código não imprime a vírgula e o espaço após 789.         
+
+
+
+

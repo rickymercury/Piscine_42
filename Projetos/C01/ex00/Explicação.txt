@@ -1,0 +1,235 @@
+O que são Ponteiros?
+
+Sempre que declaramos uma variável temos que indicar qual o seu tipo e qual o seu nome:
+
+char ch;
+                              ch
+ _____________________________________________________
+| 100  | 101  | 102  | ... | 5000 | 5001 | 5002 | ... |
+|______|______|______|_____|______|______|______|_____|
+                         
+A variável ch ocupa, no exemplo acima, o byte de memória número 5000.
+
+Por exemplo, quando ch = 'A', estamos a dizer ao computador para ir à posição 5000 da memória e coloca lá o caractere 'A'.
+
+O compilador associa a cada variável uma posição ÚNICA na memória, capaz de suportar os dados do tipo dessa variável. 
+
+Sempre que num programa se faz referência a uma variável estamos, na realidade, a referirmo-nos ao endereço que essa variável ocupa.
+
+Em C, um ponteiro é uma variável que armazena o endereço de memória de outra variável. Esse endereço é normalmente a posição de uma outra variável na memória. 
+Se uma variável contém o endereço de uma outra, então a primeira variável diz-se que aponta para a segunda.
+
+Cada variável em C tem um endereço de memória único, que pode ser obtido utilizando o operador &.
+
+Suponhamos, então, que tínhamos ao nosso dispor um ponteiro denominado ptr. Como qualquer variável, ptr ocupa uma posição na memória.
+
+         ptr                  ch
+ _____________________________________________________
+| 100  | 101  | 102  | ... | 5000 | 5001 | 5002 | ... |
+|______|______|______|_____|_'A' _|______|______|_____|
+
+
+Ora, ptr é um ponteiro, por isso deverá conter o endereço de memória de outra variável. 
+Notamos que o endereço de uma variável é o número da casa que a variável ocupa na memória. 
+Por isso, para colocarmos ptr a apontar para a variável ch bastará colocar o endereço de ch em ptr.
+Fazemos isso ao utilizar o operador & (Endereço de).
+
+ptr = &ch; (ptr aponta para a variável ch)
+
+A variável ptr fica, assim, com o valor 5000.
+
+         ptr                  ch
+ ______________________________________________________
+| 100  | 101  | 102  | ... | 5000  | 5001 | 5002 | ... |
+|______|______|______|_____|_ 'A' _|______|______|_____|
+          |                    ^
+          |                    |
+          +--------------------+
+
+Os ponteiros, em vez de armazenarem valores, armazenam os endereços de memória de outras variáveis.
+Os ponteiros devem ser do mesmo tipo da variável que apontam.
+Isto é importante porque quando desreferenciamos um ponteiro (acessamos o valor armazenado no endereço que ele contém), o compilador precisa de saber o tipo de dado que está a ser manipulado.
+
+A diferença entre um ponteiro e uma variável tradicional está no tipo de valor que cada um armazena. 
+
+Uma variável tradicional armazena diretamente um valor.
+    
+    Exemplo:
+
+    int x = 42; // 'x' armazena o valor 42 diretamente
+
+    Aqui, x contém o valor 42, pelo o que a variável acessa o valor diretamente.
+
+Um ponteiro armazena o endereço de memória de outra variável, ou seja, ele "aponta" para a localização dessa variável na memória.
+    
+    Exemplo:
+
+    int x = 42;
+    int *ptr = &x; // 'ptr' armazena o endereço de 'x' e contém agora o endereço de x
+
+Aqui, ptr contém o endereço de memória onde x está armazenado, em vez do valor 42 em si. 
+Para acessar o valor apontado, o ponteiro precisa de desreferenciar o ponteiro (utilizando *).
+
+
+Vejamos um caso de alteração do valor através de um ponteiro:
+
+a) Definição da variável e do ponteiro
+
+int valor = 0;    // Variável 'valor' inicializada com 0.
+int *nbr = &valor; // 'nbr' é um ponteiro que armazena o endereço de 'valor'.
+
+Aqui, a variável valor armazena o valor 0 e o ponteiro nbr armazena o endereço de valor. 
+Isso significa que nbr aponta para valor.
+
+b) Alteração do valor através do ponteiro
+
+Agora, se fizermos o seguinte:
+
+*nbr = 42;  // Desreferenciação do ponteiro 'nbr' para alterar o valor de 'valor'.
+
+
+    *nbr significa: "o valor armazenado no endereço para o qual nbr aponta". 
+    Como nbr contém o endereço de valor, *nbr é equivalente a valor.
+    
+    *nbr = 42: Esta linha modifica o valor de valor (ou seja, o valor armazenado no endereço de nbr) para 42.
+
+Após essa linha, o valor de valor será 42, mesmo que a atribuição tenha sido feita usando o ponteiro nbr.
+
+c) Visualização do processo
+
+    Inicialmente: valor contém 0.
+                  nbr aponta para valor (ou seja, contém o endereço de valor).
+
+    Após a desreferenciação e modificação: *nbr = 42 altera o valor no endereço para onde nbr aponta, ou seja, valor. 
+                                            Então, valor agora contém 42.
+
+
+Mais à frente, neste documento, visualizamos melhor como isso ocorre na função ft_ft.
+
+************************************************************************************************************************************************************************************************************************************************************************************
+
+A função ft_ft tem como objetivo mostrar como uma função em C pode alterar o valor de uma variável utilizando um ponteiro.
+
+1 - Função ft_ft:  void	ft_ft(int *nbr)
+
+    1.1 - Tipo de Retorno:  void
+
+          A função ft_ft não retorna nenhum valor. 
+          Isso significa que, no final da execução da função, não há um valor específico que será devolvido para a função que a chamou.
+
+          O propósito dela é modificar algo (no caso, uma variável) diretamente.
+
+    1.2 - Parâmetro da Função:  int *nbr
+
+          O int indica que o tipo de dado para o qual nbr aponta é um inteiro. 
+          Isso significa que a função ft_ft recebe um ponteiro que aponta para uma variável do tipo int.
+
+          Um ponteiro é uma variável que armazena o endereço de memória de outra variável. 
+          Em vez de armazenar diretamente um valor (como o valor 42, por exemplo), ele armazena o endereço onde esse valor está localizado na memória.
+
+          Portanto, int *nbr significa que nbr é um ponteiro para um inteiro.
+         
+          Na função ft_ft, ela recebe um ponteiro (int *nbr) para uma variável do tipo int. 
+          Esse ponteiro permite que a função acesse e modifique diretamente o valor da variável no local de memória onde ela está armazenada. 
+          Assim, a função já altera o valor da variável original (na main) sem precisar de retornar o novo valor.
+          A função não precisa retornar o valor 42, porque ela já modifica diretamente o valor da variável no endereço que o ponteiro nbr aponta.
+          Após a execução da função, o valor da variável valor (na main) foi alterado para 42, e essa alteração persiste, pois foi feita diretamente no local da memória.
+          
+          Quando a função é chamada:  ft_ft(&valor);
+          Estamos a passar o endereço da variável valor para a função. 
+          Dentro da função, nbr contém esse endereço. 
+          Como nbr é um ponteiro, a função pode acessar e modificar o valor no local apontado por esse endereço.
+
+
+
+A alteração do valor de uma variável apontada por um ponteiro funciona por meio da desreferenciação.
+Isso signfica que, ao usar um ponteiro, podemos acessar e alterar o valor armazenado no endereço de memória que o ponteiro contém.
+
+Um ponteiro é uma variável que armazena o endereço de memória de outra variável. 
+Ele não guarda diretamente o valor da variável, mas sim onde essa variável está localizada na memória.
+
+Por exemplo:
+
+int valor = 10;    // Variável 'valor' que contém o valor 10.
+int *ptr = &valor; // Ponteiro 'ptr' que contém o endereço de 'valor'.
+
+Aqui, ptr guarda o endereço da variável valor. 
+Isso significa que, ao acessarmos *ptr, estamos a acessar o valor que está armazenado no endereço de valor.
+
+Quando utilizamos o operador de desreferenciação (*), estamos a dizer ao compilador: "não quero trabalhar com o ponteiro em si (o endereço de memória), mas com o valor que está armazenado no local para onde o ponteiro aponta".
+
+Exemplo de modificação de valor através de um ponteiro:
+
+Vamos olhar para este exemplo em detalhes:
+
+a) Definir a variável
+
+Na main, declaramos:
+
+int valor = 0;
+
+Declaramos uma variável com nome valor, do tipo int, e é inicializa com o valor 0. 
+Isso significa que a variável valor tem um espaço reservado na memória e, naquele momento, está a armazenar o valor 0.
+
+Na memória: a variável valor está localizada num determinado endereço (digamos, hipoteticamente, o endereço 0x1234), e o valor que está armazenado nesse local é 0.
+
+b) Chamada da função ft_ft
+
+Em seguida, a função ft_ft é chamada com o endereço da variável valor como argumento:  ft_ft(&valor);
+
+Aqui, o operador & devolve o endereço de memória da variável valor. 
+Em vez de passar o valor 0, passamos o endereço de onde o valor 0 está armazenado. Suponhamos que o endereço de valor seja 0x1234.
+
+O que está a ser passado para a função ft_ft: o endereço 0x1234, que aponta para a variável valor.
+
+c) Função ft_ft e o ponteiro nbr
+
+Na função ft_ft, temos a seguinte declaração:
+
+                void ft_ft(int *nbr) 
+                {
+                    *nbr = 42;
+                }
+
+Aqui está o que acontece:
+
+    int *nbr: O parâmetro nbr é um ponteiro que recebe o endereço de valor. 
+              Então, nbr agora contém o endereço 0x1234, que aponta para a variável valor dentro da função.
+        
+        *nbr: O operador * é o operador de desreferenciação, o que significa que ele acessa o valor armazenado no endereço para onde nbr aponta. 
+              Como nbr contém o endereço 0x1234, *nbr acessa o valor da variável valor naquele endereço.
+
+Agora, dentro da função, temos:  *nbr = 42;
+
+
+Aqui está o que acontece nesta linha:
+
+    Desreferenciação (*nbr): Isso significa "o valor armazenado no endereço para onde nbr aponta". 
+                             Como nbr aponta para valor, *nbr refere-se ao valor de valor.
+
+     Atribuição (*nbr = 42): A linha está a dizer-nos para "alterar o valor que está armazenado no endereço para onde nbr aponta" (que é o endereço de valor), para 42. 
+                             Assim, o valor da variável valor é atualizado diretamente no local de memória.
+
+    Resultado: a variável valor, que originalmente armazenava 0, agora armazena 42.
+
+
+d) Após a execução da função
+
+Quando a função ft_ft termina, a modificação que foi feita na variável valor (atribuindo 42) persiste, porque a função trabalhou diretamente no endereço de memória de valor. 
+Ou seja, ao modificarmos o valor através do ponteiro, modificamos o valor original da variável valor, na main.
+
+    Antes da função: o valor de valor era 0.
+    Depois da função: o valor de valor foi alterado para 42, porque *nbr = 42 alterou diretamente o valor armazenado no endereço onde valor estava localizado.
+
+
+
+
+
+
+
+
+
+
+
+
+

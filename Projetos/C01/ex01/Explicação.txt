@@ -1,0 +1,144 @@
+1 - Função ft_ultimate_ft:  void ft_ultimate_ft(int *********nbr)
+
+    1.1 - Tipo de Retorno:  void
+
+          Indica que a função não retorna nenhum valor. 
+          Ela executa o seu propósito (modificar diretamente o valor da variável apontada por um ponteiro), mas não fornece um resultado para quem a chamou. 
+          Em vez disso, ela pode modificar dados diretamente, se estes forem passados por referência (como um ponteiro).
+
+          A função recebe como argumento um ponteiro de 9 níveis, o que significa que ela pode acessar e modificar o valor de uma variável externa (no caso, a variável num na main). 
+          Como a função já altera o valor diretamente através desse ponteiro, não há necessidade de retornar esse valor.
+
+          Funções que retornam void são usadas quando a ação que elas realizam é suficiente e não há necessidade de "devolver" um valor ao código que as chamou. 
+          Aqui, a modificação do valor de num já é o objetivo da função.
+
+    1.2 - Parâmetro da Função: int *********nbr
+
+          Ela recebe um ponteiro com 9 níveis de indireção (ou seja, um ponteiro para um ponteiro, repetido 9 vezes). 
+          O argumento nbr é um ponteiro para um ponteiro 9 vezes até chegar a um int.
+
+          O que significa um ponteiro de nove níveis?
+
+                     Ponteiro simples (int *): Um ponteiro simples aponta para um inteiro. 
+                                               Por exemplo, se tivermos int *ptr, ptr pode apontar para um inteiro, permitindo que se possa ler ou escrever o valor naquele endereço.
+ 
+                      Ponteiro duplo (int **): Um ponteiro duplo aponta para um ponteiro que, por sua vez, aponta para um valor inteiro. 
+                                               Por exemplo, int **ptr2 pode apontar para um int *, que então aponta para um int.
+
+          Ponteiros múltiplos (int *********): Cada nível adicional de ponteiro permite uma camada de indireção. 
+                                               Assim, int *********nbr significa que nbr é um ponteiro que, ao ser desreferenciado nove vezes (*********nbr), finalmente acessa um valor do tipo int.
+
+    1.3 - Comportamento da Função:
+
+          Na prática, a função ft_ultimate_ft utiliza este nível de ponteiros para modificar diretamente o valor da variável que está  a ser apontada.
+                                              
+                                void ft_ultimate_ft(int *********nbr) 
+                                {
+                                    *********nbr = 42;
+                                }
+
+          O parâmetro nbr é um ponteiro que aponta para outro ponteiro, que aponta para outro, e assim por diante, até acessar o valor do tipo int.
+          Quando passamos um ponteiro de nove níveis para esta função, podemos manipular o valor do inteiro que está aninhado a nove níveis de ponteiros.
+
+          A linha *********nbr = 42 está a dizer para a função: "Acessa o endereço para onde nbr aponta (o primeiro nível)".
+                                                                "A partir daí, continua a acessar cada nível do ponteiro, até chegar ao valor inteiro que está aninhado".
+                                                                "Uma vez que chegares ao valor int, modificas para 42".
+
+
+Portanto, após a execução dessa linha, o valor que estava na variável original (no main) é alterado diretamente para 42.
+
+2 - Função Main:
+
+    Para acessar o valor de num, ao utilizar múltiplos níveis de ponteiros, precisamos de criar uma cadeia de ponteiros:
+
+    Passo a passo detalhado da desreferenciação:
+
+ a) int num = 0;
+        Aqui, criamos uma variável num que armazena o valor 0. 
+        A variável num fica armazenada no endereço de memória 0x100.
+
+    int *ptr1 = &num;
+        ptr1 é um ponteiro de 1º nível que armazena o endereço de num (0x100).
+        Valor de ptr1 (endereço de num): 0x100. 
+        ptr1 tem um endereço de memória próprio: 0x200.
+
+    int **ptr2 = &ptr1;
+        ptr2 é um ponteiro de 2º nível que armazena o endereço de ptr1 (0x200). 
+        Valor de ptr2 (endereço de ptr1): 0x200
+        O próprio ptr2 tem um endereço: 0x300.
+
+    int ***ptr3 = &ptr2;
+        ptr3 é um ponteiro de 3º nível que armazena o endereço de ptr2 (0x300). 
+        Valor de ptr3 (endereço de ptr2): 0x300
+        O endereço de ptr3 seria 0x400.
+
+    int ****ptr4 = &ptr3;
+        ptr4 é um ponteiro de 4º nível que armazena o endereço de ptr3 (0x400). 
+        Valor de ptr4 (endereço de ptr3): 0x400
+        O endereço de ptr4 seria 0x500.
+
+    int *****ptr5 = &ptr4;
+        ptr5 é um ponteiro de 5º nível que armazena o endereço de ptr4 (0x500). 
+        Valor de ptr5 (endereço de ptr4): 0x500
+        O endereço de ptr5 seria 0x600.
+
+    int ******ptr6 = &ptr5;
+        ptr6 é um ponteiro de 6º nível que armazena o endereço de ptr5 (0x600). 
+        Valor de ptr6 (endereço de ptr5): 0x600
+        O endereço de ptr6 seria 0x700.
+
+    int *******ptr7 = &ptr6;
+        ptr7 é um ponteiro de 7º nível que armazena o endereço de ptr6 (0x700). 
+        Valor de ptr7 (endereço de ptr6): 0x700
+        O endereço de ptr7 seria 0x800.
+
+    int ********ptr8 = &ptr7;
+        ptr8 é um ponteiro de 8º nível que armazena o endereço de ptr7 (0x800). 
+        Valor de ptr8 (endereço de ptr7): 0x800
+        O endereço de ptr8 seria 0x900.
+
+    int *********ptr9 = &ptr8;
+        ptr9 é um ponteiro de 9º nível que armazena o endereço de ptr8 (0x900). 
+        Valor de ptr9 (endereço de ptr8): 0x900
+        O endereço de ptr9 seria 0xA00.
+
+Agora, chamamos a função (ft_ultimate_ft(ptr9)) e passamos ptr9 para a função ft_ultimate_ft.
+
+b) Desreferenciação dentro da função ft_ultimate_ft:
+
+           void ft_ultimate_ft(int *********nbr) 
+           {
+                *********nbr = 42; // Modificação final
+           }       
+
+Dentro da função: *********nbr = 42;
+ 
+    nbr é um ponteiro de 9 níveis (igual a ptr9) passado como argumento, e ele aponta para ptr8.
+
+Agora, vejamos a cadeia completa de desreferenciação e como chegamos até ao valor de num:
+
+        *********nbr desreferencia nbr 9 vezes. Aqui está a sequência de como isso ocorre:
+
+        1ª desreferenciação (*nbr): *nbr -> Aponta para ptr8 e acessa o seu valor (endereço 0x800) que é o endereço de ptr7.
+
+        2ª desreferenciação (**nbr): **nbr -> Aponta para ptr7 e acessa o seu valor (endereço 0x700) que é o endereço de ptr6.
+
+        3ª desreferenciação (***nbr): ***nbr -> Aponta para ptr6 e acessa o seu valor (endereço 0x600) que é o endereço de ptr5.
+
+        4ª desreferenciação (****nbr): ****nbr -> Aponta para ptr5 e acessa o seu valor (endereço 0x500) que é o endereço de ptr4.
+
+        5ª desreferenciação (*****nbr): *****nbr -> Aponta para ptr4 e acessa o seu valor (endereço 0x400) que é o endereço de ptr3.
+
+        6ª desreferenciação (******nbr): ******nbr -> Aponta para ptr3 e acessa o seu valor (endereço 0x300) que é o endereço de ptr2.
+
+        7ª desreferenciação (*******nbr): *******nbr -> Aponta para ptr2 e acessa o seu valor (endereço 0x200) que é o endereço de ptr1.
+
+        8ª desreferenciação (********nbr): ********nbr -> Aponta para ptr1 e acessa o seu valor (endereço 0x100) que é o endereço de num.
+
+        9ª desreferenciação (*********nbr): *********nbr -> Finalmente, acessa diretamente num, que armazena o valor 0.
+
+c) Modificação do valor de num:  *********nbr = 42;
+    
+    Após desreferenciar completamente, acessamos num e modificamos o seu valor de 0 para 42.
+
+    Resultado: Quando a função termina, o valor de num foi alterado de 0 para 42 devido à cadeia de desreferenciação através de 9 níveis de ponteiros.

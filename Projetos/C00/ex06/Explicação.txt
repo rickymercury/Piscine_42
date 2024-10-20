@@ -1,0 +1,129 @@
+O código ft_print_comb2 imprime todas as combinações possíveis de dois números de dois dígitos em ordem crescente, separando as combinações por uma vírgula e um espaço, exceto a última.
+
+1 - Declaração e Inicialização das Variáveis:
+
+    As variáveis left_n e right_n representam os dois números de dois dígitos que serão combinados e impressos na saída padrão.
+
+      - left_n: 
+        
+        É um inteiro que vai de 0 até 98.
+        Representa o primeiro número de cada par de dois números de dois dígitos. 
+        Este valor está sempre à esquerda do par de números que será impresso.
+        A razão de left_n ir até 98 é que, para cada valor de left_n, o valor de right_n começa logo após left_n (ou seja, right_n = left_n + 1), e como o maior valor possível para right_n é 99, left_n não pode ser maior do que 98, pois não haveria um valor de right_n maior do que ele para se poder combinar.
+
+      - right_n:
+        
+        É um inteiro que vai de left_n + 1 até 99.
+        Representa o segundo número de par de dois dígitos. 
+        Este valor está sempre à direita do par de números que será impresso.
+        Esta variável será sempre maior do que left_n, o que garante que as combinações sejam sempre em ordem crescente.
+        Para cada valor de left_n, o loop de right_n começa imediatamente após left_n (com right_n = left_n + 1) e continua até 99, formando todas as combinações possíveis com esse valor específico de left_n.
+
+    Relação entre left_n e right_n:
+
+    Os loops garantem que left_n e right_n formem pares de números sem repetição e,em ordem crescente. 
+    
+    Por exemplo:
+
+        Quando left_n = 0, right_n varia de 1 a 99.
+        Quando left_n = 1, right_n varia de 2 a 99.
+        E assim por diante, até que left_n = 98 e right_n = 99.
+
+    Isso garante que não haja combinações repetidas e que as combinações estejam sempre em ordem crescente.
+
+
+2 - Primeiro loop - While do left_n:
+
+                        left_n = 0;
+                        while (left_n <= 98)
+                        {
+                            right_n = left_n + 1;
+                            // Segundo loop que lida com right_n
+                            left_n++;
+                        }
+    
+    O primeiro loop é responsável por controlar o primeiro número (left_n) de cada par de dois números de dois digitos, garantindo que cada valor de left_n seja utilizado para formar combinações com valores de right_n que são maiores que ele.
+
+    Este loop controla o valor de left_n, que vai de 0 a 98. 
+    O valor máximo para left_n é 98 porque estamos a combinar a variável left_n com a right_n, e right_n sempre será left_n + 1, que por sua vez, tem como valor máximo 99.
+    Portanto, não há necessidade de considerar left_n = 99, pois não existe um número maior que 99 para combinar.
+
+    2.1 - Inicialização:
+
+          A variável left_n começa com o valor 0. 
+          O loop só será executado enquanto left_n for menor ou igual a 98. 
+          Isso ocorre porque, como cada par é formado por dois números diferentes e ordenados, right_n será sempre maior que left_n. 
+          Para garantir que não haja duplicações ou combinações incorretas, o valor máximo de left_n é 98, já que o valor máximo possível para right_n será 99.
+
+    2.2 - Execucação do Corpo do Loop:
+
+          Dentro dO loop, o valor de right_n é sempre inicializado com left_n + 1, garantindo que o segundo número do par seja sempre maior que o primeiro.
+          Em seguida, é iniciado o segundo loop (o while do right_n) que forma e imprime as combinações de left_n e right_n.
+
+    2.3 - Incremento:
+
+          Após o segundo loop ter completado todas as combinações possíveis para um valor específico de left_n, o left_n é incrementado (através do left_n++).
+          O loop continua a repetir este processo até que left_n chegue a 98, pois este é o maior valor que left_n pode ter enquanto ainda existirem combinações válidas com a variável right_n.
+
+
+3 - Segundo loop - While do right_n:
+
+                            right_n = left_n + 1;
+                            while (right_n <= 99)
+                            {
+                                ft_putchar(left_n / 10 + '0');
+                                ft_putchar(left_n % 10 + '0');
+                                ft_putchar(' ');
+                                ft_putchar(right_n / 10 + '0');
+                                ft_putchar(right_n % 10 + '0');
+                                if (left_n != 98 || right_n != 99)
+                                    write(1, ", ", 2);
+                                right_n++;
+                            }
+
+    Dentro do primeiro loop, right_n é sempre inicializado com left_n + 1, garantindo que right_n seja maior que left_n.
+    Este loop controla o valor de right_n, que vai de left_n + 1 até 99. Isso gera todas as combinações possíveis de dois números sem repetição e em ordem crescente.
+
+    3.1 - Inicialização:
+          
+          O valor de right_n é sempre inicializado com left_n + 1. 
+          Isto garante que right_n seja sempre maior que left_n, o que evita a repetição de combinações e assegura que os pares de números sejam impressos em ordem crescente.
+          O loop será executado enquanto right_n for menor ou igual a 99, pois este é o maior valor possível para um número de dois dígitos, então ele define o limite superior para o loop.
+
+    3.2 - Execução do corpo do Loop:
+
+          A cada iteração, o valor de left_n e right_n é impresso ao utilizar a função ft_putchar.
+          Como os números têm dois digitos, eles têm de ser decompostos (divididos) em digitos individuais para serem impressos:
+
+          left_n / 10 + '0': Calcula o digito das dezenas de left_n e converte-o para o caractere correspondente.
+          left_n % 10 + '0': Calcula o digito das unidades de left_n e converte-o para o caractere correspondente.
+          ft_putchar(' '): Imprime um espaço entre left_n e right_n.
+          right_n / 10 + '0' e right_n % 10 + '0': Fazem o mesmo para o número right_n.
+
+          Por exemplo, se left_n = 23, ele será dividido em:
+
+          Dezena: 23 / 10 = 2 (convertido para caractere com + '0')
+          Unidade: 23 % 10 = 3 (também convertido para caractere com + '0')
+
+          Portanto, o número left_n é então impresso com os dois caracteres separados, seguido de um espaço. 
+          Após isso, o right_n também é impresso da mesma forma.
+
+          Se left_n e right_n não forem 98 e 99, respectivamente, uma vírgula e um espaço (", ") são impressos para separar as combinações.
+
+          3.2.1 -  Condição para imprimir a vírgula e espaço:
+
+                   Esta condição verifica se left_n e right_n estão na última combinação possível (98 e 99). 
+                   Se não for a última combinação, imprime uma vírgula e um espaço.
+                   Isto impede que uma vírgula e espaço sejam impressos após a última combinação (98, 99).
+
+                   Portanto, se left_n e right_n não forem 98 e 99, respectivamente, uma vírgula e um espaço (", ") são impressos para separar as combinações.
+
+    3.3 - Incremento dos números:
+
+          Após imprimir a combinação atual de left_n e right_n, o valor de right_n é incrementado (right_n++).
+          Isso faz com que o loop continue a formar combinações de left_n com todos os valores de right_n que são maiores do que left_n, até que right_n atinja 99.
+
+    Fim do Loop: 
+    
+    Quando o valor de right_n atingir 100 (ou seja, quando right_n > 99), o segundo loop é interrompido, e voltamos para o primeiro loop, onde left_n será incrementado.
+

@@ -6,11 +6,9 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 21:07:09 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 21:09:20 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/16 22:39:25 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 void	ft_swap(int *a, int *b)
 {
@@ -36,4 +34,13 @@ int main(void)
     printf("Depois: x = %d, y = %d\n", x, y);
     return 0;
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_swap.c -o ft_swap              
+sh-5.2$ ./ft_swap 
+Antes: x = 10, y = 20
+Depois: x = 20, y = 10
 */

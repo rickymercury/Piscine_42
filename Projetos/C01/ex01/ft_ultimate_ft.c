@@ -6,11 +6,10 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 20:30:21 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 21:04:06 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/16 21:50:22 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 
 void	ft_ultimate_ft(int *********nbr)
 {
@@ -35,9 +34,18 @@ int main(void)
 
     printf("Antes: num = %d\n", num);
 
-    ft_ultimate_ft(ptr9); // Chama a função passando o ponteiro de múltiplos níveis
+    ft_ultimate_ft(ptr9);
 
     printf("Depois: num = %d\n", num);
     return 0;
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_ultimate_ft.c -o ft_ultimate_ft
+sh-5.2$ ./ft_ultimate_ft 
+Antes: num = 0
+Depois: num = 42
 */

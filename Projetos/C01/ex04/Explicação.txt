@@ -1,0 +1,156 @@
+1 - Função ft_ultimate_div_mod:   void ft_ultimate_div_mod(int *a, int *b)
+    
+    O objetivo da função ft_ultimate_div_mod(int *a, int *b) é dividir o valor apontado pelo ponteiro a pelo valor apontado pelo ponteiro b, e armazenar o quociente da divisão no endereço de a e o resto (módulo) da divisão no endereço de b.
+
+    Esta função realiza a divisão e modifica os valores das variáveis originais ao utilizar ponteiros, ou seja, ela altera diretamente os valores que lhe foram passados.
+    
+    Os ponteiros desempenham um papel fundamental na função ft_ultimate_div_mod, pois permitem que a função modifique os valores das variáveis originais que são passadas como argumentos. 
+
+           Como um ponteiro é uma variável que armazena o endereço de outra variável em vez do seu valor diretamente, ao trabalharmos com ponteiros, estamos a manipular o endereço de memória onde os dados estão armazenados, o que oferece uma maneira eficaz de acessar e modificar esses dados diretamente.
+
+           No caso da função ft_ultimate_div_mod, dois ponteiros são passados como argumentos, int *a e int *b. 
+           Estes ponteiros permitem que a função manipule as variáveis cujos endereços lhe foram passados, o que significa que as mudanças feitas dentro da função têm efeito nas variáveis fora dela.
+           
+           Neste caso, a função não retorna diretamente um valor (o retorno é void), mas ainda assim, ela altera os valores das variáveis que foram passadas como parâmetros.
+           Em vez de trabalhar com as cópias dos valores e retornar um valor, ela manipula e modifica diretamente os valores das variáveis originais a e b, através dos ponteiros.
+           Assim, como os valores são modificados diretamente nas posições de memória onde estão armazenados, não é necessário retornar nada.
+
+    Como referimos, a função recebe dois ponteiros como parâmetros: int *a e int *b, que permitem acessar e modificar diretamente os valores originais das variáveis apontadas, que foram passadas para a função.
+
+    1.1 - Variáveis:
+
+          int *a: é um ponteiro para um inteiro, o que significa que, em vez de conter um valor inteiro (diretamente), contém o endereço de uma variável inteira. 
+                  O valor da variável à qual a aponta pode ser acessado utilizando a desreferenciação, ou seja, *a.
+                  A função recebe o ponteiro a como argumento, e *a (que representa o valor armazenado no endereço para onde a aponta) será utilizado para realizar a divisão. 
+                  
+          int *b: assim como a, b é um ponteiro para um inteiro, ou seja, ele não contém diretamente um valor inteiro, mas sim o endereço de uma variável inteira. 
+                  Ao utilizarmos *b, podemos acessar o valor armazenado nesse endereço.
+                  A função utiliza *b tanto no cálculo da divisão quanto no cálculo do resto (módulo). 
+
+          int div: é uma variável local do tipo int que armazena o resultado da divisão de *a por *b.
+                   A função realiza a operação div = *a / *b, o que significa que o valor apontado por a (o dividendo) é dividido pelo valor apontado por b (o divisor). 
+                   O resultado (quociente) dessa divisão é armazenado nesta variável div.
+                   A importância desta variável está no fato de que ela armazena temporariamente o quociente da divisão para que possamos modificar o valor original apontado por a. 
+                   Após o cálculo, o valor de div é atribuído de volta para *a, ou seja, a variável original cujo endereço foi passado como a recebe o valor de div. 
+                   
+                   Por exemplo, Se *a fosse 10 e *b fosse 3, div seria 3, porque 10 / 3 é 3.
+
+          int mod: é uma variável local do tipo int que armazena o resto (módulo) da divisão entre *a e *b.
+                   A função realiza a operação mod = *a % *b, o que significa que o valor apontado por a (o dividendo) é dividido pelo valor apontado por b (o divisor), e o resto dessa divisão é armazenado na variável mod.
+                   Assim como div, mod armazena temporariamente o resto para que possamos modificar o valor apontado por b. 
+                   Após o cálculo, o valor de mod é atribuído de volta para *b. 
+                   
+                   Por exemplo, se *a fosse 10 e *b fosse 3, mod seria 1, porque 10 % 3 é 1 (o resto da divisão de 10 por 3).
+
+
+2 - Fluxo:
+
+Antes da Função:
+
+ 1) Estado Inicial:
+
+    int x = 10;  // x está armazenado no endereço de memória 0x100        
+    int y = 3;   // y está armazenado no endereço de memória 0x104
+
+    Estado Inicial da Memória:
+
+    Endereço   Variável   Valor
+    0x100         x        10
+    0x104         y         3
+
+    > Chamada da Função:
+
+      Quando a função ft_ultimate_div_mod é chamada com &x e &y, estamos a passar os endereços de memória de x e y para os ponteiros a e b. 
+      Estes ponteiros agora apontam para os endereços das variáveis x e y.
+
+      Ou seja, quando chamamos a função ft_ultimate_div_mod(&x, &y), estamos a passar os endereços de x e y, em que:
+
+        a é o ponteiro que aponta para o endereço 0x100 (onde x está armazenado). Então, a = 0x100.
+        b é o ponteiro que aponta para o endereço 0x104 (onde y está armazenado). Então, b = 0x104.
+
+Dentro da Função:
+
+    a) Cálculo do Quociente (div = *a / *b) e do Resto (mod = *a % *b)
+
+       Os ponteiros *a e *b acessam diretamente o valor armazenado nos endereços de memória das variáveis para o qual apontam.
+
+       Como x = 10 e y = 3, os ponteiros a e b apontam para os endereços de x e de y (0x100 e 0x104, respetivamente), e quando acessamos o valor original da variável para onde apontam, obtemos os valores 10 e 3, respetivamente.
+       
+       Neste caso:
+
+          *a acessa o valor no endereço da variável original para onde a aponta. Se aponta para x, *a é o valor de x, ou seja, *a = 10.
+          Assim, *a acessa o valor no endereço 0x100, que é 10.
+           
+          *b acessa o valor no endereço da variável original para onde b aponta. Se b for o ponteiro para y, *b é o valor de y, ou seja, *b = 3.
+          Assim, *b acessa o valor no endereço 0x104, que é 3.
+
+
+        > A divisão é realizada: div = *a / *b 
+
+          O valor de *a (o valor armazenado na variável apontada pelo ponteiro a) é dividido pelo valor de *b (o valor da variável apontada pelo ponteiro b).
+          O resultado da divisão inteira é armazenado na variável div.
+        
+          Ora temos que: o valor de *a (10) é dividido pelo valor de *b (3), e o resultado (quociente) é armazenado na variável local div. 
+          Portanto, div será 3 (div = 3).
+          
+        > O módulo é realizado: mod = *a % *b
+
+          O valor de *a (10) é dividido pelo valor de *b (3), e o resto dessa divisão é armazenado na variável local mod. 
+          Assim, mod será 1 (mod = 1).
+        
+          É de ressalvar que, até este ponto, os valores de x e y não foram modificados, ainda. 
+          Os resultados da divisão e do módulo foram armazenados apenas nas variáveis locais div e mod.
+
+
+    b) Modificação dos Valores Originais
+
+                        *a = div;
+                        *b = mod;
+
+        Aqui, os ponteiros a e b são usados para modificar diretamente os valores das variáveis originais.
+
+        *a = div: Atribuímos o valor de div (que é 3) ao local da memória apontado por a.
+                  Ou seja, o valor de div (3) é armazenado no endereço 0x100, onde estava x. 
+                  Como a aponta para x, esta operação altera o valor de x para 3.
+                  Assim, o valor original de x (que era 10) é substituído pelo quociente da divisão, e agora, x contém 3.
+
+        *b = mod: Atribuímos o valor de mod (que é 1) ao local de memória apontado por b. 
+                  Ou seja, o valor de mod (1) é armazenado no endereço 0x104, onde estava y.
+                  Como b aponta para y, esta operação altera o valor de y para 1. 
+                  Assim, o valor original de y (que era 3) agora será o resto da divisão. Agora, y contém 1.
+
+    c) Resultado Final:
+
+       Depois que a função é chamada, os valores originais de x e y foram modificados, sem a necessidade de a função retornar valores. 
+       Em vez disso, os valores foram alterados diretamente nos endereços de memória onde x e y estavam armazenados.
+
+       x agora contém o valor 3 (o quociente da divisão 10 / 3).
+       y agora contém o valor 1 (o resto da divisão 10 % 3).
+
+       Estado Final da Memória:
+
+       Endereço  Variável  Valor
+       0x100        x        3
+       0x104        y        1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

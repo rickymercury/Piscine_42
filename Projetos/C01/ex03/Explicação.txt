@@ -1,0 +1,192 @@
+1 - Função ft_div_mod:  void ft_div_mod(int a, int b, int *div, int *mod)
+
+    Ela recebe quatro parâmetros:
+
+    int a: é um número inteiro, que armazena o número que será utilizado na divisão.
+    int b: é o segundo número inteiro, que, também ele, armazena o número que será utilizado na divsão.
+
+    Exemplo: Se passarmos a = 10 e b = 3, o programa vai efetuar a divisão de 10 / 3 e vai calcular o resto (módulo) dessa divisão, ou seja, 10 % 3.
+
+    int *div: é um ponteiro que aponta para o endereço de memória onde será aramazenado o resultado da divisão.
+              Ou seja, não é uma variável que contém diretamente o valor da variável, mas sim o endereço de memória de uma variável que armazenará o resultado.
+              Quando passamos &div (endereço de div) para a função, estamos a dizer que *div será o local onde o quociente da divisão será guardado.
+
+              Suponhamos que temos uma variável int divisao no código principal.
+              Quando chamamos a função, passamos o endereço dessa variável: &divisao.
+              Dentro da função, o ponteiro div guarda o endereço de divisao. 
+              Então, ao fazer *div = a / b;, estamos a atribuir o valor do quociente a / b à variável divisao, que está fora da função.
+ 
+    int *mod: é um ponteiro que aponta para o endereço onde será armazenado o resultado do módulo (resto da divisão).
+              Assim como div, ele não contém diretamente o valor, mas sim o endereço de memória onde o resultado do módulo será armazenado.
+              Ao passar &mod (endereço de mod) para a função, estamos a dizer que *mod será o local onde o resto da divisão será armazenado.
+
+              Suponhamos que temos uma variável int resto no código principal.
+              Quando chamamos a função, passamos o endereço dessa variável: &resto.
+              Dentro da função, o ponteiro mod guarda o endereço de resto. 
+              Então, ao fazer *mod = a % b;, estamos o valor do módulo a % b à variável resto.
+
+    O objetivo desta função é dividir a por b, armazenar o quociente em *div e o resto em *mod.
+
+2 - Verificação:  if (b == 0)
+
+    Antes de executar a divisão a / b ou o módulo a % b, o código verifica se o valor de b é igual a 0.
+    Isto corresponde a uma verificação de segurança que garante que a operação de divisão não seja realizada caso o valor de b (ou seja, o divisor) for zero.
+
+    Em programação, assim como na matemática, a divisão por zero é uma operação inválida. 
+    Se tentarmos dividir qualquer número por zero, o resultado é indefinido e, em muitos casos, isso pode causar erros graves no programa, como interrupções inesperadas.
+    
+    Exemplo: Se a = 10 e b = 0, a operação a / b não faz sentido. 
+             No caso de linguagens como C, tentar realizar 10 / 0 causaria um erro de execução.
+
+    Se b for zero, a função retorna imediatamente sem executar as operações de divisão ou módulo.
+    return
+
+    Se b for igual a 0, a função não faz nada e simplesmente retorna sem executar o restante do código.
+    Isso impede a execução de uma divisão por zero, que causaria um erro no programa.
+
+3 - Divisão e módulo:  *div = a / b    *mod = a % b
+
+    Se b não for zero, realizamos a divisão de a por b e armazenamos o resultado no endereço apontado pelo ponteiro div.
+    *div significa que estamos a acessar o valor para onde div aponta e atribuímos o valor de a / b a esse local.
+
+    De seguida, calculamos o módulo de a por b (o resto da divisão) e armazenamos o valor no endereço apontado por mod.
+    *mod significa que estamos a acessar o valor para onde mod aponta e atribuímos o valor de a % b a esse local.
+
+    Exemplo: 
+
+    Na main, vamos supor que temos duas variáveis, divisao e resto, que vão armazenar o quociente e o resto da divisão, respectivamente.
+
+                            int main(void)
+                            {
+                                int divisao;  // Variável para armazenar o quociente
+                                int resto;  // Variável para armazenar o resto
+                                ft_div_mod(10, 3, &divisao, &resto);
+                                printf("Divisão: %d, Módulo: %d\n", divisao, resto);
+                                return 0;
+                            }
+
+    Valores de entrada:
+
+     a = 10 (o número a ser dividido)
+     b = 3 (o divisor)
+     div = &divisao (ponteiro para o endereço da variável divisao)
+     mod = &resto (ponteiro para o endereço da variável resto)
+
+
+    Antes da Função:
+
+     1) Declaração e Inicialização das variáveis
+
+        a = 10 (valor que será dividido)
+        b = 3 (divisor)
+
+        Temos duas variáveis na main que ainda não têm valores atribuídos:
+
+        divisao (vamos supor que o endereço de memória seja 0x100)
+        resto (vamos supor que o endereço de memória seja 0x104)
+
+        Assim, as variáveis divisao e resto foram declaradas, mas não possuem valor inicial. 
+        Elas estão apenas reservadas na memória e contêm valores indefinidos.
+
+        Variável	Endereço	Valor Antes da Função
+         divisao	 0x100	     Indefinido (lixo)
+         resto	     0x104	     Indefinido (lixo)
+
+        Em relaçaõ aos ponteiros *div e *mod, como eles ainda não foram modificados, eles ainda não possuem valores definidos.
+
+         Ponteiro	Valor (endereço)	Valor Apontado (antes da função)
+          *div	     Endereço 0x100	      Indefinido (lixo de memória)
+          *mod	     Endereço 0x104	      Indefinido (lixo de memória)
+
+        Assim como:
+
+         O ponteiro *div aponta para o endereço 0x100, onde está a variável divisao.
+         E o ponteiro *mod aponta para o endereço 0x104, onde está a variável resto.
+         
+         Logo, antes da execução, as variáveis divisao e resto não têm valores definidos, o que se conclui é que o que está nesses endereços de memória é simplesmente lixo.
+
+     2) Chamada da Função ft_div_mod(10, 3, &div_result, &mod_result)
+
+        - Passagem de Parâmetros
+
+          QUando a função ft_div_mod(10, 3, &divisao, &resto) é chamada, os ponteiros *div e *mod recebem os endereços das variáveis divisao e resto (&divisao e &resto).
+          Ou seja, passamos os endereços das variáveis divisao e resto para a função ft_div_mod utilizando os ponteiros &divisao e &resto.
+
+          Quando chamamos ft_div_mod(10, 3, &divisao, &resto), os valores seguintes são passados para a função:
+
+          a = 10
+          b = 3
+          
+          Como:
+
+          div = &divisao (ponteiro para o endereço da variável divisao)
+          mod = &resto (ponteiro para o endereço da variável resto)
+
+          Os ponteiros div e mod agora contêm os endereços das variáveis divisao e resto, ou seja:
+
+          div = 0x100 (o ponteiro div aponta para o endereço de div_result)
+          mod = 0x104 (o ponteiro mod aponta para o endereço de mod_result)
+
+          Agora, o código na função é executado com esses valores.
+          
+   
+    Dentro da Função:
+
+     3) Verificação do divisor
+
+        O primeiro passo dentro da função é verificar se o divisor b é zero, para evitar a divisão por zero:
+
+                    if (b == 0)
+                        return;
+
+        Neste caso, como b = 3, a função continua.
+
+     4) Cálculo da Divisão e Armazenamento do Resultado no Endereço de div
+
+                    *div = a / b;
+
+        Aqui, o valor de a (10) é dividido por b (3), resultando em 3 (quociente). 
+        Vamos atribuir este resultado à variável apontada por *div.
+        Ou seja, este resultado vai ser armazenado na variável divisao.
+
+        Assim, de acordo com a expressão  *div = a / b: como o ponteiro div contém o endereço 0x100 da variável divisao.
+        Ao desreferenciar *div, acessamos a variável armazenada no endereço 0x100, e armazenamos o valor 3 nele (em *div).
+
+        Assim temos *div = 3, no endereço 0x100.
+
+        Memória após este passo:
+
+        Endereço	Variável	Valor          Ponteiro	  Valor (endereço)	Valor Apontado
+        0x100		 divisao      3              *div	    Endereço 0x100	     3
+
+
+         *div contém o valor 3 pois a função atribuiu esse valor diretamente na variável divisao, por meio do ponteiro.
+
+
+     5) Cálculo do Módulo e Armazenamento do Resultado no Endereço de mod
+
+                    *mod = a % b;
+
+        Aqui, o valor de a (10) é dividido por b (3), mas agora estamos interessados no resto da divisão, que é 1.
+        Vamos atribuir este resultado à variável apontada por *mod.
+        Ou seja, este resultado vai ser aramazenado na variável resto.
+
+        Assim, de acordo com a expressão *mod = a % b: como o ponteiro mod contém o endereço 0x104 da variável resto.
+        Ao desreferenciar *mod, acessamos a variável armazenada no endereço 0x104, e armazenamos o valor 1 nele (em *mod).
+
+        Assim temos *mod = 1, no endereço 0x104.
+
+        Memória após este passo:
+
+        Endereço	Variável	Valor        Ponteiro	  Valor (endereço)	Valor Apontado
+        0x100	    divisao	      3            *div	        Endereço 0x100	     3
+        0x104	     resto	      1            *mod	        Endereço 0x104	     1
+
+     6) Conclusão: Resultados
+
+        Depois que a função ft_div_mod é executada, as variáveis divisao e resto terão os valores:
+
+        divisao = 3 (o quociente da divisão de 10 / 3)
+        resto = 1 (o resto da divisão de 10 % 3)
+
+        Estas operações permitem que a função modifique os valores das variáveis divisao e resto, mesmo fora da função, graças aos ponteiros que manipulam os endereços de memória dessas variáveis.

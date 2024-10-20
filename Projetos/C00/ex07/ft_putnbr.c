@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 13:44:04 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 19:53:45 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/16 11:11:59 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,31 @@ int main(void)
     ft_putnbr(2147483647);
     return 0;
 }
+*/
+
+/*
+ARGC ARGV OPTION:
+
+int main(int argc, char **argv)
+{
+    if (argc == 2) 
+    {
+        int numero = atoi(argv[1]);
+        ft_putnbr(numero);
+        write(1, "\n", 1);
+    }
+    return 0;
+}
+*/
+
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_putnbr.c -o ft_putnbr          
+sh-5.2$ ./ft_putnbr 
+42
+-42
+-2147483648
+2147483647
 */
