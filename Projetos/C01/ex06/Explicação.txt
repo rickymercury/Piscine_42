@@ -107,8 +107,8 @@
                                     2002	       'n'
                                     2003	       'f'
                                     2004	       'i'
-                                    2005           'c'
-                                    2006           'a'
+                                    2005         'c'
+                                    2006         'a'
                                     2007	      '\0' (nulo)
 
     A string str1 contém o endereço de memória do primeiro caractere, ou seja, str1 = 2000.
@@ -171,7 +171,7 @@
                      5ª	     4	       'i'	      'i'	       2004	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 5	               -
                      6ª	     5	       'c'	      'c'	       2005	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 6	               -
                      7ª	     6	       'a'	      'a'	       2006	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	       i = 7	               -
-                     8ª	     7	       '\0'	      '\0'	       2007	          'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	         -	                   7
+                     8ª	     7	       '\0'	      '\0'	     2007	        'B' 'e' 'n' 'f' 'i' 'c' 'a' '\0'	           -	                 7
 
 3) De Volta À Main
 
