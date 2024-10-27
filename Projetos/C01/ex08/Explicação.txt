@@ -1,0 +1,379 @@
+1 - Função ft_sort_int_tab:  void ft_sort_int_tab(int *tab, int size)
+
+    1.1 - Tipo de retorno:  void
+
+          A função retorna void porque não precisa de devolver o array ordenado como resultado.
+          Quando passamos o array como argumento para a função, estamos na verdade a passar o ponteiro para o primeiro elemento do array. 
+          Como o ponteiro refere-se à memória onde os dados do array estão armazenados, a função pode modificar os elementos diretamente na mesma localização de memória onde os valores originais estão armazenados.
+          Ou seja, a modificação no array é feita diretamente no array original (graças ao uso de ponteiros).
+          Assim, como a função está a modificar o conteúdo do array (tab), então não há necessidade de retornar o array, pois ele já foi alterado (o array é passado por referência).
+
+    1.2 - Variáveis: 
+
+          int *tab: este parâmetro é um ponteiro para o primeiro elemento do array de inteiros. 
+                    Como sabemos, os arrays são passados para as funções como ponteiros.
+                    Quando passamos o array para a função, o que é realmente passado é o endereço do primeiro elemento do array, ou seja, a posição da memória onde o primeiro valor do array está armazenado.
+                    O ponteiro tab dentro da função aponta para essa posição de memória.
+
+                    Exemplo: Se tivermos um array int arr[] = {5, 3, 2, 8, 1}, quando chamamos a função ft_sort_int_tab(arr, 5), o parâmetro tab na função será um ponteiro para o endereço de arr[0], ou seja, o primeiro elemento do array, que neste exemplo tem o valor 5.
+
+                    Então: tab armazena o endereço do primeiro elemento do array arr.
+                           Quando a função acessa tab[i], ela está realmente a acessar a posição do elemento i do array original.
+
+          int size: este parâmetro indica quantos elementos estão no array.
+                    A função precisar de ter conhecimento do tamanho para garantir que ela percorra todos os elementos corretamente.
+                    É utilizado nos loops para controlar quantas comparações e trocas precisam de ser efetuadas.
+
+          int i: é utilizada para percorrer o array.
+                 Ela começa com o valor 0 e vai até size - 2 (último elemento a ser comparado no array), já que estamos sempre a comparar dois elementos adjacentes (tab[i] e tab[i + i]).
+                 A função incrementa i em cada iteração para mover para o próximo par de elementos a serem comparados.
+
+          int swap: é utilizada como uma variável temporária durante as trocas de valores.
+                    QUando dois elementos adjacentes estão desordenados, a função utiliza a variável swap para armazenar temporariamente o valor, durante a troca.
+
+                    Exemplo de como a troca funciona:
+
+                    Suponhamos que tab[i] = 5 e tab[i+1] = 3. Se a condição if (tab[i] > tab[i+1]) for verdadeira, ocorre a seguinte sequência:
+                         
+                        swap = tab[i]; → swap armazena o valor 5.
+                        tab[i] = tab[i+1]; → o valor de tab[i] é agora 3.
+                        tab[i+1] = swap; → o valor de tab[i+1] é agora 5.
+
+    Como as Variáveis se Relacionam?
+
+    A função utiliza um loop externo para controlar quantas vezes o array é percorrido e um loop interno para comparar e trocar os elementos adjacentes.
+
+    A interação entre as variáveis i, swap, tab, e size é a seguinte:
+
+        O loop interno (while (i < size - 1)) percorre o array de 0 até size - 2, comparando os pares de elementos adjacentes.
+        Se tab[i] > tab[i+1], a função faz uma troca ao utilizar a variável swap.
+        Depois que todos os elementos foram percorridos, o loop externo decrementa size, indicando que o último elemento já está no lugar correto, e reinicia o processo.
+
+    Esta repetição continua até que todos os elementos estejam ordenados.
+
+
+2 - Lógica de Ordenação (Bubble Sort)
+
+                while (size > 1)
+                {
+                    i = 0;
+                    while (i < size - 1)
+                    {
+                        // Comparação e troca
+                    }
+                    size--;
+                }
+
+    Este loop tem o objetivo de repetir a ordenação dos elementos do array até que todos eles tenham sido colocados nas suas posições corretas.
+    Ou seja, o loop externo controla quantas vezes o array será percorrido para garantir que ele esteja completamente ordenado. 
+    
+    Como vamos ver, no algoritmo Bubble Sort, o maior valor "burbulha" para o final do array a cada iteração. 
+    Portanto, a cada repetição pelo array, o número de elementos que ainda precisam de ser comparados diminui (size--), porque o maior valor já está no lugar correto, no final do array, pelo o que não precisamos de verificar o último elemento na próxima iteração.
+
+    Porquê while (size > 1) ?
+
+    Algoritmo de Bubble Sort:
+
+    O algoritmo de Bubble Sort funciona ao compararmos pares de elementos adjacentes e a efefutar a devida troca entre eles, caso estejam fora de ordem.
+    A cada iteração completa sobre o array, o maior elemento "burbulha" para o final do array, ficando na posição correta.
+    Isto significa que, após cada iteração, o maior elemento já está ordenado e não precisa de ser considerado nas próximas iterações.
+    
+    Assim, quando restar apenas 1 elemento, ele já estará automaticamente na posição correta (porque todos os outros elementos maiores já terão "burbulhado" para o final do array).
+    Pelo o que não há necessidade de continuar quando o array tiver apenas um elemento.
+    
+    Portanto, em cada iteração do loop externo, o número de elementos a serem comparados diminui, porque o maior elemento já está no seu devido lugar.
+
+    O que acontece quando size > 1?
+
+    A condição size > 1 significa que ainda existe mais do que um elemento no array que precisa de ser comparado.
+    Assim, o algoritmo continua a ser executado enquanto houver pelo menos dois elementos para comparar, porque o Bubble Sort compara sempre dois elementos adjacentes (tab[i] com tab[i + 1]).
+
+    A variável size controla o número de elementos ainda a serem ordenados, e o último elemento a ser ordenado será comparado quando size for 2. 
+    Neste momento, o loop comparará tab[0] e tab[1], e após essa iteração, o array estará ordenado.
+     
+    Vejamos:
+
+    Quando o valor de size for 2, o loop interno vai ser executado uma última vez, efetuando a comparação apenas entre os dois primeiros elementos (tab[0] e tab[1]).
+    Se esses dois elementos ainda estiverem desordenados, eles serão trocados. 
+    Depois dessa comparação, o array estará completamente ordenado.
+    Após esta última comparação, o valor de size será decrementado, e o loop externo terminará, pois não faz sentido continuar o algoritmo quando só resta um elemento.
+
+    Assim, quando size for reduzido a 1, o array já estará ordenado, porque o último elemento restante já estará na posição correta. 
+    Não há mais elementos adjacentes para comparar, então o loop externo pode parar.
+
+    Se continuassemos o loop até size = 0, estariamos a executar comparações desnecessárias ou até a causariamos problemas com índices inválidos.
+
+
+3 - Loop Interno:  while (i < size - 1)
+
+    Este loop realiza a troca de dois elementos adjacentes no array se eles estiverem desordenados, de forma a que o maior valor seja "empurrado" para o final do array.
+
+    - tab[i] > tab[i + 1]: Esse é o teste de condição. Ele verifica se o valor do elemento no índice i (tab[i]) é maior que o elemento no índice imediatamente seguinte, ou seja, tab[i + 1].
+                           Se tab[i] for maior que tab[i + 1], significa que os dois elementos estão desordenados (não estão ordenados de forma crescente), já que o maior valor deveria estar à direita do menor valor.
+                           Se a condição for verdadeira, os elementos precisam de ser trocados para colocá-los na ordem correta.
+
+    - A Troca de Valores: Se a condição tab[i] > tab[i + 1] for verdadeira, o código dentro do bloco if será executado para trocar os dois elementos de lugar. 
+                          O processo de troca (swap) funciona assim:
+
+                               - swap = tab[i]: Aqui, utilizamos uma variável temporária para armazenar o valor de tab[i].
+                                                Isto é necessário porque, quando trocamos tab[i] e tab[i + 1], não queremos perder o valor original de tab[i]. 
+                                                Então, primeiro armazenamos tab[i] em swap.
+
+                               - tab[i] = tab[i + 1]: Agora, o valor de tab[i] é substituído pelo valor de tab[i + 1].
+                                                      Isto faz com que o valor menor (que estava em tab[i + 1]) seja movido para a posição i.
+
+                               - tab[i + 1] = swap: Finalmente, colocamos o valor que originalmente estava em tab[i] (que foi armazenado na variável temporária swap) na posição tab[i + 1].
+                                                    Isto completa a troca: o valor maior, que estava em tab[i], é movido para tab[i + 1].
+
+    O loop interno para quando i chega em size - 2. Isto acontece porque, dentro do loop, comparamos sempre o elemento tab[i] com o próximo elemento.
+
+    Por que o loop vai até size - 2?
+
+    O objetivo do loop interno é comparar cada par de elementos adjacentes: tab[i] e tab[i + 1]. 
+    Isto é o que garante que, se dois elementos estiverem desordenados, eles serão trocados.
+
+    Portanto, como o maior valor que i pode assumir é size - 2, o loop tem de parar quando i assumir esse valor para que a comparação tab[i] > tab[i + 1] seja sempre válida. 
+    Pois, na última iteração, i = size - 2, sendo que a comparação será entre tab[size - 2] e tab[size - 1], que são os dois últimos elementos do array.
+
+
+Exemplo de Fluxo:
+
+1)Antes da Função:
+
+
+   > Função main
+     
+     Antes de chamarmos a função ft_sort_int_tab, o array arr[] é definido na main() com 5 valores:
+     
+     Array Original na main(): int arr[] = {5, 3, 4, 1, 2};
+
+     Estado Inicial do Array na Memória
+
+           Índice	Endereço de Memória 	Valor
+           arr[0]	      0x100	              5
+           arr[1]	      0x104	              3
+           arr[2]	      0x108	              4
+           arr[3]	      0x10C	              1
+           arr[4]	      0x110	              2
+
+    Cada elemento do array ocupa 4 bytes de memória (tamanho de um int), então o endereço de cada elemento difere por 4 bytes.
+    
+   > Chamada da Função
+
+     A função é chamada assim:  ft_sort_int_tab(arr, size);
+
+     Neste caso:
+
+     - arr é passado como argumento, e como arr é um ponteiro para o primeiro elemento do array, o endereço 0x100 (o endereço de arr[0]) é passado para a função. 
+     Não é uma cópia do array, mas sim uma referência do mesmo espaço de memória.
+    
+     - size é passado com o valor 5, que é o tamanho do array.
+
+     Assim, quando a função ft_sort_int_tab é chamada, e como estamos a passar um ponteiro (int *tab), o endereço do primeiro elemento do array é passado para a função. 
+     Ou seja, qualquer alteração feita no array dentro da função vai afetar diretamente o array original.
+
+
+2)Dentro da Função:
+
+
+  > Estado Inicial na Função
+
+    Dentro da função ft_sort_int_tab, o ponteiro tab aponta para o mesmo endereço de arr[], ou seja, tab também aponta para o endereço 0x100, que é o início do array.
+    
+        Variável	Endereço de Memória   Valor
+         tab[0]	           0x100	        5
+         tab[1]	           0x104	        3
+         tab[2]	           0x108	        4
+         tab[3]	           0x10C	        1
+         tab[4]	           0x110	        2
+
+   
+   > Primeira Iteração do Loop Externo (size = 5)
+
+     A cada iteração do loop externo, o maior elemento "burbulha" para o final do array.
+     
+     Vejamos o que acontece na integra nas primeiras quatro iterações do loop interno:
+
+     No loop interno (i = 0), o índice dos elementos vai de 0 a 4 (ou seja, size - 1 = 4).
+    
+     Como o loop interno compara sempre dois elementos adjacentes, o algoritmo começa a comparar arr[0] com arr[1] (ou seja, 5 com 3):
+    
+        Primeira Iteração Loop Interno:
+
+        Comparação tab[0] > tab[1]: if (tab[0] > tab[1]), ou seja, if (5 > 3) → A condição é verdadeira.
+    
+        O valor 5 é maior que 3, então a troca ocorre:
+        
+        swap = arr[0] = 5
+        arr[0] = arr[1] = 3
+        arr[1] = swap = 5
+
+        Agora, o array ficou assim: arr[] = {3, 5, 4, 1, 2}
+
+        Antes da troca: tab[i]   = 5
+                    tab[i+1] = 3
+
+        Após a troca: tab[i]   = 3  // valor menor agora está em i
+                      tab[i+1] = 5  // valor maior agora está em i+1
+
+
+        Troca tab[0] com tab[1]. A memória após a troca:
+    
+        Índice	Endereço de Memória   Valor
+        tab[0]	       0x100	        3
+        tab[1]	       0x104	        5
+        tab[2]	       0x108	        4
+        tab[3]	       0x10C	        1
+        tab[4]	       0x110	        2
+ 
+    
+        Segunda Iteração do Loop Interno:
+        
+        Comparação tab[1] > tab[2] : if (tab[1] > tab[2]), ou seja, if (5 > 4) → A condição é verdadeira.
+    
+        O valor 5 é maior que 4, então a troca ocorre:
+        
+        swap = arr[1] = 5
+        arr[1] = arr[2] = 4
+        arr[2] = swap = 5
+
+        Agora, o array ficou assim: arr[] = {3, 4, 5, 1, 2}
+
+        Troca tab[1] com tab[2]:
+   
+        Índice	Endereço de Memória   Valor
+        tab[0]	        0x100	        3
+        tab[1]	        0x104	        4
+        tab[2]	        0x108	        5
+        tab[3]	        0x10C	        1
+        tab[4]	        0x110	        2
+
+        
+        O loop externo reduz size-- e size = 3.
+
+        Terceira Iteração do Loop Interno:
+
+        Comparação tab[2] > tab[3]: if (tab[2] > tab[3]), ou seja, if (5 > 1) → A condição é verdadeira.
+    
+        O valor 5 é maior que 1, então a troca ocorre:
+        
+        swap = arr[2] = 5
+        arr[2] = arr[3] = 1
+        arr[3] = swap = 5
+
+        Agora, o array ficou assim: arr[] = {3, 4, 1, 5, 2}
+
+        Troca tab[2] com tab[3]:
+        
+        Índice	Endereço de Memória	  Valor
+        tab[0]	        0x100	       3
+        tab[1]	        0x104	       4
+        tab[2]	        0x108	       1
+        tab[3]	        0x10C	       5
+        tab[4]	        0x110	       2
+
+
+        Quarta Iteração do Loop Interno:
+
+        Comparação tab[3] > tab[4]: if (arr[3] > arr[4]), ou seja, if (5 > 2) → A condição é verdadeira.
+    
+        O valor 5 é maior que 2, então a troca ocorre:
+        
+        swap = arr[3] = 5
+        arr[3] = arr[4] = 2
+        arr[4] = swap = 5
+
+        Agora, o array ficou assim: arr[] = {3, 4, 1, 2, 5}
+
+        Troca tab[3] com tab[4]:
+    
+        Índice	Endereço de Memória   Valor
+        tab[0]	       0x100	        3
+        tab[1]	       0x104	        4
+        tab[2]	       0x108	        1
+        tab[3]	       0x10C	        2
+        tab[4]	       0x110	        5
+
+        Agora, o maior valor (5) já está no final do array.
+
+        Chegamos à situação em que o maior número atinge o final do array.
+
+        O loop não vai até tab[4], porque a comparação sempre envolve tab[i] e tab[i + 1]. 
+        Se i fosse igual a 4, não haveria tab[5] para comparar, o que resultaria num acesso fora dos limites do array (out of bounds).
+
+        Comparações e trocas:                                                Endereço de Memória   Índice	Valor
+                                                                                    0x1000	         0	      3
+        tab[0] (5) e tab[1] (3) → Trocar → {3, 5, 4, 1, 2}                          0x1004	         1	      4
+        tab[1] (5) e tab[2] (4) → Trocar → {3, 4, 5, 1, 2}                          0x1008	         2	      1
+        tab[2] (5) e tab[3] (1) → Trocar → {3, 4, 1, 5, 2}                          0x100C	         3	      2
+        tab[3] (5) e tab[4] (2) → Trocar → {3, 4, 1, 2, 5}                          0x1010	         4	      5
+
+        Após esta iteração, o maior elemento (5) estará na última posição, então size-- e size = 4.
+
+    > Segunda Iteração do Loop Externo (size = 4)
+       
+       Array após o término da primeira iteração: {3, 4, 1, 2, 5} 
+
+       Agora, o loop interno só precisa de comparar os elementos de tab[0] até tab[3], porque tab[4] já está na posição correta (o valor 5 não precisa de ser verificado novamente).
+       O maior elemento desta iteração "burbulha" para a penúltima posição. 
+
+      Comparações e trocas:                                                   Endereço de Memória  Índice	Valor
+                                                                                     0x1000	         0	      3
+        tab[0] (3) e tab[1] (4) → Não trocar.                                        0x1004	         1	      1
+        tab[1] (4) e tab[2] (1) → Trocar → {3, 1, 4, 2, 5}                           0x1008	         2	      2
+        tab[2] (4) e tab[3] (2) → Trocar → {3, 1, 2, 4, 5}                           0x100C	         3	      4
+                                                                                     0x1010	         4	      5
+    
+        O loop externo reduz size-- e size = 3.
+
+    > Terceira Iteração do Loop Externo (size = 3)
+
+      Array após o término da segunda iteração: {3, 1, 2, 4, 5}
+
+      Agora, o loop interno só precisa de comparar os elementos de tab[0] até tab[2], porque tab[3] e tab[4] já estão nas posições corretas.
+      Assim, o maior dos três primeiros elementos é colocado na posição correta.
+      Portanto, o maior elemento desta iteração "burbulha" para a antepenúltima posição.
+
+      Comparações e trocas:                                                   Endereço de Memória  Índice	Valor
+                                                                                     0x1000	         0	      1
+        tab[0] (3) e tab[1] (1) → Trocar → {1, 3, 2, 4, 5}                           0x1004	         1	      2
+        tab[1] (3) e tab[2] (2) → Trocar → {1, 2, 3, 4, 5}                           0x1008	         2	      3
+                                                                                     0x100C      	 3	      4
+                                                                                     0x1010	         4	      5
+
+        O loop externo reduz size-- e size = 2.
+
+    > Quarta Iteração do Loop Externo (size = 2)
+
+      Array após o término da terceira iteração: {1, 2, 3, 4, 5}
+
+      Nesta última iteração, a função compara apenas tab[0] e tab[1] (os dois elementos restantes).
+      Se estiverem desordenados, eles são trocados.
+
+      Comparações e trocas:
+
+        tab[0] (1) e tab[1] (2) → Não trocar.
+      
+      O loop externo então reduz size-- e size torna-se 1.
+
+      Quando size é 1, o loop externo termina, e a função retorna ao ponto onde foi chamada.
+   
+      
+      Tabela Final Após a Função
+
+      Depois de todas as iterações, o array arr agora está ordenado:
+
+      Endereço de Memória	Índice	  Valor
+            0x1000	          0	        1
+            0x1004	          1	        2
+            0x1008	          2	        3
+            0x100C	          3	        4
+            0x1010	          4	        5
+
+
+3) Depois da Função:
+
+   Após a execução da função, podemos usar o array ordenado arr no código principal. 
+   A função não precisa retornar nada, pois ela modifica o array diretamente na memória, graças à passagem por referência.
+
+   Após a função, ao imprimirmoa o array arr, obtemos: 1 2 3 4 5 

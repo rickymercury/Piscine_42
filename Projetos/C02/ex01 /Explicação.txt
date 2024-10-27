@@ -1,0 +1,455 @@
+Em C, um ponteiro é uma variável que armazena o endereço de memória de outra variável.
+
+> Ponteiro para o caractere: é uma variável que armazena o endereço de memória de um caractere. 
+                             Como as strings em C são representadas como arrays de caracteres (terminados com o caractere nulo \0), um ponteiro para o caractere aponta para o primeiro caractere de uma string.
+
+                             Exemplo:
+
+                             char c = 'A';
+                             char *ptr = &c;  // Ponteiro para um caractere
+
+                             Aqui, ptr é um ponteiro para o caractere 'A', mas não é necessariamente uma string, pois não estamos lidando com uma sequência de caracteres.
+                             No caso de um ponteiro para o caractere, ele armazena o endereço de memória do primeiro caractere da string armazenado no array (que representa uma sequência de caracteres terminada pelo caractere nulo \0).
+
+> Ponteiro para uma string: é uma sequência de caracteres que está armazenada na memória, seguida de um caractere nulo (\0), que indica o final da string.
+                            Como as strings em C são apenas arrays de caracteres, um ponteiro para o primeiro caractere de uma string é frequentemente chamado de ponteiro para uma string.
+
+                            Exemplo:
+
+                            char str[] = "Hello";
+                            char *ptr = str;  // Ponteiro para a string "Hello"
+
+                            Aqui, ptr aponta para o primeiro caractere da string "Hello", que é 'H'. 
+                            Ao acessar ptr, podemos percorrer a string até encontrar o caractere nulo (\0).
+
+> Relação entre um Ponteiro para o caractere e um Ponteiro para uma String: Em C, um ponteiro para o caractere pode ser usado para referenciar o primeiro caractere de uma string, e ao fazer isso, o ponteiro permite acessar a string inteira, porque na linguagem C não existe um tipo "string" embutido. 
+                                                                            O conceito de string é implementado como um array de caracteres.
+
+> Exemplo de um Ponteiro para Caractere usado como Ponteiro para String:  char *str = "Hello, World!";  // Ponteiro para o primeiro caractere da string
+                                                                          printf("%s\n", str);          // Imprime a string "Hello, World!"
+
+                                                                          Aqui, str é um ponteiro para o primeiro caractere da string "Hello, World!", mas estamos a lidar com a string inteira. 
+                                                                          Ao passar str para printf com o formato %s, o programa imprime a string inteira, pois o ponteiro vai percorrer os caracteres até encontrar o caractere nulo \0.
+
+> Apesar de ambos os conceitos serem frequentemente usados de forma intercambiável, a diferença técnica é que: Um ponteiro para o caractere pode apontar para um único caractere ou para o primeiro caractere de uma string (sequência de caracteres).
+                                                                                                               Quando nos referimos a um ponteiro para uma string, estamos a referir-nos ao ponteiro para o primeiro caractere de uma sequência de caracteres terminada em \0.
+
+                                                                                                               Exemplo para Ilustrar:
+
+                                                                                                               char singleChar = 'A';
+                                                                                                               char *charPtr = &singleChar;  // Ponteiro para o caractere 'A'
+
+                                                                                                               char string[] = "Hello";
+                                                                                                               char *stringPtr = string;     // Ponteiro para o primeiro caractere da string "Hello"
+
+                                                                                                               // Acessando os valores
+                                                                                                               printf("Caractere: %c\n", *charPtr);        // Exibe 'A'
+                                                                                                               printf("String: %s\n", stringPtr);          // Exibe "Hello"
+
+                                                                                                               Aqui, charPtr é um ponteiro para um único caractere, enquanto stringPtr é um ponteiro para uma string. 
+                                                                                                               Ambos são ponteiros para caractere, mas um aponta para um único caractere, e o outro aponta para uma sequência de caracteres.
+
+> Portanto, um ponteiro para caractere pode ser utilizado como um ponteiro para uma string se estiver a apontar para o primeiro caractere de uma sequência de caracteres terminada por \0. 
+  Na prática, quando trabalhamos com strings em C, usamos um ponteiro para caractere para percorrer ou manipular a string, então, sim, eles podem ser considerados "a mesma coisa" em muitos contextos.
+
+
+*******************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+
+1 - Função ft_strncpy;  char *ft_strncpy(char *dest, char *src, unsigned int n)
+    
+    A função ft_strncpy copia até n caracteres da string de origem src para a string de destino dest. 
+    Se a string src for mais curta do que o número máximo de caracteres a serem copiados para dest (n), a função vai preencher o restante da dest com caracteres nulos (\0), garantindo que dest tenha exatamente n caracteres, mesmo que src seja menor.
+    
+    1.1 - Tipo de Retorno: char *
+
+          Quando a função ft_strncpy retorna um ponteiro para uma string, o valor retornado é o endereço do primeiro caractere da string copiada, que está armazenada no array dest.
+
+            A função retorna um ponteiro por duas razões principais:
+
+                > Para Permitir a Manipulação do Array dest após a Cópia: Retornar o ponteiro para a string dest permite que o código que chamou a função tenha uma referência para acessar e manipular a string copiada. 
+                                                                          Como dest é um array local que é passado por referência (como um ponteiro), retornar o ponteiro permite que a função "informe" a função que a chamou onde a nova string está armazenada.
+
+                > A Linguagem C Não Suporta o Retorno de Arrays na sua Totalidade: Em C, não é possível retornar um array na sua totalidade diretamente a partir de uma função (devido às limitações de como os arrays são tratados). 
+                                                                                   Em vez disso, um ponteiro para o array pode ser retornado, o que na prática fornece o acesso à mesma memória onde o array está armazenado.
+
+
+           > Quando chamamos a função ft_strncpy, o argumento dest é passado como um ponteiro para o primeiro elemento do array de destino. 
+             Mesmo que dest seja declarado como um array, ao ser passado para a função, ele é tratado como um ponteiro para o primeiro caractere do array.
+
+             Por exemplo, se dest estiver alocado com char dest[10], ao chamar a função: ft_strncpy(dest, src, n), o que a função realmente recebe como argumento é o endereço de memória de dest[0]. 
+             Isto significa que dentro da função, dest é um ponteiro que aponta para o primeiro caractere da área de memória alocada para dest. 
+             Este comportamento é permitido e garantido pela maneira como a linguagem C lida com arrays.
+
+           > A linguagem C permite manipular diretamente os endereços de memória ao recorrer ao uso de ponteiros.
+             No caso da função ft_strncpy, tanto a string dest quanto a string src são ponteiros para a string, e a função manipula essas áreas de memória diretamente.
+
+             char *ft_strncpy(char *dest, char *src, unsigned int n)
+
+             Aqui, dest é um ponteiro que aponta para a área da memória onde a string de destino está armazenada. 
+             Ao retornar dest no final da função: return (dest), o que a função retorna é o endereço do primeiro caractere da string copiada.
+
+           > Em C, as strings (ou arrays de caracteres) são armazenadas na memória de forma contígua, ou seja, cada caractere ocupa uma posição da memória ao lado da outra. 
+             Quando a função retorna o ponteiro para o primeiro caractere de dest, ela está a retornar o endereço de uma área contínua de memória onde a string foi copiada.
+
+             Por exemplo, se tivermos o array dest em memória começando no endereço 0x2000:
+
+             Endereço de Memória	Valor
+                   0x2000	         'H'
+                   0x2001	         'e'
+                   0x2002            'l'
+                   0x2003            'l'
+                   0x2004	         'o'
+                   0x2005	         '\0'
+ 
+            Quando a função retorna o valor da string dest, ela está a retornar o valor 0x2000, que é o endereço da primeira posição da memória do array.
+            
+          Como Isto é Garantido?
+
+          A garantia de que o ponteiro retornado será válido e útil depende de vários fatores:
+
+           > Validade do Array de Destino: O array dest precisa de ter sido corretamente alocado (ou seja, de ter espaço suficiente) antes da chamada da função. 
+                                           Se o array de destino não tiver espaço suficiente para alocar os n caracteres mais o caractere nulo, isso pode causar erros, como a escrita em áreas de memória fora dos limites do array (o que leva a comportamento indefinido).
+          
+           > Memória Contígua: A manipulação de strings em C é facilitada pelo fato de que os arrays de caracteres são armazenados de forma contígua na memória. 
+                               Como a função sempre retorna o endereço do primeiro caractere, a função que chamou pode acessar toda a string copiada de forma linear.
+
+           > Finalização com \0 (Caractere Nulo): Para garantir que a string seja tratada corretamente pela função que a chamou, o segundo loop while da função (como vamos ver mais à frente) preenche os caracteres restantes de dest (caso haja) com \0.
+                                                  Esta etapa garante que a string dest seja uma string válida, pois as funções em C que trabalham com strings utilizam o caractere nulo \0 para terminar a string.
+
+
+    1.2 - Variáveis:
+
+          char *dest: O parâmetro dest é um ponteiro para caractere (ou para a string) que aponta para o primeiro caractere do array de destino (onde os caracteres de src serão copiados).
+                      Ou seja, corresponde ao endereço de memória do array de caracteres onde a string src será copiada.
+                      Este array precisa de ser alocado antes de chamar a função e deve ter espaço suficiente para armazenar os caracteres copiados.
+                      A função vai preencher dest com os caracteres copiados de src, até alcançar o número máximo de n caracteres.
+                      Durante o código, dest[i] representa a posição atual no array de destino, onde cada caractere de src será copiado.
+
+                      Exemplo de inicialização:
+
+                      char dest[10];  // Espaço para até 10 caracteres
+
+                      Neste caso, dest é um array de 10 caracteres. 
+                      Quando for passado para a função, ele é tratado como um ponteiro para o primeiro caractere (posição dest[0]).
+
+          char *src: O parâmetro src é um ponteiro para caractere (ou para a string) que aponta para o primeiro caractere da string src, a partir de onde os caracteres serão copiados para dest.
+                     Ou seja, corresponde ao endereço de memória do array de caracteres src que será copiado para dest.
+                     O array src fornece a string que será copiada para dest.
+                     Durante a execução da função, src[i] representa o caractere atual da string src que está a ser copiada para a string dest.
+
+                     Exemplo de inicialização:
+
+                     char src[] = "Hello";  // String de origem
+
+                     Neste caso, src aponta para o primeiro caractere de "Hello".
+
+        unsigned int n: O parâmetro n define o número máximo de caracteres que podem ser copiados da string src para a string dest.
+                        Corresponde a um número inteiro não negativo (pois é um unsigned int), que determina quantos caracteres serão copiados, no máximo, da src para a dest.
+                        Se src tiver menos caracteres do que n, o restante do array dest será preenchido com caracteres nulos '\0'.
+                        A variável n serve como uma maneira de limitar o número de caracteres copiados, evitando acessos indevidos da memória.
+
+                        Exemplo de uso:
+
+                        unsigned int n = 7;  // Queremos copiar até 7 caracteres
+
+                        Se n = 7, a função copiará até 7 caracteres de src para dest.
+
+        unsigned int i: é utilizada para controloar e percorrer as posições atuais dos arrays src e dest, no processo da cópia.
+                          Começa com 0 e vai sendo incrementado até atingir n ou então até chegar ao fim da string src.
+                          Serve para acessar os caracteres de src e copiá-los para dest.
+
+                          Exemplo de uso:
+
+                          Quando i = 0, a função copiará src[0] para dest[0].
+                          Quando i = 1, copiará src[1] para dest[1], e assim por diante, até i < n.
+
+
+2 - Cópia dos Caracteres de src para dest:
+
+        while (src[i] != '\0' && i < n)
+        {   
+            dest[i] = src[i];
+            i++;
+        }
+ 
+    Este loop faz a cópia real dos caracteres de src para dest. Vamos explicar cada parte:
+
+    Condição do Laço (src[i] != '\0' && i < n): O laço continua até que i atinja n (número máximo de caracteres a serem copiados) ou até que o fim da string src seja alcançado.
+    
+    Cópia do caractere: dest[i] = src[i] - A cada iteração, o caractere na posição i da string src[] é copiado para a posição correspodente i na string dest[].
+
+    Incremento de i: Após copiar o caractere, a cada iteração, a variável i é incrementada para mover o índice para o próximo caractere na string.
+
+    Exemplo:
+
+    Se tivermos src = "Hello" e n = 7, o laço vai copiar os caracteres H, e, l, l, o para dest, até que i = 5 (porque src[5] é '\0'). 
+    O loop termina quando o final de src é atingido ou quando i atinge n.
+
+    Iteração	i	src[i]	        Ação      	    dest[i] (após a cópia)
+        1	    0	 'H'	Copia 'H' para dest[0]      	'H'
+        2	    1	 'e'	Copia 'e' para dest[1]	        'e'
+        3	    2	 'l'	Copia 'l' para dest[2]	        'l'
+        4	    3	 'l'	Copia 'l' para dest[3]	        'l'
+        5	    4	 'o'	Copia 'o' para dest[4]	        'o'
+        6	    5	 '\0'	Fim de src, termina o laço	
+
+Neste exemplo, o loop termina quando o índice i = 5 e src[i] == '\0'.
+
+3 - Preenchimento com '\0':
+
+        while (i < n)
+        {
+            dest[i] = '\0';
+            i++;
+        }
+
+    Este loop é responsável por preencher as posições restantes do array dest com caracteres nulos (\0), caso a string src tenha menos caracteres do que o valor de n.
+
+    Como vimos, no primeiro loop while, a função copia os caracteres de src para dest, até que encontre o caractere nulo (\0) ou até que o índice atinja o valor de n. 
+    No entanto, se a string src for mais curta do que n, a parte restante do array dest precisa de ser preenchida com caracteres nulos (\0) para garantir que dest termine corretamente como uma string válida em C.
+    
+    Este loop entra em ação logo após o fim do primeiro loop, ou seja, quando todos os caracteres de src já foram copiados para dest, ou o indice i atingiu o final da string src (o caractere nulo).
+    
+    Agora, o loop precisa de garantir que, se i for menor que n, as posições restantes no array dest sejam preenchidas com \0.
+    
+    Condição i < n : O laço while continua a executar enquanto i for menor que n. 
+                     Isto garante que ele vá percorrer todas as posições do array dest até a posição n - 1.
+
+     dest[i] = '\0': O caractere nulo (\0) é colocado na posição i de dest. 
+                     Este caractere serve como o marcador do fim de uma string na linguagem C, o que indica onde a string termina.
+                     Mesmo que src seja menor que n, isto garante que dest seja uma string válida, com os caracteres copiados seguidos de \0.
+
+    Incremento i++ : Depois de preencher a posição i de dest com \0, a variável i é incrementada para processar a próxima posição do array.
+
+    O loop continua a preencher as próximas posições de dest com \0 até que i atinja o valor de n.
+    
+    Condição (i < n): o loop continua até que i atinja o valor de n (i == n).
+
+    Exemplo:
+
+    Continuando com o exemplo de src = "Hello" e n = 7, quando o laço anterior termina, i = 5 e o array dest tem a string "Hello". 
+    Agora, este loop vai preencher as posições dest[5] e dest[6] com \0.
+
+    Iteração	i	        Ação	               dest[i] (após a atribuição)
+       1	    5	Preenche dest[5] com '\0'	           '\0'
+       2	    6	Preenche dest[6] com '\0'	           '\0'
+
+    Após este loop, dest contém: "Hello\0\0", e i atinge o valor 7, terminando o preenchimento.
+
+    Importância deste loop:
+
+      > Sem este loop, se a string src for menor que n, o array dest não seria completamente inicializado. 
+        Isto poderia causar comportamentos indefinidos se dest fosse usada mais tarde, já que a string poderia não ter um final \0 apropriado.
+
+      > Na linguagem C, as strings precisam de ser terminadas com um caractere nulo (\0). 
+        Isto é o que permite que funções como printf ou strlen saibam onde a string termina. 
+        O loop garante que, mesmo que src tenha menos caracteres do que n, dest será uma string válida com o tamanho correto.
+
+      > Se src for menor do que n, o loop garante que dest tenha exatamente n posições válidas, preenchendo o restante com \0. 
+        Isto é útil em casos onde precisamos de uma string de tamanho fixo, mesmo que a fonte tenha menos caracteres.
+
+
+4 - Retorno do Ponteiro dest: return (dest);
+
+    No final da função, o ponteiro para dest (ou seja, o endereço do primeiro caractere de dest) é retornado. Isso permite que o chamador da função possa usar a string copiada.
+
+
+
+
+
+Fluxo detalhado antes e durante a execução da função
+
+
+1. Antes da chamada da função ft_strncpy
+
+Antes de chamar a função, temos as variáveis src e dest já declaradas e alocadas na memória.
+
+    src[] = "Hello": A string src foi inicializada com os caracteres 'H', 'e', 'l', 'l', 'o' e '\0'. 
+                     Em C, as strings terminam com o caractere nulo (\0), que indica o fim da string.
+
+        Tamanho: 6 bytes (5 caracteres mais o \0 )
+        Endereço de memória de src[]: 0x1000.
+
+    dest[10]: O array dest foi alocado na memória com 10 posições, mas o conteúdo ainda é indefinido (lixo da memória ou zeros).
+        
+        Tamanho: 10 bytes (espaço suficiente para até 10 caracteres).
+        Endereço de memória de dest[]: 0x2000.
+
+    Antes da função, o estado da memória é o seguinte:
+
+            Variável	Endereço	Conteúdo antes da função
+            -------------------------------------------------
+             src[0]	     0x1000	             'H'
+             src[1]	     0x1001	             'e'
+             src[2]	     0x1002	             'l'
+             src[3]	     0x1003	             'l'
+             src[4]	     0x1004	             'o'
+             src[5]	     0x1005	            '\0'
+            --------------------------------------------------
+            dest[0]	     0x2000	          Indefinido
+            dest[1]	     0x2001	          Indefinido
+            dest[2]	     0x2002	          Indefinido
+            dest[3]	     0x2003	          Indefinido
+            dest[4]	     0x2004	          Indefinido
+            dest[5]	     0x2005	          Indefinido
+            dest[6]	     0x2006	          Indefinido
+            dest[7]	     0x2007	          Indefinido
+            dest[8]	     0x2008	          Indefinido
+            dest[9]	     0x2009	          Indefinido
+            --------------------------------------------------
+
+    Resumo antes da função:
+
+    src aponta para a string "Hello\0", com 6 bytes ocupados (5 caracteres e o \0).
+    
+    dest tem 10 posições, mas ainda não tem conteúdo definido.
+
+
+2. Chamada da função ft_strncpy
+
+   Quando a função ft_strncpy(dest, src, 10) é chamada:
+
+    O endereço inicial de dest (0x2000) é passado para a função.
+    O endereço inicial de src (0x1000) também é passado.
+    O valor 10 é passado como o número máximo de caracteres que queremos copiar de src para dest.
+
+
+3. Dentro da função ft_strncpy
+
+   A função começa com o primeiro loop while que copia os caracteres de src para dest. 
+   A variável i é inicializada com 0 e, enquanto i for menor que n (10), ela vai copiar os caracteres um a um até que o caractere nulo \0 seja encontrado na string src ou que o número de caracteres copiados atinja n.
+
+   Passo a passo do primeiro laço while:
+
+        while (src[i] != '\0' && i < n)
+        {
+            dest[i] = src[i];
+            i++;
+        }
+
+    Este laço copia os caracteres de src para dest até que encontre o caractere nulo (\0) ou o limite n seja atingido.
+
+    Iteração	Valor de i	Valor de src[i]	   Ação realizada	 Valor de dest[i] após cópia	Endereço de dest[i]
+       1	         0	          'H'	       dest[0] = src[0]	            'H'	                      0x2000
+       2	         1	          'e'	       dest[1] = src[1]	            'e'	                      0x2001
+       3	         2	          'l'	       dest[2] = src[2]	            'l'                       0x2002
+       4	         3	          'l'	       dest[3] = src[3]	            'l'	                      0x2003
+       5	         4	          'o'	       dest[4] = src[4]	            'o'	                      0x2004
+       6	         5	          '\0'	       Laço interrompido	         -	                         -
+
+
+    Após a execução do primeiro while, temos o seguinte estado de memória:
+
+    Variável	 Endereço	Conteúdo (após o 1º while)
+    --------------------------------------------------
+      src[0]	  0x1000	         'H'
+      src[1]	  0x1001	         'e'
+      src[2]	  0x1002	         'l'
+      src[3]	  0x1003	         'l'
+      src[4]	  0x1004	         'o'
+      src[5]	  0x1005	         '\0'
+    ---------------------------------------------------
+     dest[0]	  0x2000	         'H'
+     dest[1]	  0x2001	         'e'
+     dest[2]	  0x2002	         'l'
+     dest[3]	  0x2003	         'l'
+     dest[4]	  0x2004	         'o'
+     dest[5]	  0x2005	      Indefinido
+     dest[6]	  0x2006	      Indefinido
+     dest[7]	  0x2007	      Indefinido
+     dest[8]	  0x2008	      Indefinido
+     dest[9]	  0x2009	      Indefinido
+    ----------------------------------------------------
+       i	         -	               5
+
+    Agora, dest contém os caracteres 'H', 'e', 'l', 'l', 'o', que foram copiados de src.
+
+    Passo a passo do segundo laço while:
+
+    Depois que o primeiro loop termina, o segundo loop entra em ação para preencher as posições restantes de dest com '\0':
+
+        while (i < n)
+        {
+            dest[i] = '\0';
+            i++;
+        }
+
+    Este laço será executado até que i atinja o valor de n (10).
+
+    Iteração	Valor de i	  Ação realizada	Valor de dest[i] após ação	 Endereço de dest[i]
+      1	            5	       dest[5] = '\0'	           '\0'	                 0x2005
+      2	            6	       dest[6] = '\0'	           '\0'	                 0x2006
+      3	            7	       dest[7] = '\0'	           '\0'	                 0x2007
+      4	            8          dest[8] = '\0'              '\0'                  0x2008
+      5             9          dest[9] = '\0'              '\0'                  0x2009
+      6             10        Laço interrompido         	 -                     -
+      
+      
+    Após a execução do segundo loop, dest é preenchido completamente com caracteres nulos ('\0') até n.
+
+    Variável	 Endereço	  Conteúdo (após o 2º while)
+     src[0]	      0x1000	            'H'
+     src[1]	      0x1001	            'e'
+     src[2] 	  0x1002	            'l'
+     src[3]	      0x1003	            'l'
+     src[4]	      0x1004	            'o'
+     src[5]	      0x1005	            '\0'
+    -------------------------------------------------------
+    dest[0]	      0x2000	            'H'
+    dest[1]	      0x2001	            'e'
+    dest[2]	      0x2002	            'l'
+    dest[3]	      0x2003	            'l'
+    dest[4]	      0x2004	            'o'
+    dest[5]	      0x2005	            '\0'
+    dest[6]	      0x2006	            '\0'
+    dest[7]	      0x2007	            '\0'
+    dest[8]	      0x2008	            '\0'
+    dest[9]	      0x2009	            '\0'
+    ---------------------------------------------------------
+       i	        -	                 10
+
+
+4. Após a Função
+
+   Quando a função ft_strncpy termina, o conteúdo da string dest agora é "Hello\0\0\0\0\0" (5 caracteres da src seguidos por 5 '\0'). 
+   A função retorna o ponteiro para o início de dest: return (dest).
+
+   Retorno do Ponteiro: o ponteiro que aponta para o início do array dest é retornado. 
+                        Este ponteiro é o endereço de memória onde a string copiada (incluindo os caracteres nulos) está armazenada. 
+                        No nosso exemplo, se dest foi alocado no endereço 0x2000, a função retornará o valor 0x2000.
+
+5. De volta para a Função main
+
+   Quando a função ft_strncpy termina a sua execução, o fluxo volta para a função main, e a execução retorna para a linha seguinte à chamada da função.
+
+
+6. Uso do Valor Retornado na main
+
+   Na função main: ft_strncpy(dest, src, 10);
+
+   Aqui, o valor retornado (que é um ponteiro para dest) não é usado explicitamente. 
+   Contudo, dest já foi modificado diretamente dentro da função, portanto, podemos acessar dest diretamente após a chamada.
+
+   Conteúdo de dest: Após a execução da função, o conteúdo da variável dest em main é agora:
+
+      Endereço	 Conteúdo
+      0x2000	   'H'
+      0x2001	   'e'
+      0x2002	   'l'
+      0x2003	   'l'
+      0x2004	   'o'
+      0x2005	   '\0'
+      0x2006	   '\0'
+      0x2007	   '\0'
+      0x2008	   '\0'
+      0x2009	   '\0'
+
+    Assim, ao acessar a string dest na main, ela contém a string "Hello" seguida de cinco caracteres nulos.
+
+7. Exibição do Conteúdo de dest
+
+   Quando chamamos a função printf na main para exibir o conteúdo de dest: printf("dest: %s\n", dest);
+
+    A função printf utiliza o especificador de formato %s, que espera um ponteiro para uma string terminada com o caractere nulo ('\0').
+    O printf começa a ler os caracteres a partir do endereço que dest aponta (0x2000) até que encontre o primeiro caractere nulo ('\0'), exibindo assim "Hello" na saída padrão.

@@ -6,11 +6,9 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 22:31:15 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 22:40:52 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/22 15:54:33 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -39,4 +37,13 @@ int main(void)
 
     return 0;
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_strcpy.c -o ft_strcpy
+sh-5.2$ ./ft_strcpy 
+Source: Benfica, Campeão
+Destination: Benfica, Campeão
 */

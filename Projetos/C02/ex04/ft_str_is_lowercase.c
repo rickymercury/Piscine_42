@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:19:07 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 23:25:34 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/23 21:56:52 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,26 @@ int	ft_str_is_lowercase(char *str)
 /*
 #include<stdio.h>
 
-int main(void)
+int main()
 {
     char str1[] = "hello";
     char str2[] = "HELLO";
     char str3[] = "";
 
-    if (ft_str_is_lowercase(str1))
-        printf("A string \"%s\" é minúscula. Retorna: %d\n", str1, ft_str_is_lowercase(str1));
-    else
-        printf("A string \"%s\" não é minúscula. Retorna: %d\n", str1, ft_str_is_lowercase(str1));
-    
-     if (ft_str_is_lowercase(str2))
-        printf("A string \"%s\" é minúscula. Retorna: %d\n", str2, ft_str_is_lowercase(str2));
-    else
-        printf("A string \"%s\" não é minúscula. Retorna: %d\n", str2, ft_str_is_lowercase(str2));
-    
-     if (ft_str_is_lowercase(str3))
-        printf("A string \"%s\" é minúscula. Retorna: %d\n", str3, ft_str_is_lowercase(str3));
-    else
-        printf("A string \"%s\" não é minúscula. Retorna: %d\n", str3, ft_str_is_lowercase(str3));
+    printf("str1 é minúsculo? %d\n", ft_str_is_lowercase(str1));
+    printf("str2 é minúsculo? %d\n", ft_str_is_lowercase(str2));
+    printf("str3 é minúsculo? %d\n", ft_str_is_lowercase(str3));
 
     return (0);
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_str_is_lowercase.c -o ft_str_is_lowercase
+sh-5.2$ ./ft_str_is_lowercase 
+str1 é minúsculo? 1
+str2 é minúsculo? 0
+str3 é minúsculo? 1
 */

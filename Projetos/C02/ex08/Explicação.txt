@@ -1,0 +1,336 @@
+1 - Função ft_strlowcase:  char	*ft_strlowcase(char *str)
+
+    A função converte todos os caracteres maiúsculos de uma string para minúsculos.
+    Se o caractere já estiver em minúsculo ou não for uma letra (como números ou símbolos), permanece inalterado.
+
+    1.1 - Tipo de Retorno:  char *str
+
+          A função ft_strlowcase retorna um ponteiro para caractere (char *) porque:
+          
+          Como em C, as strings são essencialmente arrays de caracteres, quando passamos uma string para a função, o que realmente passamos é o endereço do primeiro caractere da string (um ponteiro para o primeiro caractere). 
+          Por esta razão, quando estamos a trabalhar com a string dentro da função ft_strlowcase, estamos a modificar diretamente o conteúdo da memória onde a string original está armazenada.
+          Assim, as mudanças feitas na string dentro da função serão refletidas fora da função, pois a string é modificada no local (in-place).
+
+          No final da função, quando retornamos a string (return (str)), estamos simplesmente a devolver o ponteiro original que aponta para o primeiro caractere da string. 
+          A string já modificada pela função, agora aponta para a string que foi convertida para caracteres minúsculos. 
+          Como a função retorna o endereço da string, podemos usá-la de forma direta para imprimir ou continuar a manipular o resultado.
+          Assim, ao retornar um ponteiro para a string modificada, a função permite que a string alterada seja usada diretamente pelo código que a chamou, sem precisar de criar uma nova string.
+
+          Se a função não retornasse nada (ou seja, se fosse void), ainda conseguiriamos modificar a string original, mas não poderiamos passar a string modificada para outra parte do programa sem manter o ponteiro, externamente. 
+          
+          Ao retornar o ponteiro, a função permite que outras partes do programa recebam diretamente a string modificada e façam uso dela.
+
+          Suponhamos que temos uma string "BENFICA", e o endereço na memória seja 0x1000.
+
+          Antes de chamar ft_strlowcase, a string está armazenada assim:
+    
+                Endereço	Valor
+                 0x1000	     'B'
+                 0x1001	     'E'
+                 0x1002	     'N'
+                 0x1003	     'F'
+                 0x1004	     'I'
+                 0x1005	     'C'
+                 0x1006	     'A'
+                 0x1007	     '\0'
+
+           Quando passamos a string "BENFICA" para ft_strlowcase, o que realmente estamos a passar é o ponteiro para o endereço 0x1000.
+
+           Dentro da função, percorremos cada caractere e modificamos o conteúdo diretamente na memória. 
+           Por exemplo, a primeira modificação será no endereço 0x1000, onde o caractere 'B' será convertido para 'b'. 
+           No final da função, a string na memória foi alterada para:
+
+                Endereço	Valor
+                 0x1000	     'b'
+                 0x1001	     'e'
+                 0x1002	     'n'
+                 0x1003	     'f'
+                 0x1004	     'i'
+                 0x1005	     'c'
+                 0x1006	     'a'
+                 0x1007	     '\0'
+
+           Agora, ao retornar str, o valor retornado é o ponteiro 0x1000, que é o endereço da string modificada. 
+           Como o ponteiro aponta para a string modificada, podemos usar este valor para imprimir ou realizar outras operações com a string já convertida para maiúsculas.
+          
+    1.2 - Variáveis:
+
+          char *str: o parâmetro str é um ponteiro para uma array de caracteres (string) que aponta para o primeiro caractere da string que está a ser verificada pela função.
+                     Quando passamos a string para a função, o valor que str recebe é o endereço de memória onde o primeiro caractere da string está armazenado.
+                     Durante a execução do loop while, a função utiliza str[i] para acessar o caractere na posição i da string.
+
+                     Exemplo:
+
+                     char str[] = "Hello";
+                     ft_strlowcase(str);
+
+                     Se a string "Hello" for passada para a função, o ponteiro str aponta para o endereço da memória onde está armazenado o primeiro caractere 'H'. Então:
+
+                     str[0] acessa 'H'
+                     str[1] acessa 'e'
+                     str[2] acessa 'l'
+                     str[3] acessa 'l'
+                     str[4] acessa 'o'
+                     str[5] acessa o caractere nulo '\0', que indica o fim da string.
+
+                     A função utiliza este ponteiro para percorrer e modificar a string caractere por caractere. 
+                     O objetivo é verificar se cada caractere está entre 'A' e 'Z' (letras maiúsculas) e convertê-lo para minúsculas, se for o caso.
+
+                     Como estamos a modificar diretamente os valores de str[i], a string original será alterada diretamente na memória, sem criar uma nova string.
+
+          int i: é um contador que controla o loop while.
+                 É utilizada para percorrer cada caractere da string, desde o primeiro até ao último (antes do caractere nulo).
+                 O valor de i vai ser incrementado, em cada iteração de modo a que str[i] acesse todos os caracteres do array, até que a função tenha verificado todos os caracteres ou até encontrar um caractere que não seja minúsculo.
+                 
+                 No início, i é inicializado com 0, indicando que estamos a acessar o primeiro caractere da string (posição str[0]).
+
+                 Cada vez que o loop é executado, i é incrementado (i++), o que faz a função verificar o próximo caractere da string na posição str[i+1].
+
+
+2 - Loop while:  while (str[i] != '\0')
+
+            while (str[i] != '\0')
+	        {
+		        if (str[i] >= 'A' && str[i] <= 'Z')
+			        str[i] += 32;
+		        i++;
+	        }
+	        return (str);
+
+    Este loop é responsável por percorrer a string caractere a caractere. 
+    Continua a executar o loop enquanto o caractere no índice i da string não for o caractere nulo ('\0').
+
+    O loop começa no índice i = 0, ou seja, o loop começa a processar a string a partir do primeiro caractere (str[0]), e continua até encontrar '\0', que marca o fim da string.
+    
+    Exemplo (com a string "Benfica"):
+
+    Índice i	Caractere
+       0	       'B'	     
+       1	       'E'	     
+       2	       'N'	     
+       3	       'F'	     
+       4	       'I'	     
+       5	       'C'	     
+       6       	   'A'	      
+       7	       '\0'   	    
+
+    Quando i chega ao índice 7 (onde está o caractere nulo '\0'), o loop para.
+    
+
+3 - Verificação e Conversão dos Caracteres Maiúsculos:  if (str[i] >= 'A' && str[i] <= 'Z')
+
+    Dentro do loop while, temos uma estrutura condicional if.
+    O objetivo é verificar se o caractere atual (str[i]) está na faixa das letras maiúsculas do alfabeto.
+
+    As letras maiúsculas no código ASCII estão entre os valores 'A' (65) e 'Z' (90). 
+    Portanto:
+        
+        str[i] >= 'A': Verifica se o valor de str[i] é maior ou igual a 'A' (ou seja, 65).
+        str[i] <= 'Z': Verifica se o valor de str[i] é menor ou igual a 'Z' (ou seja, 90).
+
+    Se ambas as condições forem verdadeiras, significa que o caractere atual str[i] é uma letra maiúscula e procede para a etapa seguinte, a de conversão para minúsculas.
+
+4 - Conversão de Maiúsculas para Minúsculas:  str[i] += 32;
+    
+    Adição de 32: No código ASCII, as letras minúsculas e maiúsculas têm uma diferença de 32 entre elas. 
+    Por exemplo:
+
+        'A' (maiúscula) tem o valor 65.
+        'a' (minúscula) tem o valor 97.
+    
+    Se adicionarmos 32 a qualquer valor entre 'A' e 'Z' (65 a 90), vamos obter o valor correspondente em minúscula (a a z, que vai de 97 a 122).
+
+    Portanto, a operação str[i] += 32 converte a letra maiúscula para minúscula diretamente ao ajustar o valor ASCII.
+
+5 - Incremento do Índice:  i++
+
+    Após processar o caractere atual (seja ao converter ou não), o valor do índice i é incrementado para que o loop vá para o próximo caractere da string, consequentemente, movendo para o próximo caractere da string. 
+
+6 - Retorno da Função:  return (str)
+
+    Depois que o loop chega ao fim (quando str[i] atinge o caractere nulo \0), a função retorna o ponteiro str. 
+    Isto significa que a função devolve o endereço da string modificada, permitindo que ela seja utilizada na função main ou em qualquer outra parte do código.
+
+
+
+
+Exemplo de Fluxo:
+
+
+1) Antes da Função:
+
+   
+   > Função main
+
+             int main(void)
+             {
+                char str1[] = "BENFICA";
+
+                printf("Before: %s\n", str1);
+                printf("After: %s\n", ft_strlowcase(str1));
+
+                return 0;
+             }
+
+    Quando declaramos a string str1[] = "BENFICA", o compilador aloca espaço suficiente na memória para armazenar cada caractere da string, incluindo o caractere nulo '\0'.
+    O tamanho da string "BENFICA" é de 7 caracteres, e o compilador adiciona um '\0' no final, totalizando 8 posições na memória.
+    Cada caractere é armazenado numa posição contígua na memória.
+    
+    Assim, o conteúdo inicial de str1 será "BENFICA\0".
+
+    O ponteiro str1 é um ponteiro para o primeiro caractere da string, o que significa que str1 guarda o endereço de memória onde está armazenado o caractere 'B'.
+    Daqui para a frente, vamos assumir que o endereço de memória inicial da string é 0x1000.
+
+    O valor de str1 é str1 = 0x1000, o que significa que str1 armazena o endereço de memória 0x1000, o qual aponta para o primeiro caractere da string ('B').
+    
+    Logo após a declaração e inicialização da string:
+
+    printf("Before: %s\n", str1);                 // Imprime o valor original da string
+    printf("After: %s\n", ft_strlowcase(str1));   // Chama a função para modificar a string
+
+    Impressão do Valor Original: O primeiro printf exibe o valor da string antes de qualquer modificação. 
+                                 O compilador percorre o bloco de memória a partir do endereço 0x1000 e imprime cada caractere até encontrar o terminador nulo \0.
+                                 
+                                 O output será:  Before: BENFICA
+
+   > Chamada de ft_strlowcase:
+
+    Quando a função é chamada (ft_strlowcase(str1)), o compilador passa o endereço de memória de str1 para a função. 
+    Ou seja, passa o endereço de memória do primeiro caractere da string para a função.
+    Neste caso, o argumento passado para ft_strlowcase é o ponteiro que contém o endereço 0x1000. 
+    Esse endereço (0x1000) é o local onde o primeiro caractere 'B' está armazenado.
+    
+    Passagem por Referência: O argumento da função é um ponteiro (char *str), o que significa que a função recebe o endereço de memória da string original, não uma cópia da string.
+                             Isto permite que a função modifique diretamente a string que foi passada, uma vez que ft_strupcase vai operar sobre a mesma área de memória que str1 aponta.
+
+    Exemplo de alocação de memória para "Benfica" (antes da chamada):
+
+      Variável     Endereço	  Valor	  Caractere
+      str1[0]       0x1000	   66	     'B'
+      str1[1]       0x1001	   69	     'E'
+      str1[2]       0x1002	   78        'N'
+      str1[3]       0x1003	   70	     'F'
+      str1[4]       0x1004     73	     'I'
+      str1[5]       0x1005     67	     'C'
+      str1[6]       0x1006     65	     'A'
+      str1[7]       0x1007	    0       '\0'
+
+    
+   > Entrada na Função:
+
+     QUando a função é chamada, o fluxo é transferido para a função ft_strlowcase.
+
+     O ponteiro str recebe o valor passado, que é o endereço de memória da string (0x1000).
+     Isso significa que, dentro da função, str agora aponta para o mesmo bloco de memória que str1 na main. 
+     Qualquer modificação feita na string por via de str na função afetará diretamente a string original na str1, na main.
+
+     Neste ponto, a função está pronta para começar a percorrer a string e realizar as modificações necessárias.
+
+
+2) Durante a Função:
+  
+   A chamada ft_strlowcase(str1) passa o endereço de memória de str1 para a função. 
+   A função recebe o ponteiro str que aponta para o primeiro caractere de "BENFICA".
+   O ponteiro str dentro da função aponta para o mesmo local na memória.
+
+   O ponteiro str agora aponta para o mesmo endereço de memória que str1 na main (iniciando em 0x1000).
+
+
+    > Loop while
+
+            
+                i = 0;
+	            while (str[i] != '\0')
+	            {
+		            if (str[i] >= 'A' && str[i] <= 'Z')
+			            str[i] += 32;
+		            i++;
+	            }
+	
+
+     No início da função, i é inicializado com o valor 0. 
+     Ele será utilizado como um índice para percorrer os caracteres da string, acessando cada caractere um por um.       
+
+     O loop percorre a string e, em cada iteração, verifica e modifica os caracteres se forem maiúsculos.
+
+     
+      - Iteração 1: Analisamos o primeiro caractere ('B')
+    
+        Verificação: str[0] é 'B' (valor ASCII 66), que está no intervalo de letras maiúsculas ('A' a 'Z'). 
+        Modificação: O caractere é convertido para minúscula ao adicionarmos 32 ao valor ASCII: 66 + 32 = 98, que corresponde a 'b'.
+        Avanço: Incrementa-se i para i = 1.
+
+     - Iteração 2: Analisamos o segundo caractere ('E')
+
+        Verificação: str[1] é 'E' (valor ASCII 69), que está no intervalo de letras maiúsculas. A condição if (str[i] >= 'A' && str[i] <= 'Z') é verdadeira.
+        Modificação: O caractere é convertido para minúscula ao adicionarmos 32 ao valor ASCII: 69 + 32 = 101, que corresponde a 'e'.
+        Avanço: Incrementa-se i para i = 2.
+    
+    - Iteração 3: Analisamos o terceiro caractere ('N')
+
+        Verificação: str[2] é 'N' (valor ASCII 78), que está no intervalo de letras maiúsculas.
+        Modificação: O valor ASCII é convertido para minúscula: 78 + 32 = 110 ('n').
+        Avanço: Incrementa-se i para i = 3.
+
+    - Iteração 4: Analisamos o quarto caractere ('f')
+
+        Verificação: str[3] é 'F' (valor ASCII 70), que está no intervalo de letras maiúsculas.
+        Modificação: O valor ASCII é convertido para minúscula: 70 + 32 = 112 ('f').
+        Avanço: Incrementa-se i para i = 4.
+
+    - Iteração 5: Analisamos o quinto caractere ('I')
+
+        Verificação: str[4] é 'I' (valor ASCII 73), que está no intervalo de letras maiúsculas.
+        Modificação: O valor ASCII é convertido para minúscula: 73 + 32 = 105 ('i').
+        Avanço: Incrementa-se i para i = 5.
+
+    - Iteração 6: Analisamos o sexto caractere ('C')
+
+        Verificação: str[5] é 'C' (valor ASCII 67), que está no intervalo de letras maiúsculas.
+        Modificação: O valor ASCII é convertido para maiúscula: 67 + 32 = 99 ('c').
+        Avanço: Incrementa-se i para i = 6.
+
+    - Iteração 7: Analisamos o sétimo caractere ('A')
+
+        Verificação: str[6] é 'a' (valor ASCII 65), que está no intervalo de letras maiúsculas.
+        Modificação: O valor ASCII é convertido para minúscula: 65 + 32 = 97 ('a').
+        Avanço: Incrementa-se i para i = 7.
+
+    
+    Tabela de Iterações (Resumo)
+
+    Iteração	Índice (i)	Valor de str[i]	    Endereço de str[i]	  Condição (if)	     Novo Valor de str[i]	      Ação
+       1	        0	         'B'	               0x100	        Verdadeira               'b'	           Modificação
+       2      	    1	         'E'	               0x101	        Verdadeira	             'e'	           Modificação
+       3	        2	         'N'	               0x102	        Verdadeira	             'n'	           Modificação
+       4	        3	         'F'	               0x103	        Verdadeira	             'f'	           Modificação
+       5	        4	         'I'	               0x104	        Verdadeira	             'i'	           Modificação
+       6	        5	         'C'	               0x105        	Verdadeira	             'c'	           Modificação
+       7	        6	         'A'	               0x106	        Verdadeira	             'a'	           Modificação
+       8	        7	         '\0'	               0x107	          Falsa	                 '\0'	           Fim do loop
+
+    Vejamos como evoluiu a Memória:
+
+      Tabela de memória ao entrar na função:                            Tabela de memória no fim da função:
+      
+      Endereço	 Valor	 Caractere	    Ação                             Endereço	Valor	Caractere
+       0x1000	  66	   'B'	    Sem modificação                       0x1000	 98	       'b'
+       0x1001	  69	   'E'	    Sem modificação                       0x1001	101	       'e'
+       0x1002	  78	   'N'	    Sem modificação                       0x1002	110	       'n'
+       0x1003	  70	   'F'   	Sem modificação                       0x1003	102	       'f'
+       0x1004	  73	   'I'  	Sem modificação                       0x1004	105	       'i'
+       0x1005	  67	   'C'   	Sem modificação                       0x1005	 99 	   'c'
+       0x1006	  65	   'A'	    Sem modificação                       0x1006	 97	       'a'
+       0x1007	   0	   '\0'  	Sem modificação                       0x1007	  0	       '\0'
+
+
+3) De Volta à Main:
+
+   Retorno do Ponteiro: A função ft_strlowcase retorna o ponteiro str (que é o mesmo que str1), que ainda contém o endereço original da string (0x1000) que aponta para a string modificada. 
+   Agora, na main, o conteúdo de str1 foi alterado para "benfica".
+  
+   Impressão do Valor Modificado: Segundo printf: O segundo printf("After: %s\n", ft_strlowcase(str1)); imprime a string já modificada: "After: benfica".
+
+   A string original str1 na main foi alterada diretamente, pois a função recebeu o ponteiro para o bloco de memória que contém a string e fez as modificações diretamente.
+
+   

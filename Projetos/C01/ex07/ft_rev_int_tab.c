@@ -6,11 +6,9 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 21:34:06 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 21:41:00 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/21 13:04:59 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 void	ft_rev_int_tab(int *tab, int size)
 {
@@ -53,4 +51,13 @@ int main(void)
 
     return 0;
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_rev_int_tab.c -o ft_rev_int_tab
+sh-5.2$ ./ft_rev_int_tab 
+Antes da inversão: 1 2 3 4 5 
+Depois da inversão: 5 4 3 2 1 
 */

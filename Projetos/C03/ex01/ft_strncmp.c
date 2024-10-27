@@ -6,11 +6,11 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 22:52:27 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/22 23:05:29 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/26 22:40:05 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
@@ -27,31 +27,45 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 }
 
 /*
-#include<stdio.h>
+#include <stdio.h>
 
-int main(void)
+int main()
 {
-    char s1[] = "benfica";
-    char s2[] = "benfico";
-    char s3[] = "BENFICA";
-    char s4[] = "BenficaCampeão";
-    char s5[] = "ricardo medeiros";
+    char *str1 = "Hello";
+    char *str2 = "Hello";
+    char *str3 = "Hell";
+    char *str4 = "HeLlo";
+    char *str5 = "World";
 
-    unsigned int n1 = 5;
-    unsigned int n2 = 3;
-    unsigned int n3 = 10;
+    // Test case 1: Same strings, compare first n characters
+    printf("Comparing '%s' and '%s' with n = 5:\n", str1, str2);
+    printf("ft_strncmp: %d\n", ft_strncmp(str1, str2, 5));
+    printf("\n");
 
-    int result1 = ft_strncmp(s1, s2, n1);
-    printf("\"%s\" e \"%s\" nos primeiros %u caracteres: %d\n", s1, s2, n1, result1);
+    // Test case 2: Compare only first 4 characters (same)
+    printf("Comparing '%s' and '%s' with n = 4:\n", str1, str3);
+    printf("ft_strncmp: %d\n", ft_strncmp(str1, str3, 4));
+    printf("\n");
 
-    int result2 = ft_strncmp(s1, s4, n2);
-    printf("\"%s\" e \"%s\" nos primeiros %u caracteres: %d\n", s1, s4, n2, result2);
+    // Test case 3: Compare only first 3 characters (different)
+    printf("Comparing '%s' and '%s' with n = 3:\n", str1, str4);
+    printf("ft_strncmp: %d\n", ft_strncmp(str1, str4, 3));
+    printf("\n");
 
-    int result3 = ft_strncmp(s1, s3, n1);
-    printf("\"%s\" e \"%s\" nos primeiros %u caracteres: %d\n", s1, s3, n1, result3);
+    // Test case 4: Compare first 5 characters (different case)
+    printf("Comparing '%s' and '%s' with n = 5:\n", str1, str4);
+    printf("ft_strncmp: %d\n", ft_strncmp(str1, str4, 5));  
+    printf("\n");
 
-    int result4 = ft_strncmp(s1, s5, n3);
-    printf("\"%s\" e \"%s\" nos primeiros %u caracteres: %d\n", s1, s5, n3, result4);
+    // Test case 5: Compare different strings with n = 3
+    printf("Comparing '%s' and '%s' with n = 3:\n", str1, str5);
+    printf("ft_strncmp: %d\n", ft_strncmp(str1, str5, 3));  
+    printf("\n");
+
+    // Test case 6: n is 0, no comparison should be made
+    printf("Comparing '%s' and '%s' with n = 0:\n", str1, str2);
+    printf("ft_strncmp: %d\n", ft_strncmp(str1, str2, 0));
+    printf("\n");
 
     return 0;
 }

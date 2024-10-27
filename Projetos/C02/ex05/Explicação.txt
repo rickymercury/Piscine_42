@@ -1,0 +1,267 @@
+
+1 - Função ft_str_is_uppercase:  int ft_str_is_uppercase(char *str)
+
+    Verifica se todos os caracteres de uma string são letras maiúsculas.
+
+    1.1 - Tipo de Retorno:  int
+          
+          A função retorna um inteiro, que será 1 (verdadeiro) se todos os caracteres da string forem maiúsculas e 0 (falso) caso contrário.
+
+    1.2 - Variáveis:
+
+          char *str: o parâmetro str é um ponteiro para uma array de caracteres (string) que aponta para o primeiro caractere da string que está a ser verificada.
+                     Quando passamos a string para a função, o valor que str recebe é o endereço de memória onde o primeiro caractere da string está armazenado.
+                     Durante a execução do loop while, a função utiliza str[i] para acessar o caractere na posição i da string.
+
+                     Exemplo:
+
+                     char str[] = "HELLO";
+                     ft_str_is_uppercase(str);
+
+                     Se a string "HELLO" for passada para a função, o ponteiro str aponta para o endereço da memória onde está armazenado o primeiro caractere 'H'. Então:
+
+                     str[0] acessa 'H'
+                     str[1] acessa 'E'
+                     str[2] acessa 'L'
+                     str[3] acessa 'L'
+                     str[4] acessa 'O'
+                     str[5] acessa o caractere nulo '\0', que indica o fim da string.
+
+          int i: é um contador que controla o loop while.
+                 Ela é utilizada para percorrer cada caractere da string, desde o primeiro até ao último (antes do caractere nulo).
+                 O valor de i vai ser incrementado, em cada iteração de modo a que str[i] acesse todos os caracteres do array, até que a função tenha verificado todos os caracteres ou até encontrar um caractere que não seja maiúsculo.
+                 
+                 No início, i é inicializado com 0, indicando que estamos a acessar o primeiro caractere da string (posição str[0]).
+
+                 Cada vez que o loop é executado, i é incrementado (i++), o que faz a função verificar o próximo caractere da string na posição str[i+1].
+                
+
+
+2 - Loop para Percorrer a String: 
+
+            while (str[i] != '\0')
+            {
+                if (!(str[i] >= 'A' && str[i] <= 'Z'))
+                    return (0);
+                i++;
+            }
+            return (1);
+
+    
+    Aqui, vamos percorrer cada caractere da string até encontrar o caractere nulo '\0', que indica o final da string.
+
+    A cada iteração do loop, vamos verificar se o caractere atual é uma letra maiúscula.
+
+    Exemplo:
+
+    Vamos supor que a string seja "HELLO":
+
+    Valor de i	    str[i]	         Explicação
+        0	         'H'	        O loop continua
+        1	         'E'	        O loop continua
+        2	         'L'	        O loop continua
+        3	         'L'	        O loop continua
+        4	         'O'	        O loop continua
+        5	         '\0'	        O loop para
+
+    A variável i começa em 0, e o loop vai se repetir até que o valor de str[i] seja '\0', o que marca o fim da string.
+
+3 . Verificação do Caractere Atual:  if (!(str[i] >= 'A' && str[i] <= 'Z'))
+    
+    Dentro do loop, usamos a condição if para verificar se o caractere atual (str[i]) não é uma letra maiúscula.
+
+    Se a condição for verdadeira, isso significa que str[i] não é uma letra maiúscula, e a função retorna 0, indicando que a string contém outros caracteres que não são letras maiúsculas.
+
+    Exemplo:
+
+    Suponhamos que a string seja "HELLOa". Vamos analisar os primeiros caracteres:
+
+    i	 str[i]	   Maiúscula? ('A' a 'Z')    Negação ! (Não é Maiúsculo)	   Ação
+    0	  'H'	            Sim	                     Não	                  Continua
+    1	  'E'	          	Sim	                     Não	                  Continua
+    2	  'L'	          	Sim	                     Não	                  Continua
+    3	  'L'	            Sim	                     Não	                  Continua
+    4	  'O'	            Sim	                     Não	                  Continua
+    5	  'a'	            Não	                     Sim	                  Retorna 0
+
+    Para os caracteres 'H', 'E', 'L', 'L', e 'O', a função continua normalmente, porque todos são letras maiúsculas.
+
+    Quando chega ao caractere 'a', ele não é uma letra maiúscula. 
+    A condição ! torna verdadeira, e a função imediatamente retorna 0, indicando que a string contém caracteres que não são letras maiúsculas.
+
+    Assim, se o if determinar que o caractere str[i] não é uma letra maiúscula, a função retorna 0. 
+    Isto indica que a string contém um ou mais caracteres não maiúsculos, e a verificação termina imediatamente.
+
+4 - Incremento do Índice i:  i++
+
+    Se o caractere atual for uma letra maiúscula, o índice i é incrementado para verificar o próximo caractere da string.
+
+    Depois de verificar o caractere atual str[i], e se for uma letra maiúscula, o índice i é incrementado para verificar o próximo caractere da string. 
+    Isto significa que i agora aponta para o próximo caractere da string.
+    O incremento de i ocorre após a verificação de cada caractere.
+    Isso faz com que o próximo caractere seja verificado na próxima iteração do loop while.
+
+5. Retorno da Função:  return (1);
+
+    Se o loop while terminar sem encontrar nenhum caractere que não seja uma letra maiúscula, significa que todos os caracteres da string foram verificados e todos eram maiúsculos. 
+    Assim, a função retorna 1, indicando que a string é composta apenas por caracteres maiúsculos.
+
+
+
+Exemplo de Fluxo:
+
+1) Antes da Função:
+
+   
+   > Função Main
+
+        int main(void)
+        {
+            char str[] = "HELLO";
+            int result;
+
+            result = ft_str_is_uppercase(str);
+            return 0;
+        }
+
+      
+      O que Acontece na Memória Antes da Chamada da Função:
+
+        Declaração de str[]: Quando a string "HELLO" é declarada na main, ela é armazenada num bloco de memória (a string é alocada na memória).
+        
+        A string em C é um array de caracteres, então "HELLO" será armazenada como os caracteres 'H', 'E', 'L', 'L', 'O', seguidos pelo caractere nulo '\0' que marca o fim da string.
+        
+        O array str[] é passado como um ponteiro para a função, ou seja, o endereço de memória do primeiro caractere ('H') é o que será passado para a função ft_str_is_uppercase.
+
+        Exemplo de Memória:
+
+        Índice de str	Caractere	Valor ASCII	   Endereço de Memória
+             0	          'H'	        72	            0x1000
+             1	          'E'	        101	            0x1001
+             2	          'L'	        108	            0x1002
+             3	          'L'	        108	            0x1003
+             4	          'O'	        111	            0x1004
+             5	          '\0'	         0	            0x1005
+
+        O array str[] contém a string "HELLO" com o caractere nulo no final e é armazenado a partir do endereço de memória 0x1000.
+        O ponteiro str que será passado para a função ft_str_is_uppercase aponta para o endereço de memória do primeiro caractere, ou seja, 0x1000, onde está o caractere 'H'.
+
+        Quando a função ft_str_is_uppercase(str) é chamada, o ponteiro str (que contém o endereço 0x1000) é passado como argumento, ou seja, a função recebe o endereço de memória onde o array começa. 
+        Isto significa que, dentro da função ft_str_is_uppercase, a variável str (o parâmetro da função) terá o valor 0x1000, que aponta para o primeiro caractere da string ('H').
+
+  
+2) Durante a Função:
+
+            while (str[i] != '\0')
+	        {
+		        if (!(str[i] >= 'A' && str[i] <= 'Z'))
+			        return (0);
+		        i++;
+	        }
+	        return (1);
+   
+   Na função, a variável i é inicializada com 0:  int i = 0
+
+   Esta variável i será usada como índice para acessar os caracteres da string str.
+
+  > Primeira Iteração do while: 
+   
+    Condição do while: while (str[i] != '\0')
+
+    Neste ponto, str[0] é 'H', ou seja, str[0] != '\0', então o loop continua.
+
+    Verificação do if:  if (!(str[i] >= 'A' && str[i] <= 'Z'))
+
+    Aqui, str[0] é 'H', que está entre 'A' e 'Z', então o caractere é uma letra maiúscula. 
+    O if não é verdadeiro, e o loop continua.
+
+    Incremento de i:  i++;
+
+    Agora i passa a ser 1.
+
+    Estado da Memória e Variáveis Após a Primeira Iteração:
+
+    Iteração	i	str[i]	  Endereço str[i]	Condição if (Letra?)	Próximo i
+       1	    0	  'H'	      0x1000	          Sim	               1
+       
+  > Segunda Iteração do while (i = 1)
+
+    Condição do while: Aqui, str[1] é 'E', então o loop continua.
+
+    Verificação do if: str[1] é 'E', que está entre 'A' e 'Z', então é uma letra maiúscula. 
+    O if não é verdadeiro, e o loop continua.
+
+    Incremento de i: Agora i passa a ser 2.
+
+    Estado da Memória e Variáveis Após a Segunda Iteração:
+
+    Iteração	i	 str[i]	   Endereço str[i]	 Condição if (Letra?)	Próximo i
+       1	    0	   'H'	       0x1000	              Sim	            1
+       2     	1	   'E'         0x1001                 Sim            	2
+
+  > Terceira Iteração do while (i = 2)
+
+    Condição do while: str[2] é 'L', então o loop continua.
+
+    Verificação do if:  str[2] é 'L', que está entre 'A' e 'Z', então é uma letra maiúscula. O if não é verdadeiro, e o loop continua.
+
+    Incremento de i: Agora i passa a ser 3.
+
+    Estado da Memória e Variáveis Após a Terceira Iteração:
+
+    Iteração	i	 str[i]	   Endereço str[i]    Condição if (Letra?)	Próximo i
+       1	    0	  'H'	        0x1000	              Sim	           1
+       2	    1	  'E'	        0x1001	              Sim	           2
+       3	    2  	  'L'	        0x1002	              Sim	           3
+
+  > Quarta Iteração do while (i = 3)
+
+    Condição do while: str[3] é 'L', então o loop continua.
+
+    Verificação do if: str[3] é 'L', que está entre 'A' e 'Z', então é uma letra maiúscula. O if não é verdadeiro, e o loop continua.
+
+    Incremento de i: Agora i passa a ser 4.
+
+    Estado da Memória e Variáveis Após a Quarta Iteração:
+
+    Iteração	i	str[i]	   Endereço str[i]	 Condição if (Letra?)	Próximo i
+        1	    0	 'H'	        0x1000	             Sim	            1
+        2	    1	 'E'	        0x1001	             Sim	            2
+        3	    2	 'L'	        0x1002	             Sim	            3
+        4	    3	 'L'	        0x1003	             Sim	            4
+
+  > Quinta Iteração do while (i = 4)
+
+    Condição do while: str[4] é 'O', então o loop continua.
+
+    Verificação do if:  str[4] é 'O', que está entre 'A' e 'Z', então é uma letra maiúscula. O if não é verdadeiro, e o loop continua.
+
+    Incremento de i: Agora i passa a ser 5.
+
+    Estado da Memória e Variáveis Após a Quinta Iteração:
+    
+    Iteração	i	str[i]	  Endereço str[i]	Condição if (Letra?)	Próximo i
+       1	    0	 'H'	     0x1000	                Sim	                1
+       2	    1	 'E'	     0x1001	                Sim	                2
+       3	    2	 'L'	     0x1002	                Sim	                3
+       4	    3	 'L'       	 0x1003	                Sim	                4
+       5	    4	 'O'	     0x1004	                Sim	                5
+
+  > Sexta Iteração do while (i = 5)
+
+    Condição do while: str[5] é '\0', que indica o fim da string. O loop termina e a função retorna 1, indicando que a string contém apenas letras maiúsculas.
+
+
+3) De Volta à Main:
+   
+   Depois que a função ft_str_is_uppercase retorna, o fluxo volta para a função main, onde o valor retornado pela função é armazenado na variável result.
+
+   result = ft_str_is_uppercase(str);  // result agora é 1
+
+   A variável result agora contém o valor 1, que indica que a string "HELLO" é composta apenas por letras maiúsculas.
+   
+   > Estado da Memória Após a Execução da Função:
+
+      Variável	Valor	Endereço
+        str	   "HELLO"	 0x1000
+       result	  1	     0x2000

@@ -6,13 +6,9 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:03:55 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 23:15:46 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/23 21:22:28 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-
-int	ft_str_is_numeric(char *str);
 
 int	ft_str_is_numeric(char *str)
 {
@@ -31,25 +27,27 @@ int	ft_str_is_numeric(char *str)
 /*
 #include<stdio.h>
 
-int main(void)
+int main()
 {
-    char str1[] = "123457";
+    char str1[] = "1234567";
     char str2[] = "123abc";
     char str3[] = "";
 
-    if (ft_str_is_numeric(str1))
-        printf("A string \"%s\" é númerica. Retorna: %d\n", str1, ft_str_is_numeric(str1));
-    else
-        printf("A string \"%s\" não é númerica. Retorna: %d\n", str1, ft_str_is_numeric(str1));
-    
-    if (ft_str_is_numeric(str2))
-        printf("A string \"%s\" é númerica. Retorna: %d\n", str2, ft_str_is_numeric(str2));
-    else
-        printf("A string \"%s\" não é númerica. Retorna: %d\n", str2, ft_str_is_numeric(str2));
-    if (ft_str_is_numeric(str3))
-        printf("A string \"%s\" é númerica. Retorna: %d\n", str3, ft_str_is_numeric(str3));
-    else
-        printf("A string \"%s\" não é númerica. Retorna: %d\n", str1, ft_str_is_numeric(str3));
+    printf("str1 é numérico? %d\n", ft_str_is_numeric(str1));
+    printf("str2 é numérico? %d\n", ft_str_is_numeric(str2));
+    printf("str3 é numérico? %d\n", ft_str_is_numeric(str3));
+
     return (0);
 }
+*/
+
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_str_is_numeric.c -o ft_str_is_numeric
+sh-5.2$ ./ft_str_is_numeric 
+str1 é numérico? 1
+str2 é numérico? 0
+str3 é numérico? 1
 */

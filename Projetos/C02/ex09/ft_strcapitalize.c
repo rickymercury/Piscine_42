@@ -6,63 +6,60 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 00:02:50 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/22 00:14:51 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/24 22:17:30 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 
-char	*ft_strlowcase(char *str) //Vamos garantir que todos os caracteres da string estejam em minúsculas antes de aplicar a capitalização das palavras
+char	*ft_strcapitalize(char *str)
 {
 	int	i;
+	int	capitalize;
 
 	i = 0;
+	capitalize = 1;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
+		if (capitalize == 1 && str[i] >= 'a' && str[i] <= 'z')
+			str[i] -= 32;
+		else if (capitalize == 0 && str[i] >= 'A' && str[i] <= 'Z')
 			str[i] += 32;
+		if ((str[i] >= 'a' && str[i] <= 'z') 
+			|| (str[i] >= 'A' && str[i] <= 'Z') 
+				|| (str[i] >= '0' && str[i] <= '9'))
+			capitalize = 0;
+		else
+			capitalize = 1;
 		i++;
 	}
 	return (str);
 }
 
-char *ft_strcapitalize(char *str)
-{
-    int i = 0;
-    int capitalize_next = 1; // Inicialmente, a próxima letra deve ser capitalizada
-
-    while (str[i] != '\0')
-    {
-        if (str[i] >= 'a' && str[i] <= 'z')
-        {
-            if (capitalize_next)
-            {
-                str[i] -= 32;
-                capitalize_next = 0; // Após capitalizar, não capitaliza as letras seguintes da mesma palavra
-            }
-        }
-        else if (str[i] >= 'A' && str[i] <= 'Z')
-            str[i] += 32;
-        else if (str[i] >= '0' && str[i] <= '9' || str[i] == '_' || str[i] == '-')
-            capitalize_next = 0; // Após números e caracteres especiais, não capitaliza letras
-        else
-            capitalize_next = 1; // Para caracteres não alfabéticos e não numéricos, prepara para capitalizar a próxima letra
-        i++;
-    }
-
-    return (str);
-}
 
 /*
 #include <stdio.h>
 
 int	main()
 {
-	char str[] = "ola, tudo bem? 42palavras quarenta-e-duas; cinquenta+e+um";
+	char str[] = "hello WORLD";
 	char str1[] = "rekt17+lol mdr mdr 4242l42";
+	char str2[] = "ola, tudo bem? 42palavras quarenta-e-duas; cinquenta+e+um";
+	
 	printf("%s", ft_strcapitalize(str));
 	printf("\n%s", ft_strcapitalize(str1));
+	printf("\n%s", ft_strcapitalize(str2));
 
 	return (0);
 }
+*/
+
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_strcapitalize.c -o ft_strcapitalize
+sh-5.2$ ./ft_strcapitalize 
+Hello World
+Rekt17+Lol Mdr Mdr 4242l42
+Ola, Tudo Bem? 42palavras Quarenta-E-Duas; Cinquenta+E+Ums
 */

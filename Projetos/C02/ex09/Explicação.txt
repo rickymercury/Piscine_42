@@ -1,0 +1,315 @@
+
+1 - Função ft_strcapitalize:  char	*ft_strcapitalize(char *str)
+
+    O objetivo deste código é modificar uma string, onde cada palavra começa com uma letra maiúscula e as demais letras são minúsculas. 
+    A capitalização é feita respeitando os caracteres que delimitam uma palavra, como espaços, pontuação, etc, em que é capitalizada a primeira letra de cada palavra da string e transforma as letras restantes em minúsculas.
+
+    1.1 - Tipo de Retorno:  char *
+
+          A função ft_strcapitalize retorna um char * (ponteiro para caractere) para que a string modificada (convertida com as primeiras letras de cada palavra em maiúsculas) seja acessível diretamente na função que a chamou.
+          
+          Quando uma string é passada como argumento para a função, o que é passado é o seu endereço de memória, permitindo que a função modifique o conteúdo original da string. 
+
+          A função ft_strcapitalize recebe como argumento um ponteiro para uma string (char *str), que é o endereço do primeiro caractere da string original. 
+          Durante a execução, a função modifica essa string diretamente na memória, convertendo cada palavra para a forma capitalizada conforme necessário.
+
+          Ao devolvermos o ponteiro para o início da string permite à função que a chamou o acesso à string modificada diretamente, sem precisar de cópias adicionais de memória (pois as alterações foram feitas no próprio endereço da string original) para poder realizar outras operações.
+          Não é necessário alocar espaço para uma nova string ou duplicar o conteúdo, ela simplesmente retorna o endereço de memória da string já modificada, o que torna o código mais eficiente.
+
+    1.2 - Variáveis:
+
+          char *str: corresponde ao parâmetro de entrada da função ft_strcapitalize.
+                     Representa o ponteiro para a string (array de caracteres) que será processada e modificada pela função.
+
+                     A variável str contém o endereço do primeiro caractere da string que será passada para a função. 
+                     Essa string é manipulada diretamente na memória, o que significa que qualquer alteração feita nela dentro da função vai afetar a string original, passada na função que a chamou.
+
+                     Como str é um ponteiro, ele permite à função iterar sobre cada caractere da string ao utilizar o índice i (str[i]). 
+                     O ponteiro facilita o acesso e a modificação de cada caractere da string de entrada.
+
+                     A função retorna o ponteiro str, o mesmo ponteiro que foi passado como argumento. 
+                     Como a string foi modificada diretamente na memória, a função que chamou a funçao ft_strcapitalize pode acessar a versão alterada da string sem precisar de uma cópia adicional.
+
+    int capitalize: é uma variável/indicador que controla o comportamento do programa, num determinado ponto (flag), que indica se o próximo caractere deve ser capitalizado (convertido para maiúscula) ou para minúscula.
+                    Quando capitalize = 1, significa que o próximo caractere deve ser convertido para maiúscula, caso seja uma letra minúscula.
+                    QUando capitalize = 0, significa que o próximo caractere deve permanecer em minúscula, caso seja um letra maiúscula.
+                    No ínicio, a variável capitalize é inicializada com 1, o que indica que o primeiro caractere deve ser maiúsculo.
+                         
+                    Durante a execução:  Se o caractere atual for uma letra ou um número, a variável capitalize é definida com o valor 0 para que o próimo caractere permaneça inalterado (não precisa de ser capitalizado).
+                                         Se o caractere atual for um espaço ou outro símbolo que não seja uma letra ou número, a variável capitalize é definido com o valor 1, o que indica que o próximo caractere, se for uma letra, deve ser capitalizado.
+
+                          Exemplo:
+
+                          Consideremos a string "hello world!":
+
+                          Começamos com capitalize = 1. 
+                          Ao encontrar o caractere 'h'(que está em minúsculo), ele será convertido para maiúsculo ('H'), e a variável capitalize será definida com o valor 0, para que as próximas letras não sejam capitalizadas.
+                          Após o espaço na string "hello world!", a variável capitalize é definida com o valor 1, e o próximo caractere ('w') será capitalizado para 'W'.
+
+            int i: serve como índice que percorre a string caractere a caractere.
+                   ELa começa no íncio da string (i = 0) e é incrementada a cada iteração do loop while até alcançar o final da string.
+                   Assim, a incrementação da variável i permite que a função ft_strcapitalize acesse e modifique cada caractere na posição str[i], até que i atinja o final da string, momento no qual o loop termina, e a função retorna a string modificada.
+
+
+
+2 - Loop while: 
+
+        while (str[i] != '\0')
+	    {
+		    if (capitalize == 1 && str[i] >= 'a' && str[i] <= 'z')
+			    str[i] -= 32;
+		    else if (capitalize == 0 && str[i] >= 'A' && str[i] <= 'Z')
+			    str[i] += 32;
+		    if ((str[i] >= 'a' && str[i] <= 'z') 
+			    || (str[i] >= 'A' && str[i] <= 'Z') 
+				    || (str[i] >= '0' && str[i] <= '9'))
+			    capitalize = 0;
+		    else
+			    capitalize = 1;
+		    i++;
+	    }
+
+    A) Condição str[i] != '\0'
+    
+       O loop while é responsável por percorrer cada caractere da string que o ponteiro str aponta. 
+       Ele analisa cada caractere para ver se deve ser capitalizado ou se deve ser convertido para minúscula. com base no valor da variável capitalize.
+    
+       O loop é executado enquanto o caractere atual (str[i]) não é o caractere nulo '\0', ou seja, enquanto não chegar ao fim da string.
+       O que permite que o loop percorra cada caractere da string de entrada até chegar ao final.
+
+       Assim, a cada iteração, o programa verifica o valor da variável capitalize para decidir o que fazer com o caractere atual.
+
+    B) Capitalizar o Caractere se capitalize == 1
+
+        if (capitalize == 1 && str[i] >= 'a' && str[i] <= 'z')
+            str[i] -= 32;
+
+        Esta condição verifica se o caractere atual deve ser capitalizado.
+        Isso acontece se:
+
+        - A variável capitalize for 1, o que indica que estamos no ínicio de uma nova palavra.
+        - str[i] for uma letra minúscula.
+
+        Se ambas as condições forem verdadeiras, o caractere minúsculo é convertido em maiúsculo.
+
+        Ou seja, se a variável capitalize for 1 e o caractere atual str[i] estiver entre 'a' e 'z' (letras minúsculas), ele é capitalizado.
+        A conversão para maiúscula é feita ao subtrairmos 32 ao valor ASCII do caractere, pois de 'A' até 'Z' estão 32 posições abaixo de 'a' até 'z', na tabela ASCII.
+    
+        Exemplo: Se str[i] for 'b' (ASCII 98), então str[i] -= 32 resultará em 'B' (ASCII 66).
+
+    C) Converter o Caractere para Minúscula se capitalize == 0
+
+        else if (capitalize == 0 && str[i] >= 'A' && str[i] <= 'Z')
+            str[i] += 32;
+
+        Esta condição verifica se o caractere atual deve ser convertido para minúscula.
+        Isso acontece se:
+
+        - A variável capitalize for 0, o que indica que estamos no meio de uma palavra.
+        - str[i] for uma letra maiúscula.
+
+        Se ambas as condições forem verdadeiras, o caractere maiúsculo é convertido para minúsculo.
+
+        Ou seja, se a variável capitalize for 0 (se estamos no meio de uma palavra) e o caractere for uma letra maiúscula, ele será convertido para minúscula.
+        A conversão para minúscula é feita ao adicionarmos 32 ao valor ASCII.
+    
+        Exemplo: Se str[i] for 'D' (ASCII 68), str[i] += 32 resultará em 'd' (ASCII 100).
+
+    D) Atualização da Variável capitalize
+
+       Após modificar o caractere atual, a função decide se o próximo caractere deve ser capitalizado (se estiver no começo de uma nova palavra) ou deve ser convertido para minúsculo (se for a continuação da palavra atual).
+
+        if ((str[i] >= 'a' && str[i] <= 'z') 
+            || (str[i] >= 'A' && str[i] <= 'Z') 
+                || (str[i] >= '0' && str[i] <= '9'))
+            capitalize = 0;
+        else
+            capitalize = 1;
+
+       Se o caractere atual (str[i]) é uma letra maiúscula ou minúscula (a a z ou A a Z) ou um número (0 a 9), indica que estamos no meio de uma palavra, e capitalize é definido com o valor 0. 
+       Isso indica que os caracteres seguintes devem ser minúsculos até que um delimitador de palavra seja encontrado.
+    
+       Caso contrário, se o caractere atual for um símbolo ou um espaço, indica que a próxima letra (se houver) deverá ser maiúscula, o que significa que será o ínicio de uma nova palavra, e capitalize é definido com o valor 1.
+
+    E)  Incremento do Índice i:  i++ 
+
+    No final de cada iteração, após processar o caractere atual, o índice é incrementado para processar o próximo caractere na próxima iteração do loop.
+    Este incremento garante que a função percorra a string inteira, caractere por caractere, até que str[i] == '\0'.
+
+3 - Retorno da String Modificada:
+
+    return (str); — Após todas as letras serem convertidas conforme as regras, a função retorna a string str com as alterações.
+
+
+
+
+Exemplo de Fluxo:
+
+
+1) Antes da Função:
+
+   
+   > Função Main
+     
+        int main(void) 
+        {
+            char str[] = "hello WORLD";
+
+            printf("Before: %s\n", str);
+            ft_strcapitalize(str);
+            printf("After: %s\n", str);
+
+            return 0;
+        }
+
+    A string str é declarada como um array de caracteres e é inicializada com a string "hello WORLD".
+    Como str é um array de caracteres, ele é armazenado na memória, e o seu endereço é passado para ft_strcapitalize.
+    Quando chamamos ft_strcapitalize(str), a função recebe o endereço inicial de str, permitindo que altere o conteúdo da string diretamente.
+
+    ANTES DA FUNÇÃO:
+
+    Variável	Valor Inicial	 Endereço             
+      str	    "hello WORLD"	  0x1000
+
+    Como a String é Armazenada na Memória?
+
+    Quando a string "hello WORLD" é atribuída a str, o compilador aloca espaço na memória para armazenar cada caractere, mais o caractere nulo (\0) que indica o final da string.
+        
+        Memória Antes da Função
+
+        Endereço	Conteúdo
+         0x1000	       h
+         0x1001	       e
+         0x1002	       l
+         0x1003	       l
+         0x1004	       o
+         0x1005	    (espaço)
+         0x1006	       W
+         0x1007	       O
+         0x1008	       R
+         0x1009	       L
+         0x100A	       D
+         0x100B	      \0
+
+    > Chamada da Função
+
+      Quando chamamos a função ft_strcapitalize(str), o que acontece é o seguinte:
+
+       O endereço inicial da string str (que é 0x1000) é passado para a função ft_strcapitalize.
+       Dentro da função, o ponteiro str agora aponta para esse mesmo endereço (o endereço de memória do primeiro caractere), o que permite que a função altere diretamente o conteúdo da string, na memória.
+       
+       Assim:
+
+       Antes da Chamada: str em main aponta para 0x1000.
+       Durante a Chamada: O parâmetro str na função ft_strcapitalize também aponta para 0x1000.
+
+       Assim, a função pode alterar o conteúdo de str sem a necessidade de criar uma cópia da string, pois ambas as referências (na main e na função) apontam para o mesmo local na memória. 
+       Na próxima etapa, ao entrar na função, o loop while vai processar cada caractere da string, e as modificações começam a ser aplicadas.
+
+2) Durante a Função:
+
+   > Inicialização das Variáveis
+
+    - i é inicializado com o valor 0.
+    - capitalize é inicializado com o valor 1, o que indica que estamos preparados para capitalizar o primeiro caractere.
+
+   > Loop while
+      
+            while (str[i] != '\0')
+	        {
+		        if (capitalize == 1 && str[i] >= 'a' && str[i] <= 'z')
+			        str[i] -= 32;
+		        else if (capitalize == 0 && str[i] >= 'A' && str[i] <= 'Z')
+			        str[i] += 32;
+		        if ((str[i] >= 'a' && str[i] <= 'z') 
+			        || (str[i] >= 'A' && str[i] <= 'Z') 
+				        || (str[i] >= '0' && str[i] <= '9'))
+			        capitalize = 0;
+		        else
+			        capitalize = 1;
+		        i++;
+	        }
+
+     O loop continua enquanto str[i] não for o caractere nulo '\0'.
+     
+     Iterações do Loop
+
+     Durante cada iteração, a função:
+
+     Converte para maiúscula o primeiro caractere de cada palavra (quando capitalize == 1).
+     Converte caracteres de maiúsculas para minúsculas noutras posições da palavra (quando capitalize == 0).
+     Define capitalize como 0 ou 1 dependendo do caractere encontrado (caracteres que são letras ou números, mantêm a variável capitalize com o valor 0, enquanto os caracteres como espaço, definem para 1).
+
+     Vamos detalhar cada iteração do loop ao utilizar a string "hello WORLD".
+
+     Tabela de Iterações
+
+     Iteração	i	str[i]	 capitalize	             Ação Executada	                   Novo str[i]	   Descrição da Ação
+        1	    0	  h	         1	       Converte para maiúscula ('h' -> 'H')	            H	       'h' torna - se 'H'
+        2  	    1	  e	         0	       Não altera, mas capitalize permanece 0	        e	       'e' permanece como está
+        3	    2	  l	         0	       Não altera, mas capitalize permanece 0	        l	       'l' permanece como está
+        4	    3	  l	         0	       Não altera, mas capitalize permanece 0	        l	       'l' permanece como está
+        5	    4	  o	         0	       Não altera, mas capitalize permanece 0	        o	       'o' permanece como está
+        6	    5		         0	       capitalize define a próxima capitalização		            O espaço é um caractere não alfabético
+        7	    6	  W 	     1	       Converte para maiúscula ('W' -> 'W')	            W	       'W' permanece como está
+        8	    7	  O	         0	       Converte para minúscula ('O' -> 'o')	            o	       'O' torna - se 'o'
+        9	    8	  R	         0	       Converte para minúscula ('R' -> 'r')	            r	       'R' torna - se 'r'
+       10	    9	  L	         0	       Converte para minúscula ('L' -> 'l')	            l	       'L' torna - se 'l'
+       11	   10	  D	         0	       Converte para minúscula ('D' -> 'd')	            d	       'D' torna - se 'd'
+       12	   11	 \0	         0	                   Loop termina	                        -	        Fim da string
+
+
+     Descrição das Ações em Detalhe
+
+     Iteração 1 (i = 0): O caractere é 'h', capitalize é 1. A função converte 'h' para 'H' (ao subtrair 32 do valor ASCII).
+                         A string agora é: "Hello WORLD".
+
+     Iterações 2 a 5: Os caracteres 'e', 'l', 'l', e 'o' são verificados. Como capitalize é 0, nenhum deles é alterado.
+                      A string permanece: "Hello WORLD".
+
+    Iteração 6 (i = 5): O caractere é um espaço (' '), o que faz capitalize ser definido como 1 novamente, indicando que o próximo caractere pode ser capitalizado.
+
+    Iteração 7 (i = 6): O caractere é 'W', e capitalize é 1. Portanto, como 'W' ja é maiúsculo, não sofre alteração.
+                        A string agora é: "Hello World".
+
+    Iterações 8 a 11: Os caracteres 'O', 'R', 'L', e 'D' são verificados. Todos são convertidos para minúsculas.
+                      A string final: "Hello World".
+
+    Iteração 12: O loop termina quando str[i] é '\0'.
+
+    > Resultado final
+      
+      Após a execução completa da função, a string foi alterada diretamente na memória.
+
+            Endereço	Conteúdo (Antes)	Conteúdo (Depois)
+            0x1000	           h	               H
+            0x1001	           e	               e
+            0x1002	           l	               l
+            0x1003	           l	               l
+            0x1004	           o	               o
+            0x1005	        (espaço)	       (espaço)
+            0x1006	           W	               W
+            0x1007	           O	               o
+            0x1008	           R	               r
+            0x1009	           L	               l
+            0x100A	           D	               d
+            0x100B	          \0	              \0
+     
+
+3) De Volta à Main:
+
+   > Retorno da Função
+     
+     Significa que a função retorna um ponteiro para a string que foi passada como argumento (neste caso, str). 
+     Como a string foi alterada diretamente na memória, o que será retornado é o endereço de início da string modificada.
+    
+   > Impressão do Resultado
+
+     Na linha printf("Depois: %s\n", resultado), o valor atualizado da string é impresso. 
+     A saída será:
+
+     Antes: hello WORLD
+     Depois: Hello world
+
+
+

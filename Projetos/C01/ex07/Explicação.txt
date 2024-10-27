@@ -1,0 +1,259 @@
+1 - Função ft_rev_int_tab:  void ft_rev_int_tab(int *tab, int size)
+
+    O objetivo da função é modificar diretamente o array que foi passado como argumento, invertendo a ordem dos elementos.
+
+    1.1 - Tipo de Retorno:  void
+          
+          O tipo de retorno void é utilizado em funções que não precisam de retornar um valor à função que a chamou. 
+
+          Vejamos:
+
+          O fato de a função receber um ponteiro para o array *tab permite que a função modifique diretamente o conteúdo do array original, que está localizado na memória.
+          Quando passamos um array (ou qualquer variável) para uma função, ao utilizar ponteiros, a função tem acesso à mesma área de memória onde os dados estão armazenados, permitindo que ela altere esses dados diretamente.
+          Assim, a função não precisa de retornar nada porque as alterações feitas no array tab, dentro da função, também afetam o array original no código da função que a chamou.
+          Neste caso, a função ft_rev_int_tab:
+
+            - Altera diretamente os valores no array original que foi passado.
+            - Não precisa de devolver o array invertido, porque o array original já foi modificado diretamente na memória.
+
+          Por outras palavras, como a função modifica o array por referência (usando um ponteiro), não há necessidade de retornar o array ou qualquer outro valor. Se a função tivesse que retornar um novo array (ao invés de modificar o original), ela teria que ter um retorno diferente (talvez um ponteiro para um novo array). Porém, como não é o caso, o retorno é void.
+    
+
+    1.2 - Variáveis: 
+
+          int *tab: Quando um array é passado para uma função, o que realmente é passado é o endereço do primeiro elemento do array.
+                    O ponteiro tab recebe esse endereço, o que significa que a função tem acesso direto ao array original.
+                    Por isso, as alterações feitas em tab, dentro da função, afetam o array original na memória, permitindo que ocorra a inversão da ordem dos elementos.
+                    Assim, *tab é o ponteiro que aponta para o ínicio do array de inteiros (ou seja, a função recebe o endereço de memória do primeiro elemento do array).
+
+                    Se tab apontar para um array como {1, 2, 3, 4, 5}, tab[0] refere se ao primeiro elemento, ou seja, 1, e tab[1] refere se ao segundo elemento, 2, e assim por diante.
+                    O ponteiro é manipulado diretamente na memória, por essa razão, as mudanças feitas dentro da função são refletidas fora dela, no array original.
+
+          int *size: representa o tamanho do array de inteiros, ou seja, o número total de elementos presentes nele.
+                     Este valor é crucial para a função saber quantas trocas deve efetuar, de modo a não acessar indevidamente áreas da memória fora dos limites do array.
+
+                     A função precisa da variável size para calcular quais os índices que precisam de ser trocados.
+                     Por exemplo, se size for 5, então a função sabe que precisa realizar trocas de elementos nas seguintes posições:
+
+                     Primeira com a última (tab[0] com tab[4])
+                     Segunda com a penúltima (tab[1] com tab[3])
+                     E o terceiro elemento (tab[2]) permanece no meio, sem ser trocado.
+
+          int i: é o índice que controla o loop while, ou seja, é o indice utilizado para percorrer o array.
+                 Ela serve para identificar os elementos que serão trocados a cada iteração do loop.
+
+                 O valor de i começa em 0, e a cada iteração, i é incrementado (com i++).
+                 O loop continua enquanto i for menor que size / 2, ou seja, o loop percorre até metade do array. 
+                 Isto porque, ao inverter um array, só precisamos de trocar os primeiros elementos com os últimos até chegar ao meio.
+                 Depois de chegarmos ao meio do array, o restante já estará invertido.
+
+                 Se o array tiver 5 elementos, i vai de 0 a 2 (porque size / 2 resulta em 2).
+
+                 Exemplo:
+
+                 No início:
+                    
+                    i = 0, trocamos o primeiro com o último elemento.
+                    i = 1, trocamos o segundo com o penúltimo elemento.
+                    i = 2, já estamos no meio e o loop para, pois o array foi completamente invertido.
+
+          int swap: representa uma variável temporária utilizada para armazenar o valor de um elemento do array, durante a troca dos elementos.
+                    
+                    swap armazena temporariamente o valor de tab[i] (o elemento atual) antes que o valor de tab[i] seja substitúido pelo valor do elemento na posição oposta (tab[size - (i + 1)]).
+                    Depois de realizar a troca no índice i, o valor armazenado em swap é movido para o índice oposto (tab[size - (i + 1)]), concluindo a troca dos dois valores.
+
+
+Antes da Função:
+
+   > Função main 
+
+   O programa começa na função main.
+
+   A função declara um array de inteiros arr[] = {1, 2, 3, 4, 5} e size = 5, que contém o número de elementos no array.
+
+   Aqui, o array tem 5 elementos, e tab é o ponteiro que aponta para o primeiro elemento de arr (endereço 0x1000).
+
+   Vamos supor os seguintes endereços de memória para os elementos do array:
+
+         Índice (i)	  Valor	   Endereço (tab[i])
+             0	        1	        0x1000
+             1	        2	        0x1004
+             2	        3	        0x1008
+             3	        4	        0x100C
+             4	        5 	        0x1010
+
+Quando um array é passado para a função ft_rev_int_tab, o que realmente é passado é o endereço do primeiro elemento do array, ou seja, o ponteiro para o primeiro elemento. 
+Isto significa que a função tem o acesso direto à memória onde os valores do array estão armazenados.
+
+     > Chamada da função
+
+     A main() chama a função ft_rev_int_tab(arr, size), pelo o que são passados dois argumentos:
+
+       arr: corresponde ao endereço do primeiro elemento do array (ponteiro int*).
+       size: corresponde ao número de elementos no array.
+
+    Quando um array é passado para a função ft_rev_int_tab, o que realmente é passado é o endereço do primeiro elemento do array, ou seja, o ponteiro para o primeiro elemento. 
+    Isto significa que a função tem o acesso direto à memória onde os valores do array estão armazenados.
+
+    Assim, como arr é um ponteiro para o array, a função ft_rev_int_tab recebe diretamente o endereço do primeiro elemento, ou seja, tab = &arr[0].
+
+    COmo vimos arr é um ponteiro para o primeiro elemento do array. 
+    Se o endereço de memória do primeiro elemento (arr[0]) for, por exemplo, 0x1000, temos:
+
+        arr[0] (ou *(arr + 0)) está no endereço 0x1000
+        arr[1] (ou *(arr + 1)) está no enderçeo 0x1004
+        arr[2] (ou *(arr + 2)) está no endereço 0x1008
+        arr[3] (ou *(arr + 3)) está no endereço 0x100C
+        arr[4] (ou *(arr + 4)) está no endereço 0x1010
+
+      (Assumindo que cada int ocupa 4 bytes de memória.)
+  
+
+Durante a Função:
+
+
+    A função agora inverte o array, efetuando a troca dos elementos de ponta a ponta (extremo a extremo). 
+    A cada iteração do loop, ela realiza uma troca entre dois elementos.
+
+    Endereço inicial recebido: tab aponta para o primeiro elemento do array, com o endereço 0x1000.
+
+    >  Loop Principal
+
+                    while (i <= size - (i + 1))          // while (i < size / 2)
+	                {
+		                swap = tab[i];                  // Guarda o valor do elemento no índice i
+		                tab[i] = tab[size - (i + 1)];   // Substitui o valor do elemento no índice i pelo valor do elemento no lado oposto
+		                tab[size - (i + 1)] = swap;     // Coloca o valor guardado em swap no lado oposto
+		                i++;                            // Incrementa o índice para avançar no array
+	                    }
+    
+ 
+    A condição do while continua enquanto i <= size - (i + 1), ou seja, continua enquanto i for menor ou igual ao índice do elemento oposto à posição i atual, no array. 
+    Isto garante que o loop pare quando chegar à metade do array. 
+
+    Na expressão i <= size - (i + 1):
+
+       - i é o indice do elemento atual, no lado esquerdo, ou seja, é o indice do elemento que está no ínicio (ou próximo dele) do array.
+       - size - (i + 1) é o indice do elemento oposto ao elemento atual a ser trocado. É o indice do elemento que está no fim (ou próximo dele) do array.
+
+       A ideia aqui é subtrair o índice de um valor que nos leva até o outro extremo do array.
+       
+       Exemplo:
+
+       Se o tamanho do array é size = 5 e i = 0, então size - (0 + 1) é 5 - 1 = 4, ou seja, o índice 4 (último elemento).
+       Se i = 1, então size - (1 + 1) é 5 - 2 = 3, ou seja, o índice 3.
+
+       Assim, a expressão size - (i + 1) é a forma de encontrar o índice oposto ao i atual, ou seja, encontra o elemento correspondente no outro extremo do array, para realizar a troca.
+
+        Quando i = 0, o valor oposto seria size - 1.
+        Quando i = 1, o valor oposto seria size - 2.
+        E assim por diante, até i atingir a metade do array.
+
+       Esta comparação (i <= size - (i + 1)) garante que a troca dos valores apenas ocorra enquanto o indice i estiver no "lado esquerdo" do array, ou seja, até à metade do array. 
+       
+       Se i for maior que size - (i + 1), significa que o array já foi invertido, pois já trocamos todos os elementos necessários.
+
+    2.1 - Troca dos Elementos:
+
+          A troca de valores é realizada em três passos:
+        
+            - O valor do elemento atual (tab[i]) é armazenado na variável swap.
+
+            - O valor do elemento atual é substituído pelo elemento no índice oposto (tab[size - (i + 1)]).
+
+            - O valor de swap (inicialmente armazenado) é colocado no índice oposto.
+
+          Isto efetivamente inverte os elementos das posições extremas do array, alterando do início para o fim e do fim para o início, até que o array esteja completamente invertido.
+
+    2.2 - Incremento: i++
+
+          O índice i é incrementado a cada iteração para que o loop avance até o meio do array.
+
+
+    Continuemos com o exemplo:
+
+    Primeira iteração (i = 0):
+
+    Condição do loop: i <= size - (i + 1) → 0 <= 5 - (0 + 1) → 0 <= 4 → Verdadeira.
+    
+    Troca dos valores:
+
+        swap = tab[0]: swap salva o valor de tab[0] no endereço 0x1000, ou seja, swap = 1 (o valor de tab[0] é lido na memória, no endereço 0x1000).
+
+        tab[0] = tab[size - (0 + 1)]: O valor de tab[0] é substituído pelo valor de tab[4] no enderçeo 0x1010, ou seja, tab[0] recebe o valor de tab[4] (o valor no endereço 0x1010), ou seja, tab[0] = 5.
+
+        tab[4] = swap: O valor de swap (1) é colocado na posição de tab[4], ou seja, tab[4] = 1 (o valor 1 é escrito no endereço 0x1010).
+
+    Resultado após a primeira iteração: o array torna se {5, 2, 3, 4, 1}.
+
+    Os endereços de memória dos elementos não se alteram, o que se altera são os valores neles armazenados.
+
+         Índice (i)	  Valor	   Endereço (tab[i])
+           0	        5	       0x1000
+           1	        2	       0x1004
+           2	        3	       0x1008
+           3	        4	       0x100C
+           4	        1	       0x1010
+
+    O valor 1 foi trocado com o valor 5, e a variável swap permitiu essa troca temporariamente.
+
+    Incremento: i++, então i agora é 1 (i = 1).
+
+
+    Segunda iteração (i = 1):
+
+    Condição do loop: i <= size - (i + 1) → 1 <= 5 - (1 + 1) → 1 <= 3 → Verdadeira.
+    
+    Troca dos valores:
+
+        swap = tab[1]: swap salva o valor de tab[1] no endereço 0x1004, ou seja, swap = 2 (valor no endereço 0x1004).
+
+        tab[1] = tab[size - (1 + 1)]: o valor de tab[1] é substituído pelo valor de tab[3] (valor no endereço 0x100C), ou seja, tab[1] = 4.
+
+        tab[3] = swap: O valor de swap (2) é colocado na posição de tab[3], ou seja, tab[3] = 2 (valor 2 é escrito no endereço 0x100C).
+
+    Resultado após a segunda iteração: o array se torna {5, 4, 3, 2, 1}.
+
+         Índice (i)	  Valor	  Endereço (tab[i])
+            0	        5	      0x1000
+            1	        4	      0x1004
+            2	        3	      0x1008
+            3	        2	      0x100C
+            4	        1	      0x1010
+
+    O valor 2 foi trocado com o valor 4, e a variável swap permitiu essa troca temporária.
+
+    Incremento: i++, então i agora é 2.
+
+    Condição do loop: i <= size - (i + 1) → 2 <= 5 - (2 + 1) → 2 <= 2 → Verdadeira.
+    
+    Troca: 
+    
+        Neste caso, i já está no meio do array, pelo o que o valor de tab[2] não é lógico ele ser trocado por ele mesmo.
+        Nenhuma troca ocorre.
+        tab[2] permanece na mesma posição, ou seja, tab[2] = 3.
+
+    Resultado após a terceira iteração: o array ainda é {5, 4, 3, 2, 1}.
+
+    Quarta iteração (i = 3):
+
+    Condição do loop: i <= size - (i + 1) → 3 <= 5 - (3 + 1) → 3 <= 1 → Falsa.
+
+    O laço termina aqui, pois i alcançou o meio do array, e todas as trocas necessárias foram feitas e o array está completamente invertido.
+
+
+De volta à main:
+
+
+    Após a execução de ft_rev_int_tab(), a função retorna para a main(). 
+    O array agora está invertido, e arr[] reflete as mudanças feitas dentro da função.
+
+    > Impressão do Array Final:
+
+    A main() agora imprime o conteúdo do array depois da inversão:
+
+    Depois da inversão:  5 4 3 2 1
+
+
+
+

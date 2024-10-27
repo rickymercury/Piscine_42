@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 22:56:10 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/22 00:44:46 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/23 15:03:23 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,14 @@ int main()
 
     return (0);
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_str_is_alpha.c -o ft_str_is_alpha
+sh-5.2$ ./ft_str_is_alpha 
+str1 é alfabética? 1
+str2 é alfabética? 0
+str3 é alfabética? 1
 */

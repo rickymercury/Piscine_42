@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:28:06 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/09/21 23:35:55 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/10/23 22:44:07 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,31 @@ int	ft_str_is_uppercase(char *str)
 	return (1);
 }
 
+
 /*
 #include<stdio.h>
 
-int main(void)
+int main()
 {
     char str1[] = "HELLO";
     char str2[] = "hello";
     char str3[] = "";
 
-    if (ft_str_is_uppercase(str1))
-        printf("A string \"%s\" é maiúscula. Retorna: %d\n", str1, ft_str_is_uppercase(str1));
-    else
-        printf("A string \"%s\" não é maiúscula. Retorna: %d\n", str1, ft_str_is_uppercase(str1));
-    
-    if (ft_str_is_uppercase(str2))
-        printf("A string \"%s\" é maiúscula. Retorna: %d\n", str2, ft_str_is_uppercase(str2));
-    else
-        printf("A string \"%s\" não é maiúscula. Retorna: %d\n", str2, ft_str_is_uppercase(str2));
-
-    if (ft_str_is_uppercase(str3))
-        printf("A string \"%s\" é maiúscula. Retorna: %d\n", str3, ft_str_is_uppercase(str3));
-    else
-        printf("A string \"%s\" não é maiúscula. Retorna: %d\n", str3, ft_str_is_uppercase(str3));
+    printf("str1 é maiúsculo? %d\n", ft_str_is_uppercase(str1));
+    printf("str2 é maiúsculo? %d\n", ft_str_is_uppercase(str2));
+    printf("str3 é maiúsculo? %d\n", ft_str_is_uppercase(str3));
 
     return (0);
 }
+*/
+
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Wextra -Werror ft_str_is_uppercase.c -o ft_str_is_uppercase
+sh-5.2$ ./ft_str_is_uppercase 
+str1 é maiúsculo? 1
+str2 é maiúsculo? 0
+str3 é maiúsculo? 1
 */

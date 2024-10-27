@@ -1,0 +1,418 @@
+
+1 - Função ft_strlcpy:  unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+
+
+    A função ft_strlcpy copia a string de origem (src) para a string de destino (dest) com um limite de tamanho definido por size.
+
+    1.1 - Tipo de Retorno:  unsigned int
+
+          A função ft_strlcpy retorna um unsigned int que representa o comprimento total da string de origem (src).
+
+          A função ft_strlcpy foi projetada para retornar o comprimento total da string de origem (src_len). 
+          Como o comprimento, ou o tamanho, da string representa o número de caracteres e, nunca pode ser negativo, ao usarmos um tipo sem sinal como unsigned int, reflete melhor o valor esperado. 
+          Esta situação claramente indica que o valor sempre será zero ou positivo, eliminando a possibilidade de valores negativos, o que vai refletir de forma mais precisa o valor que ela está a retornar.
+
+          Por ser unsigned (sem sinal), unsigned int pode armazenar um intervalo maior de valores do que um int comum, pois o intervalo de valores possíveis é duas vezes maior do que o de um int para o mesmo número de bits.
+          Assim, ao dobrar o limite superior de um int comum obtemos um unsigned int de 32 bits, que permite valores de 0 a 4.294.967.295, enquanto que o int de 32 bits permite valores de -2.147.483.648 a 2.147.483.647.
+          Este aumento permite lidar com strings de tamanhos maiores sem preocupação de overflow de valores, garantindo que a função funcione corretamente mesmo com strings de grandes comprimentos.
+
+          Assim, os motivos pelos quais ft_strlcpy retorna um unsigned int (neste caso, o valor da variável src_len) devem-se a:
+
+            > Representação Correto do Tamanho: A variável src_len representa o comprimento da string de origem src, ou seja, o número total de caracteres que ela contém.
+                                                Como o comprimento duma string nunca será negativo (não há maneira de termos "-5 caracteres"), faz sentido que a string src_len seja um tipo sem sinal (unsigned int) para refletir com precisão o valor.
+                                                Utilizar unsigned int elimina qualquer possibilidade de valores negativos, o que torna a intenção do código clara.
+
+            > Evita Erros de Overflow: ao utilizarmos unsigned int em vez de int evita que o comprimento de strings maiores (perto ao limite de um int positivo) resulte em valores errôneos. 
+                                       Isto é importante especialmente em sistemas com maior uso de memória, onde as strings podem se aproximar do tamanho máximo do tipo int.
+
+            > Precisão: Um unsigned int permite um intervalo maior de valores que um int comum. 
+                        Em sistemas onde um int é 32 bits, ele varia entre -2.147.483.648 e 2.147.483.647, enquanto um unsigned int vai de 0 até 4.294.967.295. 
+                        Isto significa que unsigned int pode armazenar quase o dobro do valor máximo que um int consegue.
+
+            > Indica o comprimento real de src: O valor retornado pela função (src_len) é útil para o programador verificar o tamanho da string src independentemente da operação de cópia. 
+                                                Isto ajuda a decidir se há necessidade de ajustar o valor do size ou até mesmo redimensionar a string dest.
+                                                Como o valor do comprimento total será sempre positivo, usar um tipo sem sinal para o retorno (como unsigned int) evita confusões e ajuda a prevenir erros, fornecendo uma informação mais clara e mais segura sobre o valor real de src_len.
+            
+                                                Assim, independentemente do valor de size (o limite de caracteres para a cópia), o retorno de src_len fornece à função que chamou ft_strlcpy o tamanho total de src. 
+                                                Isto permite que a função que chamou ft_strlcpy saiba quantos caracteres src tem, mesmo que não tenha sido possível copiar todos eles para a string dest, devido ao limite de size.
+
+    1.2 - Variáveis:
+
+            char *dest: é o ponteiro para a string dest onde a string src será copiada (onde os caracteres da src serão copiados).
+                        A string dest vai armazenar a cópia da string src, respeitando o limite do tamanho size, passado como argumento.
+                        A string dest é preenchida com até size - 1 caracteres da string src e, em seguida, é terminado com o caractere nulo '\0'.
+                        Esta terminação com o caractere nulo, assegura que a string dest seja uma string válida, mesmo que a string src seja maior que size - 1.
+                        Caso size seja zero, a string dest permanece inalterada.
+
+                        Exemplo: 
+                        
+                        Se src = "Hello, World!", e size = 6, a função copiará "Hello" para dest, seguido por \0, o que resulta em dest, que vai conter a string "Hello\0".
+                        
+                        Se size = 15, a string dest vai receber a string "Hello, World!\0", pois o comprimento de src é menor que size - 1 e toda a string será copiada.
+
+             char *src: é o ponteiro para a string de src, que será copiada para a string dest.
+                        A string src será lida caractere por caractere e será copiada a para a string dest, mas com um limite de size - 1 caracteres para garantir que a string resultante (a string dest) seja válida.
+                        Antes da cópia, o comprimento total da string src é calculado e vai ser armazenado na variável src_len.
+                        Este comprimento (src_len) é retornado no final da função para que a função que chamou saiba o tamanho completo da string original.
+                        
+                        Exemplo: 
+
+                        Se src = "Hello, World!", e size = 10, o conteúdo de dest no final da função será "Hello, Wo\0", e a função vai retornar o comprimento total de src, que é 13.
+                        
+                        O retorno do comprimento total de src permite à função que efetuou a chamada verifique se size foi suficiente para copiar a string inteira ou se é necessário mais espaço na string dest para futuras operações.
+
+      unsigned int size: corresponde ao limite máximo do número de caracteres que a função deve copiar para a string dest, incluindo o '\0'.
+                         A variável size controla quantos caracteres podem ser copiados de src para dest. 
+                         Ou seja, limita a quantidade de caracteres que a função copia de src para dest, garantindo que a função nunca copie mais do que size - 1 caracteres para a string dest, além de um caractere nulo no final.
+                         
+                         Se size for 0, a função não copia nada para a string dest e apenas calcula e retorna o comprimento da string src.
+                         Se size for maior que o comprimento de src, a totalidade da string src será copiada para a string dest.
+                         Caso contrário, apenas os primeiros size - 1 caracteres serão copiados para que a última posição de dest possa armazenar o caractere nulo '\0'.
+
+                         Exemplo:
+
+                         Com src = "Hello, World!" e size = 5, a função copia "Hell" (4 caracteres) para dest e termina com \0, de modo a que a string dest será "Hell\0".
+                         
+                         Se size = 0, a função retorna apenas o comprimento de src, que é 13 neste caso, e dest não é modificado.
+
+         unsigned int i: corresponde ao índice utilizado para controlar o processo de cópia de src para dest.
+                         É o indice utilizado para percorrer os caracteres da string src enquanto copia-os para a string dest.
+
+                         A função vai utilizar i para acessar cada caractere de src e copiá-lo para dest enquanto i < (size - 1) e src[i] não é '\0'.
+                         O controlo por i < (size - 1) assegura que haja espaço para adicionar o caractere nulo no final da string dest, prevenindo um overflow.
+
+                         A função incrementa i a cada caractere copiado e para quando i antige size - 1 ou chega ao final da string src.
+                         Assim, as variáveis i e size trabalham juntas para garantir que a cópia respeite o limite da string dest.
+                         O while que controla a variável i garante que a cópia termine antes da string dest exceder o espaço.
+
+                         Exemplo:
+
+                         Com src = "Hello, World!" e size = 8, i terá valores de 0 a 6, pois a função irá copiar "Hello, " para dest. 
+                         Na iteração onde i == 7, o loop termina e \0 é adicionado em dest[7].
+
+    unsigned int src_len: Armazena o comprimento total da string src (excluindo o \0).
+                          Permite que a função retorne o tamanho completo da string src, que é útil para a função que chamou saber o espaço necessário para armazenar toda a string src caso o size da string dest seja insuficiente.
+                          Ou seja, o comprimento total da string src será o valor retornado pela função que vai permitir à função que chamou ft_strlcpy saber o tamanho real de src, independentemente do valor de size.
+                          Assim, após a cópia para a string dest, src_len é retornado, independentemente do número de caracteres copiados.
+                          
+                          Exemplo:
+
+                          Com src = "Hello, World!", o loop while (src[src_len] != '\0') itera até src_len chegar a 13 (o comprimento de src sem contar o \0).
+                          Se size fosse insuficiente para conter a string completa, o valor de retorno src_len indicaria à função que chamou ft_strlcpy que dest precisaria de mais espaço para alocar src na íntegra.
+
+
+2 - Cálculo do Comprimento de src:
+
+
+        src_len = 0;
+        while (src[src_len] != '\0')
+            src_len++;
+
+
+    O objetivo, aqui, é determinar o comprimento da string src (sem contar com o caractere nulo), em que, esse valor será armazenado na variável src_len.
+    
+    A variável src_len é inicializada com o valor 0, pois ainda não contamos nenhum caractere.
+
+    A variável src_len será usada para contar o número de caracteres na string src. 
+    Ela vai percorrer a string src até encontrar o caractere nulo ('\0'), calculando o comprimento de src.
+
+    while (src[src_len] != '\0'): Inicia o loop que continua enquanto o caractere atual na string src (acessado pelo índice src_len) não for o caractere nulo \0.
+    Ao encontrar \0, sabemos que a string terminou e o loop para.
+    Para cada iteração do loop, o código conta os caracteres na string src, incrementando src_len.
+
+    Após o loop, src_len contém o número total de caracteres em src (sem contar o '\0').
+
+    Exemplo Prático
+
+    Consideremos a string src "Hello, World!".
+    
+    Iteração	src_len	   src[src_len]	  Condição (src[src_len] != '\0')	     Ação
+       1	       0	        'H'	                Verdadeira	             src_len++ → 1
+       2	       1	        'e'	                Verdadeira	             src_len++ → 2
+       3	       2	        'l'    	            Verdadeira	             src_len++ → 3
+       4	       3	        'l' 	            Verdadeira	             src_len++ → 4
+       5	       4	        'o'	                Verdadeira	             src_len++ → 5
+      ...	      ...	        ...                  	...	                       ...
+      13	      12	        '!'	                Verdadeira	             src_len++ → 13
+      14	      13	        '\0'	               Falsa	              Fim do loop
+
+     No final do loop, src_len tem o valor 13, que é o número de caracteres em "Hello, World!".
+
+
+3 - Verificação e Cópia da String :
+
+
+        if (size > 0)
+        {
+            while (src[i] != '\0' && i < (size - 1))
+            {
+                dest[i] = src[i];
+                i++;
+            }
+            dest[i] = '\0';
+        }
+
+    
+    Aqui, a função realiza a cópia dos caracteres da string src para a string dest até ao limite especificado pela variável size, o que vai garantir que a cópia na string dest sejá válida e seja sempre terminada com '\0'.
+
+    > Verificação size > 0 
+    
+      É verificado se o valor de size (ou seja, o limite máximo de caracteres a serem copiados) é maior do que 0.
+      A função só copia caracteres para dest se size for maior que zero. 
+      Isto garante que pelo menos um caractere pode ser copiado (caso ele exista na string src), e a cópia possa ter um caractere nulo no final.
+      Caso size for igual a zero, o codigo salta este bloco responsável pela cópia, pois uma cópia com size igual a zero não faz sentido - neste caso, dest não seria preenchido com nenhum caractere.
+    
+    > Loop da Cópia: 
+         
+        while (src[i] != '\0' && i < (size - 1))
+        {
+            dest[i] = src[i];
+            i++;
+        }
+
+      Este while realiza a cópia dos caracteres, mas com duas condições:
+        
+        - src[i] != '\0': Continua a cópia (dest[i] = src[i]) até encontrar o final da string src.
+        - i < (size - 1): Limita a cópia, na string dest, para garantir que não ultrapasse o valor de size - 1, deixando espaço para o \0.
+    
+      O size - 1 assegura que mesmo numa cópia completa, a string dest terá sempre o caractere \0, no final.
+
+      A variável i é incrementada para copiar o próximo caractere de str[i] para dest[i] na próxima interação.
+
+    > Adicionar o Caractere Nulo:  dest[i] != '\0'
+
+      Após o término do loop while, o código insere o caractere \0 na posição atual de i, na string dest, para garantir que ela termine corretamente.
+      Esta linha é essencial para que dest seja uma string válida, independentemente do tamanho de size.
+
+
+4 - Retorno do Comprimento de src:  return (src_len);
+ 
+    A função retorna src_len, ou seja, o comprimento total da string src.
+    Este valor indica quantos caracteres existem na string src, independentemente do size, o que vai informar se a cópia completa foi possível ou se houve truncamento.
+
+
+
+
+Exemplo de Fluxo:
+
+
+
+1) Antes da Função:
+
+   > Função Main
+     
+
+        int main() 
+        {
+            char src[] = "Hello, World!";
+            char dest[8];
+            unsigned int size = 8;
+
+            unsigned int length = ft_strlcpy(dest, src, size);
+
+            printf("Copied string: %s\n", dest);
+            printf("Source length: %u\n", length);
+            return 0;
+        }
+
+
+      char src[] = "Hello, World!": Quando a string src é declarada e inicializadam o compilador:
+
+      - Determina o Tamanho da String: A string "Hello, World!" possui 13 caracteres, mais o caractere nulo '\0', no final, totalizando 14 caracteres.
+                                       O compilador vai calcular, automaticamente, que o array src vai precisar de 14 bytes de memória (um byte por caractere) para armazenar a string completa.
+      
+      - Reserva Espaço Contínuo na Memória: O compilador aloca um bloco contíguo de 14 bytes na memória para armazenar os caracteres da string, incluindo o caractere nulo \0.
+                                            Se assumirmos que o endereço inicial desse bloco é 0x1000, então a sequência de caracteres da string será armazenada a partir desse endereço.
+      
+      Cada caractere da string src é armazenado sequencialmente nos endereços de memória, começando em 0x1000.
+      O array src representa um ponteiro para o primeiro elemento do array, ou seja, src é o endereço do primeiro caractere ('H').
+      Se o array src foi alocado no endereço 0x1000, então src contém esse endereço (0x1000) e src[0] refere-se ao valor armazenado nesse endereço, que é o caractere H.
+      Este acesso dá-se automaticamente, pois o compilador entende que o array src é um ponteiro para o início do bloco de memória alocado para a string.
+      
+      A tabela de memória inicial para src:
+
+                Endereço	    Valor
+                0x1000	         'H'
+                0x1001	         'e'
+                0x1002	         'l'
+                0x1003	         'l'
+                0x1004	         'o'
+                0x1005	         ','
+                0x1006	         ' '
+                0x1007	         'W'
+                0x1008	         'o'
+                0x1009	         'r'
+                0x100A	         'l'
+                0x100B	         'd'
+                0x100C	         '!'
+                0x100D	         '\0'
+
+      dest[8]: O array dest[8] é declarado com um tamanho fixo de 8 bytes, o que significa que o compilador reserva um bloco de 8 bytes consecutivos na memória para armazenar os valores da string dest.
+               Este array quando é declarado, inicialmente está vázio, e será utilizado para armazenar a cópia da string de origem (src), ou seja, vai servir como destino para receber a cópia da string src.
+               Suponhamos que o compilador vai alocar o array dest no endereço 0x2000.
+               Como dest ainda não foi inicializado, o conteúdo da memória nesses 8 bytes será indeterminado até à execução da função ft_strlcpy. 
+
+               Assim:
+
+               No início, o conteúdo de dest é indefinido (não inicializado). 
+               Se a função ft_strlcpy for chamada para copiar uma string para dest, o conteúdo será atualizado com os caracteres da string de src até o limite de size - 1 (7 caracteres no máximo, pois o último byte é reservado para o caractere nulo \0).
+
+               A tabela de memória inicial para dest:
+
+                    Endereço	Valor Inicial
+                    0x2000	     Indefinido
+                    0x2001	     Indefinido
+                    0x2002	     Indefinido
+                    0x2003	     Indefinido
+                    0x2004	     Indefinido
+                    0x2005	     Indefinido
+                    0x2006	     Indefinido
+                    0x2007	     Indefinido
+
+    size = 8: A variável size é inicializada com o valor 8, que indica o limite máximo de bytes a serem copiados para a string dest (incluindo o caractere nulo \0).
+
+
+   > Chamada da Função ft_strlcpy
+
+     No momento em que a função ft_strlcpy é chamada, ft_strlcpy(dest, src, size), o compilador prepara a passagem dos argumentos para a função.
+
+       - Passagem dos Parâmetros (dest e src): o compilador vai passar os endereços de memória onde eles estão localizadas.
+                                               A string src aponta para o endereço 0x1000, e dest aponta para 0x2000. 
+                                               Estes endereços são copiados para a função, permitindo que a função ft_strlcpy acesse diretamente aos locais de memória onde as strings estão armazenadas.
+
+                                               Assim: O endereço inicial de dest é passado para a função como um char *.
+                                                      Como o endereço de dest é 0x2000, então o valor 0x2000 será passado para ft_strlcpy.
+                                                      O endereço inicial de src é passado da mesma maneira. 
+                                                      Como src está no endereço 0x1000, o valor 0x1000 será passado como argumento para ft_strlcpy.
+
+       - Passagem por Valor (size): size é passado por valor, o que significa que o valor 8 é passado diretamente para a função, não o endereço.
+
+
+2) Dentro da Função:
+
+   Dentro da função, temos:  unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+
+    Ponteiro dest: Recebe o endereço do primeiro caractere (byte) do array dest, na memória (0x2000), o que permite que a função modifique diretamente os valores da string dest original, copiando os caracteres da src diretamente para ela.
+    
+    Ponteiro src: Recebe o endereço do primeiro caractere da string src (0x1000), o que permite que a função acesse diretamente cada caractere da src.
+    
+    size: Recebe o valor inteiro especificado na chamada (8), fornecendo o limite para a quantidade de caracteres que podem ser copiados para a string dest.
+
+    > Cálculo de src_len
+
+            src_len = 0;
+	        while (src[src_len] != '\0')
+		        src_len++;
+
+      O primeiro while (src[src_len] != '\0') calcula o comprimento da string src: 
+      
+        src_len é incrementado até que src[src_len] encontre o caractere '\0', o que marca o final da string.
+
+        Consideremos a string src "Hello, World!".
+    
+        Iteração	src_len	   src[src_len]	  Condição (src[src_len] != '\0')	     Ação
+           1	       0	        'H'	                Verdadeira	             src_len++ → 1
+           2	       1	        'e'	                Verdadeira	             src_len++ → 2
+           3	       2	        'l'    	            Verdadeira	             src_len++ → 3
+           4	       3	        'l' 	            Verdadeira	             src_len++ → 4
+           5	       4	        'o'	                Verdadeira	             src_len++ → 5
+          ...	      ...	        ...                  	...	                       ...
+          13	      12	        '!'	                Verdadeira	             src_len++ → 13
+          14	      13	        '\0'	               Falsa	              Fim do loop
+
+     No final do loop, src_len tem o valor 13, que é o número de caracteres na string "Hello, World!".
+        
+        Assim, src_len vai de 0 até 13 (comprimento de "Hello, World!").
+
+      Este valor de src_len será o retorno da função, pois strlcpy sempre retorna o comprimento total de src, mesmo que size limite a cópia.
+
+
+    > Verificação de size > 0 e Início do Segundo while:
+
+      A função entra no bloco if (size > 0), que impede a cópia se size for 0, pois nesse caso, dest não teria espaço para armazenar nenhum caractere, nem mesmo o '\0'.
+
+      Dentro deste if, o while (src[i] != '\0' && i < (size - 1)) copia cada caractere de src para dest, desde que:
+        
+        O índice i seja menor que size - 1 (preserva espaço para o '\0' final).
+        src[i] ainda não tenha atingido o caractere '\0'.
+
+      Inclusão do Caractere Nulo Final em dest: Quando o while termina, dest[i] = '\0' insere o caractere '\0' na string dest no índice i, para finalizar a string.
+    
+      Tabela de Iterações:
+
+      Iteração	  i	    src[i]	            Condição i < (size - 1)	        Caractere Copiado para dest[i]	   Estado de dest
+      ------------------------------------------------------------------------------------------------------------------------------
+      Inicial	  0	     'H'	      i < 7 e src[i] != '\0' é verdadeiro	           Nenhum	               ???????? (indefinido)
+      ------------------------------------------------------------------------------------------------------------------------------
+         1  	  0	     'H'	                  Verdadeiro	                         'H'	               H???????
+         2	      1	     'e'	                  Verdadeiro	                         'e'	               He??????
+         3	      2	     'l'	                  Verdadeiro	                         'l'	               Hel?????
+         4	      3	     'l'	                  Verdadeiro	                         'l'	               Hell????
+         5	      4	     'o'	                  Verdadeiro	                         'o'	               Hello???
+         6	      5	     ','	                  Verdadeiro	                         ','	               Hello,??
+         7	      6	     ' '	                  Verdadeiro	                         ' '	               Hello, ?
+         8	      7	     'W'	              Falso (sai do loop)	                   Nenhum	               Hello, 
+      ------------------------------------------------------------------------------------------------------------------------------
+       Final	  - 	  - 	                      - 	                   Adiciona '\0' em dest[7]	       "Hello, \0"
+
+
+      - Iterações de 1 a 7: Copia cada caractere de src para dest enquanto i < (size - 1) e src[i] não for '\0'.
+      - Iteração 8: Sai do loop porque i atinge o valor 7, igual a size - 1.
+      - Finalização: Após o loop, o caractere '\0' é adicionado para finalizar dest em dest[7], tornando dest uma string válida até o comprimento de size - 1.
+
+
+    > Retorno de src_len:
+
+      Ao copiar strings com um limite de tamanho, como a função ft_strlcpy faz, o valor de src_len fornece uma informação essencial à função que efetuou a chamada:
+
+        - Verificação da Capacidade do Buffer: 
+          
+          A função ft_strlcpy copia no máximo size - 1 caracteres de src para dest, e coloca o caractere nulo '\0' no final para garantir que dest seja sempre uma string válida.
+          Caso size seja menor que o comprimento da string src (isto é, src_len + 1), a função que chamou sabe que dest é uma cópia truncada da string src. 
+          Este retorno vai permitir a essa função que efetuou a chamada verificar se a string dest contém a string completa ou apenas uma parte.
+
+        - Ajuste do Buffer:
+
+          Como src_len indica o comprimento total de src, a função que chamou ft_strlcpy pode decidir, com base no retorno, redimensionar dest para garantir que ele possa armazenar toda a string src numa cópia completa, se necessário.
+
+
+       Assim, para o caso de src[] = "Hello, World!":
+
+       A função copiou até size - 1 = 7 caracteres para a string dest, o que resultou na string dest a conter "Hello, ".
+       Como size é menor que o comprimento de src (ou seja, size < src_len + 1), a string dest não vai conter a string completa. 
+       Ou seja, como src_len é 13 (tamanho da string completa "Hello, World!"), a função que efetuou a chamada sabe que o buffer de 8 caracteres é insuficiente para armazenar todo o conteúdo de src.
+       
+       Resultado: A função ft_strlcpy retorna 13, e a função que a chamou observa que src_len (13) é maior do que size (8) e entende que a string dest contém uma versão truncada da string src.
+
+       Portanto, este retorno de src_len, dá à função que chamou ft_strlcpy uma forma de controlar e validar o tamanho da cópia realizada, para saber se foi completa ou parcial, e se o buffer precisa de ser ajustado para um novo tamanho.
+
+      
+
+3) De Volta à Main:
+
+    Após a execução da função ft_strlcpy, o fluxo volta para o ponto na main onde a função foi chamada. 
+    
+    Nesse ponto: O valor retornado pela função (src_len) pode ser utilizado imediatamente para verificações ou manipulações. 
+                 A função que efetuou a chamada pode decidir o que fazer, com base nesse retorno.
+                 O conteúdo da string dest terá sido modificado pela função, e agora armazena os caracteres copiados de src até ao tamanho especificado por size. 
+                 Essa modificação permanece, pois dest é passado por referência.
+
+    O conteúdo de dest é "Hello, ", com um terminador \0 no final.
+    src permanece inalterado.
+    O valor de retorno é 13, o que indica o comprimento real de src, que é útil para o a função que efetuou a chamada saber o tamanho total necessário para uma cópia completa de src.
+
+    > Impressão do Conteúdo da String dest 
+      
+      Quando a função printf("Copied string: %s\n", dest) é chamada, será exibido o conteúdo que foi copiado de src para dest, que neste caso será "Hello, " (apenas os primeiros 7 caracteres, pois size é 8 e o último caractere é '\0').
+    
+    > Impressão do Comprimento da String src
+      
+      A função printf("Length of source: %u\n", len); vai exibir 13, que é o comprimento total da string src.
+
+
+    Após a função, o estado da memória será assim:
+
+    dest: Contém "Hello, " com '\0' no final, que ocupa 8 bytes (7 caracteres + 1 para o caractere nulo).
+    src: Continua a existir na sua forma original, que contém a string "Hello, World!", com 14 bytes ocupados (13 caracteres + 1 para o terminador).
+    len: Contém o valor 13, que é armazenado como um unsigned int.
+    
