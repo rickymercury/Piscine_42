@@ -1,0 +1,309 @@
+
+1 - Função ft_strcat:  char	*ft_strcat(char *dest, char *src)
+    
+    A função: Calcula o comprimento da string dest.
+              Percorre cada caractere de src e o copia para o final de dest.
+              Finaliza a string concatenada com o caractere nulo (\0).
+              Retorna o ponteiro para dest, que agora contém o conteúdo original de dest seguido pelo conteúdo de src.
+
+    1.1 - Tipo de Retorno:  char *
+
+           A função ft_strcat retorna um ponteiro para o tipo char que aponta para o ínicio da string dest.
+          Assim, este retorno fornece à função, que chamou ft_strcat, o endereço de memória da string dest, ou seja, a string resultante da concatenação.
+
+          Retornar a string dest, permite à função, que chamou a ft_strcat, acessar a string concatenada sem precisar de outra variável para armazenar o resultado.
+          Isto permite que o valor concatenado possa ser reutilizado diretamente noutras expressões ou funções.
+
+          Quando a função ft_strcat retorna o ponteiro para a string dest, a função que efeutou a chamada pode acessar diretamente a string resultante. 
+          Isto é útil porque a string dest foi modificada para conter a string concatenada, e, ao retorná-la, permite à função armazená-la e/ou manipulá-la conforme necessário, pois ela possui acesso direto ao endereço da string dest.
+         
+          Sem o retorno de dest, precisaríamos de manipular a sting dest separadamente, o que complicaria o código.
+
+    1.2 - Variáveis:
+
+          char *dest: É um ponteiro para a string  de destino onde será armazenada a concatenação do seu conteúdo original com o conteúdo atual da string src, terminando com um caractere '\0' para indicar o final da nova string (string concatenada).
+                      Assim, para a função ft_strcat funcionar corretamente, a string dest tem de ter espaço suficiente na memória para armazenar o conteúdo das duas strings (dest e src) e ainda espaço para um byte extra para o caractere '\0', no final da nova string.
+                      Durante a execução, a string dest não será copiada nem modificada, o ponteiro sempre aponta para o mesmo endereço de memória. Somente o conteúdo de dest será alterado.
+
+                      NO primeiro loop, são contados os caracteres de dest identificando o ponto onde os caracteres da string src vão começar a ser copiados.
+                      Depois de encontrar o final da string dest, o segundo loop copia os caracteres da src, um a um, para o índice atual da string dest.
+                      A cada caractere copiado, o índice atual de dest é incrementado para continuar a adicionar os caracteres da string src, na sequência.
+                      Após copiar todos os caracteres da src, o caractere '\0' é adicionado no final da string dest para garantir que continua a ser uma string válida.
+
+                      Assim, a string dest será o local onde a string src será copiada, começando a cópia da src a partir do ponto onde termina o conteúdo original da string dest.
+
+           char *src: É um ponteiro para a string de origem que contém os caracteres que desejamos adicionar no final da string dest.
+                      Ele aponta para o primeiro caractere do array de caracteres (terminado por '\0') que serão lidos e copiados para a string dest.
+                      Ao longo da função, a string src permanece constante - a função nunca modifica a src, mas sim lê os caracteres e copia-os para o final da string dest.
+                      COmo a string src permanece inalterada, a função ft_strcat atua apenas sobre o conteúdo da string dest, copiando cada caractere da src para a posição correspodente em dest até encontrar o caractere '\0'.
+
+                      A função utiliza o loop para percorrer todos os caracteres da src, e a cada iteração, a função lê o caractere src[i] e copia-o para o índice atual da string dest (dest[i]), movendo i para o próximo caractere da src.
+                      Quando chegamos ao caractere '\0' na string src, o loop termina, e a função sabe que já copiou todos os caracteres da src para a dest.
+                      
+                      Assim, a string src é lida de forma constante na função, onde cada caractere é copiado para o fim da string dest.
+                      A função espera que a string src seja válida (terminada por '\0') o que permite que o loop da cópia termine assim que a src termina.
+                      O comportamento da src facilita a concatenação, pois apenas os valores da src são copiados, enquanto a string dest é alterada para armazenar a nova string combinada.
+
+               int i: Atua como índice para percorrer a string dest até ao fim, identificando o local onde começa a concatenação da string src.
+                      A variável i localiza, assim, o final da string dest, sendo que, no primeiro loop, i é utilizado para percorrer a string dest até encontrar o caractere nulo.
+                      No final desse loop, i indica a posição logo após o último caractere da dest, onde o primeiro caractere da src será copiado.
+                      Depois de encontrar o final da string dest, i controla a posição de dest à medida que copiamos cada caractere da string src.
+                      A cada iteração do segundo loop, a instrução dest[i] = src[j] coloca o caractere src[j] na posição dest[i], e então i é incrementado para avançar para o próximo indice disponivel na string dest.
+                      QUando todos os caracteres da src foram copiados para a dest, dest[i] recebe o caractere '\0', indicando o final da stirng concatenada.
+
+               int j: Atua como índice para percorrer a string src desde o ínicio até ao fim, permitindo que cada caractere da src seja copiado sequencialmente para a posição correta da string dest.
+                      A variável j marca a posição atual da string src, que começa no primeiro caractere, e é incrementada a cada iteração do segundo loop para mover-se ao longo da src.
+                      A função copia src[j] para dest[i], onde i aponta para o final da string dest.
+                      EM cada iteração, j permite acessar o próximo caractere da src e incrementa i para apontar para o próximo índice disponivel na string dest.
+                      Quando src[j] == '\0', o loop termina, indicando que todos os caracteres da string src foram copiados.
+                      A variável j garante, assim, que a função copia até ao último caractere da string src, e então dest[i] = '\0' é executado, colocado o caractere '\0' no final da string dest, encerrando a string concatenada.
+
+
+2 - Loop while para Determinar o Final da String dest:
+
+        i = 0;
+        while (dest[i] != '\0')
+	        i++;
+
+    Este loop percorre a string dest com o objetivo de encontrar o final dela (ou seja, encontrar o primeiro índice vazio após o último caractere da string), o que vai preparar a posição onde os caracteres da src serão adicionados para formar a string concatenada.
+    
+    > while (dest[i] != '\0') i++: O loop avança, assim, por cada caractere da string dest até encontrar o caractere '\0', que marca o fim da string. 
+                                   Cada vez que i é incrementado, ele aponta para o próximo caractere de dest.
+                                   QUando o loop termina, i está na posição do caractere '\0', ou seja, está na posição onde os novos caracteres da src serão copiados.
+
+    Consideremos um exemplo em que temos: dest inicializado com a string "Hello, " e src inicializado com a string "World!".
+
+    Conteúdo de dest antes da execução do while:
+
+    Índice	 0	 1	 2	 3	 4	 5	 6	 7 ...
+    Valor	'H'	'e'	'l'	'l'	'o'	','	' '	\0		
+
+    Neste exemplo, dest foi declarado com espaço extra para que a concatenação possa ocorrer. 
+    Em C, a string dest precisa de ser grande o suficiente para acomodar tanto os seus caracteres quanto os da src, após a concatenação.
+
+    Iterações do while:
+
+    A cada iteração, o valor de i é incrementado:
+
+    Iteração	Índice i	Conteúdo de dest[i]	    Condição (dest[i] != '\0')
+       1	        0	            'H'	                    Verdadeiro
+       2	        1	            'e'	                    Verdadeiro
+       3	        2	            'l'	                    Verdadeiro
+       4	        3	            'l'	                    Verdadeiro
+       5	        4	            'o'	                    Verdadeiro
+       6	        5	            ','	                    Verdadeiro
+       7	        6	            ' '	                    Verdadeiro
+       8	        7	            '\0'	                  Falso
+
+    Na última iteração, i é incrementado até i = 7, a posição onde o '\0' está armazenado. 
+    Assim, quando o loop termina, i tem o valor 7, que é o índice da posição onde a concatenação vai começar.
+
+    A função segue então para o segundo while, onde a string src vai ser copiada para a string dest, a partir dessa posição.
+
+
+3 - Loop while para Copiar os Caracteres de src para o Fim de dest:
+
+        i = 0;
+        while (src[j] != '\0')
+        {
+	        dest[i] = src[j];
+	        i++;
+	        j++;
+        }
+    
+    O loop percorre a string src até ao caractere '\0'.
+    Este loop copia, um a um, os caracteres da string src (src[j]) para a posição i de dest (dest[i]), começando a partir da posição final de dest, que foi calculado no loop anterior.
+    A variável i é incrementada para avançar para a próxima posição livre da string dest.
+    A variável j é incrementada para avançar para o próximo caractere da string src.
+
+    Exemplo:
+
+    dest inicial: "Hello, " (Na posição i = 7, alcança o caractere '\0')
+    src: "World!"
+
+    A concatenação começa a partir da posição 7 da stirng dest, onde o caractere '\0' original está.
+
+    dest antes da cópia:
+
+    Índice	 0	 1	 2	 3	 4	 5	 6	 7	...
+    Valor	'H'	'e'	'l'	'l'	'o'	','	' '	\0						
+
+    src inicial:
+
+    Índice	 0	 1	 2	 3	 4	 5	 6
+    Valor	'W'	'o'	'r'	'l'	'd'	'!'	\0
+
+    Iterações do Segundo while
+
+    Iteração	j	src[j]	i antes da cópia	dest após a cópia
+       1	    0	  'W'	       7	             Hello, W
+       2	    1	  'o'	       8	             Hello, Wo
+       3	    2	  'r'	       9	             Hello, Wor
+       4	    3	  'l'	      10	             Hello, Worl
+       5	    4	  'd'	      11	             Hello, World
+       6	    5	  '!'	      12	             Hello, World!
+
+    Na última iteração, src[j] é '!', que é copiado para dest[12]. 
+    Em seguida, j torna-se 6, e i torna-se 13. 
+    Como src[6] é \0, o loop termina.
+
+4 - Terminar a String com '\0':  dest[i] = '\0'
+
+    Após copiar todos os caracteres da src para a dest, a variável i está no índice da primeira posição livre após os caracteres copiados, ou seja, i aponta para o primeiro espaço após o conteúdo da src recém-copiado.
+    Se a string dest tinha inicialmente o conteúdo "Hello, " e a string src tinha o conteúdo "World!", após a concatenação, dest contém o contéudo "Hello, World!" e i será igual ao comprimento total desta nova string, ou seja, 13.
+    Ao atribuirmos o caractere '\0', finalizamos a string concatenada.
+    Isto é fundamental porque, sem este caractere, qualquer função que trabalhe com string não saberá onde a string termina, resultando em comportamentos indefinidos, como no acesso a memória fora dos limites da string.
+
+    Resultado Final
+
+    dest após a cópia completa:
+
+    Índice	 0	 1	 2	 3	 4	 5	 6	 7	 8	 9	10	11	12	13
+    Valor	'H'	'e'	'l'	'l'	'o'	','	' '	'W'	'o'	'r'	'l'	'd'	'!'	\0
+
+    Aqui, a string concatenada é finalizada corretamente, o que permite que qualquer operação que utilize a string dest funcione como o esperado.
+
+
+
+Exemplo de Fluxo:
+
+
+
+1) Antes da Função:
+
+   
+   > Função Main
+
+     int main(void) 
+     {
+        char dest[20] = "Hello "; // espaço suficiente para a concatenação
+        char src[] = "World!";
+    
+        ft_strcat(dest, src);
+    
+        printf("Resultado da concatenação: %s\n", dest);
+    
+        return 0;
+    }
+
+    Quando a função main é executada, as duas strings são declaradas: dest e src. 
+    A tabela abaixo ilustra como as strings são armazenadas na memória, exibindo os respetivos conteúdos e endereços.
+
+    Suponhamos que a string dest é armazenada numa região da memória, começando no endereço 0x1000. 
+    Ela é inicializada com a string "Hello " (com espaço suficiente para armazenar a string concatenada).
+
+    Tabela de Endereços de Memória para dest:
+
+    Endereço	Conteúdo	Descrição
+     0x1000	       H	     dest[0]
+     0x1001	       e	     dest[1]
+     0x1002	       l	     dest[2]
+     0x1003	       l	     dest[3]
+     0x1004	       o	     dest[4]
+     0x1005                  dest[5]
+     0x1006	       \0	    Fim de dest
+
+    Agora, a string src é declarada e inicializada com a string "World!". 
+    Vamos supor que ela é armazenada a partir do endereço 0x2000.
+
+    Tabela de Endereços de Memória para src:
+
+    Endereço	Conteúdo	Descrição
+     0x2000	       W	     src[0]
+     0x2001	       o	     src[1]
+     0x2002	       r	     src[2]
+     0x2003 	   l	     src[3]
+     0x2004	       d 	     src[4]
+     0x2005	       !	     src[5]
+     0x2006	      \0	    Fim de src
+
+
+    > Chamada e Passagem dos Argumentos
+
+      Ao chamarmos a função ft_strcat(dest, src), os endereços de memória onde as strings estão armazenadas são passados como argumentos.
+      
+      Assumindo que: dest está armazenado a partir do endereço 0x1000.
+                     src está armazenado a partir do endereço 0x2000.
+
+      Os ponteiros para as strings dest e src não contêm os valores das strings em si, mas sim os endereços onde esses valores estão localizados na memória. 
+      Assim, quando ft_strncat(dest, src) é chamado, na prática, o que é passado para a função são os seguintes valores:
+
+      Para dest: 0x1000
+      Para src: 0x2000
+
+      Quando a função ft_strcat é invocada, o compilador cria uma cópia dos endereços de dest e src, na stack. 
+      Isto é feito para que a função ft_strncat possa acessar e manipular as strings corretamente.
+      Os parâmetros da função são do tipo char *, ou seja, ponteiros para caracteres. 
+      Isto significa que a função espera receber endereços de memória onde as strings são armazenadas.
+      
+      Uma vez que a função é chamada, dentro da função ft_strcat, as variáveis dest e src referenciam diretamente as áreas da memória onde as strings estão armazenadas, ao utilizar os endereços passados.
+
+2) Durante a Função:
+
+   > Encontrar o Final de dest
+
+     A função inicializa i com 0 e, em seguida, entra no loop while para determinar o final da string dest.
+
+            i = 0;
+            while (dest[i] != '\0')  // Enquanto não chegar ao fim da string
+                i++;
+
+    Objetivo: Encontrar a posição onde a string dest termina (ou seja, o índice do primeiro caractere \0).
+
+    Iteração	i	dest[i]	   Condição dest[i] != '\0'	       Ação
+       1	    0	   H	        Verdadeira	         Incrementa i (i = 1)
+       2	    1	   e	        Verdadeira	         Incrementa i (i = 2)
+       3	    2	   l	        Verdadeira	         Incrementa i (i = 3)
+       4	    3	   l	        Verdadeira	         Incrementa i (i = 4)
+       5	    4	   o	        Verdadeira	         Incrementa i (i = 5)
+       6        5                   Verdadeira           Incrementa i (i = 6)
+       7	    6	  \0	           Falsa	            Loop termina
+
+    Resultado: i é igual a 6, indicando que a string dest tem 6 caracteres.
+
+
+   > Cópia dos Caracteres da src para dest
+
+     Agora, vamos copiar cada caractere da string src para o final da string dest, a partir da posição i calculada anteriormente, utilizando o índice i para indicar onde a cópia deve ser feita.
+
+            j = 0;
+            while (src[j] != '\0') 
+            {
+                dest[i] = src[j];    
+                i++;
+                j++;
+            }
+     
+     Para cada iteração: O caractere atual de src[j] é copiado para dest[i].
+                         O índice i é incrementado para apontar para a próxima posição disponível em dest.
+                         O índice j é incrementado para passar ao próximo caractere de src.
+
+    Iteração	i	j	 src[j]	  dest[i] (após cópia)	 Estado de dest
+       1	    6	0      W	         W	                Hello W
+       2	    7	1      o   	         o	                Hello Wo
+       3	    8	2      r	         r	                Hello Wor
+       4	    9	3      l	         l	                Hello Worl
+       5	   10	4	   d             d                  Hello World
+       6       11   5      !             !                  Hello World!
+       7       12   6      -             -                      -
+
+    Resultado: Após a última iteração, dest agora contém a string "Hello World!" indicando que todos os caracteres foram copiados.
+    
+   > Adicionar o Caractere Nulo
+
+     Após copiar os caracteres da src para dest, a função adiciona um novo caractere nulo (\0) na posição final (i = 12) da nova string concatenada.
+
+            dest[i] = '\0'; 
+
+    Isto é crucial para garantir que a nova string concatenada seja reconhecida corretamente como uma string válida.
+    
+    > Retorno da Função
+
+    A função retorna o ponteiro dest, que agora contém a string "Hello Worl\0", resultado da concatenação dos primeiros 4 caracteres da src para o final de dest.
+
+    Estado da Memória Após a Função
+
+    Endereço     Conteúdo             Variável
+    ---------    --------------       --------------
+    0x1000       "Hello World!\0"         dest
+    0x2000       "World!"                 src

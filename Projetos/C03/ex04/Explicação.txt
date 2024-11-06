@@ -1,0 +1,17 @@
+
+1 - Função ft_strstr:  char	*ft_strstr(char *str, char *to_find)
+
+    Esta função procura a primeira ocorrência da substring to_find dentro da string str.
+    Ela retorna um ponteiro para o ínicio da primeira ocorrência de to_find em str ou 0 se to_find não for encontrada.
+
+    1.1 - Tipo de retorno:  char *
+
+    1.2 - Variáveis:
+
+          char *str:
+
+          char *to_find:
+
+         unsigned int i:
+
+         unsigned int j;

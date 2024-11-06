@@ -342,18 +342,18 @@ Exemplo de Fluxo:
 
       Iteração	  i	    src[i]	            Condição i < (size - 1)	        Caractere Copiado para dest[i]	   Estado de dest
       ------------------------------------------------------------------------------------------------------------------------------
-      Inicial	  0	     'H'	      i < 7 e src[i] != '\0' é verdadeiro	           Nenhum	               ???????? (indefinido)
+      Inicial	    0	     'H'	      i < 7 e src[i] != '\0' é verdadeiro	             Nenhum	                       ???????? (indefinido)
       ------------------------------------------------------------------------------------------------------------------------------
-         1  	  0	     'H'	                  Verdadeiro	                         'H'	               H???????
-         2	      1	     'e'	                  Verdadeiro	                         'e'	               He??????
-         3	      2	     'l'	                  Verdadeiro	                         'l'	               Hel?????
-         4	      3	     'l'	                  Verdadeiro	                         'l'	               Hell????
-         5	      4	     'o'	                  Verdadeiro	                         'o'	               Hello???
-         6	      5	     ','	                  Verdadeiro	                         ','	               Hello,??
-         7	      6	     ' '	                  Verdadeiro	                         ' '	               Hello, ?
-         8	      7	     'W'	              Falso (sai do loop)	                   Nenhum	               Hello, 
+         1  	    0	     'H'	                  Verdadeiro	                         'H'	                         H???????
+         2	      1	     'e'	                  Verdadeiro	                         'e'	                         He??????
+         3	      2	     'l'	                  Verdadeiro	                         'l'	                         Hel?????
+         4	      3	     'l'	                  Verdadeiro	                         'l'	                         Hell????
+         5	      4	     'o'	                  Verdadeiro	                         'o'	                         Hello???
+         6	      5	     ','	                  Verdadeiro	                         ','	                         Hello,??
+         7	      6	     ' '	                  Verdadeiro	                         ' '	                         Hello, ?
+         8	      7	     'W'	              Falso (sai do loop)	                   Nenhum	                         Hello, 
       ------------------------------------------------------------------------------------------------------------------------------
-       Final	  - 	  - 	                      - 	                   Adiciona '\0' em dest[7]	       "Hello, \0"
+       Final	    - 	    - 	                      - 	                      Adiciona '\0' em dest[7]	           "Hello, \0"
 
 
       - Iterações de 1 a 7: Copia cada caractere de src para dest enquanto i < (size - 1) e src[i] não for '\0'.

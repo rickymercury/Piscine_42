@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:07:13 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/26 22:54:59 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/11/02 20:38:31 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 char	*ft_strcat(char *dest, char *src)
 {
-	int	dest_len;
 	int	i;
+	int	j;
 
-    dest_len = 0;
-	while (dest[dest_len] != '\0')
-		dest_len++;
-	i = 0;
-	while (src[i] != '\0')
+    i= 0;
+	while (dest[i] != '\0')
+		i++;
+	j = 0;
+	while (src[j] != '\0')
 	{
-		dest[dest_len + i] = src[i];
-		i++;              
+		dest[i] = src[j];
+		i++;
+		j++;             
 	}
-	dest[dest_len + i] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 
 
+/*
 #include <stdio.h>
 
 int	main()
@@ -43,3 +45,13 @@ int	main()
 	printf("String concatenada: %s\n", str1);
 	return (0);
 }
+*/
+
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Werror -Wextra ft_strcat.c -o ft_strcat
+sh-5.2$ ./ft_strcat 
+String original: Benfica 
+String concatenada: Benfica Campeão
+*/

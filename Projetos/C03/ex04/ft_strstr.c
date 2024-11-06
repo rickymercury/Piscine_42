@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
+/*   By: rickymercury <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:21:37 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/26 22:59:18 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/11/04 11:06:01 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,30 @@
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	char	*s;
-	char	*f;
+	unsigned int	i;
+	unsigned int	j;
 
+	i = 0;
+	j = 0;
 	if (*to_find == '\0')
 		return (str);
-	while (*str != '\0')
+	while (str[i] != '\0')
 	{
-		s = str;
-		f = to_find;
-		while (*f != '\0' && *s == *f)
+		if (str[i] == to_find[0])
 		{
-			s++;
-			f++;
+			j = 0;
+			while (str[i + j] && to_find[j] && str[i + j] == to_find[j])
+				j++;
+			if (to_find[j] == '\0')
+				return (str + i);
 		}
-		if (*f == '\0')
-			return (str);
-		str++;
+		i++;
 	}
 	return (0);
 }
 
-
 /*
 #include <stdio.h>
-
-char	*ft_strstr(char *str, char *to_find);
 
 int	main(void)
 {
@@ -65,33 +63,14 @@ int	main(void)
 }
 */
 
-
-//                           Outra opção
-
 /*
-char	*ft_strstr(char *str, char *to_find)
-{
-	char	*a;
-	char	*b;
+OUTPUT:
 
-	if (*to_find == '\0')
-		return (str);
-	while (*str != '\0')
-	{
-		if (*str == *to_find)
-		{
-			a = str;
-            b = to_find;
-			while (*a == *b && *b != '\0')
-			{
-				a++;
-				b++;
-			}
-            if (*b == '\0')
-                return (str);
-		}
-		str++;
-	}
-	return (0);
-}
+sh-5.2$ cc -Wall -Werror -Wextra ft_strstr.c -o ft_strstr
+sh-5.2$ ./ft_strstr 
+Find'Campeão!' em 'Benfica Campeão!': Campeão!
+Find 'Benfica' em 'Benfica Campeão!': Benfica Campeão!
+Find '!' em 'Benfica Campeão!': !
+Find 'Sporting' em 'Benfica Campeão!': (nil)
+Find 'Benfica Campeão!': Benfica Campeão!
 */

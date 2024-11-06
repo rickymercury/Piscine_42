@@ -1,0 +1,353 @@
+
+1 - Função ft_strncmp:  int	ft_strncmp(char *s1, char *s2, unsigned int n)
+    
+    Esta função compara os primeiros n caracteres de duas strings, s1 e s2. 
+    Ele retorna 0 se as duas strings forem iguais nos primeiros n caracteres, e um valor diferente de zero se encontrar uma diferença.
+
+    1.1 - Tipo de Retorno: int
+
+          A função ft_strncmp retorna um inteiro (int) para representar o resultado da comparação entre os primeiros n caracteres das strings s1 e s2.
+          Este valor indica a relação lexicográfica entre duas strings, ou seja, se uma string é "menor", "igual" ou "maior" que a outra, com base na ordem dos caracteres ASCII.
+
+           A função utiliza o valor de if (n == i) e s1[i] - s2[i] para retornar:
+
+            - 0, se os primeiros n caracteres de s1 e s2 são iguais (os caracteres comparados são todos iguais e atingimos o fim quando n = i, ou o fim de ambas as strings).
+            - Negativo, se s1 é menor do que s2 (isto acontece quando encontramos um caractere em s1 que é menor (com menor valor ASCII) do que o caractere correspondente em s2, ou se s1 acaba antes de s2).
+            - Positivo, se s1 é maior do que s2 (s1 tem um caractere maior numa posição específica ou continua enquanto s2 já acabou).
+
+           O uso de int como retorno é importante porque:
+
+            - Representa valores negativos e positivos: O tipo int permite que a função retorne números negativos e positivos, o que é essencial para saber qual é a string maior ou menor.
+            - Facilita a comparação com o valor zero: Ao comparar o retorno da função ft_strcmp com o valor 0, podemos facilmente verificar se as duas strings são iguais (== 0), se s1 é menor (< 0) ou se s1 é maior (> 0).
+
+    1.2 - Variáveis: 
+
+          char *s1: é um ponteiro para um array de caracteres (string) que armazena o endereço do primeiro caractere da string (s1), pelo o que aponta para a primeira string que queremos comparar com a segunda string (s2).
+                    A partir do endereço do primeiro caractere de s1, podemos acessar a string inteira, caractere a caractere, ao utilizarmos o índice i (s1[i]), onde i é a posição (índice) do caractere na string.
+                    Este ponteiro é passado como argumento para a função ft_strncmp, o que significa que a função não vai copiar a string, mas em vez disso, ft_strncmp acessa a string diretamente na memória onde ela está armazenada.
+
+                    Para uma string s1 com o conteúdo "Hello", a memória poderia ser visualizada como:
+
+                    Endereço:     0x1000    0x1001    0x1002    0x1003    0x1004    0x1005
+                    Conteúdo:       'H'       'e'       'l'       'l'       'o'       '\0'
+
+                    Aqui:
+
+                    s1 contém o endereço 0x1000, o que significa que s1 aponta para o primeiro caractere 'H'.
+                    AO utilizarmos s1[i], conseguimos acessar cada caractere:
+
+                    s1[0] é 'H',
+                    s1[1] é 'e',
+                    s1[4] é 'o',
+                    s1[5] é '\0', indicando o final da string.
+
+          char *s2: é um ponteiro para um array de caracteres que armazena o endereço do primeiro caractere da string (s2), pelo o que aponta para a segunda string que queremos comparar com a primeira (s1).
+                    A partir do endereço do primeiro caractere de s2, podemos acessar a string inteira, caractere a caractere, ao utilizarmos o índice i (s1[i]), onde i é a posição (índice) do caractere na string.
+                    Este ponteiro é passado como argumento para a função ft_strcmp, o que significa que a função não vai copiar a string, mas em vez disso, a função ft_strcmp  acessa a string diretamente na memória, onde ela está armazenada, o que evita a necessidade de criar uma cópia.
+                    
+                    Para uma string s2 "World", a memória poderia ser visualizada como:
+
+                    Endereço:     0x2000    0x2001    0x2002    0x2003    0x2004    0x2005
+                    Conteúdo:       'W'       'o'       'r'       'l'       'd'       '\0'
+
+                    s2 contém o endereço 0x2000, que aponta para o caractere 'W'.
+                    Cada caractere da string pode ser acessado ao utilizarmos s2[i]:
+
+                    s2[0] é 'W',
+                    s2[1] é 'o',
+                    s2[2] é 'r',
+                    s2[3] é 'l',
+                    s2[4] é 'd',
+                    s2[5] é '\0', marcando o final da string.
+
+     unsigned int n: é um parâmetro que controla o número máximo de caracteres que a função deve comparar entre as duas strings, s1 e s2.
+                     OU seja, a variável n especifica o limite de quantos caracteres devem ser comparados. 
+                     Se n for menor do que o comprimento das strings, a comparação é feita apenas até ao limite de n caracteres, mesmo que as strings possam ser mais longas. 
+                     Isto permite que comparemos as partes das strings sem precisarmos de examiná-las completamente.
+
+                     O tipo unsigned int é aqui utilizado porque a variável n representa um número não negativo.
+                     Ao trabalharmos com os índices das strings e com a contagem de caracteres, não faz sentido ter um valor negativo, pois isso poderia causar comportamentos inesperados durante a comparação. 
+                     Um número negativo não tem um significado prático no contexto de comparação entre os caracteres das strings, já que estamos sempre a lidar com posições válidas e não faz sentido ter uma contagem negativa (não podemos "comparar" -1 caracteres).
+                     O uso de unsigned int permite, também, que o valor máximo para n seja maior do que o de um int normal, o que é útil, especialmente em contextos onde as strings podem ser longas.
+
+                     Importância da Variável n:
+
+                       Controla a Comparação: n controla a extensão da comparação, o que é útil, por exemplo, ao verificar se duas strings começam da mesma maneira ou ao comparar prefixos das strings.
+
+                       Eficiente e Seguro: Ao limitar a comparação, podemos evitar acessos indesejados a partes da string que não devem ser consideradas, evitando assim erros como os de acesso à memória não alocada ou causar falhas.
+
+     unsigned int i: Representa o índice que permite acessar os caracteres de s1 e s2, durante a comparação,através da incrementação a cada iteração do loop, o que permite que os caracteres sejam comparados um a um.
+                     COntrola, assim, a posição atual na string que está a ser comparada, permitindo que a função itere através dos caracteres até atingir o final das strings ou encontrar uma diferença.
+                     No ínicio da função, i é inicializado com o valor 0, o que significa que a comparação vai começar a partir do primeiro caractere de cada string (s1[0] e s2[0]).
+                     
+                     Após o loop, i é utilizado para determinar o retorno da função.
+                     Se i for igual a n, isso indica que todos os caracteres comparados foram iguais, e a função retornará 0.
+                     Caso contrário, a função vai retornar a diferença entre os caracteres s1[i] e s2[i], o que indica qual a string é "maior" ou "menor".
+
+
+2 - Loop da Comparação Caracter a Caracter:
+
+
+        while (i < n && s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+            i++;
+
+
+    É responsável por iterar através dos caracteres das duas strings. 
+    Assegura que as comparações sejam realizadas de maneira segura e controlada, respeitando o limite especificado por n, e evita acessos fora dos limites da string. 
+    Isto permite que a função compare as strings adequadamente e retorne a diferença correta quando necessário.
+ 
+    -  i < n: Esta condição verifica se o índice i é menor que n, que é o número máximo de caracteres a serem comparados.
+              Garante que o índice i não ultrapasse o número máximo de caracteres que queremos comparar, consequentemente, garante que a comparação não ultrapasse o limite definido por n. 
+              Isto é essencial para evitar o acesso a caracteres fora dos limites da string ou a comparação de mais caracteres do que o necessário. 
+              Ou seja, é crucial porque evita que a função tente comparar mais caracteres do que o desejado.
+              Se i for igual a n, a comparação para, mesmo que os primeiros n caracteres das duas strings sejam iguais até aquele ponto, permitindo que a função retorne 0 na linha seguinte (if(i == n)).
+
+    - s1[i] == s2[i]: Esta condição compara os caracteres nas posições i de ambas as strings, s1 e s2.
+                      Esta comparação é fundamental, pois se os caracteres não forem iguais, significa que as strings diferem. 
+                      O loop deve parar imediatamente para permitir que a função retorne a diferença entre os caracteres.
+                      Assim, o loop continua apenas se os caracteres nas respectivas posições forem iguais. 
+
+    - s1[i] != '\0' && s2[i] != '\0': Verifica se os caracteres atuais nas strings s1 e s2 não são o caractere nulo '\0', o que indica o final da string.
+                                      Garante que a função não tenta acessar para além do final das strings s1 e s2. 
+                                      Se s1[i] e/ou s2[i] forem '\0', isso significa que a string terminou e não há mais caracteres para comparar. 
+                                      Se essa condição for falsa, o loop termina, e a função pode retornar a diferença encontrada naquele ponto.
+    
+    Se todas as condições forem verdadeiras, a instrução i++ é executada, em que i é incrementado, movendo-se para o próximo caractere nas duas strings.
+    A cada iteração, o loop verifica novamente as condições até que uma delas se torne falsa. 
+    Se i atingir n, ou se os caracteres nas strings forem diferentes, ou se uma das strings terminar, o loop é encerrado.
+    
+    Exemplo:
+
+    char s1[] = "Hello";
+    char s2[] = "Hello, World";
+    unsigned int n = 5;
+
+    Inicialização: i = 0
+
+    Primeira Iteração:
+            0 < 5 (verdadeiro)
+            s1[0] == s2[0] ('H' == 'H', verdadeiro)
+            s1[0] != '\0' (não é '\0', verdadeiro)
+            s2[0] != '\0' (não é '\0', verdadeiro)
+        Todas as condições são verdadeiras. Incrementa i: i = 1
+
+    Segunda Iteração:
+            1 < 5 (verdadeiro)
+            s1[1] == s2[1] ('e' == 'e', verdadeiro)
+            s1[1] != '\0' (não é '\0', verdadeiro)
+            s2[1] != '\0' (não é '\0', verdadeiro)
+        Todas as condições são verdadeiras. Incrementa i: i = 2
+
+    Terceira Iteração:
+            2 < 5 (verdadeiro)
+            s1[2] == s2[2] ('l' == 'l', verdadeiro)
+            s1[2] != '\0' (não é '\0', verdadeiro)
+            s2[2] != '\0' (não é '\0', verdadeiro)
+        Todas as condições são verdadeiras. Incrementa i: i = 3
+
+    Quarta Iteração:
+            3 < 5 (verdadeiro)
+            s1[3] == s2[3] ('l' == 'l', verdadeiro)
+            s1[3] != '\0' (não é '\0', verdadeiro)
+            s2[3] != '\0' (não é '\0', verdadeiro)
+        Todas as condições são verdadeiras. Incrementa i: i = 4
+
+    Quinta Iteração:
+            4 < 5 (verdadeiro)
+            s1[4] == s2[4] ('o' == 'o', verdadeiro)
+            s1[4] != '\0' (não é '\0', verdadeiro)
+            s2[4] != '\0' (não é '\0', verdadeiro)
+        Todas as condições são verdadeiras. Incrementa i: i = 5
+
+    Sexta Iteração:
+            5 < 5 (falso)
+        O loop termina, e passa para a linha seguinte.
+
+3 - Verificação:
+
+        if (i == n)
+            return (0);
+    
+    A condição i = n verifica se o índice i é igual ao número máximo de caracteres que queremos comparar entre as duas strings.
+    Se no loop anterior i atingiu o valor de n, significa que a comparação alcançou o limite de n caracteres, sendo que estes são iguais em ambas as strings, s1 e s2, até esse ponto.
+    Assim, é retornado 0, que indica que as duas strings são iguais até ao limite n.
+
+    Exemplo:
+    
+    Inicialização: s1 = "Hello" (s1[0] = 'H', s1[1] = 'e', s1[2] = 'l', s1[3] = 'l', s1[4] = 'o')
+                   s2 = "Hello, World" (s2[0] = 'H', s2[1] = 'e', s2[2] = 'l', s2[3] = 'l', s2[4] = 'o')
+                   n = 5
+
+      Tabela de Iterações
+
+      Iteração	i	s1[i]	s2[i]	s1[i] == s2[i]	s1[i] != '\0'	s2[i] != '\0'	  n	         Ação
+         1	    0	 'H'	 'H'	     true	         true	         true	      5	   Incrementar i para 1
+         2	    1	 'e'	 'e'	     true	         true	         true	      5	   Incrementar i para 2
+         3	    2	 'l'	 'l'	     true	         true	         true	      5	   Incrementar i para 3
+         4	    3	 'l'	 'l'	     true	         true	         true	      5	   Incrementar i para 4
+         5	    4	 'o'	 'o'	     true	         true	         true	      5	   Incrementar i para 5
+         6	    5	 '\0'	 ','	     false	         false	         true	      5	      Loop termina
+
+     Após a 5ª iteração, i é incrementado para 5.
+     O loop termina porque, na 6ª iteração, s1[5] é '\0' e s2[5] é ',', o que não satisfaz a condição do loop.
+
+    Agora, a condição if (i == n) é avaliada:  i é igual a 5, então if (i == n) é verdadeiro.
+                                               A função retorna 0, indicando que os primeiros 5 caracteres de s1 e s2 são iguais.
+
+
+4 - Retorno da Diferença entre s1[i] e s2[i]:  return (s1[i] - s2[i]);
+    
+    Se o loop while terminou porque: ou os caracteres nas posições correspondentes de s2 e s2 são diferentes, ou um dos dois caracteres é '\0' ou o indice i atinge n, a função retorna a diferença entre os caracteres s1[i] e s2[i]. 
+    
+    O resultado de s1[i] - s2[i], indica um:
+
+      - Resultado Positivo: Se s1[i] é maior que s2[i], resulta num valor positivo, o que significa que s1 é "maior" do que s2 na comparação lexicográfica.
+      - Resultado Negativo: Se s1[i] é menor que s2[i], resulta num valor negativo, indicando que s1 é "menor" do que s2.
+      - Resultado Zero: Se s1[i] é igual a s2[i], resulta em zero, indicando que os caracteres são iguais.
+
+
+
+Exemplo de FLuxo:
+
+
+1) Antes da Função:
+
+   
+   > Função Main
+
+    
+        int main(void) 
+        {
+            char str1[] = "Hello";
+            char str2[] = "HelloWorld";
+            unsigned int n = 5;
+    
+            int result = ft_strncmp(str1, str2, n);
+            return 0;
+        }
+    
+    Aqui, str1 e str2 são strings que contêm os respetivos conteúdos: "Hello" e "HelloWorld". 
+    Estes arrays são armazenados em locais contíguos da memória, no momento em que são declarados e iniciados, com cada caractere ocupando um byte. 
+    
+    O array str1 é alocado e contém a string "Hello", que ocupa 6 bytes (incluindo o caractere nulo \0 que marca o fim da string).
+    O array str2 é alocado e contém a string "HelloWorld", que ocupa 11 bytes (incluindo o caractere nulo \0).
+    n é armazenado como um unsigned int, com o valor 5.
+
+     Tabelas de Endereços de Memória para str1 e str2
+
+        str1 - Endereços e Valores:
+
+        Endereço	Conteúdo	 Valor	   ASCII
+        0x0010	     str1[0]	  'H'       (72)	
+        0x0011	     str1[1]	  'e'      (101)	
+        0x0012	     str1[2]	  'l'      (108)	
+        0x0013	     str1[3]	  'l'      (108)	
+        0x0014	     str1[4]	  'o'      (111)	
+        0x0015	     str1[5]	  '\0'       (0)	
+
+        str2 - Endereços e Valores:
+
+        Endereço	Conteúdo	Valor    ASCII
+        0x0020	    str2[0]	     'H'      (72)	
+        0x0021	    str2[1]	     'e'     (101)	
+        0x0022	    str2[2]	     'l'     (108)	
+        0x0023	    str2[3]	     'l'     (108)	
+        0x0024	    str2[4]	     'o'     (111)	
+        0x0025   	str2[5]	     'W'      (87)	
+        0x0026	    str2[6]	     'o'     (111)	
+        0x0027	    str2[7]	     'r'     (114)	
+        0x0028	    str2[8]	     'l'     (108)	
+        0x0029	    str2[9]	     'd'     (100)	
+        0x002A	   str2[10]	     '\0'      (0)	
+
+    Estado da Memória Antes da Chamada da Função
+
+    Antes da chamada de ft_strncmp, o estado das variáveis em memória é:
+
+    str1 aponta para o endereço 0x0010, que contém a string "Hello".
+    str2 aponta para o endereço 0x0020, que contém a string "HelloWorld".
+    n é 5.
+
+    Estas variáveis são passadas para a função ft_strncmp, onde str1, str2, e n são interpretados e acessados conforme os endereços e os valores acima. 
+    Isto permite que a função manipule os caracteres contidos em cada string, comparando até o número máximo de caracteres especificado por n.
+
+    > Chamada da Função e Passagem de Argumentos
+
+      Quando chamamos a função ft_strncmp(str1, str2, 5), os seguintes valores são passados para a função:
+
+        - str1: é um ponteiro que aponta para o primeiro caractere da string "Hello", com o endereço 0x0010.
+        - str2: é um ponteiro que aponta para o primeiro caractere da string "HelloWorld", com o endereço 0x0020.
+        - n: o valor 5, que define o número máximo de caracteres a serem comparados.
+
+
+2) Durante a Função:
+
+    Loop While :  while (i < n && s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+
+    O loop while compara caractere a caractere, entre s1 e s2, até que uma das seguintes condições ocorra:
+
+    - i alcance o valor de n.
+    - s1[i] e s2[i] sejam diferentes.
+    - s1[i] ou s2[i] seja o caractere nulo '\0'.
+   
+
+    Tabela Pormenorizada das Iterações
+
+    Iteração	i	Endereço s1[i]	 Valor s1[i]	Endereço s2[i]	 Valor s2[i]	Condição (s1[i] == s2[i])	i < n	Continua no loop?
+       1	    0	    0x0010	      'H' (72)	        0x0020	     'H'  (72)	               Sim	              Sim	       Sim
+       2	    1	    0x0011	      'e' (101) 	    0x0021	     'e' (101)  	           Sim	              Sim	       Sim
+       3	    2	    0x0012	      'l' (108) 	    0x0022	     'l' (108)	               Sim	              Sim	       Sim
+       4	    3	    0x0013	      'l' (108)	        0x0023	     'l' (108)	               Sim	              Sim	       Sim
+       5	    4	    0x0014	      'o' (111)	        0x0024	     'o' (111)	               Sim	              Sim	       Sim
+                                                    
+                                                    Fim do Loop
+
+    Na quinta iteração, i atinge o valor 5, que é igual a n, o que faz com que a condição i < n se torne falsa e o loop seja encerrado.
+    Como s1 e s2 são iguais nos primeiros cinco caracteres, i atinge 5 sem encotrar diferenças.
+
+    Verificação de i == n
+
+    Depois de sair do loop, a função verifica se i é igual a n: if (i == n)
+    Se for verdadeira, isso indica que os primeiros n caracteres da string são iguais.
+    COmo i é igual a n, a função retorna 0, indicando que os primeiros n caracteres de ambas as strings são iguais e, consequentemente, não encontrou nenhuma diferença.
+
+    
+    E se n for 6 (n = 6)?
+
+    Tabela de Iterações no Loop while
+
+    Iteração	i	s1[i]	Endereço s1[i]	s2[i]	Endereço s2[i]	Condições Satisfeitas?	i Após Incremento
+       1	    0	 'H'	    0x0010	     'H'	     0x0020	              Sim	                 1
+       2	    1	 'e'	    0x0011	     'e'	     0x0021 	          Sim	                 2
+       3	    2	 'l'	    0x0012	     'l'	     0x0022  	          Sim	                 3
+       4	    3	 'l'	    0x0013	     'l'	     0x0023	              Sim	                 4
+       5	    4	 'o'	    0x0014	     'o'	     0x0024	              Sim	                 5
+       6	    5	 '\0'	    0x0015	     'W'	     0x0025	        Não (s1[i] != s2[i])	Loop termina
+
+    Na sexta iteração, i é igual a 5, e o loop para porque s1[i] != s2[i] — o caractere s1[5] é '\0' (o final da string str1), enquanto s2[5] é 'W'. 
+    Neste momento, i não é igual a n (ele é 5), então a condição if (i == n) não é satisfeita.
+    
+    Retorno do Valor
+
+    Como i não é igual a n, a função segue para a linha return (s1[i] - s2[i]), que devolve a diferença entre s1[i] e s2[i], ou seja, s1[5] - s2[5]. 
+    Aqui, s1[5] é '\0' (valor ASCII 0) e s2[5] é 'W' (valor ASCII 87).
+
+    Assim, 0 - 87 = -87.
+    
+    Valor Retornado	                Significado
+          -87	        str1 é lexicograficamente menor que str2
+
+
+   Estado da Memória no Fim da Função
+
+   NO caso de n = 5:
+
+    - s1 e s2 ainda apontam para os mesmos endereços de memória, que contêm "Hello" e "HelloWorld", respectivamente.
+    - n e i permanecem com os valores 5.
+    - A função retorna 0, indicando que as strings são iguais nos primeiros 5 caracteres.
+ 
+   NO caso de n = 6:
+
+    - s1 e s2 ainda apontam para os mesmos endereços de memória, que contêm "Hello" e "HelloWorld", respetivamente.
+    - n permanece com o valor 6 e i com o valor 5.
+    - A função retorna -87, indicando que a string str1 é menor do que a string str2.

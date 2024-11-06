@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:15:46 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/26 22:55:20 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/11/03 19:55:21 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,68 @@
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	unsigned int	dest_len;
 	unsigned int	i;
+	unsigned int	j;
 
-	dest_len = 0;
-	while (dest[dest_len] != '\0')
-		dest_len++;
 	i = 0;
-	while (src[i] != '\0' && i < nb)
-	{
-		dest[dest_len + i] = src[i];
+	while (dest[i] != '\0')
 		i++;
+	j = 0;
+	while (j < nb && src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+        j++;
 	}
-	dest[dest_len + i] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 
 /*
 #include <stdio.h>
 
-int main() 
+int main(void)
 {
-    char dest1[100] = "Hello, ";  // Ensure enough space for concatenation
-    char src1[] = "World!";
+    char dest1[20] = "Hello";
+    char src1[] = " World!";
+    unsigned int nb1 = 6;
 
-    char dest2[100];
-    strcpy(dest2, dest1);  // Copy initial content to dest2 for comparison
-    char src2[] = "World!";
+    printf("Antes da concatenação: '%s'\n", dest1);
+    ft_strncat(dest1, src1, nb1);
+    printf("Depois da concatenação (nb = %d): '%s'\n\n", nb1, dest1);
 
-    // Test case 1: Concatenate first 3 characters from src
-    printf("Before ft_strncat: %s\n", dest1);
-    printf("Before strncat: %s\n", dest2);
+    char dest2[20] = "Hello";
+    char src2[] = " World!";
+    unsigned int nb2 = 3;
 
-    ft_strncat(dest1, src1, 3);
-    strncat(dest2, src2, 3);
+    printf("Antes da concatenação: '%s'\n", dest2);
+    ft_strncat(dest2, src2, nb2);
+    printf("Depois da concatenação (nb = %d): '%s'\n\n", nb2, dest2);
 
-    printf("After ft_strncat (3 chars): %s\n", dest1);
-    printf("After strncat (3 chars): %s\n", dest2);
-    printf("\n");
+    char dest3[10] = "Hello";
+    char src3[] = " World!";
+    unsigned int nb3 = 20;
 
-    // Test case 2: Concatenate next 10 characters from src
-    ft_strncat(dest1, src1 + 3, 10);  // Note: src1 + 3 skips first 3 characters
-    strncat(dest2, src2 + 3, 10);     // Same test with strncat
-
-    printf("After ft_strncat (remaining chars): %s\n", dest1);
-    printf("After strncat (remaining chars): %s\n", dest2);
+    printf("Antes da concatenação: '%s'\n", dest3);
+    ft_strncat(dest3, src3, nb3);
+    printf("Depois da concatenação (nb = %d): '%s'\n", nb3, dest3);
 
     return 0;
 }
+*/
 
+/*
+OUTPUT:
+
+sh-5.2$ cc -Wall -Werror -Wextra ft_strncat.c -o ft_strncat
+sh-5.2$ ./ft_strncat 
+
+Antes da concatenação: 'Hello'
+Depois da concatenação (nb = 6): 'Hello World'
+
+Antes da concatenação: 'Hello'
+Depois da concatenação (nb = 3): 'Hello Wo'
+
+Antes da concatenação: 'Hello'
+Depois da concatenação (nb = 20): 'Hello World!'
 */

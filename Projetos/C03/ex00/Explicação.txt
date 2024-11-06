@@ -1,0 +1,243 @@
+
+1 - Função ft_strcmp:  int	ft_strcmp(char *s1, char *s2)
+
+    A função ft_strcmp compara as duas strings, s1 e s2, caractere por caractere, para determinar a relação de ordem entre elas. 
+    Ela retorna:
+
+    0 se as strings são idênticas,
+    um valor negativo se s1 é lexicograficamente menor que s2,
+    um valor positivo se s1 é maior que s2.
+
+    1.1 - Tipo de Retorno: Int 
+
+           A função ft_strcmp retorna um inteiro (int) pois o valor de retorno representa a diferença lexicográfica entre as duas strings comparadas. 
+           Esse valor indica se uma string é "menor", "igual" ou "maior" que a outra, com base na ordem dos caracteres ASCII.
+
+           Quando comparamos as duas strings, o que queremos saber é:
+
+            - Se uma string é igual à outra.
+            - Se uma string é menor do que a outra.
+            - Se uma string é maior do que a outra.
+
+           A função utiliza o valor de s1[i] - s2[i] para retornar:
+
+            - 0, se s1 e s2 são iguais (os caracteres comparados são todos iguais e atingimos o fim de ambas as strings).
+            - Negativo, se s1 é menor do que s2 (isto acontece quando encontramos um caractere em s1 que é menor (com menor valor ASCII) do que o caractere correspondente em s2, ou se s1 acaba antes de s2).
+            - Positivo, se s1 é maior do que s2 (s1 tem um caractere maior numa posição específica ou continua enquanto s2 já acabou).
+
+           O uso de int como retorno é importante porque:
+
+            - Representa valores negativos e positivos: O tipo int permite que a função retorne números negativos e positivos, o que é essencial para saber qual é a string maior ou menor.
+            - Facilita a comparação com o valor zero: Ao comparar o retorno da função ft_strcmp com o valor 0, podemos facilmente verificar se as duas strings são iguais (== 0), se s1 é menor (< 0) ou se s1 é maior (> 0).
+
+    1.2 - Variáveis:
+
+
+          char *s1: é um ponteiro para um array de caracteres (string) que armazena o endereço do primeiro caractere da string (s1), pelo o que aponta para a primeira string que queremos comparar com a segunda string (s2).
+                    A partir do endereço do primeiro caractere de s1, podemos acessar a string inteira, caractere a caractere, ao utilizarmos o índice i (s1[i]), onde i é a posição (índice) do caractere na string.
+                    Este ponteiro é passado como argumento para a função ft_strcmp, o que significa que a função não vai copiar a string, mas em vez disso, ft_strcmp acessa a string diretamente na memória onde ela está armazenada.
+
+                    Para uma string s1 com o conteúdo "Hello", a memória poderia ser visualizada como:
+
+                    Endereço:     0x1000    0x1001    0x1002    0x1003    0x1004    0x1005
+                    Conteúdo:       'H'       'e'       'l'       'l'       'o'       '\0'
+
+                    Aqui:
+
+                    s1 contém o endereço 0x1000, o que significa que s1 aponta para o primeiro caractere 'H'.
+                    AO utilizarmos s1[i], conseguimos acessar cada caractere:
+
+                    s1[0] é 'H',
+                    s1[1] é 'e',
+                    s1[4] é 'o',
+                    s1[5] é '\0', indicando o final da string.
+
+          char *s2: é um ponteiro para um array de caracteres que armazena o endereço do primeiro caractere da string (s2), pelo o que aponta para a segunda string que queremos comparar com a primeira (s1).
+                    A partir do endereço do primeiro caractere de s2, podemos acessar a string inteira, caractere a caractere, ao utilizarmos o índice i (s1[i]), onde i é a posição (índice) do caractere na string.
+                    Este ponteiro é passado como argumento para a função ft_strcmp, o que significa que a função não vai copiar a string, mas em vez disso, a função ft_strcmp  acessa a string diretamente na memória, onde ela está armazenada, o que evita a necessidade de criar uma cópia.
+                    
+                    Para uma string s2 "World", a memória poderia ser visualizada como:
+
+                    Endereço:     0x2000    0x2001    0x2002    0x2003    0x2004    0x2005
+                    Conteúdo:       'W'       'o'       'r'       'l'       'd'       '\0'
+
+                    s2 contém o endereço 0x2000, que aponta para o caractere 'W'.
+                    Cada caractere da string pode ser acessado ao utilizarmos s2[i]:
+
+                    s2[0] é 'W',
+                    s2[1] é 'o',
+                    s2[2] é 'r',
+                    s2[3] é 'l',
+                    s2[4] é 'd',
+                    s2[5] é '\0', marcando o final da string.
+
+
+2 - Loop while:
+
+        while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+            i++;
+
+    Este loop while percorre s1 e s2 simultaneamente, caractere a caractere, enquanto as três condições mantêm-se verdadeiras.
+
+      - s1[i] == s2[i]: A função verifica se o caractere atual de s1 é igual ao caractere correspondente de s2.
+                        Enquanto os caracteres forem iguais, a função continua a incrementar para o próximo caractere de ambas as strings.
+                        Assim que encontrar uma diferença entre s1[i] e s2[i], esta condição falha e o loop para, avançando para a linha que retorna o valor da diferença entre eles.
+
+      - s1[i] != '\0' && s2[i] != '\0': Estas condições verificam se s1[i] e s2[i] não chegaram ao final das strings.
+                                        Se qualquer uma delas chegar ao caractere '\0', o loop também para.
+                                        Esta condição é importante porque evita o acesso a posições da memória fora dos limites das strings, o que poderia causar falhas no programa.
+
+      - i++: Se todas as condições forem verdadeiras, i é incrementado.
+             A função avança para o próximo caractere em ambas as strings (s1[i] e s2[i]), continuando a comparação do próximo caractere em cada iteração do loop.
+
+3 . Retorno da Função:  return (s1[i] - s2[i]);
+
+    Quando o loop termina, a função retorna o valor de s1[i] - s2[i].
+
+        Existem três cenários possíveis para o fim do loop e a execução deste return:
+
+          - Cenário 1: Diferentes Caracteres Encontrados:
+            
+                - Se s1[i] e s2[i] são diferentes, o loop interrompe, e a função retorna a diferença entre s1[i] e s2[i].
+                
+                Isso cria um valor inteiro: Positivo, se o caractere de s1 for maior,
+                                            Negativo, se o caractere de s2 for maior.
+
+          - Cenário 2: Uma das Strings Chegou ao Fim:
+            
+                - Se uma string for mais curta do que a outra, o loop para ao encontrar o '\0' da string mais curta.
+               
+                O retorno então será a diferença entre s1[i] (ou s2[i]) e '\0', o que reflete o tamanho desigual das strings.
+
+          . Cenário 3: Strings Iguais:
+
+                - Se as strings forem idênticas em cada caractere e tiverem o mesmo comprimento, o loop termina ao encontrar '\0' em ambas as strings ao mesmo tempo.
+            
+                Neste caso, s1[i] - s2[i] é 0, pois ambos os valores são '\0'.
+                Um retorno 0 indica que as strings são iguais.
+
+
+
+Exemplo de Fluxo:
+
+1) Antes da Função:
+
+
+   Consideremos que temos duas strings:
+
+    s1 = "Hello"
+    s2 = "Helio"
+  
+   A string s1 é configurada com o valor "Hello" e s2 com o valor "Helio". 
+   Após a declaração, cada caractere das strings é alocado em posições consecutivas, na memória.
+   Queremos comparar estas strings ao utilizarmos a função ft_strcmp para verificar a posição onde divergem.
+
+   No início, as strings s1 e s2 são armazenadas em posições da memória separadas e possuem os seus próprios conteúdos. 
+   Vamos representar esta situação numa tabela de memória simplificada:
+
+           String   Endereço	Conteúdo
+           -----------------------------
+             s1      0x1000	       H	
+                     0x1001	       e	
+                     0x1002	       l	
+                     0x1003	       l	
+                     0x1004	       o	
+                     0x1005	      \0
+           -----------------------------	
+             s2      0x2000	       H
+                     0x2001	       e	
+                     0x2002	       l	
+                     0x2003	       i	
+                     0x2004	       o	
+                     0x2005	      \0	
+    
+    Aqui, s1 aponta para o endereço 0x1000 e s2 aponta para 0x2000.
+
+    > Chamada e Passagem dos Ponteiros para a Função
+
+      Em C, os parâmetros são passados por valor, então os valores dos ponteiros s1 e s2 são copiados para os parâmetros da função.
+      A função recebe os ponteiros copiados, que têm os mesmos valores que s1 e s2, mas são independentes.
+
+      Quando ft_strcmp(s1, s2) é chamada: O endereço contido em s1 (0x1000) é passado para o parâmetro char *s1 da função ft_strcmp.
+                                          O endereço em s2 (0x2000) é passado para o parâmetro char *s2 da função.
+
+                                          Assim, a função ft_strcmp começa com: s1 a apontar para o endereço 0x1000 (início de "Hello").
+                                                                                s2 a apontar para o endereço 0x2000 (início de "Helio").
+      
+      A função vai utilizar estes ponteiros para acessar cada caractere nas posições sucessivas de s1 e s2.
+      Cada posição em s1 e s2 contém um caractere em ordem consecutiva, permitindo que a função ft_strcmp acesse cada caractere ao incrementar o índice de posição i, como vamos observar.
+
+      Exemplo:
+
+      s1[0] acessa o endereço 0x1000 e lê H.
+      s2[0] acessa o endereço 0x2000 e também lê H.
+      Ao incrementar i, a função acessará s1[1] (0x1001) e s2[1] (0x2001), comparando e com e, e assim por diante.
+
+
+2) Durante a Função:
+
+    Como vimos, a função é chamada com as strings s1 e s2, que estão alocadas na memória : int resultado = ft_strcmp(s1, s2);
+
+    Aqui, s1 aponta para "Hello" (0x1000) e s2 aponta para "Helio" (0x2000).
+
+    > Loop while da Comparação
+
+            i = 0;
+	        while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		        i++;
+
+      Detalhes do que ocorre em cada iteração:
+
+      Iteração	 i	  s1[i]	  s2[i]	         Condição do Loop	            Ação
+         1	     0	    H	    H	   Verdadeiro (s1[0] == s2[0])	  Incrementa i para 1
+         2	     1	    e	    e	   Verdadeiro (s1[1] == s2[1])	  Incrementa i para 2
+         3	     2	    l	    l	   Verdadeiro (s1[2] == s2[2])	  Incrementa i para 3
+         4	     3	    l	    i	      Falso (s1[3] != s2[3])	     Sai do loop
+
+      Análise do Loop:
+
+      Iteração 1 (i = 0): s1[0] é H e s2[0] é H. Eles são iguais, e a condição do loop continua.
+        i é incrementado para 1.
+
+      Iteração 2 (i = 1): s1[1] é e e s2[1] é e. Eles são iguais, e a condição do loop continua.
+                          i é incrementado para 2.
+
+      Iteração 3 (i = 2): s1[2] é l e s2[2] é l. Eles são iguais, e a condição do loop continua.
+                          i é incrementado para 3.
+
+      Iteração 4 (i = 3): s1[3] é l e s2[3] é i. Eles são diferentes, então a condição do loop se torna falsa, e a execução sai do loop.
+
+
+    > Saída do Loop
+
+      Após a saída do loop, é executado: return (s1[i] - s2[i]);
+
+      s1[i] agora é l (s1[3]) e s2[i] é i (s2[3]).
+      A função retorna a diferença entre os dois caracteres: return ('l' - 'i');
+
+      Em ASCII, 'l' é 108 e 'i' é 105, então a expressão resulta em: return (108 - 105), ou seja, resulta em 3.
+
+    > Resultados: O resultado retornado é um inteiro (3), que indica que a string s1 é maior que a string s2 quando comparada lexicograficamente, pois 'l' (s1[3]) aparece depois de 'i' (s2[3]) na tabela ASCII.
+   
+   
+
+    Vejamos agora para a declaração:
+
+    s1 = "Hello"
+    s2 = "Hell"
+
+    Abaixo, uma tabela detalha cada iteração do loop com os valores de i, s1[i], s2[i], e o comportamento do índice i:
+
+      Iteração	i	s1[i]	s2[i]	s1[i] == s2[i]	s1[i] != '\0'	s2[i] != '\0'	   Ação
+        1	    0	  H	      H	          Sim	          Sim	         Sim	   i++ (continua)
+        2	    1	  e	      e	          Sim	          Sim	         Sim	   i++ (continua)
+        3	    2	  l	      l	          Sim	          Sim	         Sim	   i++ (continua)
+        4	    3	  l	      l	          Sim	          Sim	         Sim	   i++ (continua)
+        5	    4	  o	     \0	          Não	          Sim	         Não	     Sai do loop
+
+    Na quinta iteração, s2[i] atinge o caractere nulo ('\0') porque s2 é mais curta que s1. 
+    A condição s1[i] == s2[i] falha, pois s1[4] é 'o', enquanto s2[4] é '\0'.
+
+    A função retorna a diferença s1[4] - s2[4]: Como s1[4] é 'o' (valor ASCII 111) e s2[4] é '\0' (valor ASCII 0), o resultado é 111 - 0 = 111.
+
+   Portanto, ft_strcmp("Hello", "Hell") retorna 111, indicando que s1 é "maior" que s2 na comparação lexicográfica, pois s1 possui um caractere extra após s2.

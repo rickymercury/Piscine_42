@@ -6,7 +6,7 @@
 /*   By: rickymercury <ricardomedeirosx@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:40:17 by rickymercur       #+#    #+#             */
-/*   Updated: 2024/10/26 23:05:40 by rickymercur      ###   ########.fr       */
+/*   Updated: 2024/11/02 11:12:53 by rickymercur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	src_len;
 	unsigned int	i;
 
-	src_len = 0;
 	dest_len = 0;
 	while (dest[dest_len] != '\0')
 		dest_len++;
+	src_len = 0;
 	while (src[src_len] != '\0')
 		src_len++;
 	if (size == 0)
